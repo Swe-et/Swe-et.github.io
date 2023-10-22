@@ -375,16 +375,16 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年06月11日</a>
-			<a><i class="kirafont icon-edit-fill"></i>472 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
+			<a><i class="kirafont icon-edit-fill"></i>760 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 3 分钟</a>
 		</div>
 		
-        <div id="aplayer-nalpjmap" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-oMDIEhrp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-nalpjmap"),
+            element: document.getElementById("aplayer-oMDIEhrp"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -437,7 +437,21 @@
 <h3><span id="yolov5网络结构图">Yolov5网络结构图</span></h3><p>安装好netron工具，就可以可视化的打开Yolov5的网络结构。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/nan355655600/article/details/106245563">netron下载安装流程</a></p>
 <p>将四种模型pt文件的转换成对应的onnx文件后，即可使用<a href="https://link.zhihu.com/?target=https://blog.csdn.net/nan355655600/article/details/106245563">netron工具</a>查看。</p>
-<p><strong>（1）输入端：</strong>Mosaic数据增强、自适应锚框计算、自适应图片缩放<br><strong>（2）Backbone：</strong>Focus结构，CSP结构<br><strong>（3）Neck：</strong>FPN+PAN结构<br><strong>（4）Prediction：</strong>GIOU_Loss</p>
+<p><strong>（1）输入端：</strong>Mosaic数据增强：<strong>随机缩放</strong>、<strong>随机裁剪</strong>、<strong>随机排布</strong>的方式进行拼接</p>
+<p>​						  自适应锚框计算：针对不同的数据集，会有<strong>初始设定长宽的锚框</strong>，网络在初始锚框的基</p>
+<p>​						  础上输出预测框，进而和<strong>真实框</strong>进行比对，计算两者差</p>
+<p>​				  		 距，再反向更新，<strong>迭代网络参数</strong>。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/yolov5/6.png" alt="6" class="lazyload"></p>
+<p>​						控制的代码即<strong>train.py</strong>中上面一行代码，设置成<strong>False</strong>，每次训练时，不会自动计算。</p>
+<p>​						自适应图片缩放：因此在Yolov5的代码中datasets.py的letterbox函数中进行了修改，对														 原始图像<strong>自适应的添加最少的黑边</strong>。黑边减少，计算量也减少，检测														 速度提升</p>
+<p>​														  计算缩放比例，长&#x2F;416,宽&#x2F;416，选择小的缩放系数</p>
+<p><strong>（2）Backbone：</strong>Focus结构：切片操作，比如右图的切片示意图，4 * 4 * 3的图像切片后变成2*2 *12的特征图</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/yolov5/7.png" alt="7" class="lazyload"></p>
+<p>​								 CSP结构：<br><strong>（3）Neck：</strong>FPN+PAN结构<br><strong>（4）Prediction：</strong>GIOU_Loss</p>
+<p><strong>IOU_Loss：</strong>主要考虑检测框和目标框重叠面积。</p>
+<p><strong>GIOU_Loss：</strong>在IOU的基础上，解决边界框不重合时的问题。</p>
+<p><strong>DIOU_Loss：</strong>在IOU和GIOU的基础上，考虑边界框中心点距离的信息。</p>
+<p><strong>CIOU_Loss：</strong>在DIOU的基础上，考虑边界框宽高比的尺度信息。</p>
 
 	</article>
 

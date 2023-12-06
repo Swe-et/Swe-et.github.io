@@ -426,7 +426,10 @@
 
 <p><img src="/opencv/4.png"></p>
 <p>这么长的指令懒得看的直接粘过去就行，其中-D INSTALL_CXX_EXAMPLES&#x3D;ON，是下载C++的编译，你可以换成C或者python，复制多一份将CXX替换掉即可。</p>
-<p>接着输入 make -j8 -j8中的8指同时使用8个进程，可以根据电脑的进程数调整此值，看你cpu线程有多少，j越多编译越快，个人推荐j8(我用的-j32).</p>
+<p>接着输入 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">make -j8<br></code></pre></td></tr></table></figure>
+
+<p> -j8中的8指同时使用8个进程，可以根据电脑的进程数调整此值，看你cpu线程有多少，j越多编译越快，个人推荐j8(我用的-j32).</p>
 <p>用make进行安装</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo make install <br></code></pre></td></tr></table></figure>
 

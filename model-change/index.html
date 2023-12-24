@@ -382,7 +382,7 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年12月03日</a>
-			<a><i class="kirafont icon-edit-fill"></i>359 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>358 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
 		<p><strong>模型转换：</strong></p>
@@ -413,7 +413,7 @@
 <h3><span id="onnx转ir模型">onnx转IR模型</span></h3><p>安装openvino python版即可</p>
 <p>pip install openvino</p>
 <p>找到安装openvino的地方，寻找mo_onnx.py</p>
-<p>打开终端：输入 python3 mo_onnx.py –input_model &lt;onnx模型路径&gt; –output_dir &lt;IR模型输出路径&gt; –input_shape [输入形状] –data_type FP16</p>
+<p>打开终端：输入ython3 mo_onnx.py –input_model &lt;onnx模型路径&gt; –output_dir &lt;IR模型输出路径&gt; –input_shape [输入形状] –compress_to_fp16</p>
 <p>–input_shape 在不知道输入形状的情况下用，可以用netron来看,从下面INPUTS可知,data_type是FP16，shape是[1,3,640,640]</p>
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="/model-change/4.png" alt="image-20231203220136878" class="lazyload"></p>
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="/model-change/5.png" alt="image-20231203220236436" class="lazyload"></p>

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> ChatGPT -  紅葉~</title>
+		<title> vim -  紅葉~</title>
 		<link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
 		<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->
@@ -372,50 +372,35 @@
 		
 		<div class="kira-post-cover">
 			<img
-				data-src="/ChatGPT/0.png"
+				data-src="/vim/0.png"
 				data-sizes="auto"
-				alt="ChatGPT"
+				alt="vim"
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>ChatGPT</h1>
+			<h1>vim</h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2023年06月29日</a>
-			<a><i class="kirafont icon-edit-fill"></i>127 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2023年12月31日</a>
+			<a><i class="kirafont icon-edit-fill"></i>679 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
 		</div>
-		<h3><span id="首先你得确定你是否能科学上网">首先你得确定你是否能科学上网</span></h3><p>若不能请参考：<a href="https://swe-et.github.io/internet/">科学上网教程</a></p>
-<h1><span id="1注册谷歌账号">1.注册谷歌账号</span></h1><p><a target="_blank" rel="noopener" href="https://accounts.google.com/InteractiveLogin/identifier?continue=https://www.google.com.hk/?pli=1&ec=GAZAmgQ&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=en&ifkv=AeDOFXj6E0teUQ5n5HIRlOTR80FQUQ_FFvFTYGHI8_1B9fDn268hLKwmZOIPSclqQtuLYYHh-W_e&passive=true">谷歌账号注册</a></p>
-<p><img src="/ChatGPT/1.png"></p>
-<p><img src="/ChatGPT/2.png"></p>
-<p><img src="/ChatGPT/3.png"></p>
-<p>输入手机号，等待短信验证</p>
-<p><img src="/ChatGPT/4.png"></p>
-<p><img src="/ChatGPT/5.png"></p>
-<p>这样就注册完成了。</p>
-<h1><span id="注册chatgpt">注册chatGPT</span></h1><p>进入<a target="_blank" rel="noopener" href="https://chat.openai.com/">chatGPT官网</a></p>
-<p>选择注册</p>
-<p><img src="/ChatGPT/6.png"></p>
-<p><img src="/ChatGPT/7.png"></p>
-<p>chatGPT会让你用手机号注册（中国手机号不行）这时候就需要花点小钱去拿到验证码了：</p>
-<p><a target="_blank" rel="noopener" href="https://sms-activate.org/">接码平台SMS-Activate.org</a></p>
-<p><img src="/ChatGPT/8.png"></p>
-<p><img src="/ChatGPT/9.png"></p>
-<p><img src="/ChatGPT/10.png"></p>
-<p>选择一个喜欢的国家</p>
-<p><img src="/ChatGPT/11.png"></p>
-<p><img src="/ChatGPT/12.png"></p>
-<p><img src="/ChatGPT/13.png"></p>
-<p><img src="/ChatGPT/14.png"></p>
-<h4><span id="这样就注册完成了">这样就注册完成了！！</span></h4><p><img src="/ChatGPT/15.png"></p>
+		<h1><span id="vim基础">vim基础</span></h1><h3><span id="终端输入vim-xx进入命令模式">终端输入vim xx进入命令模式</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">touch test.txt<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">vim test.txt<br></code></pre></td></tr></table></figure>
+
+<h3><span id><img src="/vim/1.png" style="zoom:50%;"></span></h3><h3><span id="命令模式为一开始进入-vim-的默认模式在任何模式下键盘输入-esc-会回到这个预设模式中-如果要切换到其它模式使用键盘输入">命令模式为一开始进入 vim 的默认模式，在任何模式下键盘输入: ESC 会回到这个预设模式中。 如果要切换到其它模式使用键盘输入</span></h3><h3><span id="i-切换到插入模式可以输入字符串文字内容">i ：切换到插入模式，可以输入字符串文字内容</span></h3><h3><span id="切换到底线命令模式可以在最底一行输入操作指令">: ：切换到底线命令模式，可以在最底一行输入操作指令</span></h3><h3><span id="v切换到视觉模式可以使用鼠标光标选择文字方便阅读和强调">v：切换到视觉模式，可以使用鼠标光标选择文字，方便阅读和强调</span></h3><h3><span id="x删除游标所在字元">x：删除游标所在字元</span></h3><h2><span id="其他常见指令">其他常见指令</span></h2><h4><span id="enter换行">Enter：换行</span></h4><h4><span id="back-space-删除游标前一个字元">Back Space 删除游标前一个字元</span></h4><h4><span id="del-删除游标后一个字元">Del 删除游标后一个字元</span></h4><h4><span id="方向键-在文档中移动游标">方向键 在文档中移动游标</span></h4><h4><span id="page-upx2fpage-down-上x2f下翻页">Page Up&#x2F;Page Down 上&#x2F;下翻页</span></h4><h2><span id="底线命令模式">底线命令模式</span></h2><h3><span id="键盘输入-就可以进入底线命令模式让我们可以输入指令操作内容-若要离开或是储存离开vim就要透过底线命令模式输入指令-若键盘输入esc会回到命令模式">键盘输入: 就可以进入底线命令模式，让我们可以输入指令操作内容。 若要离开或是储存离开vim就要透过底线命令模式输入指令。 若键盘输入ESC会回到命令模式</span></h3><h3><span id><img src="/vim/2.png" style="zoom:50%;"></span></h3><h2><span id="常见指令">常见指令</span></h2><h3><span id="q-不储存直接离开">:q 不储存直接离开</span></h3><h3><span id="q-不存储强制直接离开有修改但不想储存时">：q! 不存储，强制直接离开（有修改但不想储存时）</span></h3><h3><span id="e-放弃所有修改从上次存储文件记录开始编辑">：e! 放弃所有修改，从上次存储文件记录开始编辑</span></h3><h3><span id="w-存储文档但不离开">：w 存储文档但不离开</span></h3><h3><span id="w-强制存储文档但不离开">：!w 强制存储文档但不离开</span></h3><h3><span id="w-name-储存文档并命名为name但不离开">：w {name} 储存文档并命名为name，但不离开</span></h3><h3><span id="wq-储存并离开">：wq 储存并离开</span></h3><h3><span id="wq-强制储存并离开">：!wq 强制储存并离开</span></h3><h2><span id="可视模式">可视模式</span></h2><h3><span id="在命令模式输入-v-可以进入可视模式使用滑鼠游标选择文字方便阅读和强调键盘输入-esc-会回到命令模式">在命令模式输入 <code>v</code> 可以进入可视模式使用滑鼠游标选择文字，方便阅读和强调，键盘输入 <code>Esc</code> 会回到命令模式。</span></h3><h3><span id><img src="/vim/3.png" style="zoom:50%;"></span></h3><h1><span id="更多常用指令和使用情境">更多常用指令和使用情境</span></h1><p><code>:0</code>：移动到文件的起点<br><code>:&#123;number&#125;</code>：移动到第 {number} 行<br><code>:$</code>：移动到文件最后一行</p>
+<h2><span id="命令模式刪除字元">[命令模式]刪除字元</span></h2><p><code>x</code>：刪除游标所在的字元<br><code>dd</code>：刪除本行<br><code>&#123;n&#125;dd &#123;n&#125;</code>：刪除游标所在的那一行往下数 {n} 行</p>
+<h2><span id="命令模式复制粘贴">[命令模式]复制粘贴</span></h2><p><code>yy</code>：复制游标所在的那一行並放入暂存区<br><code>&#123;n&#125;yy</code>：复制游标所在的那一行往下数 {n} 行并放入暂存区<br><code>p</code>：复制暂存区的內容到游标所在下方<br><code>P</code>：复制暂存区的內容到游标所在上方</p>
+<h2><span id="命令模式复原">[命令模式]复原</span></h2><p><code>u</code>：恢复之前的修改</p>
+<h2><span id="底線命令模式搜尋取代">[底線命令模式]搜尋取代</span></h2><p><code>/&#123;text&#125;</code>：寻找 {text} 字串位于文件位置<br><code>[范围] s/&#123;from&#125;/&#123;to&#125;/g</code>：在范围（1, $ 代表全部文件）中將 {from} 取代为 {to}，<code>/g</code>。 为全部取代。（例如： <code>1, 4 s/name/username/g</code> 为將 1-4 行字串中所有 <code>name</code> 改為 <code>username</code>）</p>
 
 	</article>
 
 	 
     <div class="kira-post-copyright">
         <strong>本文作者：</strong>紅葉<br>
-        <strong>本文链接：</strong><a href="https://swe-et.github.io/ChatGPT/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;ChatGPT&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;ChatGPT&#x2F;</a><br>
+        <strong>本文链接：</strong><a href="https://swe-et.github.io/vim/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;vim&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;vim&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         
@@ -426,21 +411,15 @@
 		<nav class="post-nav">
 			      
 			<!-- 先找到与当前文字相同的目录 -->
-			               
+			                        
 			<!-- 在找到当前文章所在的 index -->
-			                
+			                            
 			<!-- 上一篇文章 -->
 			<div class="old">
 				<span>上一章</span>
-				<a href="/openvino/"> openvino（ubuntu）+fmt安装教程</a>
+				<a href="/funny/"> 有趣的小东西</a>
 			</div>
-			       
-			<!-- 下一篇文章 -->
-			<div class="new">
-				<span>下一章</span>
-				<a href="/unity/"> ubuntu22.04安装unity</a>
-			</div>
-			                                    
+			                      
 		</nav>
 	</div>
 	
@@ -449,7 +428,7 @@
 			<a class="kirafont icon-container-fill -link" href="/categories/ubuntu/">ubuntu</a>
 		
 		
-			<a class="kirafont icon-tag-fill -none-link" href="/tags/ChatGPT/" rel="tag">ChatGPT</a>
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/ubuntu/" rel="tag">ubuntu</a>
 		
 	</div>
 	
@@ -465,7 +444,7 @@
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
 			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: 'ChatGPT',
+			id: 'vim',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',
 			admin: 'Swe-et',
@@ -483,7 +462,7 @@
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
 			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: 'ChatGPT',
+			id: 'vim',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',
 			admin: 'Swe-et',

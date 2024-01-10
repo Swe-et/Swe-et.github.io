@@ -4,12 +4,12 @@
  document.addEventListener('visibilitychange', function () {
      if (document.hidden) {
          $('[rel="icon"]').attr('href', "/img/trhx2.png");
-         document.title = 'ヽ(●-`Д´-)ノ你走了就别回来了！！！';
+         document.title = '喔唷，崩溃啦';
          clearTimeout(titleTime);
      }
      else {
          $('[rel="icon"]').attr('href', "/img/trhx2.png");
-         document.title = 'ヾ(Ő∀Ő3)ノ哼，才没有想你回来呢！' + OriginTitle;
+         document.title = '喔唷，又好了';
          titleTime = setTimeout(function () {
              document.title = OriginTitle;
          }, 2000);

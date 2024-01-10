@@ -2,6 +2,12 @@
 <html 
 	lang="zh-CN">
 	<head>
+		<!--自定义添加的 Loading Page CSS 样式-->
+		
+<link rel="stylesheet" href="/css/118.css">
+
+		
+    			<link rel="stylesheet" href="true" crossorigin /> 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +25,7 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
 		<!-- 预置 kiraicon -->
 		
 <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
@@ -31,6 +38,7 @@
 			href="/yolov5/ev401a.jpg"
 			type="image/png"
 		/>
+		
 		
 <link rel="stylesheet" href="/deps/css/APlayer.min.css">
 
@@ -52,6 +60,31 @@
 	<meta name="generator" content="Hexo 6.3.0"></head>
 
 	<body>
+		<!--自定义的 Loading Page-->
+		
+		    
+  <div id="loader-box">
+    /* 你的 HTML 代码将放在这里 */
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <div class="text">loading</div>
+    </div>
+</body>
+    <script>
+        var endLoading = function () {
+            document.body.style.overflow = 'auto';
+            setTimeout(function(){
+        document.getElementById('loader-box').remove(); 
+    }, 1000 /* 单位：毫秒 */ );
+        }
+        window.addEventListener('load',endLoading);
+    </script>
+  </div>
+
+
+
+		
 		<div
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
@@ -72,10 +105,12 @@
     </a>
 </div>
 
+
 <!--自定义看板娘-->
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script src="/live2d-widget/autoload.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
 
 
 		<div class="kira-body">
@@ -302,7 +337,7 @@
 		
 	</aside>
 	<div class="kira-copyright">
-		&copy; 2023
+		&copy; 2024
 		<a href="/">紅葉</a>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
 		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
@@ -393,14 +428,14 @@
 <p>1、这时目录下会生成一个.ssh隐藏文件夹，按ctrl+h可以显示隐藏文件夹，里面有两个文件：id_rsah（私钥）和id_rsa.pub（公钥）文件。<br>2、终端输入下面指令来获取id_rsa.pub里面的key（<strong>秘钥</strong>）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cat ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
 
-<p><img src="/git/4.png"></p>
+<p><img src="/img/loading.gif" data-original="/git/4.png"></p>
 <p>然后登录GitHub，点击右上角头像，依次点击Settings —&gt; Personal settings —&gt; SSH and GPG keys。在SSH Keys标签右方点击New SSH Key。</p>
-<p><img src="/git/1.png"></p>
+<p><img src="/img/loading.gif" data-original="/git/1.png"></p>
 <p>3、弹出两个文本框。其中的Title，可以随意命名。另一个Key文本框，需要输入刚刚生成的id_rsa.pub文件中的内容。<br>4、粘贴后点击Add SSH Key，即可生成SSH Key。</p>
-<p><img src="/git/2.png"></p>
+<p><img src="/img/loading.gif" data-original="/git/2.png"></p>
 <h3><span id="验证ssh-是否成功连接">验证SSH 是否成功连接</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
 
-<p><img src="/git/3.png"></p>
+<p><img src="/img/loading.gif" data-original="/git/3.png"></p>
 <h3><span id="编辑你的gitconfig文件">编辑你的.gitconfig文件</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git config --global user.name &quot;github姓名&quot;<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">git config --global user.email github邮箱<br></code></pre></td></tr></table></figure>
@@ -527,6 +562,18 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="750" src="//cdn.bootcss.com
 </div>
 
 		</div>
-
-	</body>
+	
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 </html>

@@ -2,6 +2,12 @@
 <html 
 	lang="zh-CN">
 	<head>
+		<!--自定义添加的 Loading Page CSS 样式-->
+		
+<link rel="stylesheet" href="/css/118.css">
+
+		
+    			<link rel="stylesheet" href="true" crossorigin /> 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +25,7 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
 		<!-- 预置 kiraicon -->
 		
 <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
@@ -31,6 +38,7 @@
 			href="/yolov5/ev401a.jpg"
 			type="image/png"
 		/>
+		
 		
 <link rel="stylesheet" href="/deps/css/APlayer.min.css">
 
@@ -52,6 +60,31 @@
 	<meta name="generator" content="Hexo 6.3.0"></head>
 
 	<body>
+		<!--自定义的 Loading Page-->
+		
+		    
+  <div id="loader-box">
+    /* 你的 HTML 代码将放在这里 */
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <div class="text">loading</div>
+    </div>
+</body>
+    <script>
+        var endLoading = function () {
+            document.body.style.overflow = 'auto';
+            setTimeout(function(){
+        document.getElementById('loader-box').remove(); 
+    }, 1000 /* 单位：毫秒 */ );
+        }
+        window.addEventListener('load',endLoading);
+    </script>
+  </div>
+
+
+
+		
 		<div
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
@@ -72,10 +105,12 @@
     </a>
 </div>
 
+
 <!--自定义看板娘-->
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script src="/live2d-widget/autoload.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
 
 
 		<div class="kira-body">
@@ -302,7 +337,7 @@
 		
 	</aside>
 	<div class="kira-copyright">
-		&copy; 2023
+		&copy; 2024
 		<a href="/">紅葉</a>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
 		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
@@ -410,10 +445,10 @@
 
 <p>如何运行yolov5</p>
 <p>来到data目录</p>
-<p><img src="/yolov5/3.png"></p>
+<p><img src="/img/loading.gif" data-original="/yolov5/3.png"></p>
 <p>路径是你数据集的路径，记得改！！</p>
 <p>进入models，小模型我用yolov5s，将5s复制一份，改掉名字</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/yolov5/4.png" alt="4" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/yolov5/4.png" alt="4" class="lazyload"></p>
 <p>将train.py里面的路径改改，拉到第四百多行代码，函数名。。。叫下面图的有</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#x27;--cfg&#x27; 是上面models里面xx.yaml的路径<br></code></pre></td></tr></table></figure>
 
@@ -431,11 +466,11 @@
 <p>yolov5没什么好说的，暂时没那能力去修改人家的卷积（不知道修改完后是好是坏），顶多就只能改改参数（人称炼丹)</p>
 <p>下面是一些yolov5参数的注释</p>
 <p>train.py</p>
-<p><img src="/yolov5/2.png"></p>
+<p><img src="/img/loading.gif" data-original="/yolov5/2.png"></p>
 <p>detect.py</p>
-<p><img src="/yolov5/1.png"></p>
+<p><img src="/img/loading.gif" data-original="/yolov5/1.png"></p>
 <p>yolov5的一些小问题：</p>
-<p><img src="/yolov5/5.png"></p>
+<p><img src="/img/loading.gif" data-original="/yolov5/5.png"></p>
 <p>解决方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Thebest_jack/article/details/125649451">参考博客</a></p>
 <p>iou：预测框与真实框的差距</p>
 <p>map：精度x召回率的平均值</p>
@@ -448,12 +483,12 @@
 <p>​						  自适应锚框计算：针对不同的数据集，会有<strong>初始设定长宽的锚框</strong>，网络在初始锚框的基</p>
 <p>​						  础上输出预测框，进而和<strong>真实框</strong>进行比对，计算两者差</p>
 <p>​				  		 距，再反向更新，<strong>迭代网络参数</strong>。</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/yolov5/6.png" alt="6" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/yolov5/6.png" alt="6" class="lazyload"></p>
 <p>​						控制的代码即<strong>train.py</strong>中上面一行代码，设置成<strong>False</strong>，每次训练时，不会自动计算。</p>
 <p>​						自适应图片缩放：因此在Yolov5的代码中datasets.py的letterbox函数中进行了修改，对														 原始图像<strong>自适应的添加最少的黑边</strong>。黑边减少，计算量也减少，检测														 速度提升</p>
 <p>​														  计算缩放比例，长&#x2F;416,宽&#x2F;416，选择小的缩放系数</p>
 <p><strong>（2）Backbone：</strong>Focus结构：切片操作，比如右图的切片示意图，4 * 4 * 3的图像切片后变成2*2 *12的特征图</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/yolov5/7.png" alt="7" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/yolov5/7.png" alt="7" class="lazyload"></p>
 <p>​								 CSP结构：<br><strong>（3）Neck：</strong>FPN+PAN结构<br><strong>（4）Prediction：</strong>GIOU_Loss</p>
 <p><strong>IOU_Loss：</strong>主要考虑检测框和目标框重叠面积。</p>
 <p><strong>GIOU_Loss：</strong>在IOU的基础上，解决边界框不重合时的问题。</p>
@@ -470,7 +505,7 @@
 
 
 
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/yolov5/9.png" alt="7" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/yolov5/9.png" alt="7" class="lazyload"></p>
 <p>看出<strong>不同输出特征图层主要负责预测不同尺度的物体</strong>。</p>
 <p>我们也可以可视化 Neck 层的 3 个输出层特征图：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">cd mmyolo <span class="hljs-comment"># dev 分支</span><br>python demo/featmap_vis_demo.py demo/demo.jpg configs/yolov8/yolov8_s_syncbn_fast_8xb16-500e_coco.py mmyolov8s.pth --channel-reductio squeeze_mean --target-layers neck<br></code></pre></td></tr></table></figure>
@@ -578,6 +613,18 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="750" src="//cdn.bootcss.com
 </div>
 
 		</div>
-
-	</body>
+	
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 </html>

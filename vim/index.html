@@ -2,6 +2,12 @@
 <html 
 	lang="zh-CN">
 	<head>
+		<!--自定义添加的 Loading Page CSS 样式-->
+		
+<link rel="stylesheet" href="/css/118.css">
+
+		
+    			<link rel="stylesheet" href="true" crossorigin /> 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +25,7 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
 		<!-- 预置 kiraicon -->
 		
 <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
@@ -31,6 +38,7 @@
 			href="/yolov5/ev401a.jpg"
 			type="image/png"
 		/>
+		
 		
 <link rel="stylesheet" href="/deps/css/APlayer.min.css">
 
@@ -52,6 +60,31 @@
 	<meta name="generator" content="Hexo 6.3.0"></head>
 
 	<body>
+		<!--自定义的 Loading Page-->
+		
+		    
+  <div id="loader-box">
+    /* 你的 HTML 代码将放在这里 */
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <div class="text">loading</div>
+    </div>
+</body>
+    <script>
+        var endLoading = function () {
+            document.body.style.overflow = 'auto';
+            setTimeout(function(){
+        document.getElementById('loader-box').remove(); 
+    }, 1000 /* 单位：毫秒 */ );
+        }
+        window.addEventListener('load',endLoading);
+    </script>
+  </div>
+
+
+
+		
 		<div
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
@@ -72,10 +105,12 @@
     </a>
 </div>
 
+
 <!--自定义看板娘-->
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script src="/live2d-widget/autoload.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
 
 
 		<div class="kira-body">
@@ -302,7 +337,7 @@
 		
 	</aside>
 	<div class="kira-copyright">
-		&copy; 2023
+		&copy; 2024
 		<a href="/">紅葉</a>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
 		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
@@ -389,7 +424,7 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">vim test.txt<br></code></pre></td></tr></table></figure>
 
-<h3><span id><img src="/vim/1.png" style="zoom:50%;"></span></h3><h3><span id="命令模式为一开始进入-vim-的默认模式在任何模式下键盘输入-esc-会回到这个预设模式中-如果要切换到其它模式使用键盘输入">命令模式为一开始进入 vim 的默认模式，在任何模式下键盘输入: ESC 会回到这个预设模式中。 如果要切换到其它模式使用键盘输入</span></h3><h3><span id="i-切换到插入模式可以输入字符串文字内容">i ：切换到插入模式，可以输入字符串文字内容</span></h3><h3><span id="切换到底线命令模式可以在最底一行输入操作指令">: ：切换到底线命令模式，可以在最底一行输入操作指令</span></h3><h3><span id="v切换到视觉模式可以使用鼠标光标选择文字方便阅读和强调">v：切换到视觉模式，可以使用鼠标光标选择文字，方便阅读和强调</span></h3><h3><span id="x删除游标所在字元">x：删除游标所在字元</span></h3><h2><span id="其他常见指令">其他常见指令</span></h2><h4><span id="enter换行">Enter：换行</span></h4><h4><span id="back-space-删除游标前一个字元">Back Space 删除游标前一个字元</span></h4><h4><span id="del-删除游标后一个字元">Del 删除游标后一个字元</span></h4><h4><span id="方向键-在文档中移动游标">方向键 在文档中移动游标</span></h4><h4><span id="page-upx2fpage-down-上x2f下翻页">Page Up&#x2F;Page Down 上&#x2F;下翻页</span></h4><h2><span id="底线命令模式">底线命令模式</span></h2><h3><span id="键盘输入-就可以进入底线命令模式让我们可以输入指令操作内容-若要离开或是储存离开vim就要透过底线命令模式输入指令-若键盘输入esc会回到命令模式">键盘输入: 就可以进入底线命令模式，让我们可以输入指令操作内容。 若要离开或是储存离开vim就要透过底线命令模式输入指令。 若键盘输入ESC会回到命令模式</span></h3><h3><span id><img src="/vim/2.png" style="zoom:50%;"></span></h3><h2><span id="常见指令">常见指令</span></h2><h3><span id="q-不储存直接离开">:q 不储存直接离开</span></h3><h3><span id="q-不存储强制直接离开有修改但不想储存时">：q! 不存储，强制直接离开（有修改但不想储存时）</span></h3><h3><span id="e-放弃所有修改从上次存储文件记录开始编辑">：e! 放弃所有修改，从上次存储文件记录开始编辑</span></h3><h3><span id="w-存储文档但不离开">：w 存储文档但不离开</span></h3><h3><span id="w-强制存储文档但不离开">：!w 强制存储文档但不离开</span></h3><h3><span id="w-name-储存文档并命名为name但不离开">：w {name} 储存文档并命名为name，但不离开</span></h3><h3><span id="wq-储存并离开">：wq 储存并离开</span></h3><h3><span id="wq-强制储存并离开">：!wq 强制储存并离开</span></h3><h2><span id="可视模式">可视模式</span></h2><h3><span id="在命令模式输入-v-可以进入可视模式使用滑鼠游标选择文字方便阅读和强调键盘输入-esc-会回到命令模式">在命令模式输入 <code>v</code> 可以进入可视模式使用滑鼠游标选择文字，方便阅读和强调，键盘输入 <code>Esc</code> 会回到命令模式。</span></h3><h3><span id><img src="/vim/3.png" style="zoom:50%;"></span></h3><h1><span id="更多常用指令和使用情境">更多常用指令和使用情境</span></h1><p><code>:0</code>：移动到文件的起点<br><code>:&#123;number&#125;</code>：移动到第 {number} 行<br><code>:$</code>：移动到文件最后一行</p>
+<h3><span id><img src="/img/loading.gif" data-original="/vim/1.png" style="zoom:50%;"></span></h3><h3><span id="命令模式为一开始进入-vim-的默认模式在任何模式下键盘输入-esc-会回到这个预设模式中-如果要切换到其它模式使用键盘输入">命令模式为一开始进入 vim 的默认模式，在任何模式下键盘输入: ESC 会回到这个预设模式中。 如果要切换到其它模式使用键盘输入</span></h3><h3><span id="i-切换到插入模式可以输入字符串文字内容">i ：切换到插入模式，可以输入字符串文字内容</span></h3><h3><span id="切换到底线命令模式可以在最底一行输入操作指令">: ：切换到底线命令模式，可以在最底一行输入操作指令</span></h3><h3><span id="v切换到视觉模式可以使用鼠标光标选择文字方便阅读和强调">v：切换到视觉模式，可以使用鼠标光标选择文字，方便阅读和强调</span></h3><h3><span id="x删除游标所在字元">x：删除游标所在字元</span></h3><h2><span id="其他常见指令">其他常见指令</span></h2><h4><span id="enter换行">Enter：换行</span></h4><h4><span id="back-space-删除游标前一个字元">Back Space 删除游标前一个字元</span></h4><h4><span id="del-删除游标后一个字元">Del 删除游标后一个字元</span></h4><h4><span id="方向键-在文档中移动游标">方向键 在文档中移动游标</span></h4><h4><span id="page-upx2fpage-down-上x2f下翻页">Page Up&#x2F;Page Down 上&#x2F;下翻页</span></h4><h2><span id="底线命令模式">底线命令模式</span></h2><h3><span id="键盘输入-就可以进入底线命令模式让我们可以输入指令操作内容-若要离开或是储存离开vim就要透过底线命令模式输入指令-若键盘输入esc会回到命令模式">键盘输入: 就可以进入底线命令模式，让我们可以输入指令操作内容。 若要离开或是储存离开vim就要透过底线命令模式输入指令。 若键盘输入ESC会回到命令模式</span></h3><h3><span id><img src="/img/loading.gif" data-original="/vim/2.png" style="zoom:50%;"></span></h3><h2><span id="常见指令">常见指令</span></h2><h3><span id="q-不储存直接离开">:q 不储存直接离开</span></h3><h3><span id="q-不存储强制直接离开有修改但不想储存时">：q! 不存储，强制直接离开（有修改但不想储存时）</span></h3><h3><span id="e-放弃所有修改从上次存储文件记录开始编辑">：e! 放弃所有修改，从上次存储文件记录开始编辑</span></h3><h3><span id="w-存储文档但不离开">：w 存储文档但不离开</span></h3><h3><span id="w-强制存储文档但不离开">：!w 强制存储文档但不离开</span></h3><h3><span id="w-name-储存文档并命名为name但不离开">：w {name} 储存文档并命名为name，但不离开</span></h3><h3><span id="wq-储存并离开">：wq 储存并离开</span></h3><h3><span id="wq-强制储存并离开">：!wq 强制储存并离开</span></h3><h2><span id="可视模式">可视模式</span></h2><h3><span id="在命令模式输入-v-可以进入可视模式使用滑鼠游标选择文字方便阅读和强调键盘输入-esc-会回到命令模式">在命令模式输入 <code>v</code> 可以进入可视模式使用滑鼠游标选择文字，方便阅读和强调，键盘输入 <code>Esc</code> 会回到命令模式。</span></h3><h3><span id><img src="/img/loading.gif" data-original="/vim/3.png" style="zoom:50%;"></span></h3><h1><span id="更多常用指令和使用情境">更多常用指令和使用情境</span></h1><p><code>:0</code>：移动到文件的起点<br><code>:&#123;number&#125;</code>：移动到第 {number} 行<br><code>:$</code>：移动到文件最后一行</p>
 <h2><span id="命令模式刪除字元">[命令模式]刪除字元</span></h2><p><code>x</code>：刪除游标所在的字元<br><code>dd</code>：刪除本行<br><code>&#123;n&#125;dd &#123;n&#125;</code>：刪除游标所在的那一行往下数 {n} 行</p>
 <h2><span id="命令模式复制粘贴">[命令模式]复制粘贴</span></h2><p><code>yy</code>：复制游标所在的那一行並放入暂存区<br><code>&#123;n&#125;yy</code>：复制游标所在的那一行往下数 {n} 行并放入暂存区<br><code>p</code>：复制暂存区的內容到游标所在下方<br><code>P</code>：复制暂存区的內容到游标所在上方</p>
 <h2><span id="命令模式复原">[命令模式]复原</span></h2><p><code>u</code>：恢复之前的修改</p>
@@ -492,6 +527,18 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="750" src="//cdn.bootcss.com
 </div>
 
 		</div>
-
-	</body>
+	
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 </html>

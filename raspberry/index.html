@@ -2,6 +2,12 @@
 <html 
 	lang="zh-CN">
 	<head>
+		<!--自定义添加的 Loading Page CSS 样式-->
+		
+<link rel="stylesheet" href="/css/118.css">
+
+		
+    			<link rel="stylesheet" href="true" crossorigin /> 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +25,7 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
 		<!-- 预置 kiraicon -->
 		
 <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
@@ -31,6 +38,7 @@
 			href="/yolov5/ev401a.jpg"
 			type="image/png"
 		/>
+		
 		
 <link rel="stylesheet" href="/deps/css/APlayer.min.css">
 
@@ -52,6 +60,31 @@
 	<meta name="generator" content="Hexo 6.3.0"></head>
 
 	<body>
+		<!--自定义的 Loading Page-->
+		
+		    
+  <div id="loader-box">
+    /* 你的 HTML 代码将放在这里 */
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <div class="text">loading</div>
+    </div>
+</body>
+    <script>
+        var endLoading = function () {
+            document.body.style.overflow = 'auto';
+            setTimeout(function(){
+        document.getElementById('loader-box').remove(); 
+    }, 1000 /* 单位：毫秒 */ );
+        }
+        window.addEventListener('load',endLoading);
+    </script>
+  </div>
+
+
+
+		
 		<div
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
@@ -72,10 +105,12 @@
     </a>
 </div>
 
+
 <!--自定义看板娘-->
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script src="/live2d-widget/autoload.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
 
 
 		<div class="kira-body">
@@ -302,7 +337,7 @@
 		
 	</aside>
 	<div class="kira-copyright">
-		&copy; 2023
+		&copy; 2024
 		<a href="/">紅葉</a>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
 		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
@@ -391,7 +426,7 @@
 <p>4.网线（这个可有可无，不过没有网线会很痛苦的）</p>
 <p>3.网线（这个可有可无，不过没有网线会很痛苦的）</p>
 <h3><span id="软件准备">软件准备</span></h3><p><strong>1.烧录镜像的工具<a target="_blank" rel="noopener" href="https://www.balena.io/etcher/">blaenEtcher</a></strong></p>
-<p><img src="/raspberry/1.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/1.png"></p>
 <p>如果打不开请下载以下软件</p>
 <p>sudo apt install fuse -y</p>
 <p>下载后直接双击下载的Applmage文件就能打开</p>
@@ -400,7 +435,7 @@
 <p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/11IX4VvAdE8_sgstE5ihM-w">https://pan.baidu.com/s/11IX4VvAdE8_sgstE5ihM-w</a></p>
 <p>提取码：mpcq</p>
 <p>插上SD卡，选择镜像，开始烧录</p>
-<p><img src="/raspberry/2.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/2.png"></p>
 <p><strong>2.远程登录工具putty：</strong></p>
 <p>sudo apt-get install putty -y</p>
 <p>随便开一个终端输入：putty 就能打开putty</p>
@@ -420,54 +455,54 @@
 
 <p>插入SD卡，将上面两个文件塞进boot文件夹中，打开终端，输入:</p>
 <p>sudo nmap -n 192.168.1.1&#x2F;24              (树莓派的ip是会变的，这就很烦，每一次要找一遍，找不到就重启树莓派再找一遍，很麻烦)</p>
-<p><img src="/raspberry/3.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/3.png"></p>
 <h4><span id="有网线配置方法这个简单很多">有网线配置方法（这个简单很多）</span></h4><p>准备一根网线即可，下载nmap</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt-get install nmap<br></code></pre></td></tr></table></figure>
 
 <p>打开设置</p>
-<p><img src="/raspberry/14.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/14.png"></p>
 <p>选择IPv4 选择与其他计算机共享</p>
-<p><img src="/raspberry/13.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/13.png"></p>
 <p>树莓派连上网线后直接输入 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo nmap -n 10.42.1/24<br></code></pre></td></tr></table></figure>
 
-<p><img src="/raspberry/15.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/15.png"></p>
 <p>这个ip是不会变的· - · 所以插网线只需要找一次ip记住它就行</p>
 <p>打开终端，输入putty，打开putty</p>
 <p>找到叫raspiberry的设备，复制ip到putty</p>
-<p><img src="/raspberry/4.png"></p>
-<p><img src="/raspberry/5.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/4.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/5.png"></p>
 <p>树莓派用户名为：pi</p>
 <p>默认密码为：raspberry</p>
-<p><img src="/raspberry/6.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/6.png"></p>
 <p>如果你要换源或是装opencv，都可以不需要连接vnc，有vnc方便些罢了</p>
 <p><a href>换源网址</a></p>
 <p>进入终端后，输入 sudo raspi-config</p>
 <p>选择第三个</p>
-<p><img src="/raspberry/7.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/7.png"></p>
 <p>选择VNC</p>
-<p><img src="/raspberry/8.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/8.png"></p>
 <p>选Yes</p>
-<p><img src="/raspberry/9.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/9.png"></p>
 <p>完成后回车退出回到终端</p>
-<p><img src="/raspberry/10.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/10.png"></p>
 <p>然后输入sudo apt-get update</p>
 <p>完成后输入 sudo apt-get install tightvncserver</p>
 <p>完成后输入 tightvncserver</p>
-<p><img src="/raspberry/12.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/12.png"></p>
 <p>如果不是上面的画面那么就重新开始吧</p>
 <p>注：能在终端完成的事，就不需要配置vnc远程连接</p>
 <h3><span id="使用vnc远程连接树莓派">使用VNC远程连接树莓派</span></h3><p>1.下载VNC<a target="_blank" rel="noopener" href="https://www.realvnc.com/en/connect/download/viewer/">下载地址</a></p>
-<p><img src="/raspberry/11.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/11.png"></p>
 <p>下载安装包 然后用 sudo dpkg -i 文件名.deb 安装</p>
 <p>打开VNC，输入树莓派ip + :5901（英文冒号）</p>
-<p><img src="/raspberry/16.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/16.png"></p>
 <p>选择continue</p>
-<p><img src="/raspberry/17.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/17.png"></p>
 <p>密码默认是：123456</p>
-<p><img src="/raspberry/18.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/18.png"></p>
 <p>成功连接树莓派</p>
-<p><img src="/raspberry/19.png"></p>
+<p><img src="/img/loading.gif" data-original="/raspberry/19.png"></p>
 <h5><span id="给树莓派换源"></span></h5><h5><span id="安装opencv"></span></h5><h5><span id="树莓派开机自启动"></span></h5>
 	</article>
 
@@ -566,6 +601,18 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="750" src="//cdn.bootcss.com
 </div>
 
 		</div>
-
-	</body>
+	
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 </html>

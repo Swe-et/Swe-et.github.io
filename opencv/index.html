@@ -2,6 +2,12 @@
 <html 
 	lang="zh-CN">
 	<head>
+		<!--自定义添加的 Loading Page CSS 样式-->
+		
+<link rel="stylesheet" href="/css/118.css">
+
+		
+    			<link rel="stylesheet" href="true" crossorigin /> 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +25,7 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
 		<!-- 预置 kiraicon -->
 		
 <link rel="stylesheet" href="/lib/iconfont/iconfont.css">
@@ -31,6 +38,7 @@
 			href="/yolov5/ev401a.jpg"
 			type="image/png"
 		/>
+		
 		
 <link rel="stylesheet" href="/deps/css/APlayer.min.css">
 
@@ -52,6 +60,31 @@
 	<meta name="generator" content="Hexo 6.3.0"></head>
 
 	<body>
+		<!--自定义的 Loading Page-->
+		
+		    
+  <div id="loader-box">
+    /* 你的 HTML 代码将放在这里 */
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <div class="text">loading</div>
+    </div>
+</body>
+    <script>
+        var endLoading = function () {
+            document.body.style.overflow = 'auto';
+            setTimeout(function(){
+        document.getElementById('loader-box').remove(); 
+    }, 1000 /* 单位：毫秒 */ );
+        }
+        window.addEventListener('load',endLoading);
+    </script>
+  </div>
+
+
+
+		
 		<div
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
@@ -72,10 +105,12 @@
     </a>
 </div>
 
+
 <!--自定义看板娘-->
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script src="/live2d-widget/autoload.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
 
 
 		<div class="kira-body">
@@ -302,7 +337,7 @@
 		
 	</aside>
 	<div class="kira-copyright">
-		&copy; 2023
+		&copy; 2024
 		<a href="/">紅葉</a>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
 		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
@@ -402,10 +437,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev<br></code></pre></td></tr></table></figure>
 <h2><span id="下载opencv源文件">下载OpenCV源文件</span></h2><h3><span id="下载源文件">下载源文件</span></h3><p>直接在<a target="_blank" rel="noopener" href="https://opencv.org/releases/">官网</a>上下载源文件（无需翻墙）<a target="_blank" rel="noopener" href="https://opencv.org/releases/">https://opencv.org/releases/</a></p>
 <p>点击Source进行下载</p>
-<p><img src="/opencv/1.png"><br>顺便下载opencv-contrib</p>
+<p><img src="/img/loading.gif" data-original="/opencv/1.png"><br>顺便下载opencv-contrib</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/opencv/opencv_contrib/tags">https://github.com/opencv/opencv_contrib/tags</a></p>
 <p>选择Download ZIP</p>
-<p><img src="/opencv/2.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/2.png"></p>
 <p>在主目录创建一个叫opencv的文件夹</p>
 <p>将刚刚下载的两个压缩包移动到这个文件夹</p>
 <p>来到这个文件夹打开一个新终端</p>
@@ -415,16 +450,16 @@
 <p>然后进入opencv文件夹：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cd ~/opencv-4.6.0<br></code></pre></td></tr></table></figure>
 
-<p><img src="/opencv/3.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/3.png"></p>
 <h3><span id="准备cmake编译">准备CMake编译</span></h3><p>创建build文件夹</p>
 <p>打开终端：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">mkdir build &amp;&amp; cd build<br></code></pre></td></tr></table></figure>
 
-<p><img src="/opencv/15.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/15.png"></p>
 <p>开始cmake编译(注意看里面，有一些需要改的东西)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_TBB=ON -D WITH_OPENMP=ON -DOPENCV_EXTRA_MODULES_PATH=你的opencv_contrib的路径/modules  -D INSTALL_CXX_EXAMPLES=ON -D OPENCV_GENERATE_PKGCONFIG=ON -D WITH_1394=OFF ..<br></code></pre></td></tr></table></figure>
 
-<p><img src="/opencv/4.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/4.png"></p>
 <p>这么长的指令懒得看的直接粘过去就行，其中-D INSTALL_CXX_EXAMPLES&#x3D;ON，是下载C++的编译，你可以换成C或者python，复制多一份将CXX替换掉即可。</p>
 <p>接着输入 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">make -j8<br></code></pre></td></tr></table></figure>
@@ -455,31 +490,31 @@
 
 
 
-<h3><span id="环境配置">环境配置</span></h3><h5><span id="1下载vscode">1.下载vscode</span></h5><h5><span id="vscode下载地址"></span></h5><p><img src="/opencv/5.png"></p>
+<h3><span id="环境配置">环境配置</span></h3><h5><span id="1下载vscode">1.下载vscode</span></h5><h5><span id="vscode下载地址"></span></h5><p><img src="/img/loading.gif" data-original="/opencv/5.png"></p>
 <p>选择 .deb  x64</p>
-<p><img src="/opencv/6.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/6.png"></p>
 <p>如果下载太慢可以选择换源，将下面框柱的网址改为： vscode.cdn.azure.cn</p>
-<p><img src="/opencv/7.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/7.png"></p>
 <p>下载完之后来到下载vscode包的地方，右键打开终端‘</p>
 <p>输入 ： sudo dpkg -i code_1.77.3-1681292746_amd64.deb  </p>
 <p>后面的安装包根据你自己下载的版本更改</p>
-<p><img src="/opencv/8.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/8.png"></p>
 <p>打开vscode</p>
 <p>下载C++扩展</p>
-<p><img src="/opencv/11.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/11.png"></p>
 <p>回到资源管理器</p>
 <p>按右ctrl+左shift+P</p>
 <p>选择第一个</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/opencv/9.png" alt="9" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/opencv/9.png" alt="9" class="lazyload"></p>
 <p>根据下图进行配置</p>
-<p><img src="/opencv/10.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/10.png"></p>
 <p>然后随便创建一个text.cpp文件，在text.cpp同一路径下放一张照片，照片名字改0.png，随意也可以</p>
 <p>输入以下代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs #include<iostream>//标准库，iostream被吞了，自己手打一下">#include&lt;opencv2/opencv.hpp&gt;<br>using namespace cv;<br>using namespace std;<br>int main()<br>&#123;<br>    Mat img = imread(&quot;0.png&quot;,1);<br>    imshow(&quot;1&quot;,img);<br>    waitKey(0);<br>   	return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="/opencv/12.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/12.png"></p>
 <p>按F5运行一下，会出现一个.vscode文件夹，里面有两个文件（没有也没关系）反正要有三个文件</p>
 <p>c_cpp_properties.json    launch.json    tasks.json</p>
-<p><img src="/opencv/13.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/13.png"></p>
 <p>c_cpp_properties.json：复制以下代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;<br>    &quot;configurations&quot;: [<br>        &#123;<br>            &quot;name&quot;: &quot;Linux&quot;,<br>            &quot;includePath&quot;: [<br>                &quot;$&#123;workspaceFolder&#125;/**&quot;,<br>                &quot;/usr/include/opencv4&quot;,<br>                &quot;/usr/local/include/opencv4&quot;<br>            ],<br>            &quot;defines&quot;: [],<br>            &quot;compilerPath&quot;: &quot;/usr/bin/gcc&quot;,<br>            &quot;cStandard&quot;: &quot;c17&quot;,<br>            &quot;cppStandard&quot;: &quot;gnu++17&quot;,<br>            &quot;intelliSenseMode&quot;: &quot;linux-gcc-x64&quot;,<br>            &quot;configurationProvider&quot;: &quot;ms-vscode.makefile-tools&quot;<br>        &#125;<br>    ],<br>    &quot;version&quot;: 4<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -489,7 +524,7 @@
 <p>tasks.json：复制以下代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;<br>    &quot;tasks&quot;: [<br>        &#123;<br>            &quot;type&quot;: &quot;cppbuild&quot;,<br>            &quot;label&quot;: &quot;C/C++: g++ build active file&quot;,  /* 与launch.json文件里的preLaunchTask的内容保持一致 */<br>            &quot;command&quot;: &quot;/usr/bin/g++&quot;,<br>            &quot;args&quot;: [<br>                &quot;-std=c++11&quot;,<br>                &quot;-g&quot;,<br>                &quot;$&#123;file&#125;&quot;,   /* 编译单个文件 */<br>                //&quot;$&#123;fileDirname&#125;/*.cpp&quot;,  /* 编译多个文件 */<br>                &quot;-o&quot;,<br>                &quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;&quot;,  /* 输出文件路径 */<br> <br>                /* 项目所需的头文件路径 */<br>                &quot;-I&quot;,&quot;$&#123;workspaceFolder&#125;/&quot;,<br>                &quot;-I&quot;,&quot;/usr/local/include/&quot;,<br>                &quot;-I&quot;,&quot;/usr/local/include/opencv4/&quot;,<br>                &quot;-I&quot;,&quot;/usr/local/include/opencv4/opencv2&quot;,<br> <br>                /* 项目所需的库文件路径 */<br>                &quot;-L&quot;, &quot;/usr/local/lib&quot;,<br><br>                /* OpenCV的lib库 */<br>                &quot;/usr/local/lib/libopencv_*&quot;,<br>                <br>            ],<br>            &quot;options&quot;: &#123;<br>                &quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;<br>            &#125;,<br>            &quot;problemMatcher&quot;: [<br>                &quot;$gcc&quot;<br>            ],<br>            &quot;group&quot;: &#123;<br>                &quot;kind&quot;: &quot;build&quot;,<br>                &quot;isDefault&quot;: true<br>            &#125;,<br>            &quot;detail&quot;: &quot;Task generated by Debugger.&quot;<br>        &#125;<br>    ],<br>    &quot;version&quot;: &quot;2.0.0&quot;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>回到text.cpp，运行代码</p>
-<p><img src="/opencv/14.png"></p>
+<p><img src="/img/loading.gif" data-original="/opencv/14.png"></p>
 <p>图像成功运行，配置完成</p>
 
 	</article>
@@ -595,6 +630,18 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="750" src="//cdn.bootcss.com
 </div>
 
 		</div>
-
-	</body>
+	
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 </html>

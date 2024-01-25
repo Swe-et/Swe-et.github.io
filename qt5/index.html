@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> robomaster -  紅葉~</title>
+		<title> qt5-源码编译 -  紅葉~</title>
 		<link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
 		<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->
@@ -448,42 +448,47 @@
 		
 		<div class="kira-post-cover">
 			<img
-				data-src="/robomaster/0.png"
+				data-src="/ubuntu/0.png"
 				data-sizes="auto"
-				alt="robomaster"
+				alt="qt5-源码编译"
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>robomaster</h1>
+			<h1>qt5-源码编译</h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2023年09月16日</a>
-			<a><i class="kirafont icon-edit-fill"></i>211 字</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2024年01月16日</a>
+			<a><i class="kirafont icon-edit-fill"></i>229 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
-		<h1><span id="调车日寄">调车日寄</span></h1><h3><span id="1串口驱动问题">1.串口驱动问题</span></h3><p>串口线：RX,TX,GD(RX接TX，TX接RX)</p>
-<p>当你接上串口线后没有出现下面类似文件时（找不到ttyUSB* 或ttyCH34* USB*）</p>
-<p>找不到下面文件时：</p>
-<p><img src="/img/loading.gif" data-original="/robomaster/1.png"></p>
-<h5><span id="修复方法">修复方法：</span></h5><p>1 查看电脑的内核版本，得到自己的ubuntu内核版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">uname -r<br></code></pre></td></tr></table></figure>
+		<h2><span id="ubuntu下qt-515源码编译">ubuntu下QT 5.15源码编译</span></h2><h4><span id="1下载源码">1.下载源码</span></h4><p><a target="_blank" rel="noopener" href="https://download.qt.io/archive/qt">qt官网</a> : <strong><a target="_blank" rel="noopener" href="https://download.qt.io/archive/qt">https://download.qt.io/archive/qt</a></strong></p>
+<p><img src="/img/loading.gif" data-original="/qt5/1.png"></p>
+<h4><span id="2解压">2.解压：</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">tar xvf qt-everywhere-src-5.15.2.tar.xz<br></code></pre></td></tr></table></figure>
 
-<p><img src="/img/loading.gif" data-original="/robomaster/2.png"></p>
-<h5><span id="2-下载安装包">2 下载安装包</span></h5><p>CH340&#x2F;CH341的USB转串口LINUX驱动程序，随系统进行编译安装，支持各类处理器架构，支持32&#x2F;64位系统。</p>
-<p>下载连接：<a target="_blank" rel="noopener" href="https://www.wch.cn/download/CH341SER_LINUX_ZIP.html">Linux驱动链接</a></p>
-<p>选这个</p>
-<p><img src="/img/loading.gif" data-original="/robomaster/3.png"></p>
-<p>将压缩包解压后进入到driver文件夹，在这里打开终端</p>
-<h5><span id="3进行编译安装">3.进行编译安装</span></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo make<br></code></pre></td></tr></table></figure>
+<h4><span id="3安装依赖">3.安装依赖</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt-get install gcc<br>sudo apt-get install gedit<br>sudo apt-get install flex<br>sudo apt-get install bison<br>sudo apt-get install gperf<br>sudo apt-get install libxcb*<br>sudo apt-get install build-essential<br>sudo apt-get install libgl1-mesa-dev<br>sudo apt-get install libglu1-mesa-dev<br>sudo apt-get install libegl1-mesa-dev<br>sudo apt-get install freeglut3-dev<br>sudo apt-get install libxkbcommon-x11-dev<br>sudo apt-get install libxkbcommon-dev<br>sudo apt-get install libxrender-dev<br>sudo apt-get install libx11-dev<br>sudo apt-get install libx11-xcb-dev<br></code></pre></td></tr></table></figure>
 
-<p>编译后将文件移动到内核版本的串口文件夹里</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo cp -v ch34*.ko /lib/modules/4.19.0-42-generic/kernel/drivers/usb/serial/<br></code></pre></td></tr></table></figure>
+<h4><span id="4配置">4.配置</span></h4><p>切换到已解压的源码目录目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cd qt-everywhere-src-5.15.2<br></code></pre></td></tr></table></figure>
 
-<p>更新</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo depmod -a<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">./configure<br></code></pre></td></tr></table></figure>
 
-<p>重启</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo reboot<br></code></pre></td></tr></table></figure>
+<p><code>/home/sweet/qt-everywhere-src-5.15.2/qtbase/include/QtCore/../../src/corelib/global/qendian.h:333:54: error: incomplete type ‘std::numeric_limits’ used in nested name specifier  333 |     &#123; return QSpecialInteger(std::numeric_limits&lt;T&gt;::min()); &#125;</code></p>
+<p>若有这个报错：</p>
+<p>在qt下：&#x2F;qtbase&#x2F;src&#x2F;corelib&#x2F;global&#x2F;qglobal.h</p>
+<p>找qglobal.h，加上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">#include &lt;limits&gt;<br></code></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" data-original="/qt5/2.png" style="zoom:50%;">
+
+<p>运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">./configure<br></code></pre></td></tr></table></figure>
+
+<p>选o</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/qt5/3.png" alt="3" class="lazyload"></p>
+<p>选y</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/qt5/sweet/hexo/blog/source/_posts/qt5/4.png" alt="4" class="lazyload"></p>
+<p>然后make 编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">make -j8<br></code></pre></td></tr></table></figure>
 
 
 	</article>
@@ -491,7 +496,7 @@
 	 
     <div class="kira-post-copyright">
         <strong>本文作者：</strong>紅葉<br>
-        <strong>本文链接：</strong><a href="https://swe-et.github.io/robomaster/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;robomaster&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;robomaster&#x2F;</a><br>
+        <strong>本文链接：</strong><a href="https://swe-et.github.io/qt5/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;qt5&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;qt5&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         
@@ -500,20 +505,26 @@
   
 	<div class="kira-post-nav">
 		<nav class="post-nav">
-			              
+			      
 			<!-- 先找到与当前文字相同的目录 -->
-			   
+			                           
 			<!-- 在找到当前文章所在的 index -->
-			              
+			                                
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/vim/"> vim</a>
+			</div>
+			                      
 		</nav>
 	</div>
 	
 	<div class="kira-post-meta kira-rainbow">
 		
-			<a class="kirafont icon-container-fill -link" href="/categories/robomaster/">robomaster</a>
+			<a class="kirafont icon-container-fill -link" href="/categories/ubuntu/">ubuntu</a>
 		
 		
-			<a class="kirafont icon-tag-fill -none-link" href="/tags/robomaster/" rel="tag">robomaster</a>
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/ubuntu/" rel="tag">ubuntu</a>
 		
 	</div>
 	
@@ -529,7 +540,7 @@
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
 			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: 'robomaster',
+			id: 'qt5-源码编译',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',
 			admin: 'Swe-et',
@@ -547,7 +558,7 @@
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
 			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: 'robomaster',
+			id: 'qt5-源码编译',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',
 			admin: 'Swe-et',

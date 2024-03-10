@@ -458,7 +458,7 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年06月03日</a>
-			<a><i class="kirafont icon-edit-fill"></i>241 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>262 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
 		<p>制作一个脚本：</p>
@@ -466,6 +466,8 @@
 <p>testboot.sh文件内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">#!/bin/sh<br>cd /home/pi/xxx.xx(你要自启动的程序)<br>chmod 777 /home/pi/xxx.xx<br>sudo ./xxx.xx(你的程序名+后缀)<br></code></pre></td></tr></table></figure>
 
+<p>ros2 的自启动脚本不太一样</p>
+<p><a target="_blank" rel="noopener" href="https://www.guyuehome.com/18734">可以参考古月居的教程</a></p>
 <p>给你的脚本添加权限</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo chmod 777 text.sh<br></code></pre></td></tr></table></figure>
 
@@ -500,12 +502,18 @@
 		<nav class="post-nav">
 			          
 			<!-- 先找到与当前文字相同的目录 -->
-			         
+			      
 			<!-- 在找到当前文章所在的 index -->
-			        
+			    
 			<!-- 上一篇文章 -->
 			<div class="old">
 				<span>上一章</span>
+				<a href="/raspberry/"> ubuntu树莓派无屏幕远程连接</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
 				<a href="/respberry-pro/"> 树莓派换源</a>
 			</div>
 			                  

@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> 标签：robomaster -  紅葉~</title>
+		<title> GDB_ros2 -  紅葉~</title>
 		<link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
 		<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->
@@ -398,78 +398,187 @@
 			<div class="kira-content">
 				<div id="kira-top-header"></div>
 				<div class="kira-main-content">
-					<div class="kira-posts">
-    
-        <div class="kira-post">
-            <a href="/robomaster/">
-                
-                <div
-                    class="kira-post-cover mdui-ripple"
-                    style="padding-bottom: '56.25%'"
-                >
-                    <img
-                        data-src="/robomaster/0.png"
-                        data-sizes="auto"
-                        alt="robomaster"
-                        class="lazyload kira-post-cover-image"
-                    />
-                    <h1>robomaster</h1>
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
                 </div>
-                
-            </a>
-
-            <div class="kira-post-meta kira-rainbow">
-                <a>
-                    <i class="kirafont icon-calendar-fill"></i>
-                    2023年09月16日
-                </a>
-                <a>
-                    <i class="kirafont icon-edit-fill"></i>
-                    215 字
-                </a>
-                <a>
-                    <i class="kirafont icon-time-circle-fill"></i>大概
-                    1 分钟
-                </a>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
             </div>
-    
-            
         </div>
-        <div class="kira-hr"></div>
-    
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="/GDB-ros2/0.png"
+				data-sizes="auto"
+				alt="GDB_ros2"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>GDB_ros2</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2024年03月17日</a>
+			<a><i class="kirafont icon-edit-fill"></i>441 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
+		</div>
+		<h1><span id="用gdb运行ros2程序">用GDB运行ros2程序</span></h1><p>1.安装依赖</p>
+<p>本教程参考  <a target="_blank" rel="noopener" href="https://getiot.tech/zh/ros2/ros2-debug/">GDB-ros2</a></p>
+<p>这里使用 <strong><a target="_blank" rel="noopener" href="https://github.com/pal-robotics/backward_ros">backward_ros</a></strong> 软件包，它是对 <a target="_blank" rel="noopener" href="https://github.com/bombela/backward-cpp">backward-cpp</a> 包的 ROS2 封装，可以简单快速地使用 GDB 工具调试 ROS2 程序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt install ros-humble-backward-ros<br></code></pre></td></tr></table></figure>
 
-<script>
-  var endLoading = function () {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loader').classList.add("loading");
-  }
-  window.addEventListener('load',endLoading);
-</script>
-
-<body>
+<p>然后在编译 ROS2 程序时，添加 <code>CMAKE_BUILD_TYPE</code> 编译类型选项参数，可以选择 <code>RelWithDebInfo</code>、<code>Debug</code> 或 <code>Release</code>。对应 CMake 的三种编译选项，其中 <code>Release</code> 模式主要用于发布代码，会忽略调试信息；<code>Debug</code> 模式主要用于调试代码，因为需要生成调试信息，所以时间较长；<code>RelWithDebInfo</code> 则在 <code>Release</code> 模式下生成调试信息，也可以用于调试代码。通常建议使用 <code>RelWithDebInfo</code> 即可。</p>
+<p>colcon 编译命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --cmake-args <span class="hljs-string">&#x27;-DCMAKE_BUILD_TYPE=RelWithDebInfo&#x27;</span><br></code></pre></td></tr></table></figure>
 
 
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/love.js"></script>
 
+<p>这里的引号不是必须的，因此也可以写成这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
+
+<p>colcon 支持 <code>--symlink-install</code> 选项，作用是工作空间（source）中的文件发生变化时，安装目录（build）的文件也会随着改变。这样在调试的时候会高效一些，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
+
+
+
+<p>如果你想要加快编译速度，可以使用 <code>--parallel-workers</code> 选项开启多个线程并行编译，例如同时启动 5 个线程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo --parallel-workers 5<br></code></pre></td></tr></table></figure>
+
+
+
+<p>编译完成后，就可以通过 <code>ros2 run</code> 命令带上 <code>--prefix</code> 参数传入 <code>gdb</code> 指令，在 GDB 调试环境中启动 ROS 节点程序。命令语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdb -ex run --args&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
+
+
+
+<p>这里的 <em>package_name</em> 是 ROS 包名，<em>executable_name</em> 是节点程序名。</p>
+<h3><span id="配置-gdb-server">配置 GDB Server</span></h3><p>ROS 中的 GDB 调试方法同样支持 GDB Server 远程调试，只需要修改 <code>--prefix</code> 参数即可，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdbserver localhost:3000&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>紅葉<br>
+        <strong>本文链接：</strong><a href="https://swe-et.github.io/GDB-ros2/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;GDB-ros2&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;GDB-ros2&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			      
+			<!-- 先找到与当前文字相同的目录 -->
+			                              
+			<!-- 在找到当前文章所在的 index -->
+			                                    
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/qt5/"> qt5-源码编译</a>
+			</div>
+			                      
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/categories/ubuntu/">ubuntu</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/ubuntu/" rel="tag">ubuntu</a>
+		
+	</div>
+	
+		<script src="/js/kira-code-copy.js"></script>
+	
+	
+	<div class="kira-post-footer">
+		
+	<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css" />
+	<div id="gitalk"></div>
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+	<script type="text/javascript">
+		const gitalk = new Gitalk({
+			clientID: '605688881c2e008e46bb',
+			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
+			id: 'GDB_ros2',
+			repo: 'Swe-et.github.io',
+			owner: 'Swe-et',
+			admin: 'Swe-et',
+			title: 'RulatedayDnd5eWiki',
+		});
+		gitalk.render('gitalk');
+	</script>
+
+
+		
+	<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css" />
+	<div id="gitalk"></div>
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+	<script type="text/javascript">
+		const gitalk = new Gitalk({
+			clientID: '605688881c2e008e46bb',
+			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
+			id: 'GDB_ros2',
+			repo: 'Swe-et.github.io',
+			owner: 'Swe-et',
+			admin: 'Swe-et',
+			title: 'RulatedayDnd5eWiki',
+		});
+		gitalk.render('gitalk');
+	</script>
+
+
+	</div>
+	
+</div>
 <!--动态线条背景-->
 <script type="text/javascript"
 color="255,192,203" opacity='1.0' zIndex="-2" count="750" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-</script>
-<!--浏览器搞笑标题-->
-<script type="text/javascript" src="\js\FunnyTitle.js"></script>
 
-<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
-<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-
-<!-- 雪花特效 -->
-<script type="text/javascript" src="\js\snow.js"></script>
 <script src="/live2d-widget/autoload.js"></script>
-</script>
-
-<script src="/source/js/lazysizes.min.js"></script>
-
 
 				</div>
 			</div>

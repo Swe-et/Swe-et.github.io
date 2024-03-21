@@ -2,6 +2,8 @@
 <html 
 	lang="zh-CN">
 	<head>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 		<!--自定义添加的 Loading Page CSS 样式-->
 		
 <link rel="stylesheet" href="/css/118.css">
@@ -72,6 +74,18 @@
 			</div>
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
+	
+	
+<link rel="stylesheet" href="/css/search.css">
+
+	<div class="search">
+    <i class="material-icons search-icon search-start">search</i>
+    <input type="text" class="search-input" placeholder="Searching..." />
+    <i class="material-icons search-icon search-clear">clear</i>
+	<div class="search-results"></div>
+        </div>
+    <script src="\js\search-box.js"></script>
+    
 	</div>
 	<script type="text/javascript">
 	var items = document.querySelectorAll('.menuItem'); 
@@ -618,7 +632,7 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="750" src="//cdn.bootcss.com
 <!-- 雪花特效 -->
 <script type="text/javascript" src="\js\snow.js"></script>
 <script src="/live2d-widget/autoload.js"></script>
-</script>
+
 
 <script src="/source/js/lazysizes.min.js"></script>
 

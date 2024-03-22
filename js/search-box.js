@@ -30,8 +30,8 @@ xhr.onreadystatechange = function () {
         for (i = 0; i < itemLength; i++) {
             arrContents[i] = arrItems[i].getElementsByTagName('content')[0].
                 childNodes[0].nodeValue.replace(/<.*?>/g, '');
-            //arrLinks[i] = arrItems[i].getElementsByTagName('tag')[0].
-            //    childNodes[0].nodeValue.replace(/<.*?>/g, '');
+            arrLinks[i] = arrItems[i].getElementsByTagName('url')[0].
+                childNodes[0].nodeValue.replace(/<.*?>/g, '');
             arrTitles[i] = arrItems[i].getElementsByTagName('title')[0].
                 childNodes[0].nodeValue.replace(/<.*?>/g, '');
         }

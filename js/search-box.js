@@ -21,7 +21,7 @@ var xhr = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
 xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
         xml = xhr.responseXML;
-        arrItems = xml.getElementsByTagName('item');
+        arrItems = xml.getElementsByTagName('entry');
         itemLength = arrItems.length;
         
         // 遍历并保存所有文章对应的标题、链接、内容到对应的数组中

@@ -19,7 +19,8 @@ tmpDiv.className = 'result-item';
 // ajax 的兼容写法
 var xhr = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
 xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200000) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+    console.log(xhr.responseXML); // 检查获取到的 XML 数据
         xml = xhr.responseXML;
         arrItems = xml.getElementsByTagName('entry');
         itemLength = arrItems.length;
@@ -27,10 +28,10 @@ xhr.onreadystatechange = function () {
         // 遍历并保存所有文章对应的标题、链接、内容到对应的数组中
         // 同时过滤掉 HTML 标签
         for (i = 0; i < itemLength; i++) {
-            arrContents[i] = arrItems[i].getElementsByTagName('description')[0].
+            arrContents[i] = arrItems[i].getElementsByTagName('content')[0].
                 childNodes[0].nodeValue.replace(/<.*?>/g, '');
-            arrLinks[i] = arrItems[i].getElementsByTagName('link')[0].
-                childNodes[0].nodeValue.replace(/<.*?>/g, '');
+            //arrLinks[i] = arrItems[i].getElementsByTagName('tag')[0].
+            //    childNodes[0].nodeValue.replace(/<.*?>/g, '');
             arrTitles[i] = arrItems[i].getElementsByTagName('title')[0].
                 childNodes[0].nodeValue.replace(/<.*?>/g, '');
         }
@@ -38,7 +39,7 @@ xhr.onreadystatechange = function () {
 }
 
 // 开始获取根目录下 feed.xml 文件内的数据
-xhr.open('get', 'search.xml', true);
+xhr.open('get', './search.xml', true);
 xhr.send();
 
 searchBtn.onclick = searchConfirm;

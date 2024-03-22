@@ -19,7 +19,7 @@ tmpDiv.className = 'result-item';
 // ajax 的兼容写法
 var xhr = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
 xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
+    if (xhr.readyState == 4 && xhr.status == 200000) {
         xml = xhr.responseXML;
         arrItems = xml.getElementsByTagName('entry');
         itemLength = arrItems.length;
@@ -38,7 +38,7 @@ xhr.onreadystatechange = function () {
 }
 
 // 开始获取根目录下 feed.xml 文件内的数据
-xhr.open('get', '/search.xml', true);
+xhr.open('get', 'search.xml', true);
 xhr.send();
 
 searchBtn.onclick = searchConfirm;

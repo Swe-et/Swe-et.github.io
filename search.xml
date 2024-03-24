@@ -753,8 +753,9 @@
 <p>重启</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo reboot<br></code></pre></td></tr></table></figure>
 
-<p><a href="https://www.51cto.com/article/494505.html">串口固定</a></p>
-]]></content>
+
+
+<h3><span id="串口固定"></span></h3>]]></content>
       <categories>
         <category>robomaster</category>
       </categories>

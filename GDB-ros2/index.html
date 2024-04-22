@@ -468,7 +468,7 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2024年03月17日</a>
-			<a><i class="kirafont icon-edit-fill"></i>441 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>466 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
 		</div>
 		<h1><span id="用gdb运行ros2程序">用GDB运行ros2程序</span></h1><p>1.安装依赖</p>
@@ -489,6 +489,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
 
 
+
+<p>在package.xml里面添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;depend&gt;backward_ros&lt;/depend&gt;<br></code></pre></td></tr></table></figure>
+
+<p>在CMakeLists.txt里面添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">find_package(backward_ros REQUIRED)<br></code></pre></td></tr></table></figure>
 
 <p>如果你想要加快编译速度，可以使用 <code>--parallel-workers</code> 选项开启多个线程并行编译，例如同时启动 5 个线程：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo --parallel-workers 5<br></code></pre></td></tr></table></figure>

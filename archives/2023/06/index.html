@@ -27,6 +27,11 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+		<!-- Material Design UI 库的 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-J2uvOitFqI4sNYt1GhfZvn6/8g8DgL+NUsPMflVxdS7KXbViRVmSTszV1vI63neV" crossorigin="anonymous">
+
+<!-- Material Design UI 库的 JS -->
+<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-GfYsF8z7dyZQ23FfGkeHA+weuF/qlRZ69Ec2N8drfj6VYPAAJpDA24/m9NPAu4Hk" crossorigin="anonymous"></script>
 
 		<!-- 预置 kiraicon -->
 		
@@ -839,19 +844,7 @@
 
 			<div class="kira-right-column">
 		</div>
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/love.js"></script>
 
-<!--动态线条背景-->
-<script type="text/javascript"
-color="255,192,203" opacity='1.0' zIndex="-2" count="250" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-</script>
-<!--浏览器搞笑标题-->
-<script type="text/javascript" src="\js\FunnyTitle.js"></script>
-
-<!-- 雪花特效 -->
-<script type="text/javascript" src="\js\snow.js"></script>
-	
         <style>
             [bg-lazy] {
                 background-image: none !important;
@@ -865,4 +858,14 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="250" src="//cdn.bootcss.com
                 processImages: null,
             };
         </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="255,192,203" opacity='1.0' zIndex="-2" count="250" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+	
 </html>

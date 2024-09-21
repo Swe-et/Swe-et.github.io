@@ -11,18 +11,14 @@
 }
 .kira-right-column .kira-backtotop {
   bottom: 20px;
-  color: #ffc0cb;
-  background-color: rgba(255,192,203,0.501);
+  color: #555;
+  background-color: rgba(255,255,255,0.501);
   border-radius: 50%;
   margin-top: auto;
   margin-bottom: 15px;
   transition: 500ms;
-  pointer-events: unset;
+  pointer-events: all;
 }
 .kira-right-column .kira-backtotop i {
   font-size: 22px;
-}
-.kira-right-column .kira-backtotop:hover {
-  background-color: rgba(255,255,255,0.9);
-  color: #333;
 }

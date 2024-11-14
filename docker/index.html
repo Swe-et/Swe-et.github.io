@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> 机器学习 -  紅葉~</title>
+		<title> docker -  紅葉~</title>
 		<link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
 		<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->
@@ -462,41 +462,120 @@
 		
 		<div class="kira-post-cover">
 			<img
-				data-src="/camera/0.png"
+				data-src="/anaconda/0.png"
 				data-sizes="auto"
-				alt="机器学习"
+				alt="docker"
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>机器学习</h1>
+			<h1>docker</h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2023年06月05日</a>
-			<a><i class="kirafont icon-edit-fill"></i>419 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2024年11月14日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.3k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 6 分钟</a>
 		</div>
-		<h1><span id></span></h1><p>损失函数：用来<strong>估量模型的预测值f(x)与真实值Y的不一致程度</strong>，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子</p>
-<p><img src="/img/loading.gif" data-original="/camera/1.png"></p>
-<p>前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项</p>
-<p>整个式子表示的意思是<strong>找到使目标函数最小时的θ值</strong></p>
-<p>在深度学习中，我们通常会使用损失函数来计算每个小批次数据上的损失，然后通过对整个数据集的所有损失进行平均，得到代价函数</p>
-<p>梯度下降算法：神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。</p>
-<p>原理：目标函数 J（θ） 关于参数 θ 的梯度将是损失函数（loss function）上升最快的方向。而我们要最小化loss，只需要将参数沿着梯度相反的方向前进一个步长，就可以实现目标函数（loss function）的下降，这个步长η又称为学习速率。</p>
-<p>公式：θ &lt;- θ - η*▽J（θ）    J（θ）是参数的梯度</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31630368">梯度下降法</a></p>
-<p>反向传播算法（Backpropagation，BP算法）</p>
-<p>反向传播算法的推导</p>
-<p><img src="/img/loading.gif" data-original="/camera/2.png"></p>
-<p>符号约定</p>
-<p><img src="/img/loading.gif" data-original="/camera/3.png"></p>
-<p><img src="/img/loading.gif" data-original="/camera/8.png"></p>
+		<h1><span id="docker">docker</span></h1><h3><span id="1安装dockerubuntu2404">1.安装docker（ubuntu24.04）</span></h3><h4><span id="第-1-步更新软件包并安装必要软件">第 1 步：更新软件包并安装必要软件</span></h4><p>运行以下命令，更新软件包索引并安装添加 Docker 仓库所需的前置软件包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt update<br>sudo apt install apt-transport-https curl<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-2-步导入-docker-官方-gpg-密钥">第 2 步：导入 Docker 官方 GPG 密钥</span></h4><p>使用以下命令下载并导入 Docker 官方的 GPG 密钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-3-步添加-docker-官方仓库">第 3 步：添加 Docker 官方仓库</span></h4><p>将 Docker 的官方仓库添加到 Ubuntu 24.04 LTS 的软件源列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-4-步更新软件包列表">第 4 步：更新软件包列表</span></h4><p>刷新软件包列表，以便系统识别新添加的 Docker 仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt update<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-5-步安装-docker">第 5 步：安装 Docker</span></h4><p>执行以下命令在 Ubuntu 24.04 LTS 上安装最新版本的 Docker，包括 Docker 引擎及其相关组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin<br></code></pre></td></tr></table></figure>
+
+<p>安装的组件包括：</p>
+<ul>
+<li><strong>docker-ce</strong>：Docker Engine。</li>
+<li><strong>docker-ce-cli</strong>：用于与 Docker 守护进程通信的命令行工具。</li>
+<li><strong>containerd.io</strong>：管理容器生命周期的容器运行时环境。</li>
+<li><strong>docker-buildx-plugin</strong>：增强镜像构建功能的 Docker 扩展工具，特别是在多平台构建方面。</li>
+<li><strong>docker-compose-plugin</strong>：通过单个 YAML 文件管理多容器 Docker 应用的配置管理插件。</li>
+</ul>
+<h4><span id="第-6-步检查-docker-服务状态">第 6 步：检查 Docker 服务状态</span></h4><p>使用以下命令检查 Docker 的运行状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo systemctl is-active docker<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-7-步运行测试容器">第 7 步：运行测试容器</span></h4><p>运行 hello-world 测试容器，验证 Docker 是否安装成功并正常工作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo docker run hello-world<br></code></pre></td></tr></table></figure>
+
+<h4><span id="替换-dockerhub-国内镜像源">替换 DockerHub 国内镜像源</span></h4><p>如果拉取 <a target="_blank" rel="noopener" href="https://hub.docker.com/">DockerHub</a> 镜像时遇到困难，可以替换为国内镜像：</p>
+<p>1<strong>打开配置文件</strong>：使用文本编辑器打开 Docker 的配置文件，如果没有就新建：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo vim /etc/docker/daemon.json<br></code></pre></td></tr></table></figure>
+
+<p>2<strong>编辑配置文件</strong>：在配置文件中添加或修改registry-mirrors，指定国内镜像源的 URL。以下是一些可用的国内镜像源地址，你可以根据需要选择使用：</p>
+<ul>
+<li>DaoCloud：<code>https://docker.m.daocloud.io</code></li>
+<li>百度云镜像站：<code>https://mirror.baidubce.com</code></li>
+<li>网易云镜像站: <code>http://hub-mirror.c.163.com</code></li>
+<li>南京大学镜像站: <code>https://docker.nju.edu.cn</code></li>
+</ul>
+<p>配置文件的内容示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;<br>  &quot;registry-mirrors&quot;: [<br>    &quot;https://docker.m.daocloud.io&quot;,<br>    &quot;https://mirror.baidubce.com&quot;,<br>    &quot;http://hub-mirror.c.163.com&quot;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3<strong>重启 Docker 服务</strong>：保存配置文件并重启 Docker 服务以应用更改。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo systemctl daemon-reload<br>sudo systemctl restart docker<br></code></pre></td></tr></table></figure>
+
+<p>4<strong>验证配置</strong>：重启 Docker 后，使用docker info命令来检查镜像源是否已经替换成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo docker info<br></code></pre></td></tr></table></figure>
+
+<h4><span id="允许非-root-用户运行-docker-命令">允许非 root 用户运行 Docker 命令</span></h4><p>默认情况下，只有 root 用户或具有 sudo 权限的用户才能够执行 Docker 命令。如果不加<code>sudo</code>前缀直接运行<code>docker</code>命令，系统会报权限错误。</p>
+<p>我们可以运行以下命令将当前登录的用户添加到 docker 组，以便以非 root 用户身份运行 Docker 命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo usermod -aG docker $&#123;USER&#125;<br></code></pre></td></tr></table></figure>
+
+<h4><span id="卸载-docker">卸载 Docker</span></h4><p>要从 Ubuntu 24.04 LTS 中卸载 Docker，都可以按照以下步骤操作：</p>
+<p>1使用以下命令卸载 Docker 及其相关组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras<br></code></pre></td></tr></table></figure>
+
+<p>2执行以下命令来删除 Docker 创建的目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo rm -rf /var/lib/docker<br>sudo rm -rf /var/lib/containerd<br></code></pre></td></tr></table></figure>
+
+<h4><span id="docker常用指令">Docker常用指令</span></h4><ul>
+<li><pre><code>docker images  # 查看全部镜像
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>- ![](docker/1.png)<br><br>- ```<br>  sudo docker run -it REPOSITORY:TAG  # 运行容器<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code>
+</code></pre>
+</li>
+</ul>
+<p>  docker ps  # 获取当前容器ID或名称<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>- ![](docker/2.png)<br>  <br>-  ```<br>  docker commit ros_container my_ros_env:v1  # 提交容器为新的镜像<br></code></pre></td></tr></table></figure></p>
+<ul>
+<li><pre><code>docker commit a1b2c3d4e5f6 my_ros_env:v1  # 使用容器的 CONTAINER ID 来提交镜像
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>- ```<br>  docker save -o my_ros_env_v1.tar my_ros_env:v1  # 保存镜像为 tar 文件<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code>docker load -i my_ros_env_v1.tar  # 加载镜像（在其他主机上使用）
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br><br><br>### 使用docker运行ros镜像<br><br>#### 获取 ROS 1 Docker 镜像<br><br>官方提供了 ROS 1 的 Docker 镜像。你可以直接从 Docker Hub 上下载所需版本的镜像，例如 `noetic` 或 `melodic`：<br><br></code></pre></td></tr></table></figure>
+docker pull osrf/ros:noetic-desktop-full
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>#### 启动 Docker 容器<br><br>使用以下命令来启动容器并运行交互式 Bash shell。启动容器时，可以将当前目录挂载到容器中，方便开发：<br><br></code></pre></td></tr></table></figure>
+docker run -it --rm osrf/ros:noetic-desktop-full
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>#### 配置 ROS 环境<br><br>在容器中运行 ROS 之前，先配置 ROS 环境。例如，如果你运行的是 `noetic`，则可以这样配置：<br><br></code></pre></td></tr></table></figure>
+source /opt/ros/noetic/setup.bash
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>为了让该环境配置在每次新终端中生效，可以将其添加到 `.bashrc` 文件中：<br><br></code></pre></td></tr></table></figure>
+echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>#### 测试 ROS 1 安装<br><br>可以使用 `roscore` 命令来测试是否配置正确。运行以下命令：<br><br></code></pre></td></tr></table></figure>
+roscore
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>如果 `roscore` 正常启动，那么你的 ROS 1 环境已配置完成。<br><br>#### **确保 Docker 环境设置正确**<br><br>如果您计划运行 Gazebo 或其他图形界面的 ROS 工具，请确保您已设置 X11 共享：<br><br></code></pre></td></tr></table></figure>
+xhost +local:docker
+</code></pre>
+</li>
+</ul>
+<pre><code>
+</code></pre>
 
 	</article>
 
 	 
     <div class="kira-post-copyright">
         <strong>本文作者：</strong>紅葉<br>
-        <strong>本文链接：</strong><a href="https://swe-et.github.io/camera/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;camera&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;camera&#x2F;</a><br>
+        <strong>本文链接：</strong><a href="https://swe-et.github.io/docker/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;docker&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;docker&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         
@@ -526,7 +605,7 @@
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
 			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: '机器学习',
+			id: 'docker',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',
 			admin: 'Swe-et',
@@ -544,7 +623,7 @@
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
 			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: '机器学习',
+			id: 'docker',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',
 			admin: 'Swe-et',

@@ -656,7 +656,8 @@
 
 
 <h3><span id="对应文档">对应文档：</span></h3><p><a href="https://fishros.com/d2lros2/#/">鱼香ros2</a>：<a href="https://fishros.com/d2lros2/#/">https://fishros.com/d2lros2/#/</a></p>
-<h1><span id="一些奇怪的问题">一些奇怪的问题</span></h1><p><a href="https://blog.csdn.net/littleRpl/article/details/92626436">swap空间不足导致报错</a></p>
+<h1><span id="一些奇怪的问题">一些奇怪的问题</span></h1><p><a href="https://blog.csdn.net/autolabor/article/details/137919354">ubuntu22.04 ros1</a></p>
+<p><a href="https://blog.csdn.net/littleRpl/article/details/92626436">swap空间不足导致报错</a></p>
 <p><a href="https://blog.csdn.net/donaldsy/article/details/107482368">彻底解决【“curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused”】错误</a></p>
 <p><a href="https://getiot.tech/zh/ros2/ros2-debug/">ROS2 调试方法</a></p>
 <p><a href="https://candy-tuberose-668.notion.site/b844421402164673ae1603fcbf46c09e?pvs=4">ros2自启动脚本</a></p>
@@ -1105,5 +1106,130 @@
       <tags>
         <tag>GPT-SoVITS</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>rust</title>
+    <url>/rust/</url>
+    <content><![CDATA[<h1><span id="rust">Rust</span></h1><iframe src="https://player.bilibili.com/player.html?bvid=BV1hp4y1k7SV&page=1&as_wide=1&high_quality=1&danmaku=1" style="width: 62em; height: 35em;" allowfullscreen="allowfullscreen" width="100%" height="100%" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
+
+
+
+<p><strong>BV号：BV1hp4y1k7SV</strong></p>
+<p><strong>编译</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">rustc xx.rs<br></code></pre></td></tr></table></figure>
+
+<h3><span id="cargo">cargo</span></h3><h5><span id="创建项目">创建项目</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cargo new xxx<br></code></pre></td></tr></table></figure>
+
+<h5><span id="编译项目">编译项目</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cargo build<br></code></pre></td></tr></table></figure>
+
+<h5><span id="编译并运行项目">编译并运行项目</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cargo run<br></code></pre></td></tr></table></figure>
+
+<h5><span id="检查代码">检查代码</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cargo check<br></code></pre></td></tr></table></figure>
+
+<h5><span id="为发布构建编译优化">为发布构建（编译优化）</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cargo build --release<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker</title>
+    <url>/docker/</url>
+    <content><![CDATA[<h1><span id="docker">docker</span></h1><h3><span id="1安装dockerubuntu2404">1.安装docker（ubuntu24.04）</span></h3><h4><span id="第-1-步更新软件包并安装必要软件">第 1 步：更新软件包并安装必要软件</span></h4><p>运行以下命令，更新软件包索引并安装添加 Docker 仓库所需的前置软件包：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt update<br>sudo apt install apt-transport-https curl<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-2-步导入-docker-官方-gpg-密钥">第 2 步：导入 Docker 官方 GPG 密钥</span></h4><p>使用以下命令下载并导入 Docker 官方的 GPG 密钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-3-步添加-docker-官方仓库">第 3 步：添加 Docker 官方仓库</span></h4><p>将 Docker 的官方仓库添加到 Ubuntu 24.04 LTS 的软件源列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-4-步更新软件包列表">第 4 步：更新软件包列表</span></h4><p>刷新软件包列表，以便系统识别新添加的 Docker 仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt update<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-5-步安装-docker">第 5 步：安装 Docker</span></h4><p>执行以下命令在 Ubuntu 24.04 LTS 上安装最新版本的 Docker，包括 Docker 引擎及其相关组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin<br></code></pre></td></tr></table></figure>
+
+<p>安装的组件包括：</p>
+<ul>
+<li><strong>docker-ce</strong>：Docker Engine。</li>
+<li><strong>docker-ce-cli</strong>：用于与 Docker 守护进程通信的命令行工具。</li>
+<li><strong>containerd.io</strong>：管理容器生命周期的容器运行时环境。</li>
+<li><strong>docker-buildx-plugin</strong>：增强镜像构建功能的 Docker 扩展工具，特别是在多平台构建方面。</li>
+<li><strong>docker-compose-plugin</strong>：通过单个 YAML 文件管理多容器 Docker 应用的配置管理插件。</li>
+</ul>
+<h4><span id="第-6-步检查-docker-服务状态">第 6 步：检查 Docker 服务状态</span></h4><p>使用以下命令检查 Docker 的运行状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl is-active docker<br></code></pre></td></tr></table></figure>
+
+<h4><span id="第-7-步运行测试容器">第 7 步：运行测试容器</span></h4><p>运行 hello-world 测试容器，验证 Docker 是否安装成功并正常工作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo docker run hello-world<br></code></pre></td></tr></table></figure>
+
+<h4><span id="替换-dockerhub-国内镜像源">替换 DockerHub 国内镜像源</span></h4><p>如果拉取 <a href="https://hub.docker.com/">DockerHub</a> 镜像时遇到困难，可以替换为国内镜像：</p>
+<p>1<strong>打开配置文件</strong>：使用文本编辑器打开 Docker 的配置文件，如果没有就新建：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo vim /etc/docker/daemon.json<br></code></pre></td></tr></table></figure>
+
+<p>2<strong>编辑配置文件</strong>：在配置文件中添加或修改registry-mirrors，指定国内镜像源的 URL。以下是一些可用的国内镜像源地址，你可以根据需要选择使用：</p>
+<ul>
+<li>DaoCloud：<code>https://docker.m.daocloud.io</code></li>
+<li>百度云镜像站：<code>https://mirror.baidubce.com</code></li>
+<li>网易云镜像站: <code>http://hub-mirror.c.163.com</code></li>
+<li>南京大学镜像站: <code>https://docker.nju.edu.cn</code></li>
+</ul>
+<p>配置文件的内容示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&#123;<br>  &quot;registry-mirrors&quot;: [<br>    &quot;https://docker.m.daocloud.io&quot;,<br>    &quot;https://mirror.baidubce.com&quot;,<br>    &quot;http://hub-mirror.c.163.com&quot;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3<strong>重启 Docker 服务</strong>：保存配置文件并重启 Docker 服务以应用更改。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl daemon-reload<br>sudo systemctl restart docker<br></code></pre></td></tr></table></figure>
+
+<p>4<strong>验证配置</strong>：重启 Docker 后，使用docker info命令来检查镜像源是否已经替换成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo docker info<br></code></pre></td></tr></table></figure>
+
+<h4><span id="允许非-root-用户运行-docker-命令">允许非 root 用户运行 Docker 命令</span></h4><p>默认情况下，只有 root 用户或具有 sudo 权限的用户才能够执行 Docker 命令。如果不加<code>sudo</code>前缀直接运行<code>docker</code>命令，系统会报权限错误。</p>
+<p>我们可以运行以下命令将当前登录的用户添加到 docker 组，以便以非 root 用户身份运行 Docker 命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo usermod -aG docker $&#123;USER&#125;<br></code></pre></td></tr></table></figure>
+
+<h4><span id="卸载-docker">卸载 Docker</span></h4><p>要从 Ubuntu 24.04 LTS 中卸载 Docker，都可以按照以下步骤操作：</p>
+<p>1使用以下命令卸载 Docker 及其相关组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras<br></code></pre></td></tr></table></figure>
+
+<p>2执行以下命令来删除 Docker 创建的目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo rm -rf /var/lib/docker<br>sudo rm -rf /var/lib/containerd<br></code></pre></td></tr></table></figure>
+
+<h4><span id="docker常用指令">Docker常用指令</span></h4><ul>
+<li><pre><code>docker images  # 查看全部镜像
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>- ![](docker/1.png)<br><br>- ```<br>  sudo docker run -it REPOSITORY:TAG  # 运行容器<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code>
+</code></pre>
+</li>
+</ul>
+<p>  docker ps  # 获取当前容器ID或名称<br>  <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>- ![](docker/2.png)<br>  <br>-  ```<br>  docker commit ros_container my_ros_env:v1  # 提交容器为新的镜像<br></code></pre></td></tr></table></figure></p>
+<ul>
+<li><pre><code>docker commit a1b2c3d4e5f6 my_ros_env:v1  # 使用容器的 CONTAINER ID 来提交镜像
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>- ```<br>  docker save -o my_ros_env_v1.tar my_ros_env:v1  # 保存镜像为 tar 文件<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code>docker load -i my_ros_env_v1.tar  # 加载镜像（在其他主机上使用）
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br><br><br>### 使用docker运行ros镜像<br><br>#### 获取 ROS 1 Docker 镜像<br><br>官方提供了 ROS 1 的 Docker 镜像。你可以直接从 Docker Hub 上下载所需版本的镜像，例如 `noetic` 或 `melodic`：<br><br></code></pre></td></tr></table></figure>
+docker pull osrf/ros:noetic-desktop-full
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>#### 启动 Docker 容器<br><br>使用以下命令来启动容器并运行交互式 Bash shell。启动容器时，可以将当前目录挂载到容器中，方便开发：<br><br></code></pre></td></tr></table></figure>
+docker run -it --rm osrf/ros:noetic-desktop-full
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>#### 配置 ROS 环境<br><br>在容器中运行 ROS 之前，先配置 ROS 环境。例如，如果你运行的是 `noetic`，则可以这样配置：<br><br></code></pre></td></tr></table></figure>
+source /opt/ros/noetic/setup.bash
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>为了让该环境配置在每次新终端中生效，可以将其添加到 `.bashrc` 文件中：<br><br></code></pre></td></tr></table></figure>
+echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>#### 测试 ROS 1 安装<br><br>可以使用 `roscore` 命令来测试是否配置正确。运行以下命令：<br><br></code></pre></td></tr></table></figure>
+roscore
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>如果 `roscore` 正常启动，那么你的 ROS 1 环境已配置完成。<br><br>#### **确保 Docker 环境设置正确**<br><br>如果您计划运行 Gazebo 或其他图形界面的 ROS 工具，请确保您已设置 X11 共享：<br><br></code></pre></td></tr></table></figure>
+xhost +local:docker
+</code></pre>
+</li>
+</ul>
+<pre><code>
+</code></pre>
+]]></content>
   </entry>
 </search>

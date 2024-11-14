@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> 机器学习 -  紅葉~</title>
+		<title> 文章归档：2024/10 -  紅葉~</title>
 		<link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
 		<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->
@@ -412,151 +412,60 @@
 			<div class="kira-content">
 				<div id="kira-top-header"></div>
 				<div class="kira-main-content">
-					
-<link rel="stylesheet" href="/css/kira-image.css">
-
-
-<script src="/js/kira-image.js"></script>
-
-<div class="kira-image">
-    <div class="kira-image-modal">
-        <div class="kira-image-header">
-            <div class="kira-image-counter"></div>
-            <div class="kira-image-title"></div>
-            <div class="kira-image-operation">
-                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
-                    <i class="kirafont icon-zoom-in"></i>
+					<div class="kira-posts">
+    
+        <div class="kira-post">
+            <a href="/rust/">
+                
+                <div
+                    class="kira-post-cover mdui-ripple"
+                    style="padding-bottom: '56.25%'"
+                >
+                    <img
+                        data-src="/internet/0.png"
+                        data-sizes="auto"
+                        alt="rust"
+                        class="lazyload kira-post-cover-image"
+                    />
+                    <h1>rust</h1>
                 </div>
-                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
-                    <i class="kirafont icon-close"></i>
-                </div>
+                
+            </a>
+
+            <div class="kira-post-meta kira-rainbow">
+                <a>
+                    <i class="kirafont icon-calendar-fill"></i>
+                    2024年10月31日
+                </a>
+                <a>
+                    <i class="kirafont icon-edit-fill"></i>
+                    49 字
+                </a>
+                <a>
+                    <i class="kirafont icon-time-circle-fill"></i>大概
+                    1 分钟
+                </a>
             </div>
+    
+            
         </div>
-        <div class="kira-image-container">
-            <div class="kira-image-prev-button-panel">
-                <div class="kira-image-exchange-button">
-                    <i class="kirafont icon-left"></i>
-                </div>
-            </div>
-            <div class="kira-image-list">
-                <div class="kira-image-prev">
-                    <img />
-                </div>
-                <div class="kira-image-now">
-                    <img />
-                </div>
-                <div class="kira-image-next">
-                    <img />
-                </div>
-            </div>
-            <div class="kira-image-next-button-panel">
-                <div class="kira-image-exchange-button">
-                    <i class="kirafont icon-right"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="kira-hr"></div>
+    
 </div>
-<div class="kira-post">
-	<article>
-		
-		<div class="kira-post-cover">
-			<img
-				data-src="/camera/0.png"
-				data-sizes="auto"
-				alt="机器学习"
-				class="lazyload kira-post-cover-image disabled-kira-image"
-			/>
-			<h1>机器学习</h1>
-		</div>
-		
-		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2023年06月05日</a>
-			<a><i class="kirafont icon-edit-fill"></i>419 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
-		</div>
-		<h1><span id></span></h1><p>损失函数：用来<strong>估量模型的预测值f(x)与真实值Y的不一致程度</strong>，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子</p>
-<p><img src="/img/loading.gif" data-original="/camera/1.png"></p>
-<p>前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项</p>
-<p>整个式子表示的意思是<strong>找到使目标函数最小时的θ值</strong></p>
-<p>在深度学习中，我们通常会使用损失函数来计算每个小批次数据上的损失，然后通过对整个数据集的所有损失进行平均，得到代价函数</p>
-<p>梯度下降算法：神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。</p>
-<p>原理：目标函数 J（θ） 关于参数 θ 的梯度将是损失函数（loss function）上升最快的方向。而我们要最小化loss，只需要将参数沿着梯度相反的方向前进一个步长，就可以实现目标函数（loss function）的下降，这个步长η又称为学习速率。</p>
-<p>公式：θ &lt;- θ - η*▽J（θ）    J（θ）是参数的梯度</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31630368">梯度下降法</a></p>
-<p>反向传播算法（Backpropagation，BP算法）</p>
-<p>反向传播算法的推导</p>
-<p><img src="/img/loading.gif" data-original="/camera/2.png"></p>
-<p>符号约定</p>
-<p><img src="/img/loading.gif" data-original="/camera/3.png"></p>
-<p><img src="/img/loading.gif" data-original="/camera/8.png"></p>
 
-	</article>
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('load',endLoading);
+</script>
 
-	 
-    <div class="kira-post-copyright">
-        <strong>本文作者：</strong>紅葉<br>
-        <strong>本文链接：</strong><a href="https://swe-et.github.io/camera/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;camera&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;camera&#x2F;</a><br>
-        
-            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-        
-    </div>
-
-  
-	<div class="kira-post-nav">
-		<nav class="post-nav">
-			            
-		</nav>
-	</div>
-	
-	<div class="kira-post-meta kira-rainbow">
-		
-		
-	</div>
-	
-		<script src="/js/kira-code-copy.js"></script>
-	
-	
-	<div class="kira-post-footer">
-		
-	<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css" />
-	<div id="gitalk"></div>
-	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-	<script type="text/javascript">
-		const gitalk = new Gitalk({
-			clientID: '605688881c2e008e46bb',
-			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: '机器学习',
-			repo: 'Swe-et.github.io',
-			owner: 'Swe-et',
-			admin: 'Swe-et',
-			title: 'RulatedayDnd5eWiki',
-		});
-		gitalk.render('gitalk');
-	</script>
+<body>
 
 
-		
-	<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css" />
-	<div id="gitalk"></div>
-	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-	<script type="text/javascript">
-		const gitalk = new Gitalk({
-			clientID: '605688881c2e008e46bb',
-			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
-			id: '机器学习',
-			repo: 'Swe-et.github.io',
-			owner: 'Swe-et',
-			admin: 'Swe-et',
-			title: 'RulatedayDnd5eWiki',
-		});
-		gitalk.render('gitalk');
-	</script>
 
 
-	</div>
-	
-</div>
 
 
 

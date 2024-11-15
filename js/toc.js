@@ -1,17 +1,15 @@
 function generateTOC() {
     var toc = document.querySelector('.toc');
-    var headings = document.querySelectorAll('h1, h2, h3, h4');  // 查找所有 h1, h2, h3 标签
+    var article = document.querySelector('.kira-post article');  // 限定只在 <article> 内部查找标题
+    var headings = article.querySelectorAll('h1, h2, h3, h4');  // 查找所有 h1, h2, h3 标签
     var tocList = document.createElement('ul');  // 创建一个列表来容纳目录
 
     headings.forEach(function(heading, index) {
-        // 排除侧边栏中的标题
-        if (heading.closest('#sidebar') || heading.closest('.kira-sidebar')) {
+    	if (heading.closest('#kira-post') || heading.closest('.kira-post-cover')) {
             return;
-        }
-        if (heading.closest('#kira-post') || heading.closest('.kira-post-cover')) {
-            return;
-        }
-        var tocItem = document.createElement('li');  // 创建一个目录项
+	}
+        // 创建一个目录项
+        var tocItem = document.createElement('li');  
         var tocLink = document.createElement('a');  // 创建目录项链接
         tocLink.textContent = heading.textContent;  // 设置链接文本为标题的文本
         tocLink.href = '#toc' + index;  // 设置锚点链接

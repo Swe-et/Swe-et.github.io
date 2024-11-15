@@ -1,0 +1,49 @@
+.toc {
+  position: fixed;
+  top: 100px; /* 根据需要调整 */
+  right: 20px;
+  width: 250px;
+  max-height: 70%;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.toc .toc-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: #FFC0CB;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin: 5px 0;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #FFC0CB;
+  transition: color 0.3s;
+}
+
+.toc a:hover {
+  color: #FFC0CB;
+  font-weight: bold; /* 悬停时字体加粗 */
+}
+
+.toc a:active {
+  color: #f9f9f9; /* 点击时改变颜色 */
+}
+

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/css/118.css">
 
 		
+		
     			<link rel="stylesheet" href="true" crossorigin /> 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,11 +28,7 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
-		<!-- Material Design UI 库的 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-J2uvOitFqI4sNYt1GhfZvn6/8g8DgL+NUsPMflVxdS7KXbViRVmSTszV1vI63neV" crossorigin="anonymous">
 
-<!-- Material Design UI 库的 JS -->
-<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-GfYsF8z7dyZQ23FfGkeHA+weuF/qlRZ69Ec2N8drfj6VYPAAJpDA24/m9NPAu4Hk" crossorigin="anonymous"></script>
 
 		<!-- 预置 kiraicon -->
 		
@@ -64,9 +61,12 @@
 <script src="/deps/js/APlayer.min.js"></script>
 <script src="/deps/js/Meting.min.js"></script>
 
+		
+	<link rel="stylesheet" href="/css/toc.css"> <!-- 引入样式 -->
 	<meta name="generator" content="Hexo 6.3.0"></head>
-
+<script src="/js/toc.js"></script> <!-- 引入 JS -->
 	<body>
+	
 		<div class="GalMenu GalDropDown">
 	      <div class="circle" id="gal">
 	        <div class="ring">
@@ -119,15 +119,24 @@
         </div>
     </div>
 </body>
-    <script>
-        var endLoading = function () {
-            document.body.style.overflow = 'auto';
-            setTimeout(function(){
-        document.getElementById('loader-box').remove(); 
-    }, 20 /* 单位：毫秒 */ );
-        }
-        window.addEventListener('load',endLoading);
-    </script>
+<script>
+    var endLoading = function () {
+        document.body.style.overflow = 'auto'; // 恢复页面滚动
+
+        // 3秒后移除加载器
+        setTimeout(function(){
+            document.getElementById('loader-box').remove(); // 移除加载动画
+        }, 500); // 设置为 3000 毫秒（即 3 秒）
+    }
+
+    // 监听页面加载完成事件
+    window.addEventListener('load', endLoading);
+
+    // 3秒后自动移除加载器，避免因加载时间过长导致一直显示
+    setTimeout(function(){
+        endLoading();
+    }, 500); // 如果页面 3 秒后未加载完，自动移除加载器
+  </script>
   </div>
 
 
@@ -161,8 +170,9 @@
 
 
 
-		<div class="kira-body">
-			<div class="kira-sidebar" id="sidebar">
+			<div class="kira-body">
+    			<!-- 左侧边栏 -->
+    			<div class="kira-sidebar" id="sidebar">
 	<div class="kira-avatar mdui-ripple">
 		<a href="/yolov5/ev401a.jpg" title="紅葉">
 			<img
@@ -409,10 +419,13 @@
 		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
 	})(this)"
 ></div>
-			<div class="kira-content">
-				<div id="kira-top-header"></div>
-				<div class="kira-main-content">
-					<section class="kira-archives">
+
+
+    			<div class="kira-content">
+        		<div id="kira-top-header"></div>
+        		<div class="kira-main-content">
+            		<!-- 主内容部分 -->
+            	<section class="kira-archives">
     <div class="tagcloud kira-rainbow">
         <a class="mdui-ripple -unordered list-link" href="/tags/ChatGPT/" rel="tag">ChatGPT<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/GPT-SoVITS/" rel="tag">GPT-SoVITS<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/Mindvision/" rel="tag">Mindvision<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/Rust/" rel="tag">Rust<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/opencv/" rel="tag">opencv<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/raspberry/" rel="tag">raspberry<span class="mdui-ripple -unordered list-count">3</span></a><a class="mdui-ripple -unordered list-link" href="/tags/robomaster/" rel="tag">robomaster<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/ubuntu/" rel="tag">ubuntu<span class="mdui-ripple -unordered list-count">6</span></a><a class="mdui-ripple -unordered list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习<span class="mdui-ripple -unordered list-count">4</span></a><a class="mdui-ripple -unordered list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网<span class="mdui-ripple -unordered list-count">1</span></a>
     </div>
@@ -578,18 +591,34 @@
 </section>
 
 
-				</div>
-			</div>
-			<div class="kira-right-column">
+        	</div>
+    	</div>
+
+    			<!-- 右侧边栏 -->
+    			<div class="kira-right-column">
+	
 	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
 		<button class="mdui-fab mdui-ripple">
   			<i class="kirafont icon-caret-up"></i>
 		</button>
 	</a>
+
 </div>
 
-			<div class="kira-right-column">
-		</div>
+<div class="toc">
+	<div class="toc-title">目录导航</div>  <!-- 目录标题 -->
+</div>
+
+
+			  <!-- 目录导航 -->
+
+</div>
+
+
+
+</div>
+
+	
 
         <style>
             [bg-lazy] {
@@ -613,5 +642,6 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="250" src="//cdn.bootcss.com
 </script>
 <!--浏览器搞笑标题-->
 <script type="text/javascript" src="\js\FunnyTitle.js"></script>
-	
+
+<script type="text/javascript" src="\js\page.js"></script>
 </html>

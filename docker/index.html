@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/css/118.css">
 
 		
+		
     			<link rel="stylesheet" href="true" crossorigin /> 
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,11 +28,7 @@
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 		<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
-		<!-- Material Design UI 库的 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-J2uvOitFqI4sNYt1GhfZvn6/8g8DgL+NUsPMflVxdS7KXbViRVmSTszV1vI63neV" crossorigin="anonymous">
 
-<!-- Material Design UI 库的 JS -->
-<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-GfYsF8z7dyZQ23FfGkeHA+weuF/qlRZ69Ec2N8drfj6VYPAAJpDA24/m9NPAu4Hk" crossorigin="anonymous"></script>
 
 		<!-- 预置 kiraicon -->
 		
@@ -64,9 +61,12 @@
 <script src="/deps/js/APlayer.min.js"></script>
 <script src="/deps/js/Meting.min.js"></script>
 
+		
+	<link rel="stylesheet" href="/css/toc.css"> <!-- 引入样式 -->
 	<meta name="generator" content="Hexo 6.3.0"></head>
-
+<script src="/js/toc.js"></script> <!-- 引入 JS -->
 	<body>
+	
 		<div class="GalMenu GalDropDown">
 	      <div class="circle" id="gal">
 	        <div class="ring">
@@ -119,15 +119,24 @@
         </div>
     </div>
 </body>
-    <script>
-        var endLoading = function () {
-            document.body.style.overflow = 'auto';
-            setTimeout(function(){
-        document.getElementById('loader-box').remove(); 
-    }, 20 /* 单位：毫秒 */ );
-        }
-        window.addEventListener('load',endLoading);
-    </script>
+<script>
+    var endLoading = function () {
+        document.body.style.overflow = 'auto'; // 恢复页面滚动
+
+        // 3秒后移除加载器
+        setTimeout(function(){
+            document.getElementById('loader-box').remove(); // 移除加载动画
+        }, 500); // 设置为 3000 毫秒（即 3 秒）
+    }
+
+    // 监听页面加载完成事件
+    window.addEventListener('load', endLoading);
+
+    // 3秒后自动移除加载器，避免因加载时间过长导致一直显示
+    setTimeout(function(){
+        endLoading();
+    }, 500); // 如果页面 3 秒后未加载完，自动移除加载器
+  </script>
   </div>
 
 
@@ -161,8 +170,9 @@
 
 
 
-		<div class="kira-body">
-			<div class="kira-sidebar" id="sidebar">
+			<div class="kira-body">
+    			<!-- 左侧边栏 -->
+    			<div class="kira-sidebar" id="sidebar">
 	<div class="kira-avatar mdui-ripple">
 		<a href="/yolov5/ev401a.jpg" title="紅葉">
 			<img
@@ -409,10 +419,13 @@
 		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
 	})(this)"
 ></div>
-			<div class="kira-content">
-				<div id="kira-top-header"></div>
-				<div class="kira-main-content">
-					
+
+
+    			<div class="kira-content">
+        		<div id="kira-top-header"></div>
+        		<div class="kira-main-content">
+            		<!-- 主内容部分 -->
+            	
 <link rel="stylesheet" href="/css/kira-image.css">
 
 
@@ -458,6 +471,7 @@
     </div>
 </div>
 <div class="kira-post">
+	<div id="toc"></div>
 	<article>
 		
 		<div class="kira-post-cover">
@@ -473,7 +487,7 @@
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2024年11月14日</a>
 			<a><i class="kirafont icon-edit-fill"></i>1.3k 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 6 分钟</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 5 分钟</a>
 		</div>
 		<h1><span id="docker">docker</span></h1><h3><span id="1安装dockerubuntu2404">1.安装docker（ubuntu24.04）</span></h3><h4><span id="第-1-步更新软件包并安装必要软件">第 1 步：更新软件包并安装必要软件</span></h4><p>运行以下命令，更新软件包索引并安装添加 Docker 仓库所需的前置软件包：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt update<br>sudo apt install apt-transport-https curl<br></code></pre></td></tr></table></figure>
@@ -535,40 +549,39 @@
 <p>2执行以下命令来删除 Docker 创建的目录：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo rm -rf /var/lib/docker<br>sudo rm -rf /var/lib/containerd<br></code></pre></td></tr></table></figure>
 
-<h4><span id="docker常用指令">Docker常用指令</span></h4><ul>
-<li><pre><code>docker images  # 查看全部镜像
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>- ![](docker/1.png)<br><br>- ```<br>  sudo docker run -it REPOSITORY:TAG  # 运行容器<br></code></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><pre><code>
-</code></pre>
-</li>
-</ul>
-<p>  docker ps  # 获取当前容器ID或名称<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>- ![](docker/2.png)<br>  <br>-  ```<br>  docker commit ros_container my_ros_env:v1  # 提交容器为新的镜像<br></code></pre></td></tr></table></figure></p>
-<ul>
-<li><pre><code>docker commit a1b2c3d4e5f6 my_ros_env:v1  # 使用容器的 CONTAINER ID 来提交镜像
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>- ```<br>  docker save -o my_ros_env_v1.tar my_ros_env:v1  # 保存镜像为 tar 文件<br></code></pre></td></tr></table></figure>
-</code></pre>
-</li>
-<li><pre><code>docker load -i my_ros_env_v1.tar  # 加载镜像（在其他主机上使用）
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br><br><br>### 使用docker运行ros镜像<br><br>#### 获取 ROS 1 Docker 镜像<br><br>官方提供了 ROS 1 的 Docker 镜像。你可以直接从 Docker Hub 上下载所需版本的镜像，例如 `noetic` 或 `melodic`：<br><br></code></pre></td></tr></table></figure>
-docker pull osrf/ros:noetic-desktop-full
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>#### 启动 Docker 容器<br><br>使用以下命令来启动容器并运行交互式 Bash shell。启动容器时，可以将当前目录挂载到容器中，方便开发：<br><br></code></pre></td></tr></table></figure>
-docker run -it --rm osrf/ros:noetic-desktop-full
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>#### 配置 ROS 环境<br><br>在容器中运行 ROS 之前，先配置 ROS 环境。例如，如果你运行的是 `noetic`，则可以这样配置：<br><br></code></pre></td></tr></table></figure>
-source /opt/ros/noetic/setup.bash
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>为了让该环境配置在每次新终端中生效，可以将其添加到 `.bashrc` 文件中：<br><br></code></pre></td></tr></table></figure>
-echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc
-source ~/.bashrc
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>#### 测试 ROS 1 安装<br><br>可以使用 `roscore` 命令来测试是否配置正确。运行以下命令：<br><br></code></pre></td></tr></table></figure>
-roscore
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>如果 `roscore` 正常启动，那么你的 ROS 1 环境已配置完成。<br><br>#### **确保 Docker 环境设置正确**<br><br>如果您计划运行 Gazebo 或其他图形界面的 ROS 工具，请确保您已设置 X11 共享：<br><br></code></pre></td></tr></table></figure>
-xhost +local:docker
-</code></pre>
-</li>
-</ul>
-<pre><code>
-</code></pre>
+<h4><span id="docker常用指令">Docker常用指令</span></h4> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker images  # 查看全部镜像<br></code></pre></td></tr></table></figure>
+<p>  <img src="/img/loading.gif" data-original="/docker/1.png"></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo docker run -it REPOSITORY:TAG  # 运行容器<br></code></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker ps  # 获取当前容器ID或名称<br></code></pre></td></tr></table></figure>
+
+<p>  <img src="/img/loading.gif" data-original="/docker/2.png"></p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker commit ros_container my_ros_env:v1  # 提交容器为新的镜像<br></code></pre></td></tr></table></figure>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker commit a1b2c3d4e5f6 my_ros_env:v1  # 使用容器的 CONTAINER ID 来提交镜像<br></code></pre></td></tr></table></figure>
+
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker save -o my_ros_env_v1.tar my_ros_env:v1  # 保存镜像为 tar 文件<br></code></pre></td></tr></table></figure>
+
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker load -i my_ros_env_v1.tar  # 加载镜像（在其他主机上使用）<br></code></pre></td></tr></table></figure>
+
+
+
+<h3><span id="使用docker运行ros镜像">使用docker运行ros镜像</span></h3><h4><span id="获取-ros-1-docker-镜像">获取 ROS 1 Docker 镜像</span></h4><p>官方提供了 ROS 1 的 Docker 镜像。你可以直接从 Docker Hub 上下载所需版本的镜像，例如 <code>noetic</code> 或 <code>melodic</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker pull osrf/ros:noetic-desktop-full<br></code></pre></td></tr></table></figure>
+
+<h4><span id="启动-docker-容器">启动 Docker 容器</span></h4><p>使用以下命令来启动容器并运行交互式 Bash shell。启动容器时，可以将当前目录挂载到容器中，方便开发：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">docker run -it --rm osrf/ros:noetic-desktop-full<br></code></pre></td></tr></table></figure>
+
+<h4><span id="配置-ros-环境">配置 ROS 环境</span></h4><p>在容器中运行 ROS 之前，先配置 ROS 环境。例如，如果你运行的是 <code>noetic</code>，则可以这样配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">source /opt/ros/noetic/setup.bash<br></code></pre></td></tr></table></figure>
+
+<p>为了让该环境配置在每次新终端中生效，可以将其添加到 <code>.bashrc</code> 文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc<br>source ~/.bashrc<br></code></pre></td></tr></table></figure>
+
+<h4><span id="测试-ros-1-安装">测试 ROS 1 安装</span></h4><p>可以使用 <code>roscore</code> 命令来测试是否配置正确。运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">roscore<br></code></pre></td></tr></table></figure>
+
+<p>如果 <code>roscore</code> 正常启动，那么你的 ROS 1 环境已配置完成。</p>
+<h4><span id="确保-docker-环境设置正确"><strong>确保 Docker 环境设置正确</strong></span></h4><p>如果您计划运行 Gazebo 或其他图形界面的 ROS 工具，请确保您已设置 X11 共享：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">xhost +local:docker<br></code></pre></td></tr></table></figure>
 
 	</article>
 
@@ -639,18 +652,34 @@ xhost +local:docker
 
 
 
-				</div>
-			</div>
-			<div class="kira-right-column">
+        	</div>
+    	</div>
+
+    			<!-- 右侧边栏 -->
+    			<div class="kira-right-column">
+	
 	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
 		<button class="mdui-fab mdui-ripple">
   			<i class="kirafont icon-caret-up"></i>
 		</button>
 	</a>
+
 </div>
 
-			<div class="kira-right-column">
-		</div>
+<div class="toc">
+	<div class="toc-title">目录导航</div>  <!-- 目录标题 -->
+</div>
+
+
+			  <!-- 目录导航 -->
+
+</div>
+
+
+
+</div>
+
+	
 
         <style>
             [bg-lazy] {
@@ -674,5 +703,6 @@ color="255,192,203" opacity='1.0' zIndex="-2" count="250" src="//cdn.bootcss.com
 </script>
 <!--浏览器搞笑标题-->
 <script type="text/javascript" src="\js\FunnyTitle.js"></script>
-	
+
+<script type="text/javascript" src="\js\page.js"></script>
 </html>

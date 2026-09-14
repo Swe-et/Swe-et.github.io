@@ -16,7 +16,7 @@
   z-index: 1000;
   pointer-events: auto;
   width: 190px;
-  max-height: calc(100vh - 110px);
+  max-height: calc(100vh - 160px);
   box-sizing: border-box;
   margin-top: 2vh;
   padding: 16px 14px;
@@ -91,13 +91,52 @@
   background-color: rgba(255,192,203,0.1);
   border-left-color: #ffc0cb;
 }
+.kira-right-column .kira-home-timeline {
+  width: 240px;
+  padding: 18px 16px;
+}
+.kira-right-column .kira-home-timeline .kira-post-toc-title {
+  font-size: 16px;
+}
+.kira-right-column .kira-home-timeline .timeline-month {
+  margin: 15px 6px 6px;
+  padding-left: 9px;
+  color: #ffc0cb;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  border-left: 3px solid #ffc0cb;
+}
+.kira-right-column .kira-home-timeline .timeline-post a {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 8px 9px !important;
+  font-size: 13px;
+  white-space: normal !important;
+}
+.kira-right-column .kira-home-timeline .timeline-post a time {
+  flex: 0 0 auto;
+  padding-top: 1px;
+  color: #aaa;
+  font-size: 11px;
+}
+.kira-right-column .kira-home-timeline .timeline-post a span {
+  display: -webkit-box;
+  overflow: hidden;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
 .kira-right-column .kira-backtotop {
-  bottom: 20px;
+  position: fixed;
+  z-index: 1100;
+  right: calc((100vw - 1180px) / 2 + 12px);
+  bottom: 6px;
   color: #555;
   background-color: rgba(255,255,255,0.501);
   border-radius: 50%;
-  margin-top: auto;
-  margin-bottom: 15px;
+  margin: 0;
   transition: 500ms;
   pointer-events: all;
 }

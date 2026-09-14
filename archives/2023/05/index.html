@@ -2,8 +2,6 @@
 <html 
 	lang="zh-CN">
 	<head>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
 		<!--自定义添加的 Loading Page CSS 样式-->
 		
 <link rel="stylesheet" href="/css/118.css">
@@ -17,9 +15,9 @@
 		
 		<title> 文章归档：2023/5 -  紅葉~</title>
 		<link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
-		<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+		<script defer src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
 		<!-- lazyload -->
-		<script src="https://unpkg.com/lazysizes@5.1.0/lazysizes.min.js"></script>
+		<script async src="https://unpkg.com/lazysizes@5.1.0/lazysizes.min.js"></script>
 		<!-- highlight -->
 		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
 
@@ -37,8 +35,7 @@
 		/>
 		
 		
-<link rel="stylesheet" href="/deps/css/APlayer.min.css">
-
+		
 		
 			
 				
@@ -51,9 +48,6 @@
 			
 		
 		
-<script src="/deps/js/APlayer.min.js"></script>
-<script src="/deps/js/Meting.min.js"></script>
-
 	<meta name="generator" content="Hexo 6.3.0"></head>
 
 	<body>
@@ -64,13 +58,11 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	   
-<link rel="stylesheet" href="/css/search.css">
-
+	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
 	<div class="search">
-    <i class="material-icons search-icon search-start">search</i>
-    <input type="text" class="search-input" placeholder="Searching..." />
-    <i class="material-icons search-icon search-clear">clear</i>
+    <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
+    <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
+    <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
     <script src="\js\search-box.js"></script>
@@ -84,7 +76,13 @@
       }
 	</script>
 	<script src="/js/jquery.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/js/GalMenu.js"></script>
+	<script>
+		window.addEventListener('load', function () {
+			var script = document.createElement('script');
+			script.src = 'https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/js/GalMenu.js';
+			document.body.appendChild(script);
+		}, { once: true });
+	</script>
 
 		<!--自定义的 Loading Page-->
 		
@@ -140,6 +138,13 @@
 
 <!--自定义看板娘-->
 <script src="/live2d-widget/autoload.js"></script>
+
+<link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260915-2" />
+<script>
+    window.WAIFU_AI_CONFIG = {"enable":true,"endpoint":"https://hongye-waifu-ai.mmjhongye.workers.dev/api/chat","title":"与多萝艾尔聊天"};
+</script>
+<script defer src="/live2d-widget/waifu-ai.js?v=20260915-2"></script>
+
 
 
 
@@ -403,7 +408,8 @@
 				<div class="kira-main-content">
 					<div class="kira-posts">
     
-        <div class="kira-post">
+    
+        <div class="kira-post" id="home-post-0">
             <a href="/opencv/">
                 
                 <div
@@ -439,8 +445,9 @@
             
         </div>
         <div class="kira-hr"></div>
+        
     
-        <div class="kira-post">
+        <div class="kira-post" id="home-post-1">
             <a href="/ubuntu/">
                 
                 <div
@@ -476,6 +483,7 @@
             
         </div>
         <div class="kira-hr"></div>
+        
     
 </div>
 
@@ -492,7 +500,9 @@
         var counterScript = document.createElement('script');
         counterScript.async = true;
         counterScript.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-        document.head.appendChild(counterScript);
+        var loadCounter = function () { document.head.appendChild(counterScript); };
+        if (document.readyState === 'complete') loadCounter();
+        else window.addEventListener('load', loadCounter, { once: true });
     })();
 </script>
 
@@ -507,6 +517,7 @@
 				</div>
 			</div>
 			<div class="kira-right-column">
+	
 	
 	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
 		<button class="mdui-fab mdui-ripple">
@@ -534,8 +545,20 @@
 <script type="text/javascript" src="/js/love.js"></script>
 
 <!--动态线条背景-->
-<script type="text/javascript"
-color="255,192,203" opacity='1.0' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+<script>
+	window.addEventListener('load', function () {
+		var loadCanvas = function () {
+			var script = document.createElement('script');
+			script.color = '255,192,203';
+			script.opacity = '0.8';
+			script.zIndex = '-2';
+			script.count = '36';
+			script.src = 'https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/1.0.1/canvas-nest.min.js';
+			document.body.appendChild(script);
+		};
+		if ('requestIdleCallback' in window) requestIdleCallback(loadCanvas, { timeout: 2500 });
+		else setTimeout(loadCanvas, 800);
+	}, { once: true });
 </script>
 <!--浏览器搞笑标题-->
 <script type="text/javascript" src="\js\FunnyTitle.js"></script>

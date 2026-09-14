@@ -67,6 +67,7 @@ searchClear.onclick = function(){
     searchInput.value = '';
     searchResults.style.display = 'none';
     searchClear.style.display = 'none';
+    searchInput.focus();
 }
 
 // 输入框内容变化后就开始匹配，可以不用点按钮
@@ -91,7 +92,8 @@ function searchConfirm() {
         // 检测输入值全是空白的情况
         searchInit();
         var itemDiv = tmpDiv.cloneNode(true);
-        itemDiv.innerText = '请输入有效内容...';
+        itemDiv.classList.add('result-empty');
+        itemDiv.innerText = '请输入有效内容…';
         searchResults.appendChild(itemDiv);
     } else {
         // 合法输入值的情况
@@ -113,7 +115,7 @@ function searchInit() {
 
 function searchMatching(arr1, arr2, input) {
     // 忽略输入大小写
-    input = new RegExp(input, 'i');
+    input = new RegExp(input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
     // 在所有文章标题、内容中匹配查询值
     for (i = 0; i < itemLength; i++) {
         if (arr1[i].search(input) !== -1 || arr2[i].search(input) !== -1) {
@@ -138,13 +140,15 @@ function searchMatching(arr1, arr2, input) {
 
     // 输出总共匹配到的数目
     var totalDiv = tmpDiv.cloneNode(true);
-    totalDiv.innerHTML = '总匹配：<b>' + indexItem.length + '</b> 项';
+    totalDiv.classList.add('result-summary');
+    totalDiv.innerHTML = '找到 <b>' + indexItem.length + '</b> 篇相关文章';
     searchResults.appendChild(totalDiv);
 
     // 未匹配到内容的情况
     if (indexItem.length == 0) {
         var itemDiv = tmpDiv.cloneNode(true);
-        itemDiv.innerText = '未匹配到内容...';
+        itemDiv.classList.add('result-empty');
+        itemDiv.innerText = '暂时没有找到相关文章…';
         searchResults.appendChild(itemDiv);
     }
 
@@ -153,7 +157,8 @@ function searchMatching(arr1, arr2, input) {
         var itemDiv = tmpDiv.cloneNode(true);
         itemDiv.innerHTML = '<b>《' + arrTitles[indexItem[i]] +
             '》</b><hr />' + arrResults[i];
-        itemDiv.setAttribute('onclick', 'changeHref(arrLinks[indexItem[' + i + ']])');
+        itemDiv.dataset.href = arrLinks[indexItem[i]];
+        itemDiv.addEventListener('click', function () { changeHref(this.dataset.href); });
         searchResults.appendChild(itemDiv);
     }
 }

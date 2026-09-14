@@ -1,56 +1,129 @@
 .search {
-    position: relative;
-    height: 30px;
-    text-align: right;
-    line-height: 30px;
-    padding-right: 10px;
-}
-
-.search .search-icon {
-    float: right;
-    height: 100%;
-    margin: 0 10px;
-    line-height: 30px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.search .search-input {
-    float: right;
-    width: 30%;
-    height: 30px;
-    line-height: 30px;
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: min(460px, calc(100% - 28px));
+    height: 46px;
     margin: 0;
-    border: 2px solid #ddd;
-    border-radius: 10px;
+    padding: 0 10px 0 16px;
+    box-sizing: border-box;
+    color: #d85f82;
+    background: rgba(255, 250, 252, .88);
+    border: 1px solid rgba(255, 151, 181, .42);
+    border-radius: 24px;
+    box-shadow: 0 6px 22px rgba(205, 102, 136, .13);
+    backdrop-filter: blur(12px);
+    transform: translateX(-50%);
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+/* 固定搜索栏不占文档流，给正文保留顶部空间。 */
+.kira-body {
+    padding-top: 66px;
     box-sizing: border-box;
 }
 
-.search .search-clear {
-    display: none;
+.search:focus-within {
+    border-color: rgba(255, 117, 158, .78);
+    box-shadow: 0 8px 28px rgba(220, 103, 140, .22), 0 0 0 3px rgba(255, 142, 174, .1);
+    transform: translate(-50%, -1px);
 }
 
+.search .search-input {
+    order: 1;
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    padding: 0 8px;
+    color: #594e55;
+    font-size: 14px;
+    line-height: 42px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    appearance: none;
+}
+
+.search .search-input::-webkit-search-cancel-button { display: none; }
+.search .search-input::placeholder { color: #c9a1ae; }
+
+.search .search-icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    color: #e56f92;
+    font-size: 21px;
+    line-height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.search .search-start { order: 0; margin-right: 3px; }
+.search .search-clear { order: 2; display: none; font-size: 19px; }
+.search .search-icon:hover { color: #fff; background: linear-gradient(135deg, #ffa8bd, #ff779a); transform: scale(1.06); }
+
 .search .search-results {
-    display: block;
-    z-index: 1000;
     position: absolute;
-    top: 30px;
-    right: 50px;
-    width: 50%;
-    max-height: 400px;
+    top: 56px;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+    max-height: min(520px, calc(100vh - 100px));
+    padding: 8px;
+    box-sizing: border-box;
     overflow: auto;
     text-align: left;
-    border-radius: 5px;
-    background: #ccc;
-    box-shadow: 0 .3rem .5rem #333;
+    background: rgba(255, 252, 253, .97);
+    border: 1px solid rgba(255, 164, 190, .42);
+    border-radius: 18px;
+    box-shadow: 0 16px 44px rgba(104, 69, 82, .2);
+    backdrop-filter: blur(16px);
 }
 
 .search .search-results .result-item {
-    background: aqua;
-    color: #000;
-    margin: 5px;
-    padding: 3px;
-    border-radius: 3px;
+    margin: 4px 0;
+    padding: 11px 13px;
+    color: #685861;
+    line-height: 1.55;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 12px;
     cursor: pointer;
+    transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
 }
 
+.search .search-results .result-item:hover {
+    color: #b94468;
+    background: linear-gradient(135deg, #fff3f7, #fff9fb);
+    border-color: #ffd4df;
+    transform: translateX(3px);
+}
+
+.search .search-results .result-summary,
+.search .search-results .result-empty {
+    cursor: default;
+    color: #b38d99;
+    background: #fff7f9;
+}
+
+.search .search-results .result-summary:hover,
+.search .search-results .result-empty:hover { transform: none; }
+.search .search-results b { color: #cc5578; }
+.search .search-results hr { height: 1px; margin: 7px 0; background: #ffe0e8; border: 0; }
+.search .search-results mark { padding: 1px 3px; color: #a63f60; background: #ffe1e9; border-radius: 4px; }
+
+@media (max-width: 756px) {
+    .search { top: 8px; width: calc(100% - 24px); margin: 0; }
+    .kira-body { padding-top: 58px; }
+    .search .search-results { max-height: min(62vh, 440px); }
+}

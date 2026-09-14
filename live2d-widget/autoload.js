@@ -24,10 +24,11 @@ function loadExternalResource(url, type) {
 	});
 }
 
-// 加载 waifu.css live2d.min.js waifu-tips.js
-if (screen.width >= 768) {
+// 首屏完成后再加载模型，避免模型纹理与文章内容争抢带宽。
+function loadWaifuWhenIdle() {
+	if (screen.width < 768) return;
 	Promise.all([
-		loadExternalResource(live2d_path + "waifu.css?v=20260915-2", "css"),
+		loadExternalResource(live2d_path + "waifu.css?v=20260915-3", "css"),
 		loadExternalResource(live2d_path + "live2d.min.js", "js"),
 		loadExternalResource(live2d_path + "waifu-tips.js", "js")
 	]).then(() => {
@@ -40,6 +41,11 @@ if (screen.width >= 768) {
 		});
 	});
 }
+
+window.addEventListener("load", () => {
+	if ("requestIdleCallback" in window) requestIdleCallback(loadWaifuWhenIdle, { timeout: 1800 });
+	else setTimeout(loadWaifuWhenIdle, 500);
+}, { once: true });
 
 console.log(`
   く__,.ヘヽ.        /  ,ー､ 〉

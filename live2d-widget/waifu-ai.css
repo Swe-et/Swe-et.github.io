@@ -1,0 +1,135 @@
+.waifu-ai-panel {
+  position: fixed;
+  left: 292px;
+  bottom: 24px;
+  z-index: 1002;
+  display: none;
+  flex-direction: column;
+  width: min(460px, calc(100vw - 320px));
+  height: min(620px, calc(100vh - 48px));
+  overflow: hidden;
+  color: #555;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 150, 175, 0.55);
+  border-radius: 18px;
+  box-shadow: 0 10px 36px rgba(90, 70, 90, 0.24);
+  backdrop-filter: blur(12px);
+}
+
+.waifu-ai-panel.is-open {
+  display: flex;
+  animation: waifu-ai-open 180ms ease-out;
+}
+
+.waifu-ai-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 17px;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9eb5, #ff7898);
+}
+
+.waifu-ai-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.waifu-ai-close {
+  padding: 2px 6px;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.waifu-ai-messages {
+  flex: 1;
+  padding: 17px;
+  overflow-y: auto;
+  background: rgba(255, 248, 251, 0.72);
+}
+
+.waifu-ai-message {
+  width: fit-content;
+  max-width: 85%;
+  margin: 0 0 10px;
+  padding: 9px 11px;
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-radius: 12px;
+}
+
+.waifu-ai-message.assistant {
+  margin-right: auto;
+  background: #fff;
+  border: 1px solid rgba(255, 192, 203, 0.55);
+}
+
+.waifu-ai-message.user {
+  margin-left: auto;
+  color: #fff;
+  background: #ff8eaa;
+}
+
+.waifu-ai-message.error {
+  color: #b64059;
+  background: #fff0f3;
+}
+
+.waifu-ai-form {
+  display: flex;
+  gap: 8px;
+  padding: 13px;
+  background: #fff;
+  border-top: 1px solid rgba(255, 192, 203, 0.4);
+}
+
+.waifu-ai-input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 11px;
+  color: #555;
+  background: #fffafb;
+  border: 1px solid #ffd0dc;
+  border-radius: 10px;
+}
+
+.waifu-ai-input:focus {
+  border-color: #ff8eaa;
+  box-shadow: 0 0 0 2px rgba(255, 142, 170, 0.14);
+}
+
+.waifu-ai-send {
+  padding: 0 15px;
+  color: #fff;
+  background: #ff8eaa;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.waifu-ai-send:disabled,
+.waifu-ai-input:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+@keyframes waifu-ai-open {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 756px) {
+  .waifu-ai-panel {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    height: min(76vh, 580px);
+  }
+}

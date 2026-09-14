@@ -1,0 +1,106 @@
+.kira-right-column {
+  width: 80px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  pointer-events: all;
+  top: 0;
+  z-index: 10;
+}
+.kira-right-column .kira-post-toc {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  z-index: 1000;
+  pointer-events: auto;
+  width: 190px;
+  max-height: calc(100vh - 110px);
+  box-sizing: border-box;
+  margin-top: 2vh;
+  padding: 16px 14px;
+  overflow-y: auto;
+  background-color: rgba(255,255,255,0.82);
+  border: 1px solid rgba(255,192,203,0.28);
+  border-radius: 13px;
+  box-shadow: 0 4px 18px rgba(138,151,174,0.18);
+  backdrop-filter: blur(8px);
+}
+.kira-right-column .kira-post-toc .kira-post-toc-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-bottom: 10px;
+  font-weight: 600;
+  color: #ffc0cb;
+  border-bottom: 1px solid rgba(255,192,203,0.22);
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list li {
+  position: relative;
+  z-index: 1001;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto;
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list .toc-level-h2 {
+  margin: 0;
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list .toc-level-h2 a {
+  padding: 9px 8px 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f4f4f;
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list .toc-level-h3 {
+  position: relative;
+  margin: 0 0 0 12px;
+  padding: 0 0 0 8px;
+  border-left: 1px solid rgba(255,192,203,0.35);
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list .toc-level-h3 a {
+  padding: 6px 7px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #858585;
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list a {
+  position: relative;
+  z-index: 1002;
+  display: block;
+  padding: 5px 8px;
+  overflow: hidden;
+  color: #666;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-left: 2px solid transparent;
+  border-radius: 4px;
+  transition: 200ms;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.kira-right-column .kira-post-toc .kira-post-toc-list a:hover,
+.kira-right-column .kira-post-toc .kira-post-toc-list a.active {
+  color: #ffc0cb;
+  background-color: rgba(255,192,203,0.1);
+  border-left-color: #ffc0cb;
+}
+.kira-right-column .kira-backtotop {
+  bottom: 20px;
+  color: #555;
+  background-color: rgba(255,255,255,0.501);
+  border-radius: 50%;
+  margin-top: auto;
+  margin-bottom: 15px;
+  transition: 500ms;
+  pointer-events: all;
+}
+.kira-right-column .kira-backtotop i {
+  font-size: 22px;
+}

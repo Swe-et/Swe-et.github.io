@@ -90,10 +90,8 @@
 		
 		    
   <div id="loader-box">
-    /* 你的 HTML 代码将放在这里 */
-<body>
     <div class="loader-wrapper">
-        <div class="loader"><img src="/img/loading.gif" data-original="/images/1.png" alt=""></div>
+        <div class="loader"><img src="/img/loading.gif" data-original="/yolov5/ev401a.jpg" alt="紅葉~"></div>
         <div class="loader-text">
             <!-- 10个div -->
             <div>L</div>
@@ -108,18 +106,14 @@
             <div></div>
         </div>
     </div>
-</body>
-    <script>
-        var endLoading = function () {
-            document.body.style.overflow = 'auto';
-            setTimeout(function(){
-        document.getElementById('loader-box').remove(); 
-    }, 20 /* 单位：毫秒 */ );
-        }
-        window.addEventListener('load',endLoading);
-    </script>
   </div>
-
+  <script>
+    window.addEventListener('load', function () {
+      document.body.style.overflow = 'auto';
+      var loaderBox = document.getElementById('loader-box');
+      if (loaderBox) loaderBox.remove();
+    }, { once: true });
+  </script>
 
 
 		

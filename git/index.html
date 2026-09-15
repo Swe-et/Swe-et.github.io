@@ -534,11 +534,11 @@
   
 	<div class="kira-post-nav">
 		<nav class="post-nav">
-			          
+			                  
 			<!-- 先找到与当前文字相同的目录 -->
 			   
 			<!-- 在找到当前文章所在的 index -->
-			                          
+			                  
 		</nav>
 	</div>
 	
@@ -562,7 +562,8 @@
 	<script type="text/javascript">
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
-			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
+			// Secret 由 Cloudflare Worker 保存；前端只提交 GitHub 返回的临时代码。
+			proxy: 'https://hongye-waifu-ai.mmjhongye.workers.dev/api/gitalk/oauth',
 			id: 'git',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',

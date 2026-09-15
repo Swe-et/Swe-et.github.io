@@ -604,7 +604,8 @@
 	<script type="text/javascript">
 		const gitalk = new Gitalk({
 			clientID: '605688881c2e008e46bb',
-			clientSecret: '6a86c5fe6ba8b58eef0e3f81f78cd4768f500f69',
+			// Secret 由 Cloudflare Worker 保存；前端只提交 GitHub 返回的临时代码。
+			proxy: 'https://hongye-waifu-ai.mmjhongye.workers.dev/api/gitalk/oauth',
 			id: 'ubuntu树莓派无屏幕远程连接',
 			repo: 'Swe-et.github.io',
 			owner: 'Swe-et',

@@ -52,13 +52,16 @@
 
   function relevantArticles(entries, query) {
     var tokens = queryTokens(query);
+    var latinTerms = (query.toLowerCase().match(/[a-z0-9][a-z0-9+.#-]*/g) || [])
+      .filter(function (term) { return term.length > 1; });
     return entries.map(function (entry) {
       var title = entry.title.toLowerCase();
       var content = entry.content.toLowerCase();
       var score = tokens.reduce(function (total, token) {
         return total + (title.indexOf(token) >= 0 ? 8 : 0) + (content.indexOf(token) >= 0 ? 1 : 0);
       }, 0);
-      return { entry: entry, score: score };
+      var exactTitleMatch = latinTerms.some(function (term) { return title.indexOf(term) >= 0; });
+      return { entry: entry, score: score + (exactTitleMatch ? 100 : 0), exactTitleMatch: exactTitleMatch };
     }).filter(function (item) { return item.score > 0; })
       .sort(function (a, b) { return b.score - a.score; })
       .slice(0, 5)
@@ -89,7 +92,7 @@
         return '- ' + entry.title + '：' + entry.url;
       }).join('\n'));
     } else if (selected.length) {
-      parts.push('与问题相关的站内文章：\n' + selected.map(function (entry) {
+      parts.push('检索结论：已在博客中找到以下文章。回答“在哪里/有什么”时，必须给出其中的标题与地址，不可声称未找到。\n' + selected.map(function (entry) {
         return '【' + entry.title + '】\n地址：' + entry.url + '\n正文摘录：' + entry.content.slice(0, 1400);
       }).join('\n\n'));
     } else if (entries.length) {

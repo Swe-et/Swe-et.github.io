@@ -146,6 +146,12 @@
 <script defer src="/live2d-widget/waifu-ai.js?v=20260916-1"></script>
 
 
+<script>
+    window.VISITOR_STATS_CONFIG = {"enable":true,"endpoint":"https://hongye-waifu-ai.mmjhongye.workers.dev/api/visit"};
+</script>
+<script defer src="/js/visitor-stats.js?v=20260916-1"></script>
+
+
 
 
 		<div class="kira-body">
@@ -1174,21 +1180,13 @@
 <div class="kira-visitor-counter" aria-label="网站访问统计">
     <span class="kira-visitor-counter-stats">
         <i class="kirafont icon-user"></i>
-        访客数 <strong id="busuanzi_value_site_uv">--</strong>
+        访客数 <strong id="visitor-value-site-uv">--</strong>
         <span class="kira-visitor-counter-divider">·</span>
-        总访问量 <strong id="busuanzi_value_site_pv">--</strong>
+        浏览量 <strong id="visitor-value-site-pv">--</strong>
+        <span class="kira-visitor-counter-divider">·</span>
+        最新 <strong id="visitor-value-latest">加载中</strong>
     </span>
 </div>
-<script>
-    (function () {
-        var counterScript = document.createElement('script');
-        counterScript.async = true;
-        counterScript.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-        var loadCounter = function () { document.head.appendChild(counterScript); };
-        if (document.readyState === 'complete') loadCounter();
-        else window.addEventListener('load', loadCounter, { once: true });
-    })();
-</script>
 
 
     <div class="kira-page-nav">

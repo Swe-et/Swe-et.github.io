@@ -586,6 +586,32 @@
 			<div class="kira-right-column">
 	
 	
+	<button class="kira-home-announcement" id="kira-announcement-open" type="button" aria-haspopup="dialog" aria-controls="kira-announcement-modal" aria-label="查看更新公告" title="查看更新公告">
+		<span class="kira-home-announcement-icon"><i class="kirafont icon-edit-fill"></i></span>
+		<span class="kira-home-announcement-text">
+			<strong>更新公告</strong>
+			<small>查看博客最近更新</small>
+		</span>
+		<i class="kirafont icon-right kira-home-announcement-arrow"></i>
+	</button>
+	<div class="kira-announcement-modal" id="kira-announcement-modal" hidden>
+		<div class="kira-announcement-backdrop" data-announcement-close></div>
+		<section class="kira-announcement-dialog" role="dialog" aria-modal="true" aria-labelledby="kira-announcement-title" tabindex="-1">
+			<header class="kira-announcement-header">
+				<div>
+					<span class="kira-announcement-eyebrow">BLOG NEWS</span>
+					<h2 id="kira-announcement-title">更新公告</h2>
+				</div>
+				<button class="kira-announcement-close" type="button" data-announcement-close aria-label="关闭更新公告">×</button>
+			</header>
+			<div class="kira-announcement-content" id="kira-announcement-content" aria-live="polite">
+				<p class="kira-announcement-loading">正在读取公告…</p>
+			</div>
+			<footer class="kira-announcement-footer">
+				<a href="/updates/">在独立页面查看</a>
+			</footer>
+		</section>
+	</div>
 	<nav class="kira-post-toc kira-home-timeline" id="kira-home-timeline" aria-label="主页文章时间导航">
 		<div class="kira-post-toc-title">
 			<i class="kirafont icon-calendar-fill"></i>
@@ -812,6 +838,73 @@
 	</nav>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
+			var announcementOpen = document.getElementById('kira-announcement-open');
+			var announcementModal = document.getElementById('kira-announcement-modal');
+			var announcementContent = document.getElementById('kira-announcement-content');
+			var announcementDialog = announcementModal && announcementModal.querySelector('.kira-announcement-dialog');
+			var announcementLoaded = false;
+			var announcementUrl = '/updates/';
+
+			function loadAnnouncement() {
+				if (announcementLoaded || !announcementContent) return;
+				announcementLoaded = true;
+				fetch(announcementUrl, { credentials: 'same-origin' })
+					.then(function (response) {
+						if (!response.ok) throw new Error('HTTP ' + response.status);
+						return response.text().then(function (html) { return { html: html, url: response.url || announcementUrl }; });
+					})
+					.then(function (result) {
+						var pageDocument = new DOMParser().parseFromString(result.html, 'text/html');
+						var article = pageDocument.querySelector('.kira-post article');
+						if (!article) throw new Error('公告正文不存在');
+						var content = article.cloneNode(true);
+						Array.prototype.forEach.call(content.querySelectorAll('.kira-post-cover, .kira-post-meta, script'), function (node) {
+							node.remove();
+						});
+						Array.prototype.forEach.call(content.querySelectorAll('[href], [src], [data-src]'), function (node) {
+							['href', 'src', 'data-src'].forEach(function (attribute) {
+								var value = node.getAttribute(attribute);
+								if (!value || value.charAt(0) === '#') return;
+								try { node.setAttribute(attribute, new URL(value, result.url).href); } catch (error) {}
+							});
+						});
+						announcementContent.innerHTML = content.innerHTML || '<p>暂时没有公告。</p>';
+					})
+					.catch(function () {
+						announcementLoaded = false;
+						announcementContent.innerHTML = '<p class="kira-announcement-error">公告读取失败，请稍后重试，或<a href="' + announcementUrl + '">打开独立页面</a>。</p>';
+					});
+			}
+
+			function openAnnouncement() {
+				if (!announcementModal) return;
+				announcementModal.hidden = false;
+				document.body.classList.add('kira-announcement-open');
+				window.requestAnimationFrame(function () {
+					announcementModal.classList.add('is-open');
+					if (announcementDialog) announcementDialog.focus();
+				});
+				loadAnnouncement();
+			}
+
+			function closeAnnouncement() {
+				if (!announcementModal || announcementModal.hidden) return;
+				announcementModal.classList.remove('is-open');
+				document.body.classList.remove('kira-announcement-open');
+				setTimeout(function () { announcementModal.hidden = true; }, 180);
+				if (announcementOpen) announcementOpen.focus();
+			}
+
+			if (announcementOpen && announcementModal) {
+				announcementOpen.addEventListener('click', openAnnouncement);
+				Array.prototype.forEach.call(announcementModal.querySelectorAll('[data-announcement-close]'), function (button) {
+					button.addEventListener('click', closeAnnouncement);
+				});
+				document.addEventListener('keydown', function (event) {
+					if (event.key === 'Escape') closeAnnouncement();
+				});
+			}
+
 			var timeline = document.getElementById('kira-home-timeline');
 			if (!timeline) return;
 			var links = Array.prototype.slice.call(timeline.querySelectorAll('.timeline-post a[data-target]'));

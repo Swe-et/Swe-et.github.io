@@ -14,6 +14,9 @@
   .kira-right-column .kira-post-toc {
     display: none;
   }
+  .kira-right-column .kira-home-announcement {
+    display: none;
+  }
   .kira-right-column .kira-backtotop {
     right: 12px;
     background-color: #fff;

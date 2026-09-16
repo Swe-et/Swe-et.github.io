@@ -36,88 +36,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GDB_ros2</title>
-    <url>/GDB-ros2/</url>
-    <content><![CDATA[<h1><span id="用gdb运行ros2程序">用GDB运行ros2程序</span></h1><p>1.安装依赖</p>
-<p>本教程参考  <a href="https://getiot.tech/zh/ros2/ros2-debug/">GDB-ros2</a></p>
-<p>这里使用 <strong><a href="https://github.com/pal-robotics/backward_ros">backward_ros</a></strong> 软件包，它是对 <a href="https://github.com/bombela/backward-cpp">backward-cpp</a> 包的 ROS2 封装，可以简单快速地使用 GDB 工具调试 ROS2 程序。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install ros-humble-backward-ros<br></code></pre></td></tr></table></figure>
-
-<p>然后在编译 ROS2 程序时，添加 <code>CMAKE_BUILD_TYPE</code> 编译类型选项参数，可以选择 <code>RelWithDebInfo</code>、<code>Debug</code> 或 <code>Release</code>。对应 CMake 的三种编译选项，其中 <code>Release</code> 模式主要用于发布代码，会忽略调试信息；<code>Debug</code> 模式主要用于调试代码，因为需要生成调试信息，所以时间较长；<code>RelWithDebInfo</code> 则在 <code>Release</code> 模式下生成调试信息，也可以用于调试代码。通常建议使用 <code>RelWithDebInfo</code> 即可。</p>
-<p>colcon 编译命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --cmake-args <span class="hljs-string">&#x27;-DCMAKE_BUILD_TYPE=RelWithDebInfo&#x27;</span><br></code></pre></td></tr></table></figure>
-
-
-
-<p>这里的引号不是必须的，因此也可以写成这样：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
-
-<p>colcon 支持 <code>--symlink-install</code> 选项，作用是工作空间（source）中的文件发生变化时，安装目录（build）的文件也会随着改变。这样在调试的时候会高效一些，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
-
-
-
-<p>在package.xml里面添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;depend&gt;backward_ros&lt;/depend&gt;<br></code></pre></td></tr></table></figure>
-
-<p>在CMakeLists.txt里面添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">find_package(backward_ros REQUIRED)<br></code></pre></td></tr></table></figure>
-
-<p>如果你想要加快编译速度，可以使用 <code>--parallel-workers</code> 选项开启多个线程并行编译，例如同时启动 5 个线程：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo --parallel-workers 5<br></code></pre></td></tr></table></figure>
-
-
-
-<p>编译完成后，就可以通过 <code>ros2 run</code> 命令带上 <code>--prefix</code> 参数传入 <code>gdb</code> 指令，在 GDB 调试环境中启动 ROS 节点程序。命令语法如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdb -ex run --args&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
-
-
-
-<p>这里的 <em>package_name</em> 是 ROS 包名，<em>executable_name</em> 是节点程序名。</p>
-<h3><span id="配置-gdb-server">配置 GDB Server</span></h3><p>ROS 中的 GDB 调试方法同样支持 GDB Server 远程调试，只需要修改 <code>--prefix</code> 参数即可，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdbserver localhost:3000&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GPT-SoVITS(AI拟合)</title>
-    <url>/GPT-SoVITS/</url>
-    <content><![CDATA[<h1><span id="ai拟合语音">AI拟合语音</span></h1><p>鉴于原作者教程及其详细，没什么好说的</p>
-<p>Github 链接：<a href="https://github.com/RVC-Boss/GPT-SoVITS">https://github.com/RVC-Boss/GPT-SoVITS</a></p>
-<p>GPT-SoVITS指南：<a href="https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e">https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e</a></p>
-<p>从github克隆项目之后</p>
-<p>跟着readme.md文档配置环境就行(conda，cuda)</p>
-<p>进入项目文件夹，开启终端</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">conda create -n GPTSoVits python=3.9<br>conda activate GPTSoVits<br>bash install.sh<br></code></pre></td></tr></table></figure>
-
-<p>下载ffmpeg（转语音文件用的）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install ffmpeg<br>sudo apt install libsox-dev<br>conda install -c conda-forge &#x27;ffmpeg&lt;7&#x27;<br></code></pre></td></tr></table></figure>
-
-<p>安装依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pip install -r requirements.txt<br></code></pre></td></tr></table></figure>
-
-<p>预训练模型下载(实际上跟着GPT-SoVITS指南走就行)</p>
-<p><a href="https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e/dkxgpiy9zb96hob4#nVNhX">https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e/dkxgpiy9zb96hob4#nVNhX</a></p>
-<p><strong>重点：先下载git-lfs</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install git-lfs<br></code></pre></td></tr></table></figure>
-
-<p><strong>运行第一行之后运行第二行</strong></p>
-<p><img src="/GPT-SoVITS/1.png"></p>
-<p>傻瓜教程，基本没什么坑</p>
-]]></content>
-      <categories>
-        <category>GPT-SoVITS</category>
-      </categories>
-      <tags>
-        <tag>GPT-SoVITS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>anaconda</title>
     <url>/anaconda/</url>
     <content><![CDATA[<h2><span id="1anaconda下载">1.anaconda下载</span></h2><p>下载路径<a href="https://www.anaconda.com/download/">https://www.anaconda.com/download/</a></p>
@@ -165,26 +83,6 @@
       <tags>
         <tag>深度学习</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>机器学习</title>
-    <url>/camera/</url>
-    <content><![CDATA[<h1><span id></span></h1><p>损失函数：用来<strong>估量模型的预测值f(x)与真实值Y的不一致程度</strong>，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子</p>
-<p><img src="/camera/1.png"></p>
-<p>前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项</p>
-<p>整个式子表示的意思是<strong>找到使目标函数最小时的θ值</strong></p>
-<p>在深度学习中，我们通常会使用损失函数来计算每个小批次数据上的损失，然后通过对整个数据集的所有损失进行平均，得到代价函数</p>
-<p>梯度下降算法：神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。</p>
-<p>原理：目标函数 J（θ） 关于参数 θ 的梯度将是损失函数（loss function）上升最快的方向。而我们要最小化loss，只需要将参数沿着梯度相反的方向前进一个步长，就可以实现目标函数（loss function）的下降，这个步长η又称为学习速率。</p>
-<p>公式：θ &lt;- θ - η*▽J（θ）    J（θ）是参数的梯度</p>
-<p><a href="https://zhuanlan.zhihu.com/p/31630368">梯度下降法</a></p>
-<p>反向传播算法（Backpropagation，BP算法）</p>
-<p>反向传播算法的推导</p>
-<p><img src="/camera/2.png"></p>
-<p>符号约定</p>
-<p><img src="/camera/3.png"></p>
-<p><img src="/camera/8.png"></p>
-]]></content>
   </entry>
   <entry>
     <title>Docker</title>
@@ -313,6 +211,148 @@
       </tags>
   </entry>
   <entry>
+    <title>GPT-SoVITS(AI拟合)</title>
+    <url>/GPT-SoVITS/</url>
+    <content><![CDATA[<h1><span id="ai拟合语音">AI拟合语音</span></h1><p>鉴于原作者教程及其详细，没什么好说的</p>
+<p>Github 链接：<a href="https://github.com/RVC-Boss/GPT-SoVITS">https://github.com/RVC-Boss/GPT-SoVITS</a></p>
+<p>GPT-SoVITS指南：<a href="https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e">https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e</a></p>
+<p>从github克隆项目之后</p>
+<p>跟着readme.md文档配置环境就行(conda，cuda)</p>
+<p>进入项目文件夹，开启终端</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">conda create -n GPTSoVits python=3.9<br>conda activate GPTSoVits<br>bash install.sh<br></code></pre></td></tr></table></figure>
+
+<p>下载ffmpeg（转语音文件用的）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install ffmpeg<br>sudo apt install libsox-dev<br>conda install -c conda-forge &#x27;ffmpeg&lt;7&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pip install -r requirements.txt<br></code></pre></td></tr></table></figure>
+
+<p>预训练模型下载(实际上跟着GPT-SoVITS指南走就行)</p>
+<p><a href="https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e/dkxgpiy9zb96hob4#nVNhX">https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e/dkxgpiy9zb96hob4#nVNhX</a></p>
+<p><strong>重点：先下载git-lfs</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install git-lfs<br></code></pre></td></tr></table></figure>
+
+<p><strong>运行第一行之后运行第二行</strong></p>
+<p><img src="/GPT-SoVITS/1.png"></p>
+<p>傻瓜教程，基本没什么坑</p>
+]]></content>
+      <categories>
+        <category>GPT-SoVITS</category>
+      </categories>
+      <tags>
+        <tag>GPT-SoVITS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习</title>
+    <url>/camera/</url>
+    <content><![CDATA[<h1><span id></span></h1><p>损失函数：用来<strong>估量模型的预测值f(x)与真实值Y的不一致程度</strong>，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子</p>
+<p><img src="/camera/1.png"></p>
+<p>前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项</p>
+<p>整个式子表示的意思是<strong>找到使目标函数最小时的θ值</strong></p>
+<p>在深度学习中，我们通常会使用损失函数来计算每个小批次数据上的损失，然后通过对整个数据集的所有损失进行平均，得到代价函数</p>
+<p>梯度下降算法：神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。</p>
+<p>原理：目标函数 J（θ） 关于参数 θ 的梯度将是损失函数（loss function）上升最快的方向。而我们要最小化loss，只需要将参数沿着梯度相反的方向前进一个步长，就可以实现目标函数（loss function）的下降，这个步长η又称为学习速率。</p>
+<p>公式：θ &lt;- θ - η*▽J（θ）    J（θ）是参数的梯度</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31630368">梯度下降法</a></p>
+<p>反向传播算法（Backpropagation，BP算法）</p>
+<p>反向传播算法的推导</p>
+<p><img src="/camera/2.png"></p>
+<p>符号约定</p>
+<p><img src="/camera/3.png"></p>
+<p><img src="/camera/8.png"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>GDB_ros2</title>
+    <url>/GDB-ros2/</url>
+    <content><![CDATA[<h1><span id="用gdb运行ros2程序">用GDB运行ros2程序</span></h1><p>1.安装依赖</p>
+<p>本教程参考  <a href="https://getiot.tech/zh/ros2/ros2-debug/">GDB-ros2</a></p>
+<p>这里使用 <strong><a href="https://github.com/pal-robotics/backward_ros">backward_ros</a></strong> 软件包，它是对 <a href="https://github.com/bombela/backward-cpp">backward-cpp</a> 包的 ROS2 封装，可以简单快速地使用 GDB 工具调试 ROS2 程序。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install ros-humble-backward-ros<br></code></pre></td></tr></table></figure>
+
+<p>然后在编译 ROS2 程序时，添加 <code>CMAKE_BUILD_TYPE</code> 编译类型选项参数，可以选择 <code>RelWithDebInfo</code>、<code>Debug</code> 或 <code>Release</code>。对应 CMake 的三种编译选项，其中 <code>Release</code> 模式主要用于发布代码，会忽略调试信息；<code>Debug</code> 模式主要用于调试代码，因为需要生成调试信息，所以时间较长；<code>RelWithDebInfo</code> 则在 <code>Release</code> 模式下生成调试信息，也可以用于调试代码。通常建议使用 <code>RelWithDebInfo</code> 即可。</p>
+<p>colcon 编译命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --cmake-args <span class="hljs-string">&#x27;-DCMAKE_BUILD_TYPE=RelWithDebInfo&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>这里的引号不是必须的，因此也可以写成这样：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
+
+<p>colcon 支持 <code>--symlink-install</code> 选项，作用是工作空间（source）中的文件发生变化时，安装目录（build）的文件也会随着改变。这样在调试的时候会高效一些，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在package.xml里面添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;depend&gt;backward_ros&lt;/depend&gt;<br></code></pre></td></tr></table></figure>
+
+<p>在CMakeLists.txt里面添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">find_package(backward_ros REQUIRED)<br></code></pre></td></tr></table></figure>
+
+<p>如果你想要加快编译速度，可以使用 <code>--parallel-workers</code> 选项开启多个线程并行编译，例如同时启动 5 个线程：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo --parallel-workers 5<br></code></pre></td></tr></table></figure>
+
+
+
+<p>编译完成后，就可以通过 <code>ros2 run</code> 命令带上 <code>--prefix</code> 参数传入 <code>gdb</code> 指令，在 GDB 调试环境中启动 ROS 节点程序。命令语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdb -ex run --args&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
+
+
+
+<p>这里的 <em>package_name</em> 是 ROS 包名，<em>executable_name</em> 是节点程序名。</p>
+<h3><span id="配置-gdb-server">配置 GDB Server</span></h3><p>ROS 中的 GDB 调试方法同样支持 GDB Server 远程调试，只需要修改 <code>--prefix</code> 参数即可，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdbserver localhost:3000&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>有趣的小东西</title>
+    <url>/funny/</url>
+    <content><![CDATA[<h3><span id="有点用的小网站">有点用的小网站</span></h3><p> <a href="https://473328746.wixsite.com/my-site">主页导航网站</a>（需要科学上网，有用但不多）</p>
+<h3><span id="vscode好玩插件">vscode好玩插件</span></h3><h4><span id="1code-gpt帮你联想代码写注释">1.code GPT（帮你联想代码，写注释）</span></h4><p>   <strong>github copilot 代码GPT</strong></p>
+<p>   <strong>TONGYI Lingma  （同等功能）</strong></p>
+<p>   <strong>CodeGeeX （同等功能）</strong></p>
+<h4><span id="2md文件预览">2.MD文件预览</span></h4><p><strong>Markdown Preview Github Styling</strong></p>
+<p><strong>Markdown All in One</strong></p>
+<h4><span id="3滑词翻译">3.滑词翻译</span></h4><p><strong>Code Translate</strong></p>
+<h4><span id="4代码截图">4.代码截图</span></h4><p><strong>CodeSnap</strong></p>
+<h1><span id="安卓模拟器">安卓模拟器</span></h1><h4><span id="麟卓卓鑫"></span></h4><h1><span id="博客pro">博客pro</span></h1><p>本博客用hexo为框架 kira为主题</p>
+<p><a href="https://github.com/ch1ny/kira-hexo">kira-hexo</a></p>
+<h3><span id="美化-添加好玩的玩意">美化-添加好玩的玩意</span></h3><h2><span id="添加鼠标点击爱心效果">● 添加鼠标点击爱心效果</span></h2><p>找到&#x2F;hexo-theme-kira文件夹里面&#x2F;source&#x2F;js 下新建文件 love.js，在 love.js 文件中添加以下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">!<span class="hljs-keyword">function</span>(<span class="hljs-params">e,t,a</span>)&#123;<span class="hljs-keyword">function</span> <span class="hljs-title function_">n</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-title function_">c</span>(<span class="hljs-string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 500%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),<span class="hljs-title function_">o</span>(),<span class="hljs-title function_">r</span>()&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">r</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> e=<span class="hljs-number">0</span>;e&lt;d.<span class="hljs-property">length</span>;e++)d[e].<span class="hljs-property">alpha</span>&lt;=<span class="hljs-number">0</span>?(t.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(d[e].<span class="hljs-property">el</span>),d.<span class="hljs-title function_">splice</span>(e,<span class="hljs-number">1</span>)):(d[e].<span class="hljs-property">y</span>--,d[e].<span class="hljs-property">scale</span>+=<span class="hljs-number">.004</span>,d[e].<span class="hljs-property">alpha</span>-=<span class="hljs-number">.013</span>,d[e].<span class="hljs-property">el</span>.<span class="hljs-property">style</span>.<span class="hljs-property">cssText</span>=<span class="hljs-string">&quot;left:&quot;</span>+d[e].<span class="hljs-property">x</span>+<span class="hljs-string">&quot;px;top:&quot;</span>+d[e].<span class="hljs-property">y</span>+<span class="hljs-string">&quot;px;opacity:&quot;</span>+d[e].<span class="hljs-property">alpha</span>+<span class="hljs-string">&quot;;transform:scale(&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;,&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;) rotate(45deg);background:&quot;</span>+d[e].<span class="hljs-property">color</span>+<span class="hljs-string">&quot;;z-index:99999&quot;</span>);<span class="hljs-title function_">requestAnimationFrame</span>(r)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">o</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> t=<span class="hljs-string">&quot;function&quot;</span>==<span class="hljs-keyword">typeof</span> e.<span class="hljs-property">onclick</span>&amp;&amp;e.<span class="hljs-property">onclick</span>;e.<span class="hljs-property">onclick</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;t&amp;&amp;<span class="hljs-title function_">t</span>(),<span class="hljs-title function_">i</span>(e)&#125;&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">i</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);a.<span class="hljs-property">className</span>=<span class="hljs-string">&quot;heart&quot;</span>,d.<span class="hljs-title function_">push</span>(&#123;<span class="hljs-attr">el</span>:a,<span class="hljs-attr">x</span>:e.<span class="hljs-property">clientX</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">y</span>:e.<span class="hljs-property">clientY</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">scale</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">alpha</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">color</span>:<span class="hljs-title function_">s</span>()&#125;),t.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">c</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;style&quot;</span>);a.<span class="hljs-property">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>;<span class="hljs-keyword">try</span>&#123;a.<span class="hljs-title function_">appendChild</span>(t.<span class="hljs-title function_">createTextNode</span>(e))&#125;<span class="hljs-keyword">catch</span>(t)&#123;a.<span class="hljs-property">styleSheet</span>.<span class="hljs-property">cssText</span>=e&#125;t.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&quot;head&quot;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">s</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span><span class="hljs-string">&quot;rgb(&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;)&quot;</span>&#125;<span class="hljs-keyword">var</span> d=[];e.<span class="hljs-property">requestAnimationFrame</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span> e.<span class="hljs-property">requestAnimationFrame</span>||e.<span class="hljs-property">webkitRequestAnimationFrame</span>||e.<span class="hljs-property">mozRequestAnimationFrame</span>||e.<span class="hljs-property">oRequestAnimationFrame</span>||e.<span class="hljs-property">msRequestAnimationFrame</span>||<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-built_in">setTimeout</span>(e,<span class="hljs-number">1e3</span>/<span class="hljs-number">60</span>)&#125;&#125;(),<span class="hljs-title function_">n</span>()&#125;(<span class="hljs-variable language_">window</span>,<span class="hljs-variable language_">document</span>);<br></code></pre></td></tr></table></figure>
+
+<p>找到&#x2F;hexo-theme-kira文件夹&#x2F;layout&#x2F; 除了layout.ejs外，其他xx.ejs都要加 少一个则不能全覆盖 文件末尾添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/love.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>完成以上操作后，当我们点击鼠标的时候就可以看见爱心的特效了 </p>
+<h3><span id="live2d看板娘">Live2D看板娘</span></h3><p>（入门级）最基础的看板娘，用npm下载插件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">npm install --save hexo-helper-live2d<br></code></pre></td></tr></table></figure>
+
+<p>这个模型数量有限，只能从别人配置好的里面挑</p>
+<p>然后在 hexo 的配置文件<code>_config.yml</code> 中添加如下配置，详细配置可以参考<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">文档</a></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">live2d:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">scriptFrom:</span> <span class="hljs-string">local</span><br>  <span class="hljs-attr">pluginRootPath:</span> <span class="hljs-string">live2dw/</span><br>  <span class="hljs-attr">pluginJsPath:</span> <span class="hljs-string">lib/</span><br>  <span class="hljs-attr">pluginModelPath:</span> <span class="hljs-string">assets/</span><br>  <span class="hljs-attr">tagMode:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">debug:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">model:</span><br>    <span class="hljs-attr">use:</span> <span class="hljs-string">live2d-widget-model-wanko</span><br>  <span class="hljs-attr">display:</span><br>    <span class="hljs-attr">position:</span> <span class="hljs-string">right</span><br>    <span class="hljs-attr">width:</span> <span class="hljs-number">150</span><br>    <span class="hljs-attr">height:</span> <span class="hljs-number">300</span><br>  <span class="hljs-attr">mobile:</span><br>    <span class="hljs-attr">show:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">react:</span><br>    <span class="hljs-attr">opacity:</span> <span class="hljs-number">0.7</span><br></code></pre></td></tr></table></figure>
+
+<h3><span id="进阶-自定义看板娘">进阶 自定义看板娘</span></h3><p><a href="https://github.com/stevenjoezhang/live2d-widget%EF%BC%88%E8%BF%99%E4%B8%AA%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%88%91%E7%94%A8%E7%9A%84%E8%BF%99%E4%B8%AA%EF%BC%89">https://github.com/stevenjoezhang/live2d-widget（这个是自定义模型，我用的这个）</a></p>
+<p>自己找自己想要的模型文件，自定义自己想要的看板娘</p>
+<p>剩下自己琢磨去，问就是我也忘了，反正挺麻烦的</p>
+<h3><span id="动态线条背景">动态线条背景</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;script type=&quot;text/javascript&quot;<br>color=&quot;255,192,203&quot; opacity=&#x27;1.0&#x27; zIndex=&quot;-2&quot; count=&quot;750&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>zIndex表示在图层在最下层</p>
+<p>count 代表线条的数量</p>
+<h3><span id="搜索栏">搜索栏</span></h3><p>我忘了</p>
+]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
     <title>git</title>
     <url>/git/</url>
     <content><![CDATA[<h3><span id="安装git">安装git</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt-get install git<br></code></pre></td></tr></table></figure>
@@ -396,6 +436,51 @@
       </tags>
   </entry>
   <entry>
+    <title>模型转换</title>
+    <url>/model-change/</url>
+    <content><![CDATA[<p><strong>模型转换：</strong></p>
+<p>1.yolov8训练出来的best.pt模型文件转onnx</p>
+<p>这里比较简单，yolov8官方有一个pip包，里面可以用终端指令</p>
+<p>pip install ultralytics（快速安装）</p>
+<p>或者:</p>
+<p>1.下载源码git clone </p>
+<p><a href="https://github.com/ultralytics/ultralytics.git">https://github.com/ultralytics/ultralytics.git</a></p>
+<p>2.安装python包 pip install -r requirements.txt</p>
+<p>3.在ultralytics-main的文件目录里，运行以下命令pip install -e .</p>
+<p>测试是否安装成功：python文件运行以下指令</p>
+<p>import ultralytics</p>
+<p>ultralytics.checks()</p>
+<p>反馈以下结果，则说明ultralytics安装成功</p>
+<p><img src="/model-change/1.png"></p>
+<p>进入环境，打开一个终端</p>
+<p>输入指令：yolo mode&#x3D;export model&#x3D;&#x2F;home&#x2F;sweet&#x2F;vs&#x2F;yolov8&#x2F;runs&#x2F;detect&#x2F;train2&#x2F;weights&#x2F;best.pt </p>
+<p>format&#x3D;onnx device&#x3D;0</p>
+<p>其中 mode是模式</p>
+<p>model：模型路径</p>
+<p>format：导出的格式</p>
+<p>device：设备，0为电脑上第一张显卡，cpu则用cpu导出</p>
+<p>你也可以用python，在xx.py文件里</p>
+<p><img src="/model-change/2.png" alt="image-20231203220001731"></p>
+<p>只需要在export里面继续加下面的键值就行</p>
+<p><img src="/model-change/3.png" alt="image-20231203220033302"></p>
+<h3><span id="onnx转ir模型">onnx转IR模型</span></h3><p>安装openvino python版即可</p>
+<p>pip install openvino</p>
+<p>找到安装openvino的地方，寻找mo_onnx.py</p>
+<p>打开终端：输入ython3 mo_onnx.py –input_model &lt;onnx模型路径&gt; –output_dir &lt;IR模型输出路径&gt; –input_shape [输入形状] –compress_to_fp16</p>
+<p>–input_shape 在不知道输入形状的情况下用，可以用netron来看,从下面INPUTS可知,data_type是FP16，shape是[1,3,640,640]</p>
+<p><img src="/model-change/4.png" alt="image-20231203220136878"></p>
+<p><img src="/model-change/5.png" alt="image-20231203220236436"></p>
+<p><em><strong>*–mean_values*</strong></em> 参数指定输入图像各通道的均值</p>
+<p><em><strong>*–scale_values*</strong></em> 参数指定输入图像各通道的缩放因子</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>工业相机（mindvision）</title>
     <url>/linuxSDK/</url>
     <content><![CDATA[<h3><span id="去官网下载mindvision的sdk安装包">去官网下载mindvision的SDK安装包</span></h3><p>下载路径：<a href="https://www.mindvision.com.cn/category/software/page/3/">https://www.mindvision.com.cn/category/software/page/3/</a></p>
@@ -425,6 +510,51 @@
       </categories>
       <tags>
         <tag>Mindvision</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>openvino（ubuntu）+fmt安装教程</title>
+    <url>/openvino/</url>
+    <content><![CDATA[<h3><span id="openvino下载">OpenVINO下载</span></h3><p>首先：你电脑的CPU是Intel的（openvino是英特尔发行的）</p>
+<p>前往官网：<a href="https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?ENVIRONMENT=RUNTIME&OP_SYSTEM=LINUX&VERSION=v_2023_0&DISTRIBUTION=ARCHIVE">openvino下载连接</a></p>
+<p>选择以下安装</p>
+<p><img src="/openvino/1.png"></p>
+<p>点击下载文档，选择适合你电脑ubuntu版本的归档文件</p>
+<p><img src="/openvino/2.png"></p>
+<p>来到安装说明：<a href="https://docs.openvino.ai/2023.0/openvino_docs_install_guides_installing_openvino_from_archive_linux.html">https://docs.openvino.ai/2023.0/openvino_docs_install_guides_installing_openvino_from_archive_linux.html</a></p>
+<p>你也可以不用看这个安装说明</p>
+<p>将openvino解压到&#x2F;home目录下面</p>
+<p>安装依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /opt/intel/openvino_2023.0.0<br>sudo -E ./install_dependencies/install_openvino_dependencies.sh<br></code></pre></td></tr></table></figure>
+
+<p>为简单起见，创建符号链接很有用，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /opt/intel<br>sudo ln -s openvino_2023.0.0 openvino_2023<br></code></pre></td></tr></table></figure>
+
+<p>2.配置环境</p>
+<p>打开终端：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo gedit ~/.bashrc<br></code></pre></td></tr></table></figure>
+
+<p>在最后一行添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">source /opt/intel/openvino_2023/setupvars.sh<br></code></pre></td></tr></table></figure>
+
+<p>这样每次打开终端都会自己配置openvino环境</p>
+<h3><span id="fmt库下载">fmt库下载</span></h3><p>fmt-8.1.1下载地址 <a href="https://fmt.dev/8.1.1/index.html">https://fmt.dev/8.1.1/index.html</a></p>
+<p>选择Download</p>
+<p><img src="/openvino/3.png"></p>
+<p>下载完解压，然后进入fmt目录打开终端</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">mkdir build<br>cd build<br>cmake -DBUILD_SHARED_LIBS=ON ..<br>make -j8<br>sudo make install<br></code></pre></td></tr></table></figure>
+
+<h3><span id="修改openvino路径">修改openvino路径</span></h3><p>打开CMakeLists.txt</p>
+<p>找到openvino推理引擎头文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">include_directories(<br>    #OpenVINO推理引擎的头文件<br>    ~/intel/openvino_2023.0.0/runtime/include/<br>    ~/intel/openvino_2023.0.0/runtime/include/ie/<br>    ~/intel/openvino_2023.0.0/runtime/include/ngraph/<br>    ~/intel/openvino_2023.0.0/runtime/include/openvino/<br>    <br>)<br><br>set(InferenceEngine_DIR &quot;~/intel/openvino_2023.0.0/runtime/cmake&quot;)<br>find_package(InferenceEngine)<br></code></pre></td></tr></table></figure>
+
+<p>一般来说，这样就能运行了，二般的情况我就不知道了</p>
+<h3><span id="源码编译openvino">源码编译openvino</span></h3>]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -545,42 +675,50 @@
       </tags>
   </entry>
   <entry>
-    <title>模型转换</title>
-    <url>/model-change/</url>
-    <content><![CDATA[<p><strong>模型转换：</strong></p>
-<p>1.yolov8训练出来的best.pt模型文件转onnx</p>
-<p>这里比较简单，yolov8官方有一个pip包，里面可以用终端指令</p>
-<p>pip install ultralytics（快速安装）</p>
-<p>或者:</p>
-<p>1.下载源码git clone </p>
-<p><a href="https://github.com/ultralytics/ultralytics.git">https://github.com/ultralytics/ultralytics.git</a></p>
-<p>2.安装python包 pip install -r requirements.txt</p>
-<p>3.在ultralytics-main的文件目录里，运行以下命令pip install -e .</p>
-<p>测试是否安装成功：python文件运行以下指令</p>
-<p>import ultralytics</p>
-<p>ultralytics.checks()</p>
-<p>反馈以下结果，则说明ultralytics安装成功</p>
-<p><img src="/model-change/1.png"></p>
-<p>进入环境，打开一个终端</p>
-<p>输入指令：yolo mode&#x3D;export model&#x3D;&#x2F;home&#x2F;sweet&#x2F;vs&#x2F;yolov8&#x2F;runs&#x2F;detect&#x2F;train2&#x2F;weights&#x2F;best.pt </p>
-<p>format&#x3D;onnx device&#x3D;0</p>
-<p>其中 mode是模式</p>
-<p>model：模型路径</p>
-<p>format：导出的格式</p>
-<p>device：设备，0为电脑上第一张显卡，cpu则用cpu导出</p>
-<p>你也可以用python，在xx.py文件里</p>
-<p><img src="/model-change/2.png" alt="image-20231203220001731"></p>
-<p>只需要在export里面继续加下面的键值就行</p>
-<p><img src="/model-change/3.png" alt="image-20231203220033302"></p>
-<h3><span id="onnx转ir模型">onnx转IR模型</span></h3><p>安装openvino python版即可</p>
-<p>pip install openvino</p>
-<p>找到安装openvino的地方，寻找mo_onnx.py</p>
-<p>打开终端：输入ython3 mo_onnx.py –input_model &lt;onnx模型路径&gt; –output_dir &lt;IR模型输出路径&gt; –input_shape [输入形状] –compress_to_fp16</p>
-<p>–input_shape 在不知道输入形状的情况下用，可以用netron来看,从下面INPUTS可知,data_type是FP16，shape是[1,3,640,640]</p>
-<p><img src="/model-change/4.png" alt="image-20231203220136878"></p>
-<p><img src="/model-change/5.png" alt="image-20231203220236436"></p>
-<p><em><strong>*–mean_values*</strong></em> 参数指定输入图像各通道的均值</p>
-<p><em><strong>*–scale_values*</strong></em> 参数指定输入图像各通道的缩放因子</p>
+    <title>pytorch</title>
+    <url>/pytorch/</url>
+    <content><![CDATA[<h2><span id="1安装cuda">1.安装CUDA</span></h2><p>首先确认你的电脑是否有GPU</p>
+<p>终端输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nvidia-smi<br></code></pre></td></tr></table></figure>
+
+<p>查看驱动信息,查看叫CUDA Version的</p>
+<p><img src="/pytorch/1.png"></p>
+<p>进官网下载CUDA</p>
+<p>下载地址：<a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local">https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=WSL-Ubuntu&amp;target_version=2.0&amp;target_type=deb_local</a></p>
+<p>你也可以在终端下载(此安装包4个G)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install nvidia-cuda-toolkit<br></code></pre></td></tr></table></figure>
+
+<p>下载完之后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nvcc -V<br></code></pre></td></tr></table></figure>
+
+<p>查看CUDA版本（我这边是11.5）</p>
+<p><img src="/pytorch/2.png"></p>
+<p>接下来去到pytorch官网</p>
+<p>地址：<a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
+<p><img src="/pytorch/3.png"></p>
+<p>打开你anaconda创建的虚拟环境</p>
+<p>终端输入:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">conda activate yolov5<br></code></pre></td></tr></table></figure>
+
+<p>进入环境后将上面框里的指令粘贴到终端里面</p>
+<p>pytorch下载可能会超时导致下载失败，通过以下指令修改</p>
+<p>下面的指令将连接超时修改成40s，读取超时的时间修改为100s</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">conda config --set remote_connect_timeout_secs 40<br>conda config --set remote_read_timeout_secs 100<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后，在虚拟环境中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">python<br></code></pre></td></tr></table></figure>
+
+<p>进入python，然后导入pytorch，验证是否安装正确</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import torch<br>torch.cuda.is_available()<br></code></pre></td></tr></table></figure>
+
+<p>如果输出True，则成功安装</p>
+<p><img src="/pytorch/4.png"></p>
+<h2><span id="2将环境导入pycharm">2.将环境导入pycharm</span></h2><p>打开pycharm（<a href="https://blog.csdn.net/m0_37758063/article/details/111573552">ubuntu如何下载pycharm</a>）</p>
+<p><img src="/pytorch/5.png"></p>
+<p><img src="/pytorch/6.png"></p>
+<p><img src="/pytorch/7.png"></p>
+<p>成功添加则右下角的解释器python版本后面会有环境名</p>
+<p><img src="/pytorch/8.png"></p>
 ]]></content>
       <categories>
         <category>深度学习</category>
@@ -630,46 +768,6 @@
       </tags>
   </entry>
   <entry>
-    <title>有趣的小东西</title>
-    <url>/funny/</url>
-    <content><![CDATA[<h3><span id="有点用的小网站">有点用的小网站</span></h3><p> <a href="https://473328746.wixsite.com/my-site">主页导航网站</a>（需要科学上网，有用但不多）</p>
-<h3><span id="vscode好玩插件">vscode好玩插件</span></h3><h4><span id="1code-gpt帮你联想代码写注释">1.code GPT（帮你联想代码，写注释）</span></h4><p>   <strong>github copilot 代码GPT</strong></p>
-<p>   <strong>TONGYI Lingma  （同等功能）</strong></p>
-<p>   <strong>CodeGeeX （同等功能）</strong></p>
-<h4><span id="2md文件预览">2.MD文件预览</span></h4><p><strong>Markdown Preview Github Styling</strong></p>
-<p><strong>Markdown All in One</strong></p>
-<h4><span id="3滑词翻译">3.滑词翻译</span></h4><p><strong>Code Translate</strong></p>
-<h4><span id="4代码截图">4.代码截图</span></h4><p><strong>CodeSnap</strong></p>
-<h1><span id="安卓模拟器">安卓模拟器</span></h1><h4><span id="麟卓卓鑫"></span></h4><h1><span id="博客pro">博客pro</span></h1><p>本博客用hexo为框架 kira为主题</p>
-<p><a href="https://github.com/ch1ny/kira-hexo">kira-hexo</a></p>
-<h3><span id="美化-添加好玩的玩意">美化-添加好玩的玩意</span></h3><h2><span id="添加鼠标点击爱心效果">● 添加鼠标点击爱心效果</span></h2><p>找到&#x2F;hexo-theme-kira文件夹里面&#x2F;source&#x2F;js 下新建文件 love.js，在 love.js 文件中添加以下代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">!<span class="hljs-keyword">function</span>(<span class="hljs-params">e,t,a</span>)&#123;<span class="hljs-keyword">function</span> <span class="hljs-title function_">n</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-title function_">c</span>(<span class="hljs-string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 500%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),<span class="hljs-title function_">o</span>(),<span class="hljs-title function_">r</span>()&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">r</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> e=<span class="hljs-number">0</span>;e&lt;d.<span class="hljs-property">length</span>;e++)d[e].<span class="hljs-property">alpha</span>&lt;=<span class="hljs-number">0</span>?(t.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(d[e].<span class="hljs-property">el</span>),d.<span class="hljs-title function_">splice</span>(e,<span class="hljs-number">1</span>)):(d[e].<span class="hljs-property">y</span>--,d[e].<span class="hljs-property">scale</span>+=<span class="hljs-number">.004</span>,d[e].<span class="hljs-property">alpha</span>-=<span class="hljs-number">.013</span>,d[e].<span class="hljs-property">el</span>.<span class="hljs-property">style</span>.<span class="hljs-property">cssText</span>=<span class="hljs-string">&quot;left:&quot;</span>+d[e].<span class="hljs-property">x</span>+<span class="hljs-string">&quot;px;top:&quot;</span>+d[e].<span class="hljs-property">y</span>+<span class="hljs-string">&quot;px;opacity:&quot;</span>+d[e].<span class="hljs-property">alpha</span>+<span class="hljs-string">&quot;;transform:scale(&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;,&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;) rotate(45deg);background:&quot;</span>+d[e].<span class="hljs-property">color</span>+<span class="hljs-string">&quot;;z-index:99999&quot;</span>);<span class="hljs-title function_">requestAnimationFrame</span>(r)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">o</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> t=<span class="hljs-string">&quot;function&quot;</span>==<span class="hljs-keyword">typeof</span> e.<span class="hljs-property">onclick</span>&amp;&amp;e.<span class="hljs-property">onclick</span>;e.<span class="hljs-property">onclick</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;t&amp;&amp;<span class="hljs-title function_">t</span>(),<span class="hljs-title function_">i</span>(e)&#125;&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">i</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);a.<span class="hljs-property">className</span>=<span class="hljs-string">&quot;heart&quot;</span>,d.<span class="hljs-title function_">push</span>(&#123;<span class="hljs-attr">el</span>:a,<span class="hljs-attr">x</span>:e.<span class="hljs-property">clientX</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">y</span>:e.<span class="hljs-property">clientY</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">scale</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">alpha</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">color</span>:<span class="hljs-title function_">s</span>()&#125;),t.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">c</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;style&quot;</span>);a.<span class="hljs-property">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>;<span class="hljs-keyword">try</span>&#123;a.<span class="hljs-title function_">appendChild</span>(t.<span class="hljs-title function_">createTextNode</span>(e))&#125;<span class="hljs-keyword">catch</span>(t)&#123;a.<span class="hljs-property">styleSheet</span>.<span class="hljs-property">cssText</span>=e&#125;t.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&quot;head&quot;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">s</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span><span class="hljs-string">&quot;rgb(&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;)&quot;</span>&#125;<span class="hljs-keyword">var</span> d=[];e.<span class="hljs-property">requestAnimationFrame</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span> e.<span class="hljs-property">requestAnimationFrame</span>||e.<span class="hljs-property">webkitRequestAnimationFrame</span>||e.<span class="hljs-property">mozRequestAnimationFrame</span>||e.<span class="hljs-property">oRequestAnimationFrame</span>||e.<span class="hljs-property">msRequestAnimationFrame</span>||<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-built_in">setTimeout</span>(e,<span class="hljs-number">1e3</span>/<span class="hljs-number">60</span>)&#125;&#125;(),<span class="hljs-title function_">n</span>()&#125;(<span class="hljs-variable language_">window</span>,<span class="hljs-variable language_">document</span>);<br></code></pre></td></tr></table></figure>
-
-<p>找到&#x2F;hexo-theme-kira文件夹&#x2F;layout&#x2F; 除了layout.ejs外，其他xx.ejs都要加 少一个则不能全覆盖 文件末尾添加以下代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/love.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>完成以上操作后，当我们点击鼠标的时候就可以看见爱心的特效了 </p>
-<h3><span id="live2d看板娘">Live2D看板娘</span></h3><p>（入门级）最基础的看板娘，用npm下载插件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">npm install --save hexo-helper-live2d<br></code></pre></td></tr></table></figure>
-
-<p>这个模型数量有限，只能从别人配置好的里面挑</p>
-<p>然后在 hexo 的配置文件<code>_config.yml</code> 中添加如下配置，详细配置可以参考<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">文档</a></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">live2d:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">scriptFrom:</span> <span class="hljs-string">local</span><br>  <span class="hljs-attr">pluginRootPath:</span> <span class="hljs-string">live2dw/</span><br>  <span class="hljs-attr">pluginJsPath:</span> <span class="hljs-string">lib/</span><br>  <span class="hljs-attr">pluginModelPath:</span> <span class="hljs-string">assets/</span><br>  <span class="hljs-attr">tagMode:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">debug:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">model:</span><br>    <span class="hljs-attr">use:</span> <span class="hljs-string">live2d-widget-model-wanko</span><br>  <span class="hljs-attr">display:</span><br>    <span class="hljs-attr">position:</span> <span class="hljs-string">right</span><br>    <span class="hljs-attr">width:</span> <span class="hljs-number">150</span><br>    <span class="hljs-attr">height:</span> <span class="hljs-number">300</span><br>  <span class="hljs-attr">mobile:</span><br>    <span class="hljs-attr">show:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">react:</span><br>    <span class="hljs-attr">opacity:</span> <span class="hljs-number">0.7</span><br></code></pre></td></tr></table></figure>
-
-<h3><span id="进阶-自定义看板娘">进阶 自定义看板娘</span></h3><p><a href="https://github.com/stevenjoezhang/live2d-widget%EF%BC%88%E8%BF%99%E4%B8%AA%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%88%91%E7%94%A8%E7%9A%84%E8%BF%99%E4%B8%AA%EF%BC%89">https://github.com/stevenjoezhang/live2d-widget（这个是自定义模型，我用的这个）</a></p>
-<p>自己找自己想要的模型文件，自定义自己想要的看板娘</p>
-<p>剩下自己琢磨去，问就是我也忘了，反正挺麻烦的</p>
-<h3><span id="动态线条背景">动态线条背景</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;script type=&quot;text/javascript&quot;<br>color=&quot;255,192,203&quot; opacity=&#x27;1.0&#x27; zIndex=&quot;-2&quot; count=&quot;750&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;<br></code></pre></td></tr></table></figure>
-
-<p>zIndex表示在图层在最下层</p>
-<p>count 代表线条的数量</p>
-<h3><span id="搜索栏">搜索栏</span></h3><p>我忘了</p>
-]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
     <title>树莓派开机自启动脚本</title>
     <url>/respberry-pro-max/</url>
     <content><![CDATA[<p>制作一个脚本：</p>
@@ -702,51 +800,6 @@
       </categories>
       <tags>
         <tag>raspberry</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>openvino（ubuntu）+fmt安装教程</title>
-    <url>/openvino/</url>
-    <content><![CDATA[<h3><span id="openvino下载">OpenVINO下载</span></h3><p>首先：你电脑的CPU是Intel的（openvino是英特尔发行的）</p>
-<p>前往官网：<a href="https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?ENVIRONMENT=RUNTIME&OP_SYSTEM=LINUX&VERSION=v_2023_0&DISTRIBUTION=ARCHIVE">openvino下载连接</a></p>
-<p>选择以下安装</p>
-<p><img src="/openvino/1.png"></p>
-<p>点击下载文档，选择适合你电脑ubuntu版本的归档文件</p>
-<p><img src="/openvino/2.png"></p>
-<p>来到安装说明：<a href="https://docs.openvino.ai/2023.0/openvino_docs_install_guides_installing_openvino_from_archive_linux.html">https://docs.openvino.ai/2023.0/openvino_docs_install_guides_installing_openvino_from_archive_linux.html</a></p>
-<p>你也可以不用看这个安装说明</p>
-<p>将openvino解压到&#x2F;home目录下面</p>
-<p>安装依赖：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /opt/intel/openvino_2023.0.0<br>sudo -E ./install_dependencies/install_openvino_dependencies.sh<br></code></pre></td></tr></table></figure>
-
-<p>为简单起见，创建符号链接很有用，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /opt/intel<br>sudo ln -s openvino_2023.0.0 openvino_2023<br></code></pre></td></tr></table></figure>
-
-<p>2.配置环境</p>
-<p>打开终端：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo gedit ~/.bashrc<br></code></pre></td></tr></table></figure>
-
-<p>在最后一行添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">source /opt/intel/openvino_2023/setupvars.sh<br></code></pre></td></tr></table></figure>
-
-<p>这样每次打开终端都会自己配置openvino环境</p>
-<h3><span id="fmt库下载">fmt库下载</span></h3><p>fmt-8.1.1下载地址 <a href="https://fmt.dev/8.1.1/index.html">https://fmt.dev/8.1.1/index.html</a></p>
-<p>选择Download</p>
-<p><img src="/openvino/3.png"></p>
-<p>下载完解压，然后进入fmt目录打开终端</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">mkdir build<br>cd build<br>cmake -DBUILD_SHARED_LIBS=ON ..<br>make -j8<br>sudo make install<br></code></pre></td></tr></table></figure>
-
-<h3><span id="修改openvino路径">修改openvino路径</span></h3><p>打开CMakeLists.txt</p>
-<p>找到openvino推理引擎头文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">include_directories(<br>    #OpenVINO推理引擎的头文件<br>    ~/intel/openvino_2023.0.0/runtime/include/<br>    ~/intel/openvino_2023.0.0/runtime/include/ie/<br>    ~/intel/openvino_2023.0.0/runtime/include/ngraph/<br>    ~/intel/openvino_2023.0.0/runtime/include/openvino/<br>    <br>)<br><br>set(InferenceEngine_DIR &quot;~/intel/openvino_2023.0.0/runtime/cmake&quot;)<br>find_package(InferenceEngine)<br></code></pre></td></tr></table></figure>
-
-<p>一般来说，这样就能运行了，二般的情况我就不知道了</p>
-<h3><span id="源码编译openvino">源码编译openvino</span></h3>]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -808,180 +861,6 @@
       <tags>
         <tag>robomaster</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ros2</title>
-    <url>/ros2/</url>
-    <content><![CDATA[<h1><span id="ros2教程">ros2教程</span></h1><h3><span id="视频教程鱼香ros">视频教程：鱼香ros</span></h3><p><a href="https://www.bilibili.com/video/BV1gr4y1Q7j5/?spm_id_from=333.337.search-card.all.click&vd_source=91aba6d20c3e8f66bdd946d639e31d4b">Bilibili链接</a></p>
-<iframe src="https://player.bilibili.com/player.html?bvid=BV1gr4y1Q7j5&page=1&as_wide=1&high_quality=1&danmaku=1" style="width: 62em; height: 35em;" allowfullscreen="allowfullscreen" width="100%" height="100%" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
-
-
-
-<h3><span id="对应文档">对应文档：</span></h3><p><a href="https://fishros.com/d2lros2/#/">鱼香ros2</a>：<a href="https://fishros.com/d2lros2/#/">https://fishros.com/d2lros2/#/</a></p>
-<h1><span id="一些奇怪的问题">一些奇怪的问题</span></h1><p><a href="https://blog.csdn.net/littleRpl/article/details/92626436">swap空间不足导致报错</a></p>
-<p><a href="https://blog.csdn.net/donaldsy/article/details/107482368">彻底解决【“curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused”】错误</a></p>
-<p><a href="https://getiot.tech/zh/ros2/ros2-debug/">ROS2 调试方法</a></p>
-<p><a href="https://candy-tuberose-668.notion.site/b844421402164673ae1603fcbf46c09e?pvs=4">ros2自启动脚本</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Ubuntu系统安装22.04版本</title>
-    <url>/ubuntu/</url>
-    <content><![CDATA[<h1><span id="安装前准备">安装前准备</span></h1><p>硬件：U盘（不要低于16G）</p>
-<p>软件：下载rufus（制作U盘启动盘）<a href="https://github.com/pbatard/rufus/releases/download/v4.0/rufus-4.0.exe">rufus下载地址</a></p>
-<p>​			下载ubuntu22.04<a href="https://cn.ubuntu.com/download/desktop">镜像文件</a></p>
-<h2><span id="1给ubuntu系统分配空间">1.给ubuntu系统分配空间</span></h2><p>计算机——管理——磁盘管理(win11在开始那里右键就能找到磁盘管理)</p>
-<p>需要压缩两个盘</p>
-<p><img src="/ubuntu/1.png" alt="1"></p>
-<p>由于我想在e盘安装ubuntu；则在不需要的盘上右击，选择压缩卷，一个压1G&#x2F;512MB；</p>
-<p><img src="/ubuntu/2.png"></p>
-<p>如果你需求比较大，我建议你多压一点，本人电脑上ubuntu系统300G，扩容很麻烦！！</p>
-<p><img src="/ubuntu/3.png" alt="3"></p>
-<p>然后新建简单卷</p>
-<p><img src="/ubuntu/21.png"></p>
-<p>想给多大空间自己给，建议100G以上，我给了300G</p>
-<p><img src="/ubuntu/22.png"></p>
-<p>一路enter</p>
-<p><img src="/ubuntu/23.png"></p>
-<p><img src="/ubuntu/24.png"></p>
-<p>最后要和下图一样</p>
-<p><img src="/ubuntu/33.png"></p>
-<h2><span id="2将ubuntu镜像塞到启动盘里面制成系统盘">2.将ubuntu镜像塞到启动盘里面制成系统盘</span></h2><p>将准备好的u盘插在电脑上，打开刚刚下载的rufus</p>
-<p><img src="/ubuntu/4.png" alt="4"></p>
-<p><img src="/ubuntu/5.png"></p>
-<p><img src="/ubuntu/6.png"></p>
-<h2><span id="3进入ubuntu系统">3.进入ubuntu系统</span></h2><p>通过BIOS进入系统盘。<br>首先：要知道自己电脑的型号，如：联想、华硕、神州等。<br>再者：上网查找自己电脑进入BIOS：如：联想电脑如何进入BIOS（注意：有的电脑品牌，笔记本和台式机进入BIOS的方式不一样，如联想台式进入BIOS按F1，笔记本是按Fn+F2，如果找不到就瞎几把按,从F1按到F12）。<br>之后：关闭电脑，在开机界面出来时，一直连续点击进入BIOS的快捷键。<br>进入BIOS后：将”安全启动“关闭，另外，将u盘设置为开机启动项（启动项哪里，可能会出现ubuntu或usb等，将其置顶，保存并退出）；若出现ubuntu，则直接点击enter键即可；若不是，则重新设置开机启动项（换成其他的，总之不会是window那个选项）。</p>
-<p>选择UEFI：xxx这个是U盘</p>
-<p><img src="/ubuntu/25.jpg"></p>
-<p>选择第二个&#x2F;第一个也行</p>
-<p><img src="/ubuntu/sweet/hexo/blog/source/_posts/ubuntu/26.jpg" alt="26"></p>
-<p>然后等待开机</p>
-<h2><span id="4安装ubuntu系统">4.安装ubuntu系统</span></h2><p><img src="/ubuntu/7.png"></p>
-<p>中文也行，也可以不改</p>
-<p><img src="/ubuntu/28.png"></p>
-<p><img src="/ubuntu/34.jpg"></p>
-<p>选正常安装也行</p>
-<p><img src="/ubuntu/29.png"></p>
-<p><img src="/ubuntu/30.png"></p>
-<p><img src="/ubuntu/31.png"></p>
-<p>千万别弄错地方了，不然你将损失你那个盘里的所有东西</p>
-<p><img src="/ubuntu/32.png"></p>
-<p><img src="/ubuntu/14.png"></p>
-<p><img src="/ubuntu/15.png"></p>
-<p>接下来命名用户名字（用英文（好像也用不了中文））密码设简单的，不然你会后悔的</p>
-<p>然后等待安装完毕，重启电脑，即可进入ubuntu系统</p>
-]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pytorch</title>
-    <url>/pytorch/</url>
-    <content><![CDATA[<h2><span id="1安装cuda">1.安装CUDA</span></h2><p>首先确认你的电脑是否有GPU</p>
-<p>终端输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nvidia-smi<br></code></pre></td></tr></table></figure>
-
-<p>查看驱动信息,查看叫CUDA Version的</p>
-<p><img src="/pytorch/1.png"></p>
-<p>进官网下载CUDA</p>
-<p>下载地址：<a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local">https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=WSL-Ubuntu&amp;target_version=2.0&amp;target_type=deb_local</a></p>
-<p>你也可以在终端下载(此安装包4个G)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install nvidia-cuda-toolkit<br></code></pre></td></tr></table></figure>
-
-<p>下载完之后输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nvcc -V<br></code></pre></td></tr></table></figure>
-
-<p>查看CUDA版本（我这边是11.5）</p>
-<p><img src="/pytorch/2.png"></p>
-<p>接下来去到pytorch官网</p>
-<p>地址：<a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
-<p><img src="/pytorch/3.png"></p>
-<p>打开你anaconda创建的虚拟环境</p>
-<p>终端输入:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">conda activate yolov5<br></code></pre></td></tr></table></figure>
-
-<p>进入环境后将上面框里的指令粘贴到终端里面</p>
-<p>pytorch下载可能会超时导致下载失败，通过以下指令修改</p>
-<p>下面的指令将连接超时修改成40s，读取超时的时间修改为100s</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">conda config --set remote_connect_timeout_secs 40<br>conda config --set remote_read_timeout_secs 100<br></code></pre></td></tr></table></figure>
-
-<p>安装完成后，在虚拟环境中输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">python<br></code></pre></td></tr></table></figure>
-
-<p>进入python，然后导入pytorch，验证是否安装正确</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import torch<br>torch.cuda.is_available()<br></code></pre></td></tr></table></figure>
-
-<p>如果输出True，则成功安装</p>
-<p><img src="/pytorch/4.png"></p>
-<h2><span id="2将环境导入pycharm">2.将环境导入pycharm</span></h2><p>打开pycharm（<a href="https://blog.csdn.net/m0_37758063/article/details/111573552">ubuntu如何下载pycharm</a>）</p>
-<p><img src="/pytorch/5.png"></p>
-<p><img src="/pytorch/6.png"></p>
-<p><img src="/pytorch/7.png"></p>
-<p>成功添加则右下角的解释器python版本后面会有环境名</p>
-<p><img src="/pytorch/8.png"></p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>深度学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vim</title>
-    <url>/vim/</url>
-    <content><![CDATA[<h1><span id="vim基础">vim基础</span></h1><h3><span id="终端输入vim-xx进入命令模式">终端输入vim xx进入命令模式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">touch test.txt<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">vim test.txt<br></code></pre></td></tr></table></figure>
-
-<h3><span id><img src="/vim/1.png" style="zoom:50%;"></span></h3><h3><span id="命令模式为一开始进入-vim-的默认模式在任何模式下键盘输入-esc-会回到这个预设模式中-如果要切换到其它模式使用键盘输入">命令模式为一开始进入 vim 的默认模式，在任何模式下键盘输入: ESC 会回到这个预设模式中。 如果要切换到其它模式使用键盘输入</span></h3><h3><span id="i-切换到插入模式可以输入字符串文字内容">i ：切换到插入模式，可以输入字符串文字内容</span></h3><h3><span id="切换到底线命令模式可以在最底一行输入操作指令">: ：切换到底线命令模式，可以在最底一行输入操作指令</span></h3><h3><span id="v切换到视觉模式可以使用鼠标光标选择文字方便阅读和强调">v：切换到视觉模式，可以使用鼠标光标选择文字，方便阅读和强调</span></h3><h3><span id="x删除游标所在字元">x：删除游标所在字元</span></h3><h2><span id="其他常见指令">其他常见指令</span></h2><h4><span id="enter换行">Enter：换行</span></h4><h4><span id="back-space-删除游标前一个字元">Back Space 删除游标前一个字元</span></h4><h4><span id="del-删除游标后一个字元">Del 删除游标后一个字元</span></h4><h4><span id="方向键-在文档中移动游标">方向键 在文档中移动游标</span></h4><h4><span id="page-upx2fpage-down-上x2f下翻页">Page Up&#x2F;Page Down 上&#x2F;下翻页</span></h4><h2><span id="底线命令模式">底线命令模式</span></h2><h3><span id="键盘输入-就可以进入底线命令模式让我们可以输入指令操作内容-若要离开或是储存离开vim就要透过底线命令模式输入指令-若键盘输入esc会回到命令模式">键盘输入: 就可以进入底线命令模式，让我们可以输入指令操作内容。 若要离开或是储存离开vim就要透过底线命令模式输入指令。 若键盘输入ESC会回到命令模式</span></h3><h3><span id><img src="/vim/2.png" style="zoom:50%;"></span></h3><h2><span id="常见指令">常见指令</span></h2><h3><span id="q-不储存直接离开">:q 不储存直接离开</span></h3><h3><span id="q-不存储强制直接离开有修改但不想储存时">：q! 不存储，强制直接离开（有修改但不想储存时）</span></h3><h3><span id="e-放弃所有修改从上次存储文件记录开始编辑">：e! 放弃所有修改，从上次存储文件记录开始编辑</span></h3><h3><span id="w-存储文档但不离开">：w 存储文档但不离开</span></h3><h3><span id="w-强制存储文档但不离开">：!w 强制存储文档但不离开</span></h3><h3><span id="w-name-储存文档并命名为name但不离开">：w {name} 储存文档并命名为name，但不离开</span></h3><h3><span id="wq-储存并离开">：wq 储存并离开</span></h3><h3><span id="wq-强制储存并离开">：!wq 强制储存并离开</span></h3><h2><span id="可视模式">可视模式</span></h2><h3><span id="在命令模式输入-v-可以进入可视模式使用滑鼠游标选择文字方便阅读和强调键盘输入-esc-会回到命令模式">在命令模式输入 <code>v</code> 可以进入可视模式使用滑鼠游标选择文字，方便阅读和强调，键盘输入 <code>Esc</code> 会回到命令模式。</span></h3><h3><span id><img src="/vim/3.png" style="zoom:50%;"></span></h3><h1><span id="更多常用指令和使用情境">更多常用指令和使用情境</span></h1><p><code>:0</code>：移动到文件的起点<br><code>:&#123;number&#125;</code>：移动到第 {number} 行<br><code>:$</code>：移动到文件最后一行</p>
-<h2><span id="命令模式刪除字元">[命令模式]刪除字元</span></h2><p><code>x</code>：刪除游标所在的字元<br><code>dd</code>：刪除本行<br><code>&#123;n&#125;dd &#123;n&#125;</code>：刪除游标所在的那一行往下数 {n} 行</p>
-<h2><span id="命令模式复制粘贴">[命令模式]复制粘贴</span></h2><p><code>yy</code>：复制游标所在的那一行並放入暂存区<br><code>&#123;n&#125;yy</code>：复制游标所在的那一行往下数 {n} 行并放入暂存区<br><code>p</code>：复制暂存区的內容到游标所在下方<br><code>P</code>：复制暂存区的內容到游标所在上方</p>
-<h2><span id="命令模式复原">[命令模式]复原</span></h2><p><code>u</code>：恢复之前的修改</p>
-<h2><span id="底線命令模式搜尋取代">[底線命令模式]搜尋取代</span></h2><p><code>/&#123;text&#125;</code>：寻找 {text} 字串位于文件位置<br><code>[范围] s/&#123;from&#125;/&#123;to&#125;/g</code>：在范围（1, $ 代表全部文件）中將 {from} 取代为 {to}，<code>/g</code>。 为全部取代。（例如： <code>1, 4 s/name/username/g</code> 为將 1-4 行字串中所有 <code>name</code> 改為 <code>username</code>）</p>
-]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu22.04安装unity</title>
-    <url>/unity/</url>
-    <content><![CDATA[<p>本教程参考博客：<a href="https://blog.csdn.net/AWNUXCVBN/article/details/126456365">在Ubuntu 22.04上安装Unity Hub</a></p>
-<h2><span id="安装unity-hub">安装unity hub</span></h2><p>官网链接：<a href="https://unity.cn/releases">unity</a></p>
-<p>直接从官网下载的deb安装包有问题，打开啥也显示不了</p>
-<p>所以通过链接密钥来下载</p>
-<p>添加 Unity3D 存储库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo sh -c &#x27;echo &quot;deb https://hub.unity3d.com/linux/repos/deb stable main&quot; &gt; /etc/apt/sources.list.d/unityhub.list&#x27;<br></code></pre></td></tr></table></figure>
-
-
-
-<p>添加公共签名密钥</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">wget -qO - https://hub.unity3d.com/linux/keys/public | sudo tee /etc/apt/trusted.gpg.d/unityhub.asc<br></code></pre></td></tr></table></figure>
-
-
-
-<p>安装 Unity Hub</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt update<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install unityhub<br></code></pre></td></tr></table></figure>
-
-
-
-<h3><span id="unity设置中文">Unity设置中文</span></h3><p><img src="/unity/1.png"></p>
-<p><img src="/unity/2.png"></p>
-<p><a href="https://blog.csdn.net/jiafuyong/article/details/101353270">Unity3d设置成中文版</a></p>
-]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
   </entry>
   <entry>
     <title>ubuntu树莓派无屏幕远程连接</title>
@@ -1081,15 +960,136 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu22.04安装unity</title>
+    <url>/unity/</url>
+    <content><![CDATA[<p>本教程参考博客：<a href="https://blog.csdn.net/AWNUXCVBN/article/details/126456365">在Ubuntu 22.04上安装Unity Hub</a></p>
+<h2><span id="安装unity-hub">安装unity hub</span></h2><p>官网链接：<a href="https://unity.cn/releases">unity</a></p>
+<p>直接从官网下载的deb安装包有问题，打开啥也显示不了</p>
+<p>所以通过链接密钥来下载</p>
+<p>添加 Unity3D 存储库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo sh -c &#x27;echo &quot;deb https://hub.unity3d.com/linux/repos/deb stable main&quot; &gt; /etc/apt/sources.list.d/unityhub.list&#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>添加公共签名密钥</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">wget -qO - https://hub.unity3d.com/linux/keys/public | sudo tee /etc/apt/trusted.gpg.d/unityhub.asc<br></code></pre></td></tr></table></figure>
+
+
+
+<p>安装 Unity Hub</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt update<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install unityhub<br></code></pre></td></tr></table></figure>
+
+
+
+<h3><span id="unity设置中文">Unity设置中文</span></h3><p><img src="/unity/1.png"></p>
+<p><img src="/unity/2.png"></p>
+<p><a href="https://blog.csdn.net/jiafuyong/article/details/101353270">Unity3d设置成中文版</a></p>
+]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ros2</title>
+    <url>/ros2/</url>
+    <content><![CDATA[<h1><span id="ros2教程">ros2教程</span></h1><h3><span id="视频教程鱼香ros">视频教程：鱼香ros</span></h3><p><a href="https://www.bilibili.com/video/BV1gr4y1Q7j5/?spm_id_from=333.337.search-card.all.click&vd_source=91aba6d20c3e8f66bdd946d639e31d4b">Bilibili链接</a></p>
+<iframe src="https://player.bilibili.com/player.html?bvid=BV1gr4y1Q7j5&page=1&as_wide=1&high_quality=1&danmaku=1" style="width: 62em; height: 35em;" allowfullscreen="allowfullscreen" width="100%" height="100%" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
+
+
+
+<h3><span id="对应文档">对应文档：</span></h3><p><a href="https://fishros.com/d2lros2/#/">鱼香ros2</a>：<a href="https://fishros.com/d2lros2/#/">https://fishros.com/d2lros2/#/</a></p>
+<h1><span id="一些奇怪的问题">一些奇怪的问题</span></h1><p><a href="https://blog.csdn.net/littleRpl/article/details/92626436">swap空间不足导致报错</a></p>
+<p><a href="https://blog.csdn.net/donaldsy/article/details/107482368">彻底解决【“curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused”】错误</a></p>
+<p><a href="https://getiot.tech/zh/ros2/ros2-debug/">ROS2 调试方法</a></p>
+<p><a href="https://candy-tuberose-668.notion.site/b844421402164673ae1603fcbf46c09e?pvs=4">ros2自启动脚本</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>vim</title>
+    <url>/vim/</url>
+    <content><![CDATA[<h1><span id="vim基础">vim基础</span></h1><h3><span id="终端输入vim-xx进入命令模式">终端输入vim xx进入命令模式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">touch test.txt<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">vim test.txt<br></code></pre></td></tr></table></figure>
+
+<h3><span id><img src="/vim/1.png" style="zoom:50%;"></span></h3><h3><span id="命令模式为一开始进入-vim-的默认模式在任何模式下键盘输入-esc-会回到这个预设模式中-如果要切换到其它模式使用键盘输入">命令模式为一开始进入 vim 的默认模式，在任何模式下键盘输入: ESC 会回到这个预设模式中。 如果要切换到其它模式使用键盘输入</span></h3><h3><span id="i-切换到插入模式可以输入字符串文字内容">i ：切换到插入模式，可以输入字符串文字内容</span></h3><h3><span id="切换到底线命令模式可以在最底一行输入操作指令">: ：切换到底线命令模式，可以在最底一行输入操作指令</span></h3><h3><span id="v切换到视觉模式可以使用鼠标光标选择文字方便阅读和强调">v：切换到视觉模式，可以使用鼠标光标选择文字，方便阅读和强调</span></h3><h3><span id="x删除游标所在字元">x：删除游标所在字元</span></h3><h2><span id="其他常见指令">其他常见指令</span></h2><h4><span id="enter换行">Enter：换行</span></h4><h4><span id="back-space-删除游标前一个字元">Back Space 删除游标前一个字元</span></h4><h4><span id="del-删除游标后一个字元">Del 删除游标后一个字元</span></h4><h4><span id="方向键-在文档中移动游标">方向键 在文档中移动游标</span></h4><h4><span id="page-upx2fpage-down-上x2f下翻页">Page Up&#x2F;Page Down 上&#x2F;下翻页</span></h4><h2><span id="底线命令模式">底线命令模式</span></h2><h3><span id="键盘输入-就可以进入底线命令模式让我们可以输入指令操作内容-若要离开或是储存离开vim就要透过底线命令模式输入指令-若键盘输入esc会回到命令模式">键盘输入: 就可以进入底线命令模式，让我们可以输入指令操作内容。 若要离开或是储存离开vim就要透过底线命令模式输入指令。 若键盘输入ESC会回到命令模式</span></h3><h3><span id><img src="/vim/2.png" style="zoom:50%;"></span></h3><h2><span id="常见指令">常见指令</span></h2><h3><span id="q-不储存直接离开">:q 不储存直接离开</span></h3><h3><span id="q-不存储强制直接离开有修改但不想储存时">：q! 不存储，强制直接离开（有修改但不想储存时）</span></h3><h3><span id="e-放弃所有修改从上次存储文件记录开始编辑">：e! 放弃所有修改，从上次存储文件记录开始编辑</span></h3><h3><span id="w-存储文档但不离开">：w 存储文档但不离开</span></h3><h3><span id="w-强制存储文档但不离开">：!w 强制存储文档但不离开</span></h3><h3><span id="w-name-储存文档并命名为name但不离开">：w {name} 储存文档并命名为name，但不离开</span></h3><h3><span id="wq-储存并离开">：wq 储存并离开</span></h3><h3><span id="wq-强制储存并离开">：!wq 强制储存并离开</span></h3><h2><span id="可视模式">可视模式</span></h2><h3><span id="在命令模式输入-v-可以进入可视模式使用滑鼠游标选择文字方便阅读和强调键盘输入-esc-会回到命令模式">在命令模式输入 <code>v</code> 可以进入可视模式使用滑鼠游标选择文字，方便阅读和强调，键盘输入 <code>Esc</code> 会回到命令模式。</span></h3><h3><span id><img src="/vim/3.png" style="zoom:50%;"></span></h3><h1><span id="更多常用指令和使用情境">更多常用指令和使用情境</span></h1><p><code>:0</code>：移动到文件的起点<br><code>:&#123;number&#125;</code>：移动到第 {number} 行<br><code>:$</code>：移动到文件最后一行</p>
+<h2><span id="命令模式刪除字元">[命令模式]刪除字元</span></h2><p><code>x</code>：刪除游标所在的字元<br><code>dd</code>：刪除本行<br><code>&#123;n&#125;dd &#123;n&#125;</code>：刪除游标所在的那一行往下数 {n} 行</p>
+<h2><span id="命令模式复制粘贴">[命令模式]复制粘贴</span></h2><p><code>yy</code>：复制游标所在的那一行並放入暂存区<br><code>&#123;n&#125;yy</code>：复制游标所在的那一行往下数 {n} 行并放入暂存区<br><code>p</code>：复制暂存区的內容到游标所在下方<br><code>P</code>：复制暂存区的內容到游标所在上方</p>
+<h2><span id="命令模式复原">[命令模式]复原</span></h2><p><code>u</code>：恢复之前的修改</p>
+<h2><span id="底線命令模式搜尋取代">[底線命令模式]搜尋取代</span></h2><p><code>/&#123;text&#125;</code>：寻找 {text} 字串位于文件位置<br><code>[范围] s/&#123;from&#125;/&#123;to&#125;/g</code>：在范围（1, $ 代表全部文件）中將 {from} 取代为 {to}，<code>/g</code>。 为全部取代。（例如： <code>1, 4 s/name/username/g</code> 为將 1-4 行字串中所有 <code>name</code> 改為 <code>username</code>）</p>
+]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu系统安装22.04版本</title>
+    <url>/ubuntu/</url>
+    <content><![CDATA[<h1><span id="安装前准备">安装前准备</span></h1><p>硬件：U盘（不要低于16G）</p>
+<p>软件：下载rufus（制作U盘启动盘）<a href="https://github.com/pbatard/rufus/releases/download/v4.0/rufus-4.0.exe">rufus下载地址</a></p>
+<p>​			下载ubuntu22.04<a href="https://cn.ubuntu.com/download/desktop">镜像文件</a></p>
+<h2><span id="1给ubuntu系统分配空间">1.给ubuntu系统分配空间</span></h2><p>计算机——管理——磁盘管理(win11在开始那里右键就能找到磁盘管理)</p>
+<p>需要压缩两个盘</p>
+<p><img src="/ubuntu/1.png" alt="1"></p>
+<p>由于我想在e盘安装ubuntu；则在不需要的盘上右击，选择压缩卷，一个压1G&#x2F;512MB；</p>
+<p><img src="/ubuntu/2.png"></p>
+<p>如果你需求比较大，我建议你多压一点，本人电脑上ubuntu系统300G，扩容很麻烦！！</p>
+<p><img src="/ubuntu/3.png" alt="3"></p>
+<p>然后新建简单卷</p>
+<p><img src="/ubuntu/21.png"></p>
+<p>想给多大空间自己给，建议100G以上，我给了300G</p>
+<p><img src="/ubuntu/22.png"></p>
+<p>一路enter</p>
+<p><img src="/ubuntu/23.png"></p>
+<p><img src="/ubuntu/24.png"></p>
+<p>最后要和下图一样</p>
+<p><img src="/ubuntu/33.png"></p>
+<h2><span id="2将ubuntu镜像塞到启动盘里面制成系统盘">2.将ubuntu镜像塞到启动盘里面制成系统盘</span></h2><p>将准备好的u盘插在电脑上，打开刚刚下载的rufus</p>
+<p><img src="/ubuntu/4.png" alt="4"></p>
+<p><img src="/ubuntu/5.png"></p>
+<p><img src="/ubuntu/6.png"></p>
+<h2><span id="3进入ubuntu系统">3.进入ubuntu系统</span></h2><p>通过BIOS进入系统盘。<br>首先：要知道自己电脑的型号，如：联想、华硕、神州等。<br>再者：上网查找自己电脑进入BIOS：如：联想电脑如何进入BIOS（注意：有的电脑品牌，笔记本和台式机进入BIOS的方式不一样，如联想台式进入BIOS按F1，笔记本是按Fn+F2，如果找不到就瞎几把按,从F1按到F12）。<br>之后：关闭电脑，在开机界面出来时，一直连续点击进入BIOS的快捷键。<br>进入BIOS后：将”安全启动“关闭，另外，将u盘设置为开机启动项（启动项哪里，可能会出现ubuntu或usb等，将其置顶，保存并退出）；若出现ubuntu，则直接点击enter键即可；若不是，则重新设置开机启动项（换成其他的，总之不会是window那个选项）。</p>
+<p>选择UEFI：xxx这个是U盘</p>
+<p><img src="/ubuntu/25.jpg"></p>
+<p>选择第二个&#x2F;第一个也行</p>
+<p><img src="/ubuntu/sweet/hexo/blog/source/_posts/ubuntu/26.jpg" alt="26"></p>
+<p>然后等待开机</p>
+<h2><span id="4安装ubuntu系统">4.安装ubuntu系统</span></h2><p><img src="/ubuntu/7.png"></p>
+<p>中文也行，也可以不改</p>
+<p><img src="/ubuntu/28.png"></p>
+<p><img src="/ubuntu/34.jpg"></p>
+<p>选正常安装也行</p>
+<p><img src="/ubuntu/29.png"></p>
+<p><img src="/ubuntu/30.png"></p>
+<p><img src="/ubuntu/31.png"></p>
+<p>千万别弄错地方了，不然你将损失你那个盘里的所有东西</p>
+<p><img src="/ubuntu/32.png"></p>
+<p><img src="/ubuntu/14.png"></p>
+<p><img src="/ubuntu/15.png"></p>
+<p>接下来命名用户名字（用英文（好像也用不了中文））密码设简单的，不然你会后悔的</p>
+<p>然后等待安装完毕，重启电脑，即可进入ubuntu系统</p>
+]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>yolov5</title>
     <url>/yolov5/</url>
     <content><![CDATA[
-        <div id="aplayer-FuPyOQeN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-RkNPfpFr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-FuPyOQeN"),
+            element: document.getElementById("aplayer-RkNPfpFr"),
             narrow: false,
             autoplay: false,
             showlrc: false,

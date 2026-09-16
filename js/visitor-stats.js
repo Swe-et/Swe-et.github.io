@@ -5,6 +5,11 @@
   if (!config.enable || !config.endpoint) return;
 
   var visitorKey = 'hongye-anonymous-visitor-v1';
+  var currentVisitorId = '';
+  var sessionId = createVisitorId();
+  var activeDuration = 0;
+  var activeSince = document.visibilityState === 'visible' ? Date.now() : 0;
+  var heartbeatTimer = 0;
 
   function createVisitorId() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
@@ -27,6 +32,38 @@
     } catch (error) {
       return createVisitorId();
     }
+  }
+
+  currentVisitorId = visitorId();
+
+  function durationNow() {
+    return activeDuration + (activeSince ? Date.now() - activeSince : 0);
+  }
+
+  function heartbeatEndpoint() {
+    return config.heartbeatEndpoint || config.endpoint.replace(/\/$/, '') + '/heartbeat';
+  }
+
+  function heartbeat(useBeacon) {
+    var body = JSON.stringify({
+      visitorId: currentVisitorId,
+      sessionId: sessionId,
+      path: location.pathname,
+      durationMs: durationNow()
+    });
+    if (useBeacon && navigator.sendBeacon) {
+      navigator.sendBeacon(heartbeatEndpoint(), new Blob([body], { type: 'text/plain;charset=UTF-8' }));
+      return;
+    }
+    fetch(heartbeatEndpoint(), {
+      method: 'POST', mode: 'cors', credentials: 'omit', cache: 'no-store', keepalive: true,
+      headers: { 'Content-Type': 'application/json' }, body: body
+    }).catch(function () {});
+  }
+
+  function startHeartbeat() {
+    if (heartbeatTimer) return;
+    heartbeatTimer = window.setInterval(function () { heartbeat(false); }, 15000);
   }
 
   function formatLatest(value) {
@@ -81,7 +118,8 @@
         signal: controller.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          visitorId: visitorId(),
+          visitorId: currentVisitorId,
+          sessionId: sessionId,
           path: location.pathname,
           title: document.title.split(' - ')[0],
           referrer: document.referrer
@@ -89,6 +127,7 @@
       });
       if (!response.ok) throw new Error('Visitor service returned ' + response.status);
       render(await response.json());
+      startHeartbeat();
     } catch (error) {
       console.warn('访客统计暂时不可用', error);
       renderError();
@@ -104,4 +143,15 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', schedule, { once: true });
   else schedule();
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') {
+      if (activeSince) activeDuration += Date.now() - activeSince;
+      activeSince = 0;
+      heartbeat(true);
+    } else if (!activeSince) {
+      activeSince = Date.now();
+    }
+  });
+  window.addEventListener('pagehide', function () { heartbeat(true); });
 })();

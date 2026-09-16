@@ -2,50 +2,88 @@
 //const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
 const live2d_path = "/live2d-widget/";
 
-// 封装异步加载资源的方法
+const waifuVersion = "20260916-1";
+let waifuLoading = false;
+
+// 动态脚本必须严格按顺序执行：运行库 -> 组件逻辑。
 function loadExternalResource(url, type) {
 	return new Promise((resolve, reject) => {
-		let tag;
+		const resourceKey = url.split("?")[0];
+		const existing = document.querySelector(`[data-waifu-resource="${resourceKey}"]`);
+		if (existing && existing.dataset.loaded === "true") {
+			resolve(url);
+			return;
+		}
 
-		if (type === "css") {
-			tag = document.createElement("link");
-			tag.rel = "stylesheet";
-			tag.href = url;
+		let tag = existing;
+		let shouldAppend = false;
+		if (!tag) {
+			if (type === "css") {
+				tag = document.createElement("link");
+				tag.rel = "stylesheet";
+				tag.href = url;
+			} else if (type === "js") {
+				tag = document.createElement("script");
+				tag.src = url;
+				tag.async = false;
+			}
+			if (!tag) {
+				reject(new Error(`未知资源类型：${type}`));
+				return;
+			}
+			tag.dataset.waifuResource = resourceKey;
+			shouldAppend = true;
 		}
-		else if (type === "js") {
-			tag = document.createElement("script");
-			tag.src = url;
-		}
-		if (tag) {
-			tag.onload = () => resolve(url);
-			tag.onerror = () => reject(url);
-			document.head.appendChild(tag);
-		}
+
+		const onLoad = () => {
+			tag.dataset.loaded = "true";
+			resolve(url);
+		};
+		const onError = () => {
+			tag.remove();
+			reject(new Error(`资源加载失败：${url}`));
+		};
+		tag.addEventListener("load", onLoad, { once: true });
+		tag.addEventListener("error", onError, { once: true });
+		if (shouldAppend) document.head.appendChild(tag);
 	});
 }
 
-// 首屏完成后再加载模型，避免模型纹理与文章内容争抢带宽。
-function loadWaifuWhenIdle() {
-	if (screen.width < 768) return;
-	Promise.all([
-		loadExternalResource(live2d_path + "waifu.css?v=20260915-3", "css"),
-		loadExternalResource(live2d_path + "live2d.min.js", "js"),
-		loadExternalResource(live2d_path + "waifu-tips.js", "js")
-	]).then(() => {
-		// 配置选项的具体用法见 README.md
-		initWidget({
-			waifuPath: live2d_path + "waifu-tips.json?v=20260915-3",
-			//apiPath: "https://live2d.fghrsh.net/api/",
+async function loadWaifu(attempt = 1) {
+	if (screen.width < 768 || waifuLoading || document.getElementById("waifu-toggle")) return;
+	waifuLoading = true;
+	try {
+		await loadExternalResource(live2d_path + `waifu.css?v=${waifuVersion}`, "css");
+		await loadExternalResource(live2d_path + `live2d.min.js?v=${waifuVersion}`, "js");
+		await loadExternalResource(live2d_path + `waifu-tips.js?v=${waifuVersion}`, "js");
+		if (typeof window.loadlive2d !== "function" || typeof window.initWidget !== "function") {
+			throw new Error("Live2D 组件初始化方法不可用");
+		}
+		window.initWidget({
+			waifuPath: live2d_path + `waifu-tips.json?v=${waifuVersion}`,
 			cdnPath: "/live2d_api/",
 			tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
 		});
-	});
+	} catch (error) {
+		console.warn(`Live2D 第 ${attempt} 次加载失败`, error);
+		waifuLoading = false;
+		if (attempt < 3) setTimeout(() => loadWaifu(attempt + 1), 800 * attempt);
+		return;
+	}
+	waifuLoading = false;
 }
 
-window.addEventListener("load", () => {
-	if ("requestIdleCallback" in window) requestIdleCallback(loadWaifuWhenIdle, { timeout: 1800 });
-	else setTimeout(loadWaifuWhenIdle, 500);
-}, { once: true });
+// DOM 可用后尽快开始；仍让首屏内容优先，但最长只延后 400ms。
+function scheduleWaifuLoad() {
+	if ("requestIdleCallback" in window) requestIdleCallback(() => loadWaifu(), { timeout: 400 });
+	else setTimeout(() => loadWaifu(), 100);
+}
+
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", scheduleWaifuLoad, { once: true });
+} else {
+	scheduleWaifuLoad();
+}
 
 console.log(`
   く__,.ヘヽ.        /  ,ー､ 〉

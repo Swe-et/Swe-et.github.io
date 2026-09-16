@@ -31,8 +31,14 @@
 	margin-left: 0;
 	position: fixed;
 	transform: translateY(3px);
-	transition: transform .3s ease-in-out, bottom 3s ease-in-out;
+	opacity: 1;
+	transition: transform .3s ease-in-out, bottom .8s ease-out, opacity .2s ease-in-out;
 	z-index: 1;
+}
+
+#waifu.waifu-loading {
+	opacity: 0;
+	pointer-events: none;
 }
 
 #waifu:hover {

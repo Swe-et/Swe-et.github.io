@@ -104,7 +104,12 @@
   function loadHistory() {
     try {
       var saved = JSON.parse(sessionStorage.getItem(historyKey) || '[]');
-      if (Array.isArray(saved)) messages = saved.slice(-12);
+      if (Array.isArray(saved)) {
+        messages = saved.filter(function (message) {
+          return message && (message.role === 'user' || message.role === 'assistant') &&
+            typeof message.content === 'string' && message.content.trim() && message.content !== 'undefined';
+        }).slice(-12);
+      }
     } catch (error) {
       messages = [];
     }
@@ -117,7 +122,7 @@
   function addBubble(role, text, extraClass) {
     var bubble = document.createElement('div');
     bubble.className = 'waifu-ai-message ' + role + (extraClass ? ' ' + extraClass : '');
-    bubble.textContent = text;
+    bubble.textContent = typeof text === 'string' ? text : '';
     messageList.appendChild(bubble);
     messageList.scrollTop = messageList.scrollHeight;
     return bubble;
@@ -179,7 +184,7 @@
 
   function showShortReply(text) {
     var tips = document.getElementById('waifu-tips');
-    if (!tips || !text) return;
+    if (!tips || typeof text !== 'string' || !text.trim() || text === 'undefined') return;
     var shortText = text.replace(/\s+/g, ' ').slice(0, 70);
     tips.textContent = shortText + (text.length > 70 ? '…' : '');
     tips.classList.add('waifu-tips-active');

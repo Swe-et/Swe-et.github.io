@@ -3,20 +3,15 @@ import showMessage from "./message.js";
 import randomSelection from "./utils.js";
 import tools from "./tools.js";
 
-function loadWidget(config) {
+async function loadWidget(config) {
     const model = new Model(config);
     localStorage.removeItem("waifu-display");
     sessionStorage.removeItem("waifu-text");
-    document.body.insertAdjacentHTML("beforeend", `<div id="waifu">
+    document.body.insertAdjacentHTML("beforeend", `<div id="waifu" class="waifu-loading" aria-busy="true">
             <div id="waifu-tips"></div>
             <canvas id="live2d" width="800" height="800"></canvas>
             <div id="waifu-tool"></div>
         </div>`);
-    // https://stackoverflow.com/questions/24148403/trigger-css-transition-on-appended-element
-    setTimeout(() => {
-        document.getElementById("waifu").style.bottom = 0;
-    }, 0);
-
     (function registerTools() {
         tools["switch-model"].callback = () => model.loadOtherModel();
         tools["switch-texture"].callback = () => model.loadRandModel();
@@ -66,21 +61,23 @@ function loadWidget(config) {
         // 检测用户活动状态，并在空闲时显示消息
         let userAction = false,
             userActionTimer,
-            messageArray = result.message.default,
+            messageArray = Array.isArray(result.message.default) ? result.message.default.slice() : [],
             lastHoverElement;
-        window.addEventListener("mousemove", () => userAction = true);
-        window.addEventListener("keydown", () => userAction = true);
-        setInterval(() => {
-            if (userAction) {
-                userAction = false;
-                clearInterval(userActionTimer);
-                userActionTimer = null;
-            } else if (!userActionTimer) {
-                userActionTimer = setInterval(() => {
-                    showMessage(messageArray, 6000, 9);
-                }, 20000);
-            }
-        }, 1000);
+        if (messageArray.length) {
+            window.addEventListener("mousemove", () => userAction = true);
+            window.addEventListener("keydown", () => userAction = true);
+            setInterval(() => {
+                if (userAction) {
+                    userAction = false;
+                    clearInterval(userActionTimer);
+                    userActionTimer = null;
+                } else if (!userActionTimer) {
+                    userActionTimer = setInterval(() => {
+                        showMessage(messageArray, 6000, 9);
+                    }, 20000);
+                }
+            }, 1000);
+        }
         showMessage(welcomeMessage(result.time), 7000, 11);
         window.addEventListener("mouseover", event => {
             for (let { selector, text } of result.mouseover) {
@@ -126,19 +123,34 @@ function loadWidget(config) {
         });
     }
 
-    (function initModel() {
+    async function initModel() {
         let modelId = localStorage.getItem("modelId"),
             modelTexturesId = localStorage.getItem("modelTexturesId");
         if (modelId === null) {
             // 首次访问加载 指定模型 的 指定材质
-            modelId = 1; // 模型 ID
-            modelTexturesId = 53; // 材质 ID
+            modelId = 0; // 当前模型列表只有编号 0
+            modelTexturesId = 0;
         }
-        model.loadModel(modelId, modelTexturesId);
-        fetch(config.waifuPath)
-            .then(response => response.json())
-            .then(registerEventListener);
-    })();
+        const tipsRequest = fetch(config.waifuPath, { cache: "force-cache" }).then(response => {
+            if (!response.ok) throw new Error(`看板娘提示配置加载失败：${response.status}`);
+            return response.json();
+        });
+        const results = await Promise.all([model.loadModel(modelId, modelTexturesId), tipsRequest]);
+        const waifu = document.getElementById("waifu");
+        if (!waifu) return;
+        waifu.classList.remove("waifu-loading");
+        waifu.removeAttribute("aria-busy");
+        waifu.style.bottom = 0;
+        registerEventListener(results[1]);
+    }
+
+    try {
+        await initModel();
+    } catch (error) {
+        const waifu = document.getElementById("waifu");
+        if (waifu) waifu.remove();
+        throw error;
+    }
 }
 
 function initWidget(config, apiPath) {
@@ -152,16 +164,35 @@ function initWidget(config, apiPath) {
             <span>看板娘</span>
         </div>`);
     const toggle = document.getElementById("waifu-toggle");
+    let widgetLoading = false;
+    const ensureWidget = async () => {
+        if (widgetLoading || document.getElementById("waifu")) return;
+        widgetLoading = true;
+        toggle.classList.remove("waifu-toggle-active");
+        toggle.title = "看板娘加载中";
+        try {
+            await loadWidget(config);
+            toggle.removeAttribute("first-time");
+            toggle.title = "";
+        } catch (error) {
+            console.warn("Live2D 加载失败", error);
+            toggle.setAttribute("first-time", true);
+            toggle.title = "加载失败，点击重试";
+            toggle.classList.add("waifu-toggle-active");
+        } finally {
+            widgetLoading = false;
+        }
+    };
     toggle.addEventListener("click", () => {
         toggle.classList.remove("waifu-toggle-active");
-        if (toggle.getAttribute("first-time")) {
-            loadWidget(config);
-            toggle.removeAttribute("first-time");
+        const waifu = document.getElementById("waifu");
+        if (toggle.getAttribute("first-time") || !waifu) {
+            ensureWidget();
         } else {
             localStorage.removeItem("waifu-display");
-            document.getElementById("waifu").style.display = "";
+            waifu.style.display = "";
             setTimeout(() => {
-                document.getElementById("waifu").style.bottom = 0;
+                waifu.style.bottom = 0;
             }, 0);
         }
     });
@@ -171,7 +202,7 @@ function initWidget(config, apiPath) {
             toggle.classList.add("waifu-toggle-active");
         }, 0);
     } else {
-        loadWidget(config);
+        ensureWidget();
     }
 }
 

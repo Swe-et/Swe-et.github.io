@@ -3,6 +3,8 @@
 
   var config = window.WAIFU_AI_CONFIG || {};
   var historyKey = 'waifu-ai-history-v1';
+  var visitorKey = 'hongye-anonymous-visitor-v1';
+  var conversationKey = 'waifu-ai-conversation-v1';
   var messages = [];
   var panel;
   var messageList;
@@ -10,6 +12,32 @@
   var input;
   var sendButton;
   var searchIndexPromise;
+
+  function createId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID().replace(/-/g, '');
+    var bytes = new Uint8Array(18);
+    window.crypto.getRandomValues(bytes);
+    return Array.prototype.map.call(bytes, function (byte) { return byte.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  function persistentId(key) {
+    try {
+      var saved = localStorage.getItem(key);
+      if (saved && /^[a-zA-Z0-9_-]{16,64}$/.test(saved)) return saved;
+      saved = createId();
+      localStorage.setItem(key, saved);
+      return saved;
+    } catch (error) {
+      return createId();
+    }
+  }
+
+  var visitorId = persistentId(visitorKey);
+  var conversationId = persistentId(conversationKey);
+
+  function apiUrl(suffix) {
+    return String(config.endpoint || '').replace(/\/$/, '') + suffix;
+  }
 
   function cleanText(value) {
     var box = document.createElement('div');
@@ -119,6 +147,46 @@
     sessionStorage.setItem(historyKey, JSON.stringify(messages.slice(-12)));
   }
 
+  async function loadRemoteHistory() {
+    if (!config.endpoint) return;
+    try {
+      var response = await fetch(apiUrl('/history'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ visitorId: visitorId, conversationId: conversationId })
+      });
+      if (!response.ok) throw new Error('历史记录读取失败');
+      var data = await response.json();
+      if (Array.isArray(data.messages)) {
+        messages = data.messages.filter(function (message) {
+          return message && (message.role === 'user' || message.role === 'assistant') &&
+            typeof message.content === 'string' && message.content.trim();
+        }).slice(-200);
+        saveHistory();
+        renderHistory();
+      }
+    } catch (error) {
+      console.warn('AI 历史记录暂时不可用', error);
+    }
+  }
+
+  async function clearRemoteHistory() {
+    if (!window.confirm('确定清空你的全部 AI 聊天记录吗？')) return;
+    try {
+      var response = await fetch(apiUrl('/history/clear'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ visitorId: visitorId, conversationId: conversationId })
+      });
+      if (!response.ok) throw new Error('清空失败');
+      messages = [];
+      sessionStorage.removeItem(historyKey);
+      renderHistory();
+    } catch (error) {
+      addBubble('assistant', '暂时无法清空记录，请稍后再试。', 'error');
+    }
+  }
+
   function addBubble(role, text, extraClass) {
     var bubble = document.createElement('div');
     bubble.className = 'waifu-ai-message ' + role + (extraClass ? ' ' + extraClass : '');
@@ -146,9 +214,11 @@
     panel.innerHTML =
       '<header class="waifu-ai-header">' +
         '<span class="waifu-ai-title"></span>' +
-        '<button class="waifu-ai-close" type="button" aria-label="关闭聊天">×</button>' +
+        '<span class="waifu-ai-actions"><button class="waifu-ai-clear" type="button">清空记录</button>' +
+        '<button class="waifu-ai-close" type="button" aria-label="关闭聊天">×</button></span>' +
       '</header>' +
       '<div class="waifu-ai-messages" aria-live="polite"></div>' +
+      '<div class="waifu-ai-privacy">对话按匿名访客保存 30 天，仅用于连续交流。</div>' +
       '<form class="waifu-ai-form">' +
         '<input class="waifu-ai-input" maxlength="1000" autocomplete="off" placeholder="和多萝艾尔说点什么……" />' +
         '<button class="waifu-ai-send" type="submit">发送</button>' +
@@ -161,9 +231,11 @@
     input = panel.querySelector('.waifu-ai-input');
     sendButton = panel.querySelector('.waifu-ai-send');
     panel.querySelector('.waifu-ai-close').addEventListener('click', closePanel);
+    panel.querySelector('.waifu-ai-clear').addEventListener('click', clearRemoteHistory);
     form.addEventListener('submit', submitMessage);
     loadHistory();
     renderHistory();
+    loadRemoteHistory();
   }
 
   function openPanel() {
@@ -202,6 +274,7 @@
       return;
     }
 
+    var messageId = createId();
     messages.push({ role: 'user', content: text });
     messages = messages.slice(-12);
     saveHistory();
@@ -216,7 +289,13 @@
       var response = await fetch(config.endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: messages, blogContext: blogContext })
+        body: JSON.stringify({
+          messages: messages.slice(-12),
+          blogContext: blogContext,
+          visitorId: visitorId,
+          conversationId: conversationId,
+          messageId: messageId
+        })
       });
       if (!response.ok) throw new Error('AI 服务返回 ' + response.status);
 

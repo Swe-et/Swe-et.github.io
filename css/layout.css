@@ -922,15 +922,45 @@ details div.kira-aplayer-container div[id^='aplayer-'] div.aplayer-body div.apla
 }
 .kira-right-column .kira-home-timeline {
   top: 82px;
-  width: 240px;
+  width: 220px;
   max-height: calc(100vh - 242px);
-  padding: 18px 16px;
+  padding: 14px 13px 11px;
+  overflow-y: auto;
 }
 .kira-right-column .kira-home-timeline .kira-post-toc-title {
-  font-size: 16px;
+  gap: 6px;
+  padding-bottom: 8px;
+  font-size: 15px;
+}
+.kira-right-column .kira-home-timeline .kira-post-toc-title > span {
+  flex: 1;
+}
+.kira-right-column .kira-home-timeline .timeline-toggle {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 5px;
+  color: #999;
+  font: inherit;
+  font-size: 11px;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 180ms;
+}
+.kira-right-column .kira-home-timeline .timeline-toggle:hover,
+.kira-right-column .kira-home-timeline .timeline-toggle:focus-visible {
+  color: #ffc0cb;
+  background: rgba(255,192,203,0.1);
+  outline: none;
+}
+.kira-right-column .kira-home-timeline .timeline-toggle i {
+  font-size: 10px;
+  transition: transform 180ms;
 }
 .kira-right-column .kira-home-timeline .timeline-month {
-  margin: 15px 6px 6px;
+  margin: 10px 6px 4px;
   padding-left: 9px;
   color: #ffc0cb;
   font-size: 14px;
@@ -942,8 +972,8 @@ details div.kira-aplayer-container div[id^='aplayer-'] div.aplayer-body div.apla
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  padding: 8px 9px !important;
-  font-size: 13px;
+  padding: 6px 8px !important;
+  font-size: 12px;
   white-space: normal !important;
 }
 .kira-right-column .kira-home-timeline .timeline-post a time {
@@ -959,6 +989,23 @@ details div.kira-aplayer-container div[id^='aplayer-'] div.aplayer-body div.apla
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+.kira-right-column .kira-home-timeline .timeline-extra {
+  display: none;
+}
+.kira-right-column .kira-home-timeline .timeline-summary {
+  margin: 8px 4px 0;
+  padding-top: 8px;
+  color: #aaa;
+  font-size: 10px;
+  text-align: center;
+  border-top: 1px dashed rgba(255,192,203,0.18);
+}
+.kira-right-column .kira-home-timeline.is-expanded .timeline-extra {
+  display: list-item;
+}
+.kira-right-column .kira-home-timeline.is-expanded .timeline-toggle i {
+  transform: rotate(180deg);
+}
 .kira-right-column .kira-home-announcement {
   position: absolute;
   top: 2vh;
@@ -966,7 +1013,7 @@ details div.kira-aplayer-container div[id^='aplayer-'] div.aplayer-body div.apla
   z-index: 1001;
   display: flex;
   align-items: center;
-  width: 240px;
+  width: 220px;
   min-height: 64px;
   box-sizing: border-box;
   padding: 11px 13px;

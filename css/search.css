@@ -122,8 +122,21 @@
 .search .search-results hr { height: 1px; margin: 7px 0; background: #ffe0e8; border: 0; }
 .search .search-results mark { padding: 1px 3px; color: #a63f60; background: #ffe1e9; border-radius: 4px; }
 
+/* 窄屏时 Kira 会显示顶部栏（左边菜单按钮、右边头像，高 80px）。
+   搜索栏放在两个按钮之间，不再盖住它们；顶部栏本身占位，正文不需要额外留白。 */
+@media (max-width: 1000px) {
+    .search,
+    .search:focus-within {
+        top: 17px;
+        left: 72px;
+        right: 72px;
+        width: auto;
+        transform: none;
+    }
+    .search:focus-within { transform: translateY(-1px); }
+    .kira-body { padding-top: 0; }
+}
+
 @media (max-width: 756px) {
-    .search { top: 8px; width: calc(100% - 24px); margin: 0; }
-    .kira-body { padding-top: 58px; }
     .search .search-results { max-height: min(62vh, 440px); }
 }

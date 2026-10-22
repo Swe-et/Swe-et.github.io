@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,44 +509,50 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年06月09日</a>
-			<a><i class="kirafont icon-edit-fill"></i>318 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>385 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
-		<h3><span id="openvino下载">OpenVINO下载</span></h3><p>首先：你电脑的CPU是Intel的（openvino是英特尔发行的）</p>
-<p>前往官网：<a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?ENVIRONMENT=RUNTIME&OP_SYSTEM=LINUX&VERSION=v_2023_0&DISTRIBUTION=ARCHIVE">openvino下载连接</a></p>
-<p>选择以下安装</p>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>⚡ 本文内容</b><br>
+在 Ubuntu 上用归档包安装 OpenVINO 2023.0，源码编译安装 fmt 库，以及在 CMakeLists.txt 中配置 OpenVINO 路径。
+</div>
+
+<blockquote>
+<p>⚠️ 前提：你电脑的 CPU 得是 Intel 的（OpenVINO 是英特尔发行的）。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2><span id="1-下载-openvino">📥 1. 下载 OpenVINO</span></h2><p>前往官网：<a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?ENVIRONMENT=RUNTIME&OP_SYSTEM=LINUX&VERSION=v_2023_0&DISTRIBUTION=ARCHIVE">OpenVINO 下载页面</a>，按下图选择：</p>
 <p><img src="/img/loading.gif" data-original="/openvino/1.png"></p>
-<p>点击下载文档，选择适合你电脑ubuntu版本的归档文件</p>
+<p>点击下载，选择适合你 Ubuntu 版本的归档文件：</p>
 <p><img src="/img/loading.gif" data-original="/openvino/2.png"></p>
-<p>来到安装说明：<a target="_blank" rel="noopener" href="https://docs.openvino.ai/2023.0/openvino_docs_install_guides_installing_openvino_from_archive_linux.html">https://docs.openvino.ai/2023.0/openvino_docs_install_guides_installing_openvino_from_archive_linux.html</a></p>
-<p>你也可以不用看这个安装说明</p>
-<p>将openvino解压到&#x2F;home目录下面</p>
-<p>安装依赖：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cd /opt/intel/openvino_2023.0.0<br>sudo -E ./install_dependencies/install_openvino_dependencies.sh<br></code></pre></td></tr></table></figure>
+<p>官方安装说明（可以不看）：<a target="_blank" rel="noopener" href="https://docs.openvino.ai/2023.0/openvino_docs_install_guides_installing_openvino_from_archive_linux.html">Install OpenVINO from Archive on Linux</a></p>
+<h2><span id="️-2-安装">🛠️ 2. 安装</span></h2><p>把 OpenVINO 解压到 <code>/opt/intel/</code> 下，然后安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /opt/intel/openvino_2023.0.0<br>sudo -E ./install_dependencies/install_openvino_dependencies.sh<br></code></pre></td></tr></table></figure>
 
-<p>为简单起见，创建符号链接很有用，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cd /opt/intel<br>sudo ln -s openvino_2023.0.0 openvino_2023<br></code></pre></td></tr></table></figure>
+<p>为了方便，创建一个符号链接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /opt/intel<br>sudo <span class="hljs-built_in">ln</span> -s openvino_2023.0.0 openvino_2023<br></code></pre></td></tr></table></figure>
 
-<p>2.配置环境</p>
-<p>打开终端：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo gedit ~/.bashrc<br></code></pre></td></tr></table></figure>
+<h2><span id="️-3-配置环境">⚙️ 3. 配置环境</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gedit ~/.bashrc<br></code></pre></td></tr></table></figure>
 
 <p>在最后一行添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">source /opt/intel/openvino_2023/setupvars.sh<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> /opt/intel/openvino_2023/setupvars.sh<br></code></pre></td></tr></table></figure>
 
-<p>这样每次打开终端都会自己配置openvino环境</p>
-<h3><span id="fmt库下载">fmt库下载</span></h3><p>fmt-8.1.1下载地址 <a target="_blank" rel="noopener" href="https://fmt.dev/8.1.1/index.html">https://fmt.dev/8.1.1/index.html</a></p>
-<p>选择Download</p>
+<p>这样每次打开终端都会自动配置 OpenVINO 环境 ✅</p>
+<h2><span id="4-安装-fmt-库">📦 4. 安装 fmt 库</span></h2><p>fmt-8.1.1 下载地址：<a target="_blank" rel="noopener" href="https://fmt.dev/8.1.1/index.html">https://fmt.dev/8.1.1/index.html</a>，选择 <strong>Download</strong>：</p>
 <p><img src="/img/loading.gif" data-original="/openvino/3.png"></p>
-<p>下载完解压，然后进入fmt目录打开终端</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">mkdir build<br>cd build<br>cmake -DBUILD_SHARED_LIBS=ON ..<br>make -j8<br>sudo make install<br></code></pre></td></tr></table></figure>
+<p>下载完解压，进入 fmt 目录打开终端：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> build<br><span class="hljs-built_in">cd</span> build<br>cmake -DBUILD_SHARED_LIBS=ON ..<br>make -j8<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h3><span id="修改openvino路径">修改openvino路径</span></h3><p>打开CMakeLists.txt</p>
-<p>找到openvino推理引擎头文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">include_directories(<br>    #OpenVINO推理引擎的头文件<br>    ~/intel/openvino_2023.0.0/runtime/include/<br>    ~/intel/openvino_2023.0.0/runtime/include/ie/<br>    ~/intel/openvino_2023.0.0/runtime/include/ngraph/<br>    ~/intel/openvino_2023.0.0/runtime/include/openvino/<br>    <br>)<br><br>set(InferenceEngine_DIR &quot;~/intel/openvino_2023.0.0/runtime/cmake&quot;)<br>find_package(InferenceEngine)<br></code></pre></td></tr></table></figure>
+<h2><span id="5-在-cmakeliststxt-中配置-openvino-路径">📝 5. 在 CMakeLists.txt 中配置 OpenVINO 路径</span></h2><p>找到 OpenVINO 推理引擎头文件的配置：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">include_directories</span>(<br>    <span class="hljs-comment"># OpenVINO 推理引擎的头文件</span><br>    ~/intel/openvino_2023.<span class="hljs-number">0.0</span>/runtime/<span class="hljs-keyword">include</span>/<br>    ~/intel/openvino_2023.<span class="hljs-number">0.0</span>/runtime/<span class="hljs-keyword">include</span>/ie/<br>    ~/intel/openvino_2023.<span class="hljs-number">0.0</span>/runtime/<span class="hljs-keyword">include</span>/ngraph/<br>    ~/intel/openvino_2023.<span class="hljs-number">0.0</span>/runtime/<span class="hljs-keyword">include</span>/openvino/<br>)<br><br><span class="hljs-keyword">set</span>(InferenceEngine_DIR <span class="hljs-string">&quot;~/intel/openvino_2023.0.0/runtime/cmake&quot;</span>)<br><span class="hljs-keyword">find_package</span>(InferenceEngine)<br></code></pre></td></tr></table></figure>
 
-<p>一般来说，这样就能运行了，二般的情况我就不知道了</p>
-<h3><span id="源码编译openvino">源码编译openvino</span></h3>
+<blockquote>
+<p>💡 这里的路径要和你实际解压的位置一致。按上面装在 <code>/opt/intel</code> 的话，就把 <code>~/intel</code> 换成 <code>/opt/intel</code>。CMake 不会展开 <code>~</code>，写绝对路径更稳。</p>
+</blockquote>
+<p>一般来说，这样就能运行了。二般的情况我就不知道了 🤷</p>
+<h2><span id="6-源码编译-openvino">🧱 6. 源码编译 OpenVINO</span></h2><p>（待补充）</p>
+
 	</article>
 
 	 
@@ -540,7 +583,7 @@
 				<span>下一章</span>
 				<a href="/ChatGPT/"> ChatGPT</a>
 			</div>
-			                                                                     
+			                                                                         
 		</nav>
 	</div>
 	

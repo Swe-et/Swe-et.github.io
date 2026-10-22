@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,33 +509,42 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年06月29日</a>
-			<a><i class="kirafont icon-edit-fill"></i>127 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>195 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
-		<h3><span id="首先你得确定你是否能科学上网">首先你得确定你是否能科学上网</span></h3><p>若不能请参考：<a href="https://swe-et.github.io/internet/">科学上网教程</a></p>
-<h1><span id="1注册谷歌账号">1.注册谷歌账号</span></h1><p><a target="_blank" rel="noopener" href="https://accounts.google.com/InteractiveLogin/identifier?continue=https://www.google.com.hk/?pli=1&ec=GAZAmgQ&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=en&ifkv=AeDOFXj6E0teUQ5n5HIRlOTR80FQUQ_FFvFTYGHI8_1B9fDn268hLKwmZOIPSclqQtuLYYHh-W_e&passive=true">谷歌账号注册</a></p>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🤖 本文内容</b><br>
+从注册谷歌账号到注册 ChatGPT 的完整流程。
+</div>
+
+<div style="border-left: 4px solid rgb(255,185,0); background: rgba(255,185,0,.12); border-radius: 8px; padding: 12px 18px; margin: 0 0 1.5em;">
+<b>⏳ 时效提示</b><br>
+本文写于 2023 年，注册页面和验证方式之后可能有变化，以官网当前流程为准。
+</div>
+
+<span id="more"></span>
+
+<h2><span id="0-前提能科学上网">🌐 0. 前提：能科学上网</span></h2><p>如果还不能，请先看：<a href="https://swe-et.github.io/internet/">科学上网教程</a></p>
+<h2><span id="1-注册谷歌账号">📧 1. 注册谷歌账号</span></h2><p>打开 <a target="_blank" rel="noopener" href="https://accounts.google.com/signup">谷歌账号注册</a>：</p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/1.png"></p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/2.png"></p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/3.png"></p>
-<p>输入手机号，等待短信验证</p>
+<p>输入手机号，等待短信验证：</p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/4.png"></p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/5.png"></p>
-<p>这样就注册完成了。</p>
-<h1><span id="注册chatgpt">注册chatGPT</span></h1><p>进入<a target="_blank" rel="noopener" href="https://chat.openai.com/">chatGPT官网</a></p>
-<p>选择注册</p>
+<p>这样谷歌账号就注册完成了 ✅</p>
+<h2><span id="2-注册-chatgpt">💬 2. 注册 ChatGPT</span></h2><p>进入 <a target="_blank" rel="noopener" href="https://chat.openai.com/">ChatGPT 官网</a>，选择注册：</p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/6.png"></p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/7.png"></p>
-<p>chatGPT会让你用手机号注册（中国手机号不行）这时候就需要花点小钱去拿到验证码了：</p>
-<p><a target="_blank" rel="noopener" href="https://sms-activate.org/">接码平台SMS-Activate.org</a></p>
+<p>ChatGPT 会要求用手机号验证（<strong>中国手机号不行</strong>），这时候就需要花点小钱去接码平台拿验证码了：</p>
+<p>👉 <a target="_blank" rel="noopener" href="https://sms-activate.org/">接码平台 SMS-Activate.org</a></p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/8.png"></p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/9.png"></p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/10.png"></p>
-<p>选择一个喜欢的国家</p>
+<p>选择一个喜欢的国家：</p>
 <p><img src="/img/loading.gif" data-original="/ChatGPT/11.png"></p>
-<p><img src="/img/loading.gif" data-original="/ChatGPT/12.png"></p>
-<p><img src="/img/loading.gif" data-original="/ChatGPT/13.png"></p>
-<p><img src="/img/loading.gif" data-original="/ChatGPT/14.png"></p>
-<h4><span id="这样就注册完成了">这样就注册完成了！！</span></h4><p><img src="/img/loading.gif" data-original="/ChatGPT/15.png"></p>
+<p>拿到验证码填回去，就注册完成了！🎉</p>
+<p><img src="/img/loading.gif" data-original="/ChatGPT/15.png"></p>
 
 	</article>
 
@@ -530,7 +576,7 @@
 				<span>下一章</span>
 				<a href="/unity/"> ubuntu22.04安装unity</a>
 			</div>
-			                                                              
+			                                                                  
 		</nav>
 	</div>
 	

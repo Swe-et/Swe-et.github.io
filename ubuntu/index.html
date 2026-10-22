@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,52 +509,87 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年05月28日</a>
-			<a><i class="kirafont icon-edit-fill"></i>558 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>504 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
 		</div>
-		<h1><span id="安装前准备">安装前准备</span></h1><p>硬件：U盘（不要低于16G）</p>
-<p>软件：下载rufus（制作U盘启动盘）<a target="_blank" rel="noopener" href="https://github.com/pbatard/rufus/releases/download/v4.0/rufus-4.0.exe">rufus下载地址</a></p>
-<p>​			下载ubuntu22.04<a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/desktop">镜像文件</a></p>
-<h2><span id="1给ubuntu系统分配空间">1.给ubuntu系统分配空间</span></h2><p>计算机——管理——磁盘管理(win11在开始那里右键就能找到磁盘管理)</p>
-<p>需要压缩两个盘</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/ubuntu/1.png" alt="1" class="lazyload"></p>
-<p>由于我想在e盘安装ubuntu；则在不需要的盘上右击，选择压缩卷，一个压1G&#x2F;512MB；</p>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🐧 本文内容</b><br>
+在 Windows 电脑上装 Ubuntu 22.04 双系统：分配磁盘空间 → 制作 U 盘启动盘 → 进 BIOS 从 U 盘启动 → 安装系统。
+</div>
+
+<span id="more"></span>
+
+<h2><span id="0-安装前准备">🧰 0. 安装前准备</span></h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>需要什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>硬件</td>
+<td>U 盘（不要低于 16G）</td>
+</tr>
+<tr>
+<td>软件</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/pbatard/rufus/releases/download/v4.0/rufus-4.0.exe">Rufus</a>（制作 U 盘启动盘）</td>
+</tr>
+<tr>
+<td>镜像</td>
+<td><a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/desktop">Ubuntu 22.04 桌面版镜像</a></td>
+</tr>
+</tbody></table>
+<h2><span id="1-给-ubuntu-分配磁盘空间">💽 1. 给 Ubuntu 分配磁盘空间</span></h2><p>打开「计算机 → 管理 → 磁盘管理」（Win11 在开始按钮上右键就能找到）。</p>
+<p>需要压缩两个盘：</p>
+<p><img src="/img/loading.gif" data-original="/ubuntu/1.png"></p>
+<p>我想把 Ubuntu 装在 E 盘，就在不需要的盘上右击，选择「压缩卷」，一个压 1G &#x2F; 512MB：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/2.png"></p>
-<p>如果你需求比较大，我建议你多压一点，本人电脑上ubuntu系统300G，扩容很麻烦！！</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/ubuntu/3.png" alt="3" class="lazyload"></p>
-<p>然后新建简单卷</p>
+<blockquote>
+<p>⚠️ 需求比较大的话建议多压一点。我的 Ubuntu 给了 300G，<strong>之后扩容很麻烦！！</strong></p>
+</blockquote>
+<p><img src="/img/loading.gif" data-original="/ubuntu/3.png"></p>
+<p>然后新建简单卷：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/21.png"></p>
-<p>想给多大空间自己给，建议100G以上，我给了300G</p>
+<p>想给多大自己定，建议 100G 以上（我给了 300G）：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/22.png"></p>
-<p>一路enter</p>
+<p>一路回车：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/23.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/24.png"></p>
-<p>最后要和下图一样</p>
+<p>最后要和下图一样：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/33.png"></p>
-<h2><span id="2将ubuntu镜像塞到启动盘里面制成系统盘">2.将ubuntu镜像塞到启动盘里面制成系统盘</span></h2><p>将准备好的u盘插在电脑上，打开刚刚下载的rufus</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/ubuntu/4.png" alt="4" class="lazyload"></p>
+<h2><span id="2-制作-u-盘启动盘">🔥 2. 制作 U 盘启动盘</span></h2><p>把 U 盘插在电脑上，打开刚刚下载的 Rufus：</p>
+<p><img src="/img/loading.gif" data-original="/ubuntu/4.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/5.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/6.png"></p>
-<h2><span id="3进入ubuntu系统">3.进入ubuntu系统</span></h2><p>通过BIOS进入系统盘。<br>首先：要知道自己电脑的型号，如：联想、华硕、神州等。<br>再者：上网查找自己电脑进入BIOS：如：联想电脑如何进入BIOS（注意：有的电脑品牌，笔记本和台式机进入BIOS的方式不一样，如联想台式进入BIOS按F1，笔记本是按Fn+F2，如果找不到就瞎几把按,从F1按到F12）。<br>之后：关闭电脑，在开机界面出来时，一直连续点击进入BIOS的快捷键。<br>进入BIOS后：将”安全启动“关闭，另外，将u盘设置为开机启动项（启动项哪里，可能会出现ubuntu或usb等，将其置顶，保存并退出）；若出现ubuntu，则直接点击enter键即可；若不是，则重新设置开机启动项（换成其他的，总之不会是window那个选项）。</p>
-<p>选择UEFI：xxx这个是U盘</p>
+<h2><span id="3-从-u-盘启动">🔑 3. 从 U 盘启动</span></h2><p>通过 BIOS 进入 U 盘里的系统：</p>
+<ol>
+<li><strong>先查清楚自己电脑进 BIOS 的按键。</strong> 不同品牌不一样，同一品牌的笔记本和台式机也可能不一样，比如联想台式机按 <code>F1</code>，笔记本按 <code>Fn + F2</code>。实在找不到就瞎按，从 <code>F1</code> 按到 <code>F12</code>。</li>
+<li>关机，再开机，在开机画面出现时连续按进 BIOS 的快捷键。</li>
+<li>进入 BIOS 后：<strong>关闭“安全启动”</strong>，并把 U 盘设为第一启动项（启动项里可能显示为 ubuntu 或 USB，把它置顶），保存并退出。</li>
+</ol>
+<p>选择 <code>UEFI: xxx</code>，这个就是 U 盘：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/25.jpg"></p>
-<p>选择第二个&#x2F;第一个也行</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="/img/loading.gif" data-original="/ubuntu/sweet/hexo/blog/source/_posts/ubuntu/26.jpg" alt="26" class="lazyload"></p>
-<p>然后等待开机</p>
-<h2><span id="4安装ubuntu系统">4.安装ubuntu系统</span></h2><p><img src="/img/loading.gif" data-original="/ubuntu/7.png"></p>
-<p>中文也行，也可以不改</p>
+<p>选择第二个（第一个也行）：</p>
+<p><img src="/img/loading.gif" data-original="/ubuntu/26.jpg"></p>
+<p>然后等待开机。</p>
+<h2><span id="️-4-安装-ubuntu">🖥️ 4. 安装 Ubuntu</span></h2><p><img src="/img/loading.gif" data-original="/ubuntu/7.png"></p>
+<p>语言选中文也行，不改也行：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/28.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/34.jpg"></p>
-<p>选正常安装也行</p>
+<p>选「正常安装」也行：</p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/29.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/30.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/31.png"></p>
-<p>千万别弄错地方了，不然你将损失你那个盘里的所有东西</p>
+<div style="border-left: 4px solid rgb(255,185,0); background: rgba(255,185,0,.12); border-radius: 8px; padding: 12px 18px; margin: 1em 0;">
+<b>⚠️ 千万别选错分区！</b><br>
+选错的话，那个盘里的所有东西都会没掉。
+</div>
+
 <p><img src="/img/loading.gif" data-original="/ubuntu/32.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/14.png"></p>
 <p><img src="/img/loading.gif" data-original="/ubuntu/15.png"></p>
-<p>接下来命名用户名字（用英文（好像也用不了中文））密码设简单的，不然你会后悔的</p>
-<p>然后等待安装完毕，重启电脑，即可进入ubuntu系统</p>
+<p>接下来设置用户名（用英文，好像也用不了中文）。密码设简单点，不然你会后悔的 🙃</p>
+<p>等待安装完毕，重启电脑，就能进入 Ubuntu 系统了 🎉</p>
 
 	</article>
 
@@ -543,7 +615,7 @@
 				<span>下一章</span>
 				<a href="/opencv/"> opencv4-C++版本下载（附vscode环境配置）</a>
 			</div>
-			                                                                                          
+			                                                                                              
 		</nav>
 	</div>
 	

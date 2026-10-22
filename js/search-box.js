@@ -1,173 +1,194 @@
-// 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
-var searchBtn = document.querySelector('.search-start');
-var searchClear = document.querySelector('.search-clear');
-var searchInput = document.querySelector('.search-input');
-var searchResults = document.querySelector('.search-results');
+// 博客站内搜索（2026-10-23 修复版）
+// 修复内容：
+// 1. 空输入框获得焦点时不再弹出空白结果框；
+// 2. 高亮长度按实际匹配到的文字计算（之前 C++ 等含特殊字符的关键词会多标几个字）；
+// 3. 用浏览器解析 HTML 取纯文本，不再用正则删标签（之前正文里出现 "<" 会吞掉后面的文字）；
+// 4. 搜索结果中的标题、正文先转义再插入，避免文章里的尖括号破坏结果框；
+// 5. 点击搜索栏外部或按 Esc 关闭结果，按 Enter 打开第一条结果；
+// 6. 索引加载失败时给出提示，而不是没有任何反应。
+(function () {
+    var searchBox = document.querySelector('.search');
+    var searchBtn = document.querySelector('.search-start');
+    var searchClear = document.querySelector('.search-clear');
+    var searchInput = document.querySelector('.search-input');
+    var searchResults = document.querySelector('.search-results');
+    if (!searchBox || !searchBtn || !searchClear || !searchInput || !searchResults) return;
 
-// 申明保存文章的标题、链接、内容的数组变量
-var searchValue = '',
-    arrItems = [],
-    arrContents = [],
-    arrLinks = [],
-    arrTitles = [],
-    arrResults = [],
-    indexItem = [],
-    itemLength = 0;
-var tmpDiv = document.createElement('div');
-tmpDiv.className = 'result-item';
+    var posts = []; // { title, url, text }
+    var indexState = 'idle'; // idle | loading | ready | error
+    var indexCallbacks = [];
+    var firstResultHref = '';
+    var SNIPPET_STEP = 18;
+    var MAX_RESULTS = 20;
 
-// 仅在用户开始使用搜索时加载索引，避免阻塞每个页面的首次打开。
-var searchIndexLoaded = false;
-var searchIndexLoading = false;
-var searchIndexCallbacks = [];
-
-function loadSearchIndex(callback) {
-    if (searchIndexLoaded) {
-        callback();
-        return;
+    function htmlToText(html) {
+        var doc = new DOMParser().parseFromString(html || '', 'text/html');
+        return (doc.body ? doc.body.textContent : '').replace(/\s+/g, ' ').trim();
     }
-    searchIndexCallbacks.push(callback);
-    if (searchIndexLoading) return;
-    searchIndexLoading = true;
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState !== 4) return;
-        searchIndexLoading = false;
-        if (xhr.status === 200 && xhr.responseXML) {
-            var xml = xhr.responseXML;
-            arrItems = xml.getElementsByTagName('entry');
-            itemLength = arrItems.length;
-
-            // 遍历并保存所有文章对应的标题、链接和内容，同时过滤 HTML 标签。
-            for (var i = 0; i < itemLength; i++) {
-                arrContents[i] = arrItems[i].getElementsByTagName('content')[0].
-                    childNodes[0].nodeValue.replace(/<.*?>/g, '');
-                arrLinks[i] = arrItems[i].getElementsByTagName('url')[0].
-                    childNodes[0].nodeValue.replace(/<.*?>/g, '');
-                arrTitles[i] = arrItems[i].getElementsByTagName('title')[0].
-                    childNodes[0].nodeValue.replace(/<.*?>/g, '');
-            }
-            searchIndexLoaded = true;
-            searchIndexCallbacks.splice(0).forEach(function (fn) { fn(); });
-        } else {
-            searchIndexCallbacks = [];
-        }
-    };
-    xhr.open('get', '/search.xml', true);
-    xhr.send();
-}
-
-searchBtn.onclick = function () {
-    loadSearchIndex(searchConfirm);
-};
-
-// 清空按钮点击函数
-searchClear.onclick = function(){
-    searchInput.value = '';
-    searchResults.style.display = 'none';
-    searchClear.style.display = 'none';
-    searchInput.focus();
-}
-
-// 输入框内容变化后就开始匹配，可以不用点按钮
-// 经测试，onkeydown, onchange 等方法效果不太理想，
-// 存在输入延迟等问题，最后发现触发 input 事件最理想，
-// 并且可以处理中文输入法拼写的变化
-searchInput.oninput = function () {
-    loadSearchIndex(function () {
-        setTimeout(searchConfirm, 0);
-    });
-}
-searchInput.onfocus = function () {
-    searchResults.style.display = 'block';
-    loadSearchIndex(function () {});
-}
-
-function searchConfirm() {
-    if (searchInput.value == '') {
-        searchResults.style.display = 'none';
-        searchClear.style.display = 'none';
-    } else if (searchInput.value.search(/^\s+$/) >= 0) {
-        // 检测输入值全是空白的情况
-        searchInit();
-        var itemDiv = tmpDiv.cloneNode(true);
-        itemDiv.classList.add('result-empty');
-        itemDiv.innerText = '请输入有效内容…';
-        searchResults.appendChild(itemDiv);
-    } else {
-        // 合法输入值的情况
-        searchInit();
-        searchValue = searchInput.value;
-        // 在标题、内容中查找
-        searchMatching(arrTitles, arrContents, searchValue);
+    function escapeHtml(text) {
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
-}
 
-// 每次搜索完成后的初始化
-function searchInit() {
-    arrResults = [];
-    indexItem = [];
-    searchResults.innerHTML = '';
-    searchResults.style.display = 'block';
-    searchClear.style.display = 'block';
-}
+    function nodeText(entry, tag) {
+        var node = entry.getElementsByTagName(tag)[0];
+        return node ? node.textContent : '';
+    }
 
-function searchMatching(arr1, arr2, input) {
-    // 忽略输入大小写
-    input = new RegExp(input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-    // 在所有文章标题、内容中匹配查询值
-    for (i = 0; i < itemLength; i++) {
-        if (arr1[i].search(input) !== -1 || arr2[i].search(input) !== -1) {
-            // 优先搜索标题
-            if (arr1[i].search(input) !== -1) {
-                var arr = arr1;
+    // 仅在用户开始使用搜索时加载索引，避免拖慢每个页面的首次打开。
+    function loadSearchIndex(callback) {
+        if (indexState === 'ready') { callback(); return; }
+        indexCallbacks.push(callback);
+        if (indexState === 'loading') return;
+        indexState = 'loading';
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) return;
+            var callbacks = indexCallbacks.splice(0);
+            if (xhr.status === 200 && xhr.responseXML) {
+                var entries = xhr.responseXML.getElementsByTagName('entry');
+                posts = [];
+                for (var i = 0; i < entries.length; i++) {
+                    posts.push({
+                        title: htmlToText(nodeText(entries[i], 'title')),
+                        url: nodeText(entries[i], 'url').trim(),
+                        text: htmlToText(nodeText(entries[i], 'content'))
+                    });
+                }
+                indexState = 'ready';
             } else {
-                var arr = arr2;
+                indexState = 'error';
             }
-            indexItem.push(i);  // 保存匹配值的索引
-            var indexContent = arr[i].search(input);
-            // 此时 input 为 RegExp 格式 /input/i，转换为原 input 字符串长度
-            var l = input.toString().length - 3;
-            var step = 10;
-            
-            // 将匹配到内容的地方进行黄色标记，并包括周围一定数量的文本
-            arrResults.push(arr[i].slice(indexContent - step, indexContent) +
-                '<mark>' + arr[i].slice(indexContent, indexContent + l) + '</mark>' +
-                arr[i].slice(indexContent + l, indexContent + l + step));
+            callbacks.forEach(function (fn) { fn(); });
+        };
+        xhr.open('get', '/search.xml', true);
+        xhr.send();
+    }
+
+    function openResults() { searchResults.style.display = 'block'; }
+    function closeResults() { searchResults.style.display = 'none'; }
+
+    function addItem(html, extraClass, href) {
+        var item = document.createElement('div');
+        item.className = 'result-item' + (extraClass ? ' ' + extraClass : '');
+        item.innerHTML = html;
+        if (href) {
+            item.dataset.href = href;
+            item.addEventListener('click', function () { location.href = href; });
         }
+        searchResults.appendChild(item);
     }
 
-    // 输出总共匹配到的数目
-    var totalDiv = tmpDiv.cloneNode(true);
-    totalDiv.classList.add('result-summary');
-    totalDiv.innerHTML = '找到 <b>' + indexItem.length + '</b> 篇相关文章';
-    searchResults.appendChild(totalDiv);
-
-    // 未匹配到内容的情况
-    if (indexItem.length == 0) {
-        var itemDiv = tmpDiv.cloneNode(true);
-        itemDiv.classList.add('result-empty');
-        itemDiv.innerText = '暂时没有找到相关文章…';
-        searchResults.appendChild(itemDiv);
+    function makeSnippet(text, start, length) {
+        var from = Math.max(0, start - SNIPPET_STEP);
+        var to = Math.min(text.length, start + length + SNIPPET_STEP);
+        return (from > 0 ? '…' : '') +
+            escapeHtml(text.slice(from, start)) +
+            '<mark>' + escapeHtml(text.slice(start, start + length)) + '</mark>' +
+            escapeHtml(text.slice(start + length, to)) +
+            (to < text.length ? '…' : '');
     }
 
-    // 将所有匹配内容进行组合
-    for (i = 0; i < arrResults.length; i++) {
-        var itemDiv = tmpDiv.cloneNode(true);
-        itemDiv.innerHTML = '<b>《' + arrTitles[indexItem[i]] +
-            '》</b><hr />' + arrResults[i];
-        itemDiv.dataset.href = arrLinks[indexItem[i]];
-        itemDiv.addEventListener('click', function () { changeHref(this.dataset.href); });
-        searchResults.appendChild(itemDiv);
+    function render() {
+        var value = searchInput.value;
+        searchResults.innerHTML = '';
+        firstResultHref = '';
+
+        if (value === '') {
+            closeResults();
+            searchClear.style.display = 'none';
+            return;
+        }
+        searchClear.style.display = 'block';
+        openResults();
+
+        if (!value.trim()) {
+            addItem('请输入有效内容…', 'result-empty');
+            return;
+        }
+        if (indexState === 'error') {
+            addItem('搜索索引加载失败，请刷新页面后再试…', 'result-empty');
+            return;
+        }
+
+        var keyword = value.trim();
+        var pattern = new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+        var matches = [];
+
+        posts.forEach(function (post) {
+            var titleMatch = pattern.exec(post.title);
+            var textMatch = pattern.exec(post.text);
+            if (!titleMatch && !textMatch) return;
+            // 标题命中时优先展示正文中的命中位置；正文没有命中再展示标题
+            var source = textMatch ? post.text : post.title;
+            var match = textMatch || titleMatch;
+            matches.push({
+                post: post,
+                titleHit: !!titleMatch,
+                snippet: makeSnippet(source, match.index, match[0].length)
+            });
+        });
+
+        // 标题命中的排在前面
+        matches.sort(function (a, b) { return (b.titleHit ? 1 : 0) - (a.titleHit ? 1 : 0); });
+
+        addItem('找到 <b>' + matches.length + '</b> 篇相关文章', 'result-summary');
+        if (!matches.length) {
+            addItem('暂时没有找到相关文章…', 'result-empty');
+            return;
+        }
+
+        matches.slice(0, MAX_RESULTS).forEach(function (m) {
+            addItem('<b>《' + escapeHtml(m.post.title) + '》</b><hr />' + m.snippet, '', m.post.url);
+        });
+        firstResultHref = matches[0].post.url;
     }
-}
 
-function changeHref(href) {
+    function search() {
+        if (searchInput.value === '') { render(); return; }
+        loadSearchIndex(render);
+    }
 
-    // 在当前页面点开链接的情况
-    location.href = href;
+    // input 事件可以正确处理中文输入法的拼写过程
+    searchInput.addEventListener('input', search);
 
-    // 在新标签页面打开链接的代码，与上面二者只能取一个，自行决定
-    // window.open(href);
-}
+    searchInput.addEventListener('focus', function () {
+        loadSearchIndex(function () {}); // 预加载索引
+        if (searchInput.value !== '') search(); // 只有已有关键词时才重新展开结果
+    });
+
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' && firstResultHref) {
+            event.preventDefault();
+            location.href = firstResultHref;
+        } else if (event.key === 'Escape') {
+            closeResults();
+            searchInput.blur();
+        }
+    });
+
+    searchBtn.addEventListener('click', function () {
+        if (searchInput.value === '') { searchInput.focus(); return; }
+        search();
+    });
+
+    searchClear.addEventListener('click', function () {
+        searchInput.value = '';
+        render();
+        searchInput.focus();
+    });
+
+    // 点击搜索栏以外的地方时收起结果
+    document.addEventListener('click', function (event) {
+        if (!searchBox.contains(event.target)) closeResults();
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeResults();
+    });
+})();

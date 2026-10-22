@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -475,10 +512,28 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2026年09月16日</a>
-			<a><i class="kirafont icon-edit-fill"></i>115 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>384 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
 		<p>这里记录博客最近的功能更新与内容调整。</p>
+<h2><span id="2026-年-10-月-23-日">2026 年 10 月 23 日</span></h2><p><strong>🌸 主页焕新</strong></p>
+<ul>
+<li>首页顶部新增欢迎横幅：头像、简介、文章 &#x2F; 标签 &#x2F; 分类统计，还有会飘落的小花瓣。</li>
+<li>横幅里加了分类快捷入口，点一下就能看同类文章。</li>
+<li>文章卡片新增分类标签和 NEW 角标，鼠标移上去会有粉色浮起效果。</li>
+</ul>
+<p><strong>📝 新文章</strong></p>
+<ul>
+<li><a href="/AIchat/">AIchat：让小鲸鱼同时住进 QQ 和微信</a>：多平台 AI 聊天助手的整体设计、推荐规则和每日日记。</li>
+</ul>
+<p><strong>✨ 旧文章全部重新排版</strong></p>
+<ul>
+<li>每篇文章开头加上了“本文内容”摘要卡片，首页只显示摘要。</li>
+<li>命令清单、参数说明整理成表格，代码块全部补上语言高亮。</li>
+<li>修复了几张显示不出来的图片。</li>
+<li>修正了几处会出错的命令：vim 强制保存退出（<code>:wq!</code>）、OpenCV 压缩包解压、YOLOv8 特征图可视化命令、CH340 驱动安装路径等。</li>
+<li>ChatGPT 注册、科学上网这类时效性强的旧文加了提示，内容可能已经过时。</li>
+</ul>
 <h2><span id="2026-年-9-月-16-日">2026 年 9 月 16 日</span></h2><ul>
 <li>新增主页右侧“更新公告”入口。</li>
 <li>新增匿名访客统计，显示访客数、浏览量与最新访问时间。</li>

@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,46 +509,66 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2024年03月17日</a>
-			<a><i class="kirafont icon-edit-fill"></i>466 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
+			<a><i class="kirafont icon-edit-fill"></i>404 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
-		<h1><span id="用gdb运行ros2程序">用GDB运行ros2程序</span></h1><p>1.安装依赖</p>
-<p>本教程参考  <a target="_blank" rel="noopener" href="https://getiot.tech/zh/ros2/ros2-debug/">GDB-ros2</a></p>
-<p>这里使用 <strong><a target="_blank" rel="noopener" href="https://github.com/pal-robotics/backward_ros">backward_ros</a></strong> 软件包，它是对 <a target="_blank" rel="noopener" href="https://github.com/bombela/backward-cpp">backward-cpp</a> 包的 ROS2 封装，可以简单快速地使用 GDB 工具调试 ROS2 程序。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt install ros-humble-backward-ros<br></code></pre></td></tr></table></figure>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🐞 本文内容</b><br>
+用 backward_ros + GDB 调试 ROS2 程序：带调试信息编译、在 GDB 里启动节点，以及用 GDB Server 远程调试。
+</div>
 
-<p>然后在编译 ROS2 程序时，添加 <code>CMAKE_BUILD_TYPE</code> 编译类型选项参数，可以选择 <code>RelWithDebInfo</code>、<code>Debug</code> 或 <code>Release</code>。对应 CMake 的三种编译选项，其中 <code>Release</code> 模式主要用于发布代码，会忽略调试信息；<code>Debug</code> 模式主要用于调试代码，因为需要生成调试信息，所以时间较长；<code>RelWithDebInfo</code> 则在 <code>Release</code> 模式下生成调试信息，也可以用于调试代码。通常建议使用 <code>RelWithDebInfo</code> 即可。</p>
-<p>colcon 编译命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --cmake-args <span class="hljs-string">&#x27;-DCMAKE_BUILD_TYPE=RelWithDebInfo&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>📖 本教程参考：<a target="_blank" rel="noopener" href="https://getiot.tech/zh/ros2/ros2-debug/">ROS2 调试方法</a></p>
+</blockquote>
+<span id="more"></span>
 
+<h2><span id="1-安装依赖">📦 1. 安装依赖</span></h2><p>这里使用 <strong><a target="_blank" rel="noopener" href="https://github.com/pal-robotics/backward_ros">backward_ros</a></strong> 软件包。它是 <a target="_blank" rel="noopener" href="https://github.com/bombela/backward-cpp">backward-cpp</a> 的 ROS2 封装，可以简单快速地用 GDB 调试 ROS2 程序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install ros-humble-backward-ros<br></code></pre></td></tr></table></figure>
 
+<p>然后在功能包里声明依赖。</p>
+<p><code>package.xml</code> 中添加：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">depend</span>&gt;</span>backward_ros<span class="hljs-tag">&lt;/<span class="hljs-name">depend</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>这里的引号不是必须的，因此也可以写成这样：</p>
+<p><code>CMakeLists.txt</code> 中添加：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">find_package</span>(backward_ros REQUIRED)<br></code></pre></td></tr></table></figure>
+
+<h2><span id="2-带调试信息编译">🔨 2. 带调试信息编译</span></h2><p>编译时添加 <code>CMAKE_BUILD_TYPE</code> 选项，对应 CMake 的三种编译类型：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Release</code></td>
+<td>用于发布，不生成调试信息</td>
+</tr>
+<tr>
+<td><code>Debug</code></td>
+<td>用于调试，生成完整调试信息，编译较慢</td>
+</tr>
+<tr>
+<td><code>RelWithDebInfo</code></td>
+<td>在 Release 优化的基础上生成调试信息，<strong>通常推荐这个</strong></td>
+</tr>
+</tbody></table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
 
-<p>colcon 支持 <code>--symlink-install</code> 选项，作用是工作空间（source）中的文件发生变化时，安装目录（build）的文件也会随着改变。这样在调试的时候会高效一些，命令如下：</p>
+<blockquote>
+<p>💡 写成 <code>&#39;-DCMAKE_BUILD_TYPE=RelWithDebInfo&#39;</code> 加引号也可以，引号不是必须的。</p>
+</blockquote>
+<p>加上 <code>--symlink-install</code>，源码目录中的文件变化会直接反映到安装目录，调试时更高效：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo<br></code></pre></td></tr></table></figure>
 
-
-
-<p>在package.xml里面添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;depend&gt;backward_ros&lt;/depend&gt;<br></code></pre></td></tr></table></figure>
-
-<p>在CMakeLists.txt里面添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">find_package(backward_ros REQUIRED)<br></code></pre></td></tr></table></figure>
-
-<p>如果你想要加快编译速度，可以使用 <code>--parallel-workers</code> 选项开启多个线程并行编译，例如同时启动 5 个线程：</p>
+<p>想加快编译速度，可以用 <code>--parallel-workers</code> 开多个线程并行编译，例如 5 个：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo --parallel-workers 5<br></code></pre></td></tr></table></figure>
 
-
-
-<p>编译完成后，就可以通过 <code>ros2 run</code> 命令带上 <code>--prefix</code> 参数传入 <code>gdb</code> 指令，在 GDB 调试环境中启动 ROS 节点程序。命令语法如下：</p>
+<h2><span id="3-在-gdb-中启动节点">🚀 3. 在 GDB 中启动节点</span></h2><p>编译完成后，通过 <code>ros2 run</code> 的 <code>--prefix</code> 参数传入 <code>gdb</code> 指令，就能在 GDB 环境中启动 ROS 节点：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdb -ex run --args&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
 
-
-
-<p>这里的 <em>package_name</em> 是 ROS 包名，<em>executable_name</em> 是节点程序名。</p>
-<h3><span id="配置-gdb-server">配置 GDB Server</span></h3><p>ROS 中的 GDB 调试方法同样支持 GDB Server 远程调试，只需要修改 <code>--prefix</code> 参数即可，例如：</p>
+<p>其中 <code>package_name</code> 是 ROS 包名，<code>executable_name</code> 是节点程序名。</p>
+<h2><span id="4-配置-gdb-server-远程调试">🌐 4. 配置 GDB Server 远程调试</span></h2><p>ROS 中的 GDB 调试同样支持 GDB Server 远程调试，只需要修改 <code>--prefix</code> 参数：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 run --prefix <span class="hljs-string">&#x27;gdbserver localhost:3000&#x27;</span> package_name executable_name<br></code></pre></td></tr></table></figure>
 
 	</article>
@@ -538,7 +595,7 @@
 				<span>上一章</span>
 				<a href="/qt5/"> qt5-源码编译</a>
 			</div>
-			                                  
+			                                      
 		</nav>
 	</div>
 	

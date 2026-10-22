@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -412,11 +449,64 @@
 			<div class="kira-content">
 				<div id="kira-top-header"></div>
 				<div class="kira-main-content">
-					<div class="kira-posts">
+					
+
+<div class="kira-posts">
     
     
+        
         <div class="kira-post" id="home-post-0">
-            <a href="/respberry-pro/">
+            <a class="hy-cover-link" href="/linuxSDK/">
+                
+                <span class="hy-badge-category">ubuntu</span>
+                
+                <div
+                    class="kira-post-cover mdui-ripple"
+                    style="padding-bottom: '56.25%'"
+                >
+                    <img
+                        data-src="/linuxSDK/0.png"
+                        data-sizes="auto"
+                        alt="工业相机（mindvision）"
+                        class="lazyload kira-post-cover-image"
+                    />
+                    <h1>工业相机（mindvision）</h1>
+                </div>
+                
+            </a>
+
+            <div class="kira-post-meta kira-rainbow">
+                <a>
+                    <i class="kirafont icon-calendar-fill"></i>
+                    2023年06月03日
+                </a>
+                <a>
+                    <i class="kirafont icon-edit-fill"></i>
+                    199 字
+                </a>
+                <a>
+                    <i class="kirafont icon-time-circle-fill"></i>大概
+                    1 分钟
+                </a>
+            </div>
+    
+            
+                <article>
+                    <div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>📷 本文内容</b><br>
+在 Ubuntu 上安装迈德威视（MindVision）工业相机 SDK，并解决官方 OpenCV demo 编译报错的两种方法。
+</div>
+                </article>
+            
+        </div>
+        <div class="kira-hr"></div>
+        
+    
+        
+        <div class="kira-post" id="home-post-1">
+            <a class="hy-cover-link" href="/respberry-pro/">
+                
+                <span class="hy-badge-category">raspberry</span>
                 
                 <div
                     class="kira-post-cover mdui-ripple"
@@ -440,7 +530,7 @@
                 </a>
                 <a>
                     <i class="kirafont icon-edit-fill"></i>
-                    161 字
+                    173 字
                 </a>
                 <a>
                     <i class="kirafont icon-time-circle-fill"></i>大概
@@ -449,12 +539,22 @@
             </div>
     
             
+                <article>
+                    <div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🚄 本文内容</b><br>
+把树莓派（Raspbian buster）的软件源换成清华镜像，下载速度快很多。
+</div>
+                </article>
+            
         </div>
         <div class="kira-hr"></div>
         
     
-        <div class="kira-post" id="home-post-1">
-            <a href="/raspberry/">
+        
+        <div class="kira-post" id="home-post-2">
+            <a class="hy-cover-link" href="/raspberry/">
+                
+                <span class="hy-badge-category">raspberry</span>
                 
                 <div
                     class="kira-post-cover mdui-ripple"
@@ -478,7 +578,7 @@
                 </a>
                 <a>
                     <i class="kirafont icon-edit-fill"></i>
-                    835 字
+                    798 字
                 </a>
                 <a>
                     <i class="kirafont icon-time-circle-fill"></i>大概
@@ -487,12 +587,22 @@
             </div>
     
             
+                <article>
+                    <div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🍓 本文内容</b><br>
+没有显示器，也能在 Ubuntu 电脑上远程控制树莓派：烧录系统 → 找到树莓派 IP → PuTTY 登录 → 开启 VNC 远程桌面。
+</div>
+                </article>
+            
         </div>
         <div class="kira-hr"></div>
         
     
-        <div class="kira-post" id="home-post-2">
-            <a href="/opencv/">
+        
+        <div class="kira-post" id="home-post-3">
+            <a class="hy-cover-link" href="/opencv/">
+                
+                <span class="hy-badge-category">ubuntu</span>
                 
                 <div
                     class="kira-post-cover mdui-ripple"
@@ -525,12 +635,25 @@
             </div>
     
             
+                <article>
+                    <meting-js server="netease" type="playlist" id="1958186873" mode="circulation" autoplay="true" mutex="false" listmaxheight="340px" preload="none" theme="#ad7a86">
+</meting-js>
+
+<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 1em 0 1.5em;">
+<b>👁️ 本文内容</b><br>
+在 Ubuntu 上从源码编译安装 OpenCV 4（含 opencv_contrib），再配置 VS Code 的 C++ 开发环境，最后用一个小程序验证能否正常显示图片。
+</div>
+                </article>
+            
         </div>
         <div class="kira-hr"></div>
         
     
-        <div class="kira-post" id="home-post-3">
-            <a href="/ubuntu/">
+        
+        <div class="kira-post" id="home-post-4">
+            <a class="hy-cover-link" href="/ubuntu/">
+                
+                <span class="hy-badge-category">ubuntu</span>
                 
                 <div
                     class="kira-post-cover mdui-ripple"
@@ -554,7 +677,7 @@
                 </a>
                 <a>
                     <i class="kirafont icon-edit-fill"></i>
-                    558 字
+                    504 字
                 </a>
                 <a>
                     <i class="kirafont icon-time-circle-fill"></i>大概
@@ -562,6 +685,13 @@
                 </a>
             </div>
     
+            
+                <article>
+                    <div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🐧 本文内容</b><br>
+在 Windows 电脑上装 Ubuntu 22.04 双系统：分配磁盘空间 → 制作 U 盘启动盘 → 进 BIOS 从 U 盘启动 → 安装系统。
+</div>
+                </article>
             
         </div>
         <div class="kira-hr"></div>
@@ -625,6 +755,17 @@
 			
 			
 				
+				<li class="timeline-month">2026年10月</li>
+				
+				<li class="timeline-post">
+					<a href="/AIchat/">
+						<time>10-23</time>
+						<span>AIchat：让小鲸鱼同时住进 QQ 和微信</span>
+					</a>
+				</li>
+				
+			
+				
 				<li class="timeline-month">2026年09月</li>
 				
 				<li class="timeline-post">
@@ -669,9 +810,9 @@
 				
 			
 				
-				<li class="timeline-month">2024年01月</li>
+				<li class="timeline-month timeline-extra">2024年01月</li>
 				
-				<li class="timeline-post">
+				<li class="timeline-post timeline-extra">
 					<a href="/qt5/">
 						<time>01-16</time>
 						<span>qt5-源码编译</span>
@@ -817,7 +958,7 @@
 			
 				
 				<li class="timeline-post timeline-extra">
-					<a href="/linuxSDK/">
+					<a href="#home-post-0" data-target="home-post-0">
 						<time>06-03</time>
 						<span>工业相机（mindvision）</span>
 					</a>
@@ -826,7 +967,7 @@
 			
 				
 				<li class="timeline-post timeline-extra">
-					<a href="#home-post-0" data-target="home-post-0">
+					<a href="#home-post-1" data-target="home-post-1">
 						<time>06-03</time>
 						<span>树莓派换源</span>
 					</a>
@@ -835,7 +976,7 @@
 			
 				
 				<li class="timeline-post timeline-extra">
-					<a href="#home-post-1" data-target="home-post-1">
+					<a href="#home-post-2" data-target="home-post-2">
 						<time>06-02</time>
 						<span>ubuntu树莓派无屏幕远程连接</span>
 					</a>
@@ -846,7 +987,7 @@
 				<li class="timeline-month timeline-extra">2023年05月</li>
 				
 				<li class="timeline-post timeline-extra">
-					<a href="#home-post-2" data-target="home-post-2">
+					<a href="#home-post-3" data-target="home-post-3">
 						<time>05-29</time>
 						<span>opencv4-C++版本下载（附vscode环境配置）</span>
 					</a>
@@ -855,7 +996,7 @@
 			
 				
 				<li class="timeline-post timeline-extra">
-					<a href="#home-post-3" data-target="home-post-3">
+					<a href="#home-post-4" data-target="home-post-4">
 						<time>05-28</time>
 						<span>Ubuntu系统安装22.04版本</span>
 					</a>
@@ -863,7 +1004,7 @@
 				
 			
 		</ol>
-		<p class="timeline-summary">近期 5 篇 · 共 24 篇</p>
+		<p class="timeline-summary">近期 5 篇 · 共 25 篇</p>
 	</nav>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {

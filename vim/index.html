@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,18 +509,223 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年12月31日</a>
-			<a><i class="kirafont icon-edit-fill"></i>679 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>694 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
 		</div>
-		<h1><span id="vim基础">vim基础</span></h1><h3><span id="终端输入vim-xx进入命令模式">终端输入vim xx进入命令模式</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">touch test.txt<br></code></pre></td></tr></table></figure>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>⌨️ 本文内容</b><br>
+Vim 的三种模式（命令模式、插入模式、底线命令模式）和可视模式，以及最常用的移动、删除、复制粘贴、保存退出和搜索替换指令。
+</div>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">vim test.txt<br></code></pre></td></tr></table></figure>
+<span id="more"></span>
 
-<h3><span id><img src="/img/loading.gif" data-original="/vim/1.png" style="zoom:50%;"></span></h3><h3><span id="命令模式为一开始进入-vim-的默认模式在任何模式下键盘输入-esc-会回到这个预设模式中-如果要切换到其它模式使用键盘输入">命令模式为一开始进入 vim 的默认模式，在任何模式下键盘输入: ESC 会回到这个预设模式中。 如果要切换到其它模式使用键盘输入</span></h3><h3><span id="i-切换到插入模式可以输入字符串文字内容">i ：切换到插入模式，可以输入字符串文字内容</span></h3><h3><span id="切换到底线命令模式可以在最底一行输入操作指令">: ：切换到底线命令模式，可以在最底一行输入操作指令</span></h3><h3><span id="v切换到视觉模式可以使用鼠标光标选择文字方便阅读和强调">v：切换到视觉模式，可以使用鼠标光标选择文字，方便阅读和强调</span></h3><h3><span id="x删除游标所在字元">x：删除游标所在字元</span></h3><h2><span id="其他常见指令">其他常见指令</span></h2><h4><span id="enter换行">Enter：换行</span></h4><h4><span id="back-space-删除游标前一个字元">Back Space 删除游标前一个字元</span></h4><h4><span id="del-删除游标后一个字元">Del 删除游标后一个字元</span></h4><h4><span id="方向键-在文档中移动游标">方向键 在文档中移动游标</span></h4><h4><span id="page-upx2fpage-down-上x2f下翻页">Page Up&#x2F;Page Down 上&#x2F;下翻页</span></h4><h2><span id="底线命令模式">底线命令模式</span></h2><h3><span id="键盘输入-就可以进入底线命令模式让我们可以输入指令操作内容-若要离开或是储存离开vim就要透过底线命令模式输入指令-若键盘输入esc会回到命令模式">键盘输入: 就可以进入底线命令模式，让我们可以输入指令操作内容。 若要离开或是储存离开vim就要透过底线命令模式输入指令。 若键盘输入ESC会回到命令模式</span></h3><h3><span id><img src="/img/loading.gif" data-original="/vim/2.png" style="zoom:50%;"></span></h3><h2><span id="常见指令">常见指令</span></h2><h3><span id="q-不储存直接离开">:q 不储存直接离开</span></h3><h3><span id="q-不存储强制直接离开有修改但不想储存时">：q! 不存储，强制直接离开（有修改但不想储存时）</span></h3><h3><span id="e-放弃所有修改从上次存储文件记录开始编辑">：e! 放弃所有修改，从上次存储文件记录开始编辑</span></h3><h3><span id="w-存储文档但不离开">：w 存储文档但不离开</span></h3><h3><span id="w-强制存储文档但不离开">：!w 强制存储文档但不离开</span></h3><h3><span id="w-name-储存文档并命名为name但不离开">：w {name} 储存文档并命名为name，但不离开</span></h3><h3><span id="wq-储存并离开">：wq 储存并离开</span></h3><h3><span id="wq-强制储存并离开">：!wq 强制储存并离开</span></h3><h2><span id="可视模式">可视模式</span></h2><h3><span id="在命令模式输入-v-可以进入可视模式使用滑鼠游标选择文字方便阅读和强调键盘输入-esc-会回到命令模式">在命令模式输入 <code>v</code> 可以进入可视模式使用滑鼠游标选择文字，方便阅读和强调，键盘输入 <code>Esc</code> 会回到命令模式。</span></h3><h3><span id><img src="/img/loading.gif" data-original="/vim/3.png" style="zoom:50%;"></span></h3><h1><span id="更多常用指令和使用情境">更多常用指令和使用情境</span></h1><p><code>:0</code>：移动到文件的起点<br><code>:&#123;number&#125;</code>：移动到第 {number} 行<br><code>:$</code>：移动到文件最后一行</p>
-<h2><span id="命令模式刪除字元">[命令模式]刪除字元</span></h2><p><code>x</code>：刪除游标所在的字元<br><code>dd</code>：刪除本行<br><code>&#123;n&#125;dd &#123;n&#125;</code>：刪除游标所在的那一行往下数 {n} 行</p>
-<h2><span id="命令模式复制粘贴">[命令模式]复制粘贴</span></h2><p><code>yy</code>：复制游标所在的那一行並放入暂存区<br><code>&#123;n&#125;yy</code>：复制游标所在的那一行往下数 {n} 行并放入暂存区<br><code>p</code>：复制暂存区的內容到游标所在下方<br><code>P</code>：复制暂存区的內容到游标所在上方</p>
-<h2><span id="命令模式复原">[命令模式]复原</span></h2><p><code>u</code>：恢复之前的修改</p>
-<h2><span id="底線命令模式搜尋取代">[底線命令模式]搜尋取代</span></h2><p><code>/&#123;text&#125;</code>：寻找 {text} 字串位于文件位置<br><code>[范围] s/&#123;from&#125;/&#123;to&#125;/g</code>：在范围（1, $ 代表全部文件）中將 {from} 取代为 {to}，<code>/g</code>。 为全部取代。（例如： <code>1, 4 s/name/username/g</code> 为將 1-4 行字串中所有 <code>name</code> 改為 <code>username</code>）</p>
+<h2><span id="1-打开文件">🚪 1. 打开文件</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> test.txt<br>vim test.txt<br></code></pre></td></tr></table></figure>
+
+<img src="/img/loading.gif" data-original="/vim/1.png" style="zoom:50%;">
+
+<h2><span id="2-模式切换">🔀 2. 模式切换</span></h2><p>一打开 Vim 就处于<strong>命令模式</strong>（默认模式）。在任何模式下按 <code>Esc</code> 都会回到命令模式。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">命令模式 ──i──▶ 插入模式<br>命令模式 ──:──▶ 底线命令模式<br>命令模式 ──v──▶ 可视模式<br>任意模式 ──Esc─▶ 命令模式<br></code></pre></td></tr></table></figure>
+
+<p>在命令模式下：</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>i</code></td>
+<td>进入<strong>插入模式</strong>，可以输入文字</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>进入<strong>底线命令模式</strong>，在最底一行输入指令</td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td>进入<strong>可视模式</strong>，可以选择文字</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>删除光标所在的字符</td>
+</tr>
+</tbody></table>
+<h3><span id="插入模式常用键">插入模式常用键</span></h3><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Enter</code></td>
+<td>换行</td>
+</tr>
+<tr>
+<td><code>Backspace</code></td>
+<td>删除光标前一个字符</td>
+</tr>
+<tr>
+<td><code>Del</code></td>
+<td>删除光标后一个字符</td>
+</tr>
+<tr>
+<td>方向键</td>
+<td>移动光标</td>
+</tr>
+<tr>
+<td><code>Page Up</code> &#x2F; <code>Page Down</code></td>
+<td>上 &#x2F; 下翻页</td>
+</tr>
+</tbody></table>
+<h2><span id="3-底线命令模式">💾 3. 底线命令模式</span></h2><p>在命令模式下按 <code>:</code> 进入底线命令模式。保存、退出都要在这里输入指令；按 <code>Esc</code> 回到命令模式。</p>
+<img src="/img/loading.gif" data-original="/vim/2.png" style="zoom:50%;">
+
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:w</code></td>
+<td>保存，但不退出</td>
+</tr>
+<tr>
+<td><code>:w!</code></td>
+<td>强制保存，但不退出</td>
+</tr>
+<tr>
+<td><code>:w &#123;name&#125;</code></td>
+<td>另存为 name，但不退出</td>
+</tr>
+<tr>
+<td><code>:q</code></td>
+<td>不保存，直接退出</td>
+</tr>
+<tr>
+<td><code>:q!</code></td>
+<td>不保存，强制退出（有修改但不想保存时用）</td>
+</tr>
+<tr>
+<td><code>:wq</code></td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td><code>:wq!</code></td>
+<td>强制保存并退出</td>
+</tr>
+<tr>
+<td><code>:e!</code></td>
+<td>放弃所有修改，回到上次保存的状态</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 感叹号要写在后面：<code>:w!</code>、<code>:wq!</code>。写成 <code>:!w</code> 的话，Vim 会把 <code>w</code> 当成一条 <strong>shell 命令</strong> 去执行。</p>
+</blockquote>
+<h2><span id="️-4-可视模式">🖱️ 4. 可视模式</span></h2><p>在命令模式按 <code>v</code> 进入可视模式，可以用光标选择文字，方便复制和删除；按 <code>Esc</code> 回到命令模式。</p>
+<img src="/img/loading.gif" data-original="/vim/3.png" style="zoom:50%;">
+
+<h2><span id="5-更多常用指令">📋 5. 更多常用指令</span></h2><h3><span id="跳转底线命令模式">跳转（底线命令模式）</span></h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:0</code></td>
+<td>跳到文件开头</td>
+</tr>
+<tr>
+<td><code>:&#123;number&#125;</code></td>
+<td>跳到第 {number} 行</td>
+</tr>
+<tr>
+<td><code>:$</code></td>
+<td>跳到最后一行</td>
+</tr>
+</tbody></table>
+<h3><span id="删除命令模式">删除（命令模式）</span></h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x</code></td>
+<td>删除光标所在的字符</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>删除当前行</td>
+</tr>
+<tr>
+<td><code>&#123;n&#125;dd</code></td>
+<td>从当前行开始往下删除 {n} 行</td>
+</tr>
+</tbody></table>
+<h3><span id="复制粘贴命令模式">复制粘贴（命令模式）</span></h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>yy</code></td>
+<td>复制当前行</td>
+</tr>
+<tr>
+<td><code>&#123;n&#125;yy</code></td>
+<td>从当前行开始往下复制 {n} 行</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>粘贴到光标下方</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>粘贴到光标上方</td>
+</tr>
+</tbody></table>
+<h3><span id="撤销命令模式">撤销（命令模式）</span></h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>u</code></td>
+<td>撤销上一次修改</td>
+</tr>
+</tbody></table>
+<h3><span id="搜索替换底线命令模式">搜索替换（底线命令模式）</span></h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/&#123;text&#125;</code></td>
+<td>查找字符串 {text}</td>
+</tr>
+<tr>
+<td><code>:[范围]s/&#123;from&#125;/&#123;to&#125;/g</code></td>
+<td>在范围内把 {from} 全部替换为 {to}</td>
+</tr>
+</tbody></table>
+<p>例如，把第 1～4 行里所有的 <code>name</code> 改成 <code>username</code>：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">:1,4s/name/username/g<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💡 范围写 <code>1,$</code> 或 <code>%</code> 表示整个文件，末尾的 <code>/g</code> 表示一行内全部替换。</p>
+</blockquote>
 
 	</article>
 
@@ -515,7 +757,7 @@
 				<span>下一章</span>
 				<a href="/qt5/"> qt5-源码编译</a>
 			</div>
-			                                         
+			                                             
 		</nav>
 	</div>
 	

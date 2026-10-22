@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,23 +509,49 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年06月07日</a>
-			<a><i class="kirafont icon-edit-fill"></i>170 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>252 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
-		<h2><span id="1找个节点">1.找个节点</span></h2><h4><span id="自分を見つける">自分を見つける</span></h4><h2><span id="2下载clash-for-windows">2.下载clash for windows</span></h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/Fndroid/clash_for_windows_pkg/releases">https://github.com/Fndroid/clash_for_windows_pkg/releases</a></p>
-<p>选择自己电脑系统的版本</p>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🌐 本文内容</b><br>
+在 Ubuntu 上使用 Clash for Windows（CFW）客户端，导入节点订阅。
+</div>
+
+<div style="border-left: 4px solid rgb(255,185,0); background: rgba(255,185,0,.12); border-radius: 8px; padding: 12px 18px; margin: 0 0 1.5em;">
+<b>⏳ 时效提示</b><br>
+本文写于 2023 年。Clash for Windows 原作者之后停止了维护，下面的下载链接可能已经失效，需要自行寻找可信的替代客户端。
+</div>
+
+<span id="more"></span>
+
+<h2><span id="1-找个节点">🔍 1. 找个节点</span></h2><h4><span id="自分を見つける">自分を見つける</span></h4><h2><span id="2-下载-clash-for-windows">📥 2. 下载 Clash for Windows</span></h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/Fndroid/clash_for_windows_pkg/releases">https://github.com/Fndroid/clash_for_windows_pkg/releases</a></p>
+<p>选择自己电脑系统对应的版本：</p>
 <p><img src="/img/loading.gif" data-original="/internet/1.png"></p>
-<p>解压后进入目录</p>
+<p>解压后进入目录：</p>
 <p><img src="/img/loading.gif" data-original="/internet/2.png"></p>
-<p>如果你是22.04的ubuntu，选择cfw，直接右键运行即可</p>
-<p>如果是20.04的，在当前目录打开终端：.&#x2F;cfw</p>
-<p>进入后界面是英文的，想改成中文要去下载汉化补丁</p>
-<p>下载路径：<a target="_blank" rel="noopener" href="https://u.pcloud.link/publink/show?code=XZPfFgVZawJmWcOeCw7Tqwp9Pxv0TFCNRtiX">https://u.pcloud.link/publink/show?code=XZPfFgVZawJmWcOeCw7Tqwp9Pxv0TFCNRtiX</a></p>
-<p>将汉化不补丁中的 <code>app.asar</code> 和 <code>Clash.for.Windows\resources\</code> 文件中的 <code>app.asar</code> 文件进行替换</p>
-<p>将从节点订阅的URL复制</p>
+<h2><span id="️-3-运行">▶️ 3. 运行</span></h2><table>
+<thead>
+<tr>
+<th>系统</th>
+<th>启动方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ubuntu 22.04</td>
+<td>选中 <code>cfw</code>，直接右键运行</td>
+</tr>
+<tr>
+<td>Ubuntu 20.04</td>
+<td>在当前目录打开终端，执行 <code>./cfw</code></td>
+</tr>
+</tbody></table>
+<h2><span id="有-4-汉化可选">🈶 4. 汉化（可选）</span></h2><p>界面默认是英文的，想改成中文要下载汉化补丁：</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://u.pcloud.link/publink/show?code=XZPfFgVZawJmWcOeCw7Tqwp9Pxv0TFCNRtiX">https://u.pcloud.link/publink/show?code=XZPfFgVZawJmWcOeCw7Tqwp9Pxv0TFCNRtiX</a></p>
+<p>用汉化补丁中的 <code>app.asar</code> 替换 <code>Clash.for.Windows\resources\</code> 目录下的 <code>app.asar</code>。</p>
+<h2><span id="5-导入订阅">🔗 5. 导入订阅</span></h2><p>复制节点提供的订阅 URL：</p>
 <p><img src="/img/loading.gif" data-original="/internet/4.png"></p>
-<p>选择配置，将URL复制到上面然后下载</p>
-<p>这样就能用了</p>
+<p>进入「配置」，把 URL 粘贴到上方输入框，然后点击下载。</p>
+<p>这样就能用了 🎉</p>
 
 	</article>
 
@@ -504,7 +567,7 @@
   
 	<div class="kira-post-nav">
 		<nav class="post-nav">
-			              
+			                
 		</nav>
 	</div>
 	

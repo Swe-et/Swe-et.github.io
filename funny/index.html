@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,41 +509,87 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年10月17日</a>
-			<a><i class="kirafont icon-edit-fill"></i>839 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>858 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 4 分钟</a>
 		</div>
-		<h3><span id="有点用的小网站">有点用的小网站</span></h3><p> <a target="_blank" rel="noopener" href="https://473328746.wixsite.com/my-site">主页导航网站</a>（需要科学上网，有用但不多）</p>
-<h3><span id="vscode好玩插件">vscode好玩插件</span></h3><h4><span id="1code-gpt帮你联想代码写注释">1.code GPT（帮你联想代码，写注释）</span></h4><p>   <strong>github copilot 代码GPT</strong></p>
-<p>   <strong>TONGYI Lingma  （同等功能）</strong></p>
-<p>   <strong>CodeGeeX （同等功能）</strong></p>
-<h4><span id="2md文件预览">2.MD文件预览</span></h4><p><strong>Markdown Preview Github Styling</strong></p>
-<p><strong>Markdown All in One</strong></p>
-<h4><span id="3滑词翻译">3.滑词翻译</span></h4><p><strong>Code Translate</strong></p>
-<h4><span id="4代码截图">4.代码截图</span></h4><p><strong>CodeSnap</strong></p>
-<h1><span id="安卓模拟器">安卓模拟器</span></h1><h4><span id="麟卓卓鑫"></span></h4><h1><span id="博客pro">博客pro</span></h1><p>本博客用hexo为框架 kira为主题</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ch1ny/kira-hexo">kira-hexo</a></p>
-<h3><span id="美化-添加好玩的玩意">美化-添加好玩的玩意</span></h3><h2><span id="添加鼠标点击爱心效果">● 添加鼠标点击爱心效果</span></h2><p>找到&#x2F;hexo-theme-kira文件夹里面&#x2F;source&#x2F;js 下新建文件 love.js，在 love.js 文件中添加以下代码：</p>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🎁 本文内容</b><br>
+平时攒下来的小网站、VS Code 好玩插件、安卓模拟器，以及这个博客加特效、加看板娘的折腾记录。
+</div>
+
+<span id="more"></span>
+
+<h2><span id="1-有点用的小网站">🔗 1. 有点用的小网站</span></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://473328746.wixsite.com/my-site">主页导航网站</a>（需要科学上网，有用但不多）</li>
+</ul>
+<h2><span id="2-vs-code-好玩插件">🧩 2. VS Code 好玩插件</span></h2><table>
+<thead>
+<tr>
+<th>用途</th>
+<th>插件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🤖 AI 补全代码、写注释</td>
+<td><strong>GitHub Copilot</strong>、<strong>TONGYI Lingma</strong>、<strong>CodeGeeX</strong>（功能差不多，挑一个）</td>
+</tr>
+<tr>
+<td>📝 Markdown 预览</td>
+<td><strong>Markdown Preview Github Styling</strong>、<strong>Markdown All in One</strong></td>
+</tr>
+<tr>
+<td>🌏 划词翻译</td>
+<td><strong>Code Translate</strong></td>
+</tr>
+<tr>
+<td>📸 代码截图</td>
+<td><strong>CodeSnap</strong></td>
+</tr>
+</tbody></table>
+<h2><span id="3-安卓模拟器">📱 3. 安卓模拟器</span></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.linzhuotech.com/Product/download">麟卓卓鑫</a></li>
+</ul>
+<h2><span id="4-博客折腾记录">✨ 4. 博客折腾记录</span></h2><p>本博客用 Hexo 作为框架，Kira 作为主题：<a target="_blank" rel="noopener" href="https://github.com/ch1ny/kira-hexo">kira-hexo</a></p>
+<h3><span id="鼠标点击爱心效果">💗 鼠标点击爱心效果</span></h3><p>在 <code>hexo-theme-kira/source/js/</code> 下新建 <code>love.js</code>，写入以下代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">!<span class="hljs-keyword">function</span>(<span class="hljs-params">e,t,a</span>)&#123;<span class="hljs-keyword">function</span> <span class="hljs-title function_">n</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-title function_">c</span>(<span class="hljs-string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 500%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),<span class="hljs-title function_">o</span>(),<span class="hljs-title function_">r</span>()&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">r</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> e=<span class="hljs-number">0</span>;e&lt;d.<span class="hljs-property">length</span>;e++)d[e].<span class="hljs-property">alpha</span>&lt;=<span class="hljs-number">0</span>?(t.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(d[e].<span class="hljs-property">el</span>),d.<span class="hljs-title function_">splice</span>(e,<span class="hljs-number">1</span>)):(d[e].<span class="hljs-property">y</span>--,d[e].<span class="hljs-property">scale</span>+=<span class="hljs-number">.004</span>,d[e].<span class="hljs-property">alpha</span>-=<span class="hljs-number">.013</span>,d[e].<span class="hljs-property">el</span>.<span class="hljs-property">style</span>.<span class="hljs-property">cssText</span>=<span class="hljs-string">&quot;left:&quot;</span>+d[e].<span class="hljs-property">x</span>+<span class="hljs-string">&quot;px;top:&quot;</span>+d[e].<span class="hljs-property">y</span>+<span class="hljs-string">&quot;px;opacity:&quot;</span>+d[e].<span class="hljs-property">alpha</span>+<span class="hljs-string">&quot;;transform:scale(&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;,&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;) rotate(45deg);background:&quot;</span>+d[e].<span class="hljs-property">color</span>+<span class="hljs-string">&quot;;z-index:99999&quot;</span>);<span class="hljs-title function_">requestAnimationFrame</span>(r)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">o</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> t=<span class="hljs-string">&quot;function&quot;</span>==<span class="hljs-keyword">typeof</span> e.<span class="hljs-property">onclick</span>&amp;&amp;e.<span class="hljs-property">onclick</span>;e.<span class="hljs-property">onclick</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;t&amp;&amp;<span class="hljs-title function_">t</span>(),<span class="hljs-title function_">i</span>(e)&#125;&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">i</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);a.<span class="hljs-property">className</span>=<span class="hljs-string">&quot;heart&quot;</span>,d.<span class="hljs-title function_">push</span>(&#123;<span class="hljs-attr">el</span>:a,<span class="hljs-attr">x</span>:e.<span class="hljs-property">clientX</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">y</span>:e.<span class="hljs-property">clientY</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">scale</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">alpha</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">color</span>:<span class="hljs-title function_">s</span>()&#125;),t.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">c</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;style&quot;</span>);a.<span class="hljs-property">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>;<span class="hljs-keyword">try</span>&#123;a.<span class="hljs-title function_">appendChild</span>(t.<span class="hljs-title function_">createTextNode</span>(e))&#125;<span class="hljs-keyword">catch</span>(t)&#123;a.<span class="hljs-property">styleSheet</span>.<span class="hljs-property">cssText</span>=e&#125;t.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&quot;head&quot;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">s</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span><span class="hljs-string">&quot;rgb(&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;)&quot;</span>&#125;<span class="hljs-keyword">var</span> d=[];e.<span class="hljs-property">requestAnimationFrame</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span> e.<span class="hljs-property">requestAnimationFrame</span>||e.<span class="hljs-property">webkitRequestAnimationFrame</span>||e.<span class="hljs-property">mozRequestAnimationFrame</span>||e.<span class="hljs-property">oRequestAnimationFrame</span>||e.<span class="hljs-property">msRequestAnimationFrame</span>||<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-built_in">setTimeout</span>(e,<span class="hljs-number">1e3</span>/<span class="hljs-number">60</span>)&#125;&#125;(),<span class="hljs-title function_">n</span>()&#125;(<span class="hljs-variable language_">window</span>,<span class="hljs-variable language_">document</span>);<br></code></pre></td></tr></table></figure>
 
-<p>找到&#x2F;hexo-theme-kira文件夹&#x2F;layout&#x2F; 除了layout.ejs外，其他xx.ejs都要加 少一个则不能全覆盖 文件末尾添加以下代码：</p>
+<p>然后在 <code>hexo-theme-kira/layout/</code> 下，<strong>除了 <code>layout.ejs</code> 以外的每个 <code>.ejs</code> 文件</strong>末尾加上下面这段（少加一个，那个页面就没有效果）：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/love.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>完成以上操作后，当我们点击鼠标的时候就可以看见爱心的特效了 </p>
-<h3><span id="live2d看板娘">Live2D看板娘</span></h3><p>（入门级）最基础的看板娘，用npm下载插件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">npm install --save hexo-helper-live2d<br></code></pre></td></tr></table></figure>
+<p>完成后点击鼠标，就能看到爱心特效了 💕</p>
+<h3><span id="live2d-看板娘入门版">🐶 Live2D 看板娘（入门版）</span></h3><p>最基础的看板娘，用 npm 装插件就行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install --save hexo-helper-live2d<br></code></pre></td></tr></table></figure>
 
-<p>这个模型数量有限，只能从别人配置好的里面挑</p>
-<p>然后在 hexo 的配置文件<code>_config.yml</code> 中添加如下配置，详细配置可以参考<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">文档</a></p>
+<p>这个插件的模型数量有限，只能从别人配置好的里面挑。然后在 Hexo 的 <code>_config.yml</code> 中添加如下配置，详细说明见<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">官方文档</a>：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">live2d:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">scriptFrom:</span> <span class="hljs-string">local</span><br>  <span class="hljs-attr">pluginRootPath:</span> <span class="hljs-string">live2dw/</span><br>  <span class="hljs-attr">pluginJsPath:</span> <span class="hljs-string">lib/</span><br>  <span class="hljs-attr">pluginModelPath:</span> <span class="hljs-string">assets/</span><br>  <span class="hljs-attr">tagMode:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">debug:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">model:</span><br>    <span class="hljs-attr">use:</span> <span class="hljs-string">live2d-widget-model-wanko</span><br>  <span class="hljs-attr">display:</span><br>    <span class="hljs-attr">position:</span> <span class="hljs-string">right</span><br>    <span class="hljs-attr">width:</span> <span class="hljs-number">150</span><br>    <span class="hljs-attr">height:</span> <span class="hljs-number">300</span><br>  <span class="hljs-attr">mobile:</span><br>    <span class="hljs-attr">show:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">react:</span><br>    <span class="hljs-attr">opacity:</span> <span class="hljs-number">0.7</span><br></code></pre></td></tr></table></figure>
 
-<h3><span id="进阶-自定义看板娘">进阶 自定义看板娘</span></h3><p><a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget%EF%BC%88%E8%BF%99%E4%B8%AA%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%88%91%E7%94%A8%E7%9A%84%E8%BF%99%E4%B8%AA%EF%BC%89">https://github.com/stevenjoezhang/live2d-widget（这个是自定义模型，我用的这个）</a></p>
-<p>自己找自己想要的模型文件，自定义自己想要的看板娘</p>
-<p>剩下自己琢磨去，问就是我也忘了，反正挺麻烦的</p>
-<h3><span id="动态线条背景">动态线条背景</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;script type=&quot;text/javascript&quot;<br>color=&quot;255,192,203&quot; opacity=&#x27;1.0&#x27; zIndex=&quot;-2&quot; count=&quot;750&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;<br></code></pre></td></tr></table></figure>
+<h3><span id="进阶自定义看板娘">🎀 进阶：自定义看板娘</span></h3><p>我用的是 <a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget">stevenjoezhang&#x2F;live2d-widget</a>，可以换成自己找的模型文件，做一个专属看板娘。</p>
+<blockquote>
+<p>剩下的自己琢磨去，问就是我也忘了，反正挺麻烦的 🙃</p>
+</blockquote>
+<h3><span id="️-动态线条背景">🕸️ 动态线条背景</span></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;255,192,203&quot;</span> <span class="hljs-attr">opacity</span>=<span class="hljs-string">&quot;1.0&quot;</span> <span class="hljs-attr">zIndex</span>=<span class="hljs-string">&quot;-2&quot;</span> <span class="hljs-attr">count</span>=<span class="hljs-string">&quot;750&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>zIndex表示在图层在最下层</p>
-<p>count 代表线条的数量</p>
-<h3><span id="搜索栏">搜索栏</span></h3><p>我忘了</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>color</code></td>
+<td>线条颜色（RGB），这里用的是博客的粉色</td>
+</tr>
+<tr>
+<td><code>zIndex</code></td>
+<td>图层层级，负数表示放在最底层</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>线条数量</td>
+</tr>
+</tbody></table>
+<h3><span id="搜索栏">🔍 搜索栏</span></h3><p>我忘了。</p>
 
 	</article>
 
@@ -538,7 +621,7 @@
 				<span>下一章</span>
 				<a href="/vim/"> vim</a>
 			</div>
-			                                                
+			                                                    
 		</nav>
 	</div>
 	

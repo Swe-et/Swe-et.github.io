@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html 
+	lang="zh-CN">
+	<head>
+		<!--自定义添加的 Loading Page CSS 样式-->
+		
+<link rel="stylesheet" href="/css/118.css">
+
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> AIchat：让小鲸鱼同时住进 QQ 和微信 -  紅葉~</title>
+		<link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+		<script defer src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+		<!-- lazyload -->
+		<script async src="https://unpkg.com/lazysizes@5.1.0/lazysizes.min.js"></script>
+		<!-- highlight -->
+		<link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/atom-one-dark.min.css" />
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+			<link rel="stylesheet" href="//at.alicdn.com/t/font_3299330_el19bsi97h8.css" crossorigin />
+		
+		<link
+			rel="shortcut icon"
+			href="/yolov5/ev401a.jpg"
+			type="image/png"
+		/>
+		
+		
+		
+		
+			
+				
+<link rel="stylesheet" href="/style.css">
+
+			
+				
+<link rel="stylesheet" href="/custom.css">
+
+			
+		
+		
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div class="GalMenu GalDropDown">
+	      <div class="circle" id="gal">
+	        <div class="ring">
+			</div>
+				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
+		  </div>
+		  
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
+	<div class="search">
+    <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
+    <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
+    <span class="search-icon search-clear" aria-label="清空搜索">×</span>
+	<div class="search-results"></div>
+        
+    <script src="/js/search-box.js?v=20261023-1"></script>
+	</div>
+
+	<script type="text/javascript">
+	var items = document.querySelectorAll('.menuItem'); 
+	for (var i = 0, l = items.length; i < l; i++) {
+        items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+        items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+      }
+	</script>
+	<script src="/js/jquery.js"></script>
+	<script>
+		window.addEventListener('load', function () {
+			var script = document.createElement('script');
+			script.src = 'https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/js/GalMenu.js';
+			document.body.appendChild(script);
+		}, { once: true });
+	</script>
+
+		<!--自定义的 Loading Page-->
+		
+		    
+  <div id="loader-box">
+    <div class="loader-wrapper">
+        <div class="loader"><img src="/img/loading.gif" data-original="/yolov5/ev401a.jpg" alt="紅葉~"></div>
+        <div class="loader-text">
+            <!-- 10个div -->
+            <div>L</div>
+            <div>O</div>
+            <div>A</div>
+            <div>D</div>
+            <div>I</div>
+            <div>N</div>
+            <div>G</div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      document.body.style.overflow = 'auto';
+      var loaderBox = document.getElementById('loader-box');
+      if (loaderBox) loaderBox.remove();
+    }, { once: true });
+  </script>
+
+
+		
+		<div
+			class="kira-background"
+			style="background-image: url('/yolov5/ev407a.png')"
+		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="紅葉~">
+        <img
+			src="/yolov5/ev401a.jpg"
+			alt="紅葉"
+		/>
+    </a>
+</div>
+
+
+<!--自定义看板娘-->
+<script src="/live2d-widget/autoload.js?v=20260916-1"></script>
+
+<link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260926-1" />
+<script>
+    window.WAIFU_AI_CONFIG = {"enable":true,"endpoint":"https://hongye-waifu-ai.mmjhongye.workers.dev/api/chat","title":"与多萝艾尔聊天"};
+</script>
+<script defer src="/live2d-widget/waifu-ai.js?v=20260926-1"></script>
+
+
+<script>
+    window.VISITOR_STATS_CONFIG = {"enable":true,"endpoint":"https://hongye-waifu-ai.mmjhongye.workers.dev/api/visit"};
+</script>
+<script defer src="/js/visitor-stats.js?v=20260916-1"></script>
+
+
+
+
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="/yolov5/ev401a.jpg" title="紅葉">
+			<img
+				src="/yolov5/ev401a.jpg"
+				alt="紅葉"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/friends.html"
+			title="中转站"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				中转站
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="/QQ.html"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/457236468/"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/Swe-et/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://nav.wiki-power.com/index.html"
+				target="_blank"
+				mdui-tooltip="{content: 'wiki'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-team
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/Docker/">
+              Docker
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/GPT-SoVITS/">
+              GPT-SoVITS
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/git/">
+              git
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/raspberry/">
+              raspberry
+            </a>
+            <span class="category-list-count">3</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/robomaster/">
+              robomaster
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/ubuntu/">
+              ubuntu
+            </a>
+            <span class="category-list-count">10</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/深度学习/">
+              深度学习
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+		</div>
+		
+	</div>
+
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2026
+		<a href="/">紅葉</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="/AIchat/0.png"
+				data-sizes="auto"
+				alt="AIchat：让小鲸鱼同时住进 QQ 和微信"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>AIchat：让小鲸鱼同时住进 QQ 和微信</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2026年10月23日</a>
+			<a><i class="kirafont icon-edit-fill"></i>3.2k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 13 分钟</a>
+		</div>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🐋 一句话介绍</b><br>
+一只叫「小鲸鱼」的 AI 角色，同时在 QQ 和微信里陪你聊天、帮你搜 B 站视频，还会按自己的作息去找视频、认真读完再挑给你。每天三条推荐全部送达后，她会把当天的公开日记发给你。
+</div>
+
+<p>本文记录这个本地 AI 助手的整体设计：它基于 <strong>DeepSeek Harness（DSH）</strong>，把 <a target="_blank" rel="noopener" href="https://github.com/Alterssss/dsh-bili-whale">dsh-bili-whale</a>、<a target="_blank" rel="noopener" href="https://github.com/Derpyu520/qq-bridge">qq-bridge</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sourcepro5/WeChatAgent">WeChatAgent</a> 三个开源项目融合在一起。</p>
+<blockquote>
+<p>🔒 文章只介绍可以公开的功能与维护思路。账号、白名单、Token、Cookie、聊天记录和本机目录一律用占位符代替。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2><span id="1-她能做什么">🌸 1. 她能做什么</span></h2><table>
+<thead>
+<tr>
+<th>能力</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>💬 连续聊天</td>
+<td>QQ、微信私聊都能聊，傲娇、短句、爱玩梗，前后连贯</td>
+</tr>
+<tr>
+<td>🔍 搜视频</td>
+<td>按要求搜 B 站，返回<strong>真实标题 + 完整链接</strong></td>
+</tr>
+<tr>
+<td>🎯 挑视频</td>
+<td>读字幕、评论、弹幕、抽帧后打分，合格才推荐</td>
+</tr>
+<tr>
+<td>🧭 调整口味</td>
+<td>“多推 AI 工具”“少推带货”会被记住，影响之后所有推荐</td>
+</tr>
+<tr>
+<td>👎 单条反馈</td>
+<td>引用推荐消息或附上 BV 号，说“不感兴趣”即可</td>
+</tr>
+<tr>
+<td>📔 每日日记</td>
+<td>三条自动推荐都送达后，发送当天公开日记</td>
+</tr>
+<tr>
+<td>🔗 链接补全</td>
+<td>消息里的独立 BV 号自动补成完整 B 站链接</td>
+</tr>
+</tbody></table>
+<p><strong>QQ 和微信是同一只小鲸鱼的两个号，主人也是同一个人。</strong> 两边共用聊天记忆、推荐偏好和看视频的经历：在 QQ 说“多推 AI 工具”，微信那边也会照做；在微信说“这条不感兴趣”，QQ 也记得。</p>
+<h2><span id="2-整体结构">🧩 2. 整体结构</span></h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">QQ   ─▶ qq-bridge   ─┐<br>                     ├─▶ DeepSeek Harness（人设 / 会话 / 工具）<br>微信 ─▶ WeChatAgent ─┘          │<br>                                ▼<br>         dsh-bili-whale（作息 / 发现 / 深读 / 日记）<br>                                │<br>                                ▼<br>         dsh-bili-recommend（校验 / 分流 / 额度 / 回执）<br>                                │<br>           ├─▶ 普通推荐      → QQ<br>           ├─▶ 特别喜欢的    → 微信<br>           └─▶ 当天公开日记  → QQ<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dsh-bili-whale</code></td>
+<td>DSH 养鱼插件：自主作息、B 站发现与深读、写日记</td>
+</tr>
+<tr>
+<td><code>dsh-bili-recommend</code></td>
+<td>推荐校验、分流、额度、偏好、回执和每日公开日记</td>
+</tr>
+<tr>
+<td><code>qq-bridge</code></td>
+<td>QQ 聊天、DSH 工具接入、搜索与消息处理</td>
+</tr>
+<tr>
+<td><code>SnowLuma</code></td>
+<td>QQ &#x2F; OneBot 连接，以及项目自带的 Node 运行时</td>
+</tr>
+<tr>
+<td><code>WeChatAgent</code></td>
+<td>微信消息、白名单与会话工具授权</td>
+</tr>
+<tr>
+<td><code>scripts</code></td>
+<td>一键启动、健康检查、补丁部署和日记检查后台</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 运行时的配置、状态、日志和备份放在单独目录（例如 <code>.qq-run/</code>），不要和公开源码混在一起。</p>
+</blockquote>
+<h2><span id="3-一键启动">🚀 3. 一键启动</span></h2><p>日常只需要<strong>以普通 Windows 用户身份</strong>双击启动脚本：</p>
+<ol>
+<li>如果需要登录，先在客户端里完成 QQ、微信登录。</li>
+<li>等窗口显示 <strong>“启动完成”</strong>，就可以关掉提示窗口，后台继续运行。</li>
+</ol>
+<p>启动脚本会依次检查或拉起：QQ → SnowLuma → DSH → QQ 桥接 → 微信服务 → 日记检查后台。</p>
+<ul>
+<li>🔁 <strong>重复双击是安全的</strong>：已经在跑的服务会被复用，不会重复发测试消息。</li>
+<li>⏱️ QQ 首次登录最多等 90 秒，超时后登录完再双击一次即可。</li>
+<li>📵 微信没就绪时会显示原因，不影响 QQ 继续工作。</li>
+<li>🔌 DSH 的接口端口由程序自动发现，不用手填。</li>
+</ul>
+<blockquote>
+<p>⚠️ 不建议以管理员身份长期运行聊天客户端和桥接服务。只在某个明确步骤确实需要权限时单独提升。</p>
+</blockquote>
+<h2><span id="4-聊天-搜索-推荐是三条路">🔀 4. 聊天、搜索、推荐是三条路</span></h2><p>这是整个项目最重要的设计：<strong>“搜到过”“分析过”和“真正推荐过”绝不能混为一谈。</strong></p>
+<table>
+<thead>
+<tr>
+<th>想做什么</th>
+<th>示例</th>
+<th>实际发生了什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通聊天</td>
+<td>“今天怎么样？”</td>
+<td>按人设和近期上下文回复</td>
+</tr>
+<tr>
+<td>搜视频</td>
+<td>“去 B 站搜两个 DeepSeek 教程，把链接给我”</td>
+<td>立即调用搜索，返回真实标题和链接</td>
+</tr>
+<tr>
+<td>点播推荐</td>
+<td>“推荐一个 AI 工具视频”</td>
+<td>登记请求 → 搜索 → 深读 → 筛选 → 发回原聊天</td>
+</tr>
+<tr>
+<td>问推荐内容</td>
+<td>“这个视频讲了什么？”“为什么推荐？”</td>
+<td>只根据实际保存的推荐依据回答</td>
+</tr>
+<tr>
+<td>调整方向</td>
+<td>“多推 AI 工具”“不要推荐猫咪”</td>
+<td>保存为明确偏好，后续搜索和筛选都会用</td>
+</tr>
+<tr>
+<td>评价某条</td>
+<td>引用推荐说“不感兴趣”，或附上 BV 号</td>
+<td>定位到具体视频后记录；定位不到会追问</td>
+</tr>
+<tr>
+<td>查看 &#x2F; 重置</td>
+<td>“我的推荐偏好”“重置推荐偏好”</td>
+<td>查看或清空聊天反馈</td>
+</tr>
+</tbody></table>
+<p><strong>搜索</strong>只代表“找到了这些视频”，不能说成已经看过。<strong>推荐</strong>会读取可用字幕、评论、弹幕和抽帧，通常要几分钟；证据不够或没有合格视频时，宁可不推，也不硬凑。</p>
+<h2><span id="5-推荐规则与额度">🎯 5. 推荐规则与额度</span></h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>发到哪里</th>
+<th>门槛</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📮 普通自动推荐</td>
+<td>主人的 QQ</td>
+<td>≥ 14&#x2F;20 分，有内容依据，置信度至少 medium</td>
+</tr>
+<tr>
+<td>💖 特别喜欢的推荐</td>
+<td>指定的微信好友</td>
+<td>小鲸鱼明确标为“特别喜欢”，且 ≥ 16&#x2F;20 分；<strong>只发微信</strong></td>
+</tr>
+<tr>
+<td>🙋 点播推荐</td>
+<td>发起点播的原私聊</td>
+<td>≥ 12&#x2F;20 分，每次最多 3 条，每天最多 10 次请求</td>
+</tr>
+<tr>
+<td>📔 公开日记</td>
+<td>主人的 QQ</td>
+<td>当天 3 条自动推荐全部确认送达、日记写好之后</td>
+</tr>
+</tbody></table>
+<div style="border-left: 4px solid rgb(255,185,0); background: rgba(255,185,0,.12); border-radius: 8px; padding: 12px 18px; margin: 1em 0;">
+<b>📏 防打扰的几条硬规则</b>
+<ul style="margin: .4em 0 0;">
+<li>普通 + 特别喜欢的自动推荐<b>合计每天最多 3 条</b>，这是上限不是指标。</li>
+<li>同一个视频 7 天内去重。</li>
+<li>点播不占这 3 条额度，但同样要去重和核验内容。</li>
+<li>特别喜欢的视频只走微信，不会在两边重复推送。</li>
+</ul>
+</div>
+
+<h2><span id="6-共用记忆的设计">🧠 6. 共用记忆的设计</span></h2><p>开启共享身份后，QQ 与微信按<strong>同一个人、同一只小鲸鱼</strong>处理：</p>
+<ul>
+<li>两边共用聊天记忆、明确的推荐偏好、点播记录和看视频的经历，可以换个平台接着聊。</li>
+<li>共同记忆保留最近约 2000 条文字记录；每轮对话会按当前平台和问题，挑选另一端的近期记录来接话。</li>
+<li>原平台的记录仍然保留，用于引用定位和发送回执。</li>
+<li><strong>群聊和其他联系人的聊天不进入这份私人记忆。</strong></li>
+</ul>
+<p>共用记忆不改变事实标准：</p>
+<ul>
+<li>搜索结果、只有简介的记录、预演数据，都不能冒充“看过”。</li>
+<li>只分析了字幕、评论或抽帧，不能说成完整看完了整部视频。</li>
+</ul>
+<p>偏好写入遵循 <strong>“先保存、再确认”</strong>：真实来信先写入共用档案，成功后才回复“记住了”；保存失败会明确提示。同一条消息被重放、或模型重复提交时，通过消息 ID 去重，不会重复累计。</p>
+<blockquote>
+<p>✏️ 修改人设时只维护一份主角色卡，再用同步脚本推到另一端，避免 QQ 和微信的小鲸鱼慢慢“性格分裂”。</p>
+</blockquote>
+<h2><span id="7-每日公开日记">📔 7. 每日公开日记</span></h2><p>小鲸鱼有三份记录：</p>
+<table>
+<thead>
+<tr>
+<th>记录</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📖 公开日记</td>
+<td>看过的视频、当天经历和写给主人的信，每日推送读这一份</td>
+</tr>
+<tr>
+<td>🔐 私人日记</td>
+<td>自己的感受、评分和偏好校准，<strong>不会自动发送</strong></td>
+</tr>
+<tr>
+<td>🧾 事件流水</td>
+<td>看视频、推荐等活动的结构化简短记录</td>
+</tr>
+</tbody></table>
+<p>日记检查后台每 15 秒看一次，<strong>以下条件全部满足</strong>才发送：</p>
+<ol>
+<li>当天 3 条自动推荐都已确认送达（QQ 普通 + 微信特别喜欢合计，点播不算）。</li>
+<li>公开日记里已写好当天正文，并包含这 3 条推荐的 BV 号。</li>
+<li>日记文件在最后一次送达之后有更新，并且稳定了至少 20 秒（防止发出写了一半的内容）。</li>
+<li>推荐推送没有暂停，“推送日记”开关也没有关闭。</li>
+</ol>
+<p>发送细节：</p>
+<ul>
+<li>只发<strong>当天</strong>的公开内容，较长时按约 1400 字分段并标段号。</li>
+<li>每天一份，重启不会重发；没推满三条就继续等，<strong>不拿昨天的日记凑数</strong>。</li>
+<li>明确发送失败的段落每 5 分钟重试一次；<strong>送达结果未知的段落不自动重发</strong>，以免刷屏。</li>
+</ul>
+<h2><span id="8-群聊要单独收紧">👥 8. 群聊要单独收紧</span></h2><p>群聊比私聊更容易打扰别人、甚至和别的机器人互相循环回复，所以单独配置：</p>
+<ul>
+<li>只在被叫名字、被 @、被引用时唤醒，每小时最多唤醒 4 次。</li>
+<li>一次最多连发 2 条；回复后 10 秒内会回看，允许自然追问。</li>
+<li>群里不读取、也不透露主人的私人推荐资料和共用记忆。</li>
+<li>点播和记忆修改工具只对已授权的私聊开放。</li>
+</ul>
+<blockquote>
+<p>群聊权限和私聊权限必须分开配置，不能因为机器人进了群就默认开放全部能力。</p>
+</blockquote>
+<h2><span id="️-9-暂停与恢复推送">⏸️ 9. 暂停与恢复推送</span></h2><p>维护或想安静一阵时，可以只暂停推荐、普通通知和日记推送，QQ 和微信聊天照常：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">node &lt;推荐程序入口&gt;/dbr.mjs pause    <span class="hljs-comment"># 暂停</span><br>node &lt;推荐程序入口&gt;/dbr.mjs resume   <span class="hljs-comment"># 恢复</span><br></code></pre></td></tr></table></figure>
+
+<p>暂停推送不会退出客户端，关闭启动提示窗口也不会停掉后台。目前没有统一的一键停止；需要完全停服时，按实际进程路径逐个核对，避免误关其他 Node.js 程序。</p>
+<h2><span id="10-常用健康检查">🩺 10. 常用健康检查</span></h2><p>下面这些检查<strong>都不会发送真实消息</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># QQ 与 DSH 连接</span><br>node &lt;脚本目录&gt;/verify<span class="hljs-literal">-qq</span>.mjs status<br><br><span class="hljs-comment"># QQ、微信、人设接入和视频资料</span><br>node &lt;脚本目录&gt;/verify<span class="hljs-literal">-chat-memory</span>.mjs<br><br><span class="hljs-comment"># 今天是否满足日记发送条件（不会创建发送任务）</span><br>node &lt;脚本目录&gt;/daily<span class="hljs-literal">-diary-worker</span>.mjs <span class="hljs-literal">--check</span><br><br><span class="hljs-comment"># 今天的推荐额度和最近投递结果</span><br>node &lt;推荐程序入口&gt;/dbr.mjs status<br></code></pre></td></tr></table></figure>
+
+<p>日记检查返回的状态含义：</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>waiting_recommendations</code></td>
+<td>今天还没推满三条</td>
+</tr>
+<tr>
+<td><code>waiting_today_entry</code></td>
+<td>当天日记正文还没写好</td>
+</tr>
+<tr>
+<td><code>waiting_diary_videos</code></td>
+<td>日记里缺少对应的 BV 号</td>
+</tr>
+<tr>
+<td><code>waiting_diary_write</code></td>
+<td>文件还在写入，先等一等</td>
+</tr>
+<tr>
+<td><code>sent</code></td>
+<td>已经发送</td>
+</tr>
+<tr>
+<td><code>unknown</code></td>
+<td>送达结果未知，<strong>先去聊天里核对，不要盲目重发</strong></td>
+</tr>
+</tbody></table>
+<p>日志优先看：<code>supervisor.log</code>、<code>bridge.log</code>、<code>bridge-error.log</code>、<code>wechat-start.log</code>、<code>daily-diary.log</code>、<code>daily-diary-error.log</code>。</p>
+<h2><span id="️-11-安全与隐私">🛡️ 11. 安全与隐私</span></h2><p>这个项目会接触聊天平台、模型接口和个人偏好，公开前必须脱敏。以下内容<strong>不得</strong>写进公开文章或提交到公开仓库：</p>
+<ul>
+<li>QQ 号、微信 ID、群号和白名单成员标识</li>
+<li>API Key、Access Token、Cookie、登录凭据和二维码缓存</li>
+<li>私聊记录、日记、用户偏好和推荐状态</li>
+<li>含有本机用户名的绝对路径</li>
+<li>真实收件人、机器人账号和内部会话 ID</li>
+<li>运行日志、发送回执和未清理的配置备份</li>
+</ul>
+<p>公开配置示例用环境变量或占位符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs env">AI_API_KEY=&lt;your-api-key&gt;<br>OWNER_ACCOUNT=&lt;owner-account&gt;<br>BOT_ACCOUNT=&lt;bot-account&gt;<br>ALLOWED_USERS=&lt;comma-separated-user-list&gt;<br></code></pre></td></tr></table></figure>
+
+<p>运行时文件加入 <code>.gitignore</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gitignore">.env<br>*.local.json<br>state/<br>logs/<br>backups/<br>cookies/<br>sessions/<br>.qq-run/<br></code></pre></td></tr></table></figure>
+
+<p>另外遵循最小权限：私聊、群聊、搜索、推荐、发送和记忆写入分别授权，不让所有会话默认拥有全部工具。</p>
+<h2><span id="12-维护建议">🔧 12. 维护建议</span></h2><p><strong>升级组件前</strong>（QQ 桥接、微信接入或 DSH）：</p>
+<ol>
+<li>备份本地配置与补丁。</li>
+<li>对比上游版本差异。</li>
+<li>恢复必要的消息处理和记忆接入补丁（补丁脚本会核对锚点并保留备份）。</li>
+<li>运行只读健康检查。</li>
+<li>用测试账号做小范围消息验证。</li>
+<li>最后再恢复自动推荐和日记推送。</li>
+</ol>
+<p>改了 DSH 插件要重载 DSH；改了微信消息引擎要重启微信聊天后台。</p>
+<p><strong>防止误发送</strong>：开发阶段保留 <code>dry_run</code> 预演模式，测试通过、接收目标确认后才打开真实发送。测试不伪造真实推荐，也不补发以前的日记。目前这一套的联合回归共 86 项，覆盖推荐分流、反馈、日记门槛与去重、QQ 链接与群回复、微信消息处理。</p>
+<h2><span id="13-总结">🌙 13. 总结</span></h2><p>一个能长期跑下去的多平台 AI 助手，难点不在“模型能回消息”，而在这些边界：<strong>身份与记忆、工具权限、内容依据、推荐门槛、发送回执、幂等去重和隐私保护。</strong></p>
+<p>把聊天、搜索、推荐、反馈和日记拆成独立流程以后，系统更好维护，小鲸鱼也不会把“搜到过”说成“看过”，把“看过”说成“推荐给你”。对一个私人助手来说，这份诚实比多加几个功能更重要。</p>
+<h2><span id="14-感谢以下开源项目">💐 14. 感谢以下开源项目</span></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Alterssss/dsh-bili-whale">dsh-bili-whale</a>：B 站养鱼插件，自主发现、深读与日记</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Derpyu520/qq-bridge">qq-bridge</a>：QQ 消息桥接</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sourcepro5/WeChatAgent">WeChatAgent</a>：微信接入</li>
+</ul>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>紅葉<br>
+        <strong>本文链接：</strong><a href="https://swe-et.github.io/AIchat/" title="https:&#x2F;&#x2F;swe-et.github.io&#x2F;AIchat&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;swe-et.github.io&#x2F;AIchat&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			          
+			<!-- 先找到与当前文字相同的目录 -->
+			   
+			<!-- 在找到当前文章所在的 index -->
+			                              
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/categories/AI/">AI</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/AI/" rel="tag">AI</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/Bilibili/" rel="tag">Bilibili</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/DeepSeek/" rel="tag">DeepSeek</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/QQ/" rel="tag">QQ</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a>
+		
+	</div>
+	
+		<script src="/js/kira-code-copy.js"></script>
+	
+	
+	<div class="kira-post-footer">
+		
+	<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css" />
+	<div id="gitalk"></div>
+	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+	<script type="text/javascript">
+		const gitalk = new Gitalk({
+			clientID: '605688881c2e008e46bb',
+			// Secret 由 Cloudflare Worker 保存；前端只提交 GitHub 返回的临时代码。
+			proxy: 'https://hongye-waifu-ai.mmjhongye.workers.dev/api/gitalk/oauth',
+			id: 'AIchat：让小鲸鱼同时住进 QQ 和微信',
+			repo: 'Swe-et.github.io',
+			owner: 'Swe-et',
+			admin: 'Swe-et',
+			title: 'RulatedayDnd5eWiki',
+		});
+		gitalk.render('gitalk');
+	</script>
+
+
+	</div>
+	
+</div>
+
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	
+	<nav class="kira-post-toc" id="kira-post-toc" aria-label="文章目录">
+		<div class="kira-post-toc-title">
+			<i class="kirafont icon-container"></i>
+			<span>文章目录</span>
+		</div>
+		<ol class="kira-post-toc-list"></ol>
+	</nav>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var toc = document.getElementById('kira-post-toc');
+			var list = toc && toc.querySelector('.kira-post-toc-list');
+			var article = document.querySelector('.kira-post article');
+			if (!toc || !list || !article) return;
+
+			var headings = Array.prototype.slice.call(article.querySelectorAll('h2, h3'));
+			var anchors = [];
+			if (!headings.length) {
+				toc.style.display = 'none';
+				return;
+			}
+
+			headings.forEach(function (heading, index) {
+				var anchor = heading.querySelector('[id]') || heading;
+				if (!anchor.id) anchor.id = 'section-' + (index + 1);
+				anchors.push(anchor);
+				var item = document.createElement('li');
+				var link = document.createElement('a');
+				item.className = 'toc-level-' + heading.tagName.toLowerCase();
+				link.href = '#' + encodeURIComponent(anchor.id);
+				link.textContent = heading.textContent;
+				item.appendChild(link);
+				list.appendChild(item);
+			});
+
+			var links = Array.prototype.slice.call(list.querySelectorAll('a'));
+			var setActive = function () {
+				var current = 0;
+				anchors.forEach(function (anchor, index) {
+					if (anchor.getBoundingClientRect().top <= 140) current = index;
+				});
+				links.forEach(function (link, index) {
+					link.classList.toggle('active', index === current);
+				});
+			};
+			var ticking = false;
+			var requestActiveUpdate = function () {
+				if (ticking) return;
+				ticking = true;
+				window.requestAnimationFrame(function () {
+					setActive();
+					ticking = false;
+				});
+			};
+			setActive();
+			window.addEventListener('scroll', requestActiveUpdate, { passive: true });
+		});
+	</script>
+	
+	
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+  			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+<!--动态线条背景-->
+<script>
+	window.addEventListener('load', function () {
+		var loadCanvas = function () {
+			var script = document.createElement('script');
+			script.color = '255,192,203';
+			script.opacity = '0.8';
+			script.zIndex = '-2';
+			script.count = '36';
+			script.src = 'https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/1.0.1/canvas-nest.min.js';
+			document.body.appendChild(script);
+		};
+		if ('requestIdleCallback' in window) requestIdleCallback(loadCanvas, { timeout: 2500 });
+		else setTimeout(loadCanvas, 800);
+	}, { once: true });
+</script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+	
+</html>

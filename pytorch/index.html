@@ -58,14 +58,14 @@
 				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
-	<link rel="stylesheet" href="/css/search.css?v=20260915-2" />
+	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
 	<div class="search">
     <i class="kirafont icon-search search-icon search-start" aria-hidden="true"></i>
     <input type="search" class="search-input" placeholder="搜索紅葉的文章…" aria-label="搜索博客文章" />
     <span class="search-icon search-clear" aria-label="清空搜索">×</span>
 	<div class="search-results"></div>
         
-    <script src="\js\search-box.js"></script>
+    <script src="/js/search-box.js?v=20261023-1"></script>
 	</div>
 
 	<script type="text/javascript">
@@ -119,6 +119,36 @@
 			class="kira-background"
 			style="background-image: url('/yolov5/ev407a.png')"
 		></div>
+		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
+		<div class="hy-glow" aria-hidden="true"></div>
+		<div class="hy-sky" aria-hidden="true">
+			
+			
+			<span class="hy-fall" style="left: 4%; animation-duration: 18s; animation-delay: 0s;"><i class="hy-leaf" style="width: 22px; height: 22px;"></i></span>
+			
+			<span class="hy-fall" style="left: 9%; animation-duration: 14s; animation-delay: -6s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 14%; animation-duration: 17s; animation-delay: -11s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 21%; animation-duration: 21s; animation-delay: -3s;"><i class="hy-leaf" style="width: 18px; height: 18px;"></i></span>
+			
+			<span class="hy-fall" style="left: 27%; animation-duration: 15s; animation-delay: -9s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 33%; animation-duration: 19s; animation-delay: -14s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+			<span class="hy-fall" style="left: 67%; animation-duration: 20s; animation-delay: -7s;"><i class="hy-leaf" style="width: 20px; height: 20px;"></i></span>
+			
+			<span class="hy-fall" style="left: 72%; animation-duration: 16s; animation-delay: -2s;"><i class="hy-petal" style="width: 13px; height: 13px;"></i></span>
+			
+			<span class="hy-fall" style="left: 78%; animation-duration: 18s; animation-delay: -12s;"><i class="hy-petal" style="width: 12px; height: 12px;"></i></span>
+			
+			<span class="hy-fall" style="left: 84%; animation-duration: 23s; animation-delay: -5s;"><i class="hy-leaf" style="width: 24px; height: 24px;"></i></span>
+			
+			<span class="hy-fall" style="left: 90%; animation-duration: 15s; animation-delay: -8s;"><i class="hy-petal" style="width: 14px; height: 14px;"></i></span>
+			
+			<span class="hy-fall" style="left: 96%; animation-duration: 20s; animation-delay: -15s;"><i class="hy-petal" style="width: 11px; height: 11px;"></i></span>
+			
+		</div>
 		<div class="kira-header">
     <a
         class="kira-drawer-button mdui-ripple"
@@ -165,9 +195,9 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>24</div>
-		<div><span>标签</span>12</div>
-		<div><span>分类</span>7</div>
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>17</div>
+		<div><span>分类</span>8</div>
 	</div>
 	<div class="kira-list">
 		
@@ -315,6 +345,13 @@
 
         
           <li class="category-list-item">
+            <a class="category-list-link" href="/categories/AI/">
+              AI
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
             <a class="category-list-link" href="/categories/Docker/">
               Docker
             </a>
@@ -360,7 +397,7 @@
             <a class="category-list-link" href="/categories/深度学习/">
               深度学习
             </a>
-            <span class="category-list-count">4</span>
+            <span class="category-list-count">5</span>
           </li>
         
       </ul>
@@ -371,7 +408,7 @@
 			
 	<div class="kira-widget-wrap">
 		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
-			<a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
+			<a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DeepSeek/" style="font-size: 10px;">DeepSeek</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/GPT-SoVITS/" style="font-size: 10px;">GPT-SoVITS</a> <a href="/tags/Mindvision/" style="font-size: 10px;">Mindvision</a> <a href="/tags/QQ/" style="font-size: 10px;">QQ</a> <a href="/tags/ROS/" style="font-size: 10px;">ROS</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/raspberry/" style="font-size: 13.33px;">raspberry</a> <a href="/tags/robomaster/" style="font-size: 10px;">robomaster</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 16.67px;">深度学习</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a>
 		</div>
 		
 	</div>
@@ -384,7 +421,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">19</span></li></ul>
 		</div>
 	</div>
 
@@ -472,50 +509,58 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2023年06月10日</a>
-			<a><i class="kirafont icon-edit-fill"></i>296 字</a>
+			<a><i class="kirafont icon-edit-fill"></i>342 字</a>
 			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
 		</div>
-		<h2><span id="1安装cuda">1.安装CUDA</span></h2><p>首先确认你的电脑是否有GPU</p>
-<p>终端输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">nvidia-smi<br></code></pre></td></tr></table></figure>
+		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
+<b>🔥 本文内容</b><br>
+在 Ubuntu 上安装 CUDA 和 GPU 版 PyTorch，验证显卡可用，再把 conda 环境导入 PyCharm。
+</div>
 
-<p>查看驱动信息,查看叫CUDA Version的</p>
+<blockquote>
+<p>📌 需要先装好 Anaconda 并建好环境，可以参考：<a href="https://swe-et.github.io/anaconda/">anaconda</a></p>
+</blockquote>
+<span id="more"></span>
+
+<h2><span id="1-安装-cuda">🟩 1. 安装 CUDA</span></h2><p>首先确认你的电脑有 NVIDIA 显卡，终端输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvidia-smi<br></code></pre></td></tr></table></figure>
+
+<p>查看驱动信息，留意 <strong>CUDA Version</strong>（这是驱动支持的最高 CUDA 版本）：</p>
 <p><img src="/img/loading.gif" data-original="/pytorch/1.png"></p>
-<p>进官网下载CUDA</p>
-<p>下载地址：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local">https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=WSL-Ubuntu&amp;target_version=2.0&amp;target_type=deb_local</a></p>
-<p>你也可以在终端下载(此安装包4个G)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo apt install nvidia-cuda-toolkit<br></code></pre></td></tr></table></figure>
+<p>去官网下载 CUDA：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads">CUDA Toolkit Downloads</a></p>
+<p>也可以直接在终端安装（安装包约 4 GB）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install nvidia-cuda-toolkit<br></code></pre></td></tr></table></figure>
 
-<p>下载完之后输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">nvcc -V<br></code></pre></td></tr></table></figure>
+<p>装完后查看 CUDA 版本（我这边是 11.5）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvcc -V<br></code></pre></td></tr></table></figure>
 
-<p>查看CUDA版本（我这边是11.5）</p>
 <p><img src="/img/loading.gif" data-original="/pytorch/2.png"></p>
-<p>接下来去到pytorch官网</p>
-<p>地址：<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
+<h2><span id="2-安装-pytorch">🔥 2. 安装 PyTorch</span></h2><p>去 <a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">PyTorch 官网</a>，按自己的系统和 CUDA 版本选好，复制下方框里生成的安装命令：</p>
 <p><img src="/img/loading.gif" data-original="/pytorch/3.png"></p>
-<p>打开你anaconda创建的虚拟环境</p>
-<p>终端输入:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">conda activate yolov5<br></code></pre></td></tr></table></figure>
+<p>激活你用 Anaconda 创建的虚拟环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate yolov5<br></code></pre></td></tr></table></figure>
 
-<p>进入环境后将上面框里的指令粘贴到终端里面</p>
-<p>pytorch下载可能会超时导致下载失败，通过以下指令修改</p>
-<p>下面的指令将连接超时修改成40s，读取超时的时间修改为100s</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">conda config --set remote_connect_timeout_secs 40<br>conda config --set remote_read_timeout_secs 100<br></code></pre></td></tr></table></figure>
+<p>进入环境后，把刚才复制的安装指令粘贴到终端运行。</p>
+<div style="border-left: 4px solid rgb(255,185,0); background: rgba(255,185,0,.12); border-radius: 8px; padding: 12px 18px; margin: 1em 0;">
+<b>⚠️ 下载超时？</b><br>
+PyTorch 安装包很大，可能因为超时下载失败。下面的命令把连接超时改成 40 秒、读取超时改成 100 秒。
+</div>
 
-<p>安装完成后，在虚拟环境中输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">python<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --<span class="hljs-built_in">set</span> remote_connect_timeout_secs 40<br>conda config --<span class="hljs-built_in">set</span> remote_read_timeout_secs 100<br></code></pre></td></tr></table></figure>
 
-<p>进入python，然后导入pytorch，验证是否安装正确</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">import torch<br>torch.cuda.is_available()<br></code></pre></td></tr></table></figure>
+<h2><span id="3-验证安装">✅ 3. 验证安装</span></h2><p>在虚拟环境中进入 Python：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python<br></code></pre></td></tr></table></figure>
 
-<p>如果输出True，则成功安装</p>
+<p>导入 PyTorch，检查 GPU 是否可用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br>torch.cuda.is_available()<br></code></pre></td></tr></table></figure>
+
+<p>输出 <code>True</code> 就说明安装成功 🎉</p>
 <p><img src="/img/loading.gif" data-original="/pytorch/4.png"></p>
-<h2><span id="2将环境导入pycharm">2.将环境导入pycharm</span></h2><p>打开pycharm（<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37758063/article/details/111573552">ubuntu如何下载pycharm</a>）</p>
+<h2><span id="4-把环境导入-pycharm">🧑‍💻 4. 把环境导入 PyCharm</span></h2><p>打开 PyCharm（<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37758063/article/details/111573552">Ubuntu 如何下载 PyCharm</a>），按下图添加解释器：</p>
 <p><img src="/img/loading.gif" data-original="/pytorch/5.png"></p>
 <p><img src="/img/loading.gif" data-original="/pytorch/6.png"></p>
 <p><img src="/img/loading.gif" data-original="/pytorch/7.png"></p>
-<p>成功添加则右下角的解释器python版本后面会有环境名</p>
+<p>添加成功后，右下角的 Python 解释器版本后面会显示环境名：</p>
 <p><img src="/img/loading.gif" data-original="/pytorch/8.png"></p>
 
 	</article>
@@ -532,11 +577,11 @@
   
 	<div class="kira-post-nav">
 		<nav class="post-nav">
-			          
+			              
 			<!-- 先找到与当前文字相同的目录 -->
-			      
+			         
 			<!-- 在找到当前文章所在的 index -->
-			    
+			        
 			<!-- 上一篇文章 -->
 			<div class="old">
 				<span>上一章</span>

@@ -1,0 +1,10 @@
+{
+	"models": [
+		"dafeiyu",
+		"../../../live2d_api/model/doroelle/doroelle"
+	],
+	"messages": [
+		"大肥鱼来啦～",
+		"在这里的话，请叫我多萝艾尔~"
+	]
+}

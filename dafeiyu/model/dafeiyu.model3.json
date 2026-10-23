@@ -1,0 +1,86 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "dafeiyu.moc3",
+    "Textures": [
+      "textures/texture_00.webp",
+      "textures/texture_01.webp",
+      "textures/texture_02.webp"
+    ],
+    "Physics": "dafeiyu.physics3.json",
+    "Expressions": [
+      {
+        "Name": "default",
+        "File": "exp/default.exp3.json"
+      },
+      {
+        "Name": "starry",
+        "File": "exp/starry.exp3.json"
+      },
+      {
+        "Name": "heart",
+        "File": "exp/heart.exp3.json"
+      },
+      {
+        "Name": "angry",
+        "File": "exp/angry.exp3.json"
+      },
+      {
+        "Name": "basin",
+        "File": "exp/basin.exp3.json"
+      },
+      {
+        "Name": "token",
+        "File": "exp/token.exp3.json"
+      },
+      {
+        "Name": "bubble",
+        "File": "exp/bubble.exp3.json"
+      }
+    ],
+    "Motions": {
+      "Idle": [
+        {
+          "File": "motion/idle.motion3.json"
+        }
+      ],
+      "Sleep": [
+        {
+          "File": "motion/sleep.motion3.json"
+        }
+      ],
+      "Eat": [
+        {
+          "File": "motion/eat.motion3.json"
+        }
+      ],
+      "EatToken": [
+        {
+          "File": "motion/eat_token.motion3.json"
+        }
+      ],
+      "TokenSpin": [
+        {
+          "File": "motion/token_spin.motion3.json"
+        }
+      ]
+    }
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
+}

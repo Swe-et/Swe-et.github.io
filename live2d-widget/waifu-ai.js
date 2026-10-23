@@ -13,6 +13,21 @@
   var sendButton;
   var searchIndexPromise;
 
+  function currentPersona() {
+    var waifu = document.getElementById('waifu');
+    return waifu && waifu.classList.contains('dafeiyu-waifu') ? 'dafeiyu' : 'doroelle';
+  }
+
+  function syncPersona() {
+    if (!panel) return;
+    var fish = currentPersona() === 'dafeiyu';
+    var title = fish ? '与大肥鱼聊天' : '与多萝艾尔聊天';
+    panel.setAttribute('aria-label', title);
+    panel.querySelector('.waifu-ai-title').textContent = title;
+    input.placeholder = fish ? '和大肥鱼说点什么……' : '和多萝艾尔说点什么……';
+    if (!messages.length && !input.disabled) renderHistory();
+  }
+
   function createId() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID().replace(/-/g, '');
     var bytes = new Uint8Array(18);
@@ -199,7 +214,9 @@
   function renderHistory() {
     messageList.innerHTML = '';
     if (!messages.length) {
-      addBubble('assistant', '你好呀，我是多萝艾尔。有什么想聊的吗？');
+      addBubble('assistant', currentPersona() === 'dafeiyu'
+        ? '嗯？你叫我？我是小鲸鱼。找文章还是聊技术？这点事可难不倒我。'
+        : '你好呀，我是多萝艾尔。想找哪篇文章？让我陪你慢慢看看。');
       return;
     }
     messages.forEach(function (message) {
@@ -220,7 +237,7 @@
       '<div class="waifu-ai-messages" aria-live="polite"></div>' +
       '<div class="waifu-ai-privacy">对话按匿名访客保存 30 天，仅用于连续交流。</div>' +
       '<form class="waifu-ai-form">' +
-        '<input class="waifu-ai-input" maxlength="1000" autocomplete="off" placeholder="和多萝艾尔说点什么……" />' +
+        '<input class="waifu-ai-input" maxlength="1000" autocomplete="off" placeholder="和大肥鱼说点什么……" />' +
         '<button class="waifu-ai-send" type="submit">发送</button>' +
       '</form>';
     document.body.appendChild(panel);
@@ -240,6 +257,7 @@
 
   function openPanel() {
     if (!panel) createPanel();
+    syncPersona();
     panel.classList.add('is-open');
     input.focus();
   }
@@ -275,6 +293,7 @@
     }
 
     var messageId = createId();
+    var requestPersona = currentPersona();
     messages.push({ role: 'user', content: text });
     messages = messages.slice(-12);
     saveHistory();
@@ -290,6 +309,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          persona: requestPersona,
           messages: messages.slice(-12),
           blogContext: blogContext,
           visitorId: visitorId,
@@ -364,4 +384,19 @@
     observer.disconnect();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
+
+  // 模型切换时引擎会更新 #waifu 的显示类，只监听该节点避免监听整页属性。
+  function watchPersona() {
+    var waifu = document.getElementById('waifu');
+    if (!waifu) return false;
+    new MutationObserver(syncPersona).observe(waifu, { attributes: true, attributeFilter: ['class'] });
+    syncPersona();
+    return true;
+  }
+  if (!watchPersona()) {
+    var mountObserver = new MutationObserver(function () {
+      if (watchPersona()) mountObserver.disconnect();
+    });
+    mountObserver.observe(document.documentElement, { childList: true, subtree: true });
+  }
 })();

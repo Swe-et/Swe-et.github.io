@@ -2,7 +2,7 @@
 //const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
 const live2d_path = "/live2d-widget/";
 
-const waifuVersion = "20260916-1";
+const waifuVersion = "20261024-1";
 let waifuLoading = false;
 
 // 动态脚本必须严格按顺序执行：运行库 -> 组件逻辑。
@@ -73,17 +73,18 @@ async function loadWaifu(attempt = 1) {
 	waifuLoading = false;
 }
 
-// DOM 可用后尽快开始；仍让首屏内容优先，但最长只延后 400ms。
+// 看板娘模型和贴图约 3MB。等页面其余资源加载完、浏览器空闲时再开始，
+// 避免和正文、封面抢带宽，拖慢第一次打开。最长在 load 后 2 秒内开始。
 function scheduleWaifuLoad() {
-	if ("requestIdleCallback" in window) requestIdleCallback(() => loadWaifu(), { timeout: 400 });
-	else setTimeout(() => loadWaifu(), 100);
+	const start = () => {
+		if ("requestIdleCallback" in window) requestIdleCallback(() => loadWaifu(), { timeout: 2000 });
+		else setTimeout(() => loadWaifu(), 600);
+	};
+	if (document.readyState === "complete") start();
+	else window.addEventListener("load", start, { once: true });
 }
 
-if (document.readyState === "loading") {
-	document.addEventListener("DOMContentLoaded", scheduleWaifuLoad, { once: true });
-} else {
-	scheduleWaifuLoad();
-}
+scheduleWaifuLoad();
 
 console.log(`
   く__,.ヘヽ.        /  ,ー､ 〉

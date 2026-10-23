@@ -60,7 +60,7 @@
 	      <div class="circle" id="gal">
 	        <div class="ring">
 			</div>
-				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
+				<audio id="audio" preload="none" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
 	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
@@ -111,18 +111,31 @@
     </div>
   </div>
   <script>
-    window.addEventListener('load', function () {
-      document.body.style.overflow = 'auto';
-      var loaderBox = document.getElementById('loader-box');
-      if (loaderBox) loaderBox.remove();
-    }, { once: true });
+    // 页面结构就绪（DOMContentLoaded）就淡出加载动画，不再等所有图片、看板娘模型和外部资源全部下载完。
+    (function () {
+      var hidden = false;
+      function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+        document.body.style.overflow = 'auto';
+        var loaderBox = document.getElementById('loader-box');
+        if (!loaderBox) return;
+        loaderBox.style.transition = 'opacity .35s ease';
+        loaderBox.style.opacity = '0';
+        setTimeout(function () { loaderBox.remove(); }, 380);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideLoader, { once: true });
+      else hideLoader();
+      // 兜底：最多显示 4 秒
+      setTimeout(hideLoader, 4000);
+    })();
   </script>
 
 
 		
 		<div
 			class="kira-background"
-			style="background-image: url('/yolov5/ev407a.png')"
+			style="background-image: url('/yolov5/ev407a.webp')"
 		></div>
 		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
 		<div class="hy-glow" aria-hidden="true"></div>
@@ -172,7 +185,7 @@
 
 
 <!--自定义看板娘-->
-<script src="/live2d-widget/autoload.js?v=20260916-1"></script>
+<script src="/live2d-widget/autoload.js?v=20261024-1"></script>
 
 <link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260926-1" />
 <script>
@@ -539,7 +552,7 @@
                     style="padding-bottom: '56.25%'"
                 >
                     <img
-                        data-src="/AIchat/0.png"
+                        data-src="/AIchat/0.webp"
                         data-sizes="auto"
                         alt="AIchat：让小鲸鱼同时住进 QQ 和微信"
                         class="lazyload kira-post-cover-image"
@@ -556,11 +569,11 @@
                 </a>
                 <a>
                     <i class="kirafont icon-edit-fill"></i>
-                    3.2k 字
+                    4.3k 字
                 </a>
                 <a>
                     <i class="kirafont icon-time-circle-fill"></i>大概
-                    13 分钟
+                    17 分钟
                 </a>
             </div>
     
@@ -568,12 +581,15 @@
                 <article>
                     <div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
 <b>🐋 一句话介绍</b><br>
-一只叫「小鲸鱼」的 AI 角色，同时在 QQ 和微信里陪你聊天、帮你搜 B 站视频，还会按自己的作息去找视频、认真读完再挑给你。每天三条推荐全部送达后，她会把当天的公开日记发给你。
+一只叫「小鲸鱼」的 AI 角色，同时在 QQ 和微信里陪你聊天、帮你搜 B 站视频，还会按自己的作息去找视频、认真读完再挑给你。QQ、微信和 B 站三边共用同一条对话时间线；每天推荐送达、作息结束后，她会把当天的公开日记发给你，里面也会写到你们聊过的事。
 </div>
 
 <p>本文记录这个本地 AI 助手的整体设计：它基于 <strong>DeepSeek Harness（DSH）</strong>，把 <a target="_blank" rel="noopener" href="https://github.com/Alterssss/dsh-bili-whale">dsh-bili-whale</a>、<a target="_blank" rel="noopener" href="https://github.com/Derpyu520/qq-bridge">qq-bridge</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sourcepro5/WeChatAgent">WeChatAgent</a> 三个开源项目融合在一起。</p>
 <blockquote>
 <p>🔒 文章只介绍可以公开的功能与维护思路。账号、白名单、Token、Cookie、聊天记录和本机目录一律用占位符代替。</p>
+</blockquote>
+<blockquote>
+<p>🆕 <strong>2026-10-24 更新</strong>：三端共同对话时间线、跨端链接去重、群聊只在叫名字或 @ 时回应、省 token 模式、日记兜底发送和日记写入真实聊天。</p>
 </blockquote>
                 </article>
             
@@ -592,7 +608,7 @@
                     style="padding-bottom: '56.25%'"
                 >
                     <img
-                        data-src="/docker/0.png"
+                        data-src="/docker/0.webp"
                         data-sizes="auto"
                         alt="Docker"
                         class="lazyload kira-post-cover-image"
@@ -640,7 +656,7 @@
                     style="padding-bottom: '56.25%'"
                 >
                     <img
-                        data-src="/GPT-SoVITS/0.png"
+                        data-src="/GPT-SoVITS/0.webp"
                         data-sizes="auto"
                         alt="GPT-SoVITS(AI拟合)"
                         class="lazyload kira-post-cover-image"
@@ -688,7 +704,7 @@
                     style="padding-bottom: '56.25%'"
                 >
                     <img
-                        data-src="/ros2/0.png"
+                        data-src="/ros2/0.webp"
                         data-sizes="auto"
                         alt="ros2"
                         class="lazyload kira-post-cover-image"
@@ -736,7 +752,7 @@ ROS2 入门推荐的视频教程和配套文档，以及学习过程中遇到的
                     style="padding-bottom: '56.25%'"
                 >
                     <img
-                        data-src="/GDB-ros2/0.png"
+                        data-src="/GDB-ros2/0.webp"
                         data-sizes="auto"
                         alt="GDB_ros2"
                         class="lazyload kira-post-cover-image"

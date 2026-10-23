@@ -55,7 +55,7 @@
 	      <div class="circle" id="gal">
 	        <div class="ring">
 			</div>
-				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
+				<audio id="audio" preload="none" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
 	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
@@ -106,18 +106,31 @@
     </div>
   </div>
   <script>
-    window.addEventListener('load', function () {
-      document.body.style.overflow = 'auto';
-      var loaderBox = document.getElementById('loader-box');
-      if (loaderBox) loaderBox.remove();
-    }, { once: true });
+    // 页面结构就绪（DOMContentLoaded）就淡出加载动画，不再等所有图片、看板娘模型和外部资源全部下载完。
+    (function () {
+      var hidden = false;
+      function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+        document.body.style.overflow = 'auto';
+        var loaderBox = document.getElementById('loader-box');
+        if (!loaderBox) return;
+        loaderBox.style.transition = 'opacity .35s ease';
+        loaderBox.style.opacity = '0';
+        setTimeout(function () { loaderBox.remove(); }, 380);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideLoader, { once: true });
+      else hideLoader();
+      // 兜底：最多显示 4 秒
+      setTimeout(hideLoader, 4000);
+    })();
   </script>
 
 
 		
 		<div
 			class="kira-background"
-			style="background-image: url('/yolov5/ev407a.png')"
+			style="background-image: url('/yolov5/ev407a.webp')"
 		></div>
 		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
 		<div class="hy-glow" aria-hidden="true"></div>
@@ -167,7 +180,7 @@
 
 
 <!--自定义看板娘-->
-<script src="/live2d-widget/autoload.js?v=20260916-1"></script>
+<script src="/live2d-widget/autoload.js?v=20261024-1"></script>
 
 <link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260926-1" />
 <script>
@@ -499,7 +512,7 @@
 		
 		<div class="kira-post-cover">
 			<img
-				data-src="/docker/0.png"
+				data-src="/docker/0.webp"
 				data-sizes="auto"
 				alt="Docker"
 				class="lazyload kira-post-cover-image disabled-kira-image"
@@ -668,21 +681,51 @@
 	
 	<div class="kira-post-footer">
 		
-	<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css" />
 	<div id="gitalk"></div>
-	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 	<script type="text/javascript">
-		const gitalk = new Gitalk({
-			clientID: '605688881c2e008e46bb',
-			// Secret 由 Cloudflare Worker 保存；前端只提交 GitHub 返回的临时代码。
-			proxy: 'https://hongye-waifu-ai.mmjhongye.workers.dev/api/gitalk/oauth',
-			id: 'Docker',
-			repo: 'Swe-et.github.io',
-			owner: 'Swe-et',
-			admin: 'Swe-et',
-			title: 'RulatedayDnd5eWiki',
-		});
-		gitalk.render('gitalk');
+		// Gitalk 脚本和样式较大，滚动到评论区附近时才加载，不阻塞文章首屏。
+		(function () {
+			var box = document.getElementById('gitalk');
+			var started = false;
+			function initGitalk() {
+				var gitalk = new Gitalk({
+					clientID: '605688881c2e008e46bb',
+					// Secret 由 Cloudflare Worker 保存；前端只提交 GitHub 返回的临时代码。
+					proxy: 'https://hongye-waifu-ai.mmjhongye.workers.dev/api/gitalk/oauth',
+					id: 'Docker',
+					repo: 'Swe-et.github.io',
+					owner: 'Swe-et',
+					admin: 'Swe-et',
+					title: 'RulatedayDnd5eWiki',
+				});
+				gitalk.render('gitalk');
+			}
+			function startGitalk() {
+				if (started || !box) return;
+				started = true;
+				var css = document.createElement('link');
+				css.rel = 'stylesheet';
+				css.href = 'https://unpkg.com/gitalk@1.8.0/dist/gitalk.css';
+				document.head.appendChild(css);
+				var script = document.createElement('script');
+				script.src = 'https://unpkg.com/gitalk@1.8.0/dist/gitalk.min.js';
+				script.onload = initGitalk;
+				document.body.appendChild(script);
+			}
+			// GitHub 登录回调会带 ?code=，此时立即加载，保证登录流程正常完成。
+			if (/[?&]code=/.test(location.search)) { startGitalk(); return; }
+			if ('IntersectionObserver' in window && box) {
+				var observer = new IntersectionObserver(function (entries) {
+					if (entries.some(function (entry) { return entry.isIntersecting; })) {
+						observer.disconnect();
+						startGitalk();
+					}
+				}, { rootMargin: '800px 0px' });
+				observer.observe(box);
+			} else {
+				window.addEventListener('load', startGitalk, { once: true });
+			}
+		})();
 	</script>
 
 

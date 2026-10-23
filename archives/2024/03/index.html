@@ -55,7 +55,7 @@
 	      <div class="circle" id="gal">
 	        <div class="ring">
 			</div>
-				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
+				<audio id="audio" preload="none" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
 	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
@@ -106,18 +106,31 @@
     </div>
   </div>
   <script>
-    window.addEventListener('load', function () {
-      document.body.style.overflow = 'auto';
-      var loaderBox = document.getElementById('loader-box');
-      if (loaderBox) loaderBox.remove();
-    }, { once: true });
+    // 页面结构就绪（DOMContentLoaded）就淡出加载动画，不再等所有图片、看板娘模型和外部资源全部下载完。
+    (function () {
+      var hidden = false;
+      function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+        document.body.style.overflow = 'auto';
+        var loaderBox = document.getElementById('loader-box');
+        if (!loaderBox) return;
+        loaderBox.style.transition = 'opacity .35s ease';
+        loaderBox.style.opacity = '0';
+        setTimeout(function () { loaderBox.remove(); }, 380);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideLoader, { once: true });
+      else hideLoader();
+      // 兜底：最多显示 4 秒
+      setTimeout(hideLoader, 4000);
+    })();
   </script>
 
 
 		
 		<div
 			class="kira-background"
-			style="background-image: url('/yolov5/ev407a.png')"
+			style="background-image: url('/yolov5/ev407a.webp')"
 		></div>
 		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
 		<div class="hy-glow" aria-hidden="true"></div>
@@ -167,7 +180,7 @@
 
 
 <!--自定义看板娘-->
-<script src="/live2d-widget/autoload.js?v=20260916-1"></script>
+<script src="/live2d-widget/autoload.js?v=20261024-1"></script>
 
 <link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260926-1" />
 <script>
@@ -534,7 +547,7 @@
                     style="padding-bottom: '56.25%'"
                 >
                     <img
-                        data-src="/GDB-ros2/0.png"
+                        data-src="/GDB-ros2/0.webp"
                         data-sizes="auto"
                         alt="GDB_ros2"
                         class="lazyload kira-post-cover-image"

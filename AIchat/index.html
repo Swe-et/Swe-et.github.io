@@ -55,7 +55,7 @@
 	      <div class="circle" id="gal">
 	        <div class="ring">
 			</div>
-				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
+				<audio id="audio" preload="none" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
 	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
@@ -106,18 +106,31 @@
     </div>
   </div>
   <script>
-    window.addEventListener('load', function () {
-      document.body.style.overflow = 'auto';
-      var loaderBox = document.getElementById('loader-box');
-      if (loaderBox) loaderBox.remove();
-    }, { once: true });
+    // 页面结构就绪（DOMContentLoaded）就淡出加载动画，不再等所有图片、看板娘模型和外部资源全部下载完。
+    (function () {
+      var hidden = false;
+      function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+        document.body.style.overflow = 'auto';
+        var loaderBox = document.getElementById('loader-box');
+        if (!loaderBox) return;
+        loaderBox.style.transition = 'opacity .35s ease';
+        loaderBox.style.opacity = '0';
+        setTimeout(function () { loaderBox.remove(); }, 380);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideLoader, { once: true });
+      else hideLoader();
+      // 兜底：最多显示 4 秒
+      setTimeout(hideLoader, 4000);
+    })();
   </script>
 
 
 		
 		<div
 			class="kira-background"
-			style="background-image: url('/yolov5/ev407a.png')"
+			style="background-image: url('/yolov5/ev407a.webp')"
 		></div>
 		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
 		<div class="hy-glow" aria-hidden="true"></div>
@@ -167,7 +180,7 @@
 
 
 <!--自定义看板娘-->
-<script src="/live2d-widget/autoload.js?v=20260916-1"></script>
+<script src="/live2d-widget/autoload.js?v=20261024-1"></script>
 
 <link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260926-1" />
 <script>
@@ -499,7 +512,7 @@
 		
 		<div class="kira-post-cover">
 			<img
-				data-src="/AIchat/0.png"
+				data-src="/AIchat/0.webp"
 				data-sizes="auto"
 				alt="AIchat：让小鲸鱼同时住进 QQ 和微信"
 				class="lazyload kira-post-cover-image disabled-kira-image"
@@ -509,17 +522,20 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2026年10月23日</a>
-			<a><i class="kirafont icon-edit-fill"></i>3.2k 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 13 分钟</a>
+			<a><i class="kirafont icon-edit-fill"></i>4.3k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 17 分钟</a>
 		</div>
 		<div style="border-left: 4px solid rgb(255,192,203); background: rgba(255,192,203,.14); border-radius: 8px; padding: 14px 18px; margin: 0 0 1.5em;">
 <b>🐋 一句话介绍</b><br>
-一只叫「小鲸鱼」的 AI 角色，同时在 QQ 和微信里陪你聊天、帮你搜 B 站视频，还会按自己的作息去找视频、认真读完再挑给你。每天三条推荐全部送达后，她会把当天的公开日记发给你。
+一只叫「小鲸鱼」的 AI 角色，同时在 QQ 和微信里陪你聊天、帮你搜 B 站视频，还会按自己的作息去找视频、认真读完再挑给你。QQ、微信和 B 站三边共用同一条对话时间线；每天推荐送达、作息结束后，她会把当天的公开日记发给你，里面也会写到你们聊过的事。
 </div>
 
 <p>本文记录这个本地 AI 助手的整体设计：它基于 <strong>DeepSeek Harness（DSH）</strong>，把 <a target="_blank" rel="noopener" href="https://github.com/Alterssss/dsh-bili-whale">dsh-bili-whale</a>、<a target="_blank" rel="noopener" href="https://github.com/Derpyu520/qq-bridge">qq-bridge</a> 和 <a target="_blank" rel="noopener" href="https://github.com/sourcepro5/WeChatAgent">WeChatAgent</a> 三个开源项目融合在一起。</p>
 <blockquote>
 <p>🔒 文章只介绍可以公开的功能与维护思路。账号、白名单、Token、Cookie、聊天记录和本机目录一律用占位符代替。</p>
+</blockquote>
+<blockquote>
+<p>🆕 <strong>2026-10-24 更新</strong>：三端共同对话时间线、跨端链接去重、群聊只在叫名字或 @ 时回应、省 token 模式、日记兜底发送和日记写入真实聊天。</p>
 </blockquote>
 <span id="more"></span>
 
@@ -552,14 +568,22 @@
 </tr>
 <tr>
 <td>📔 每日日记</td>
-<td>三条自动推荐都送达后，发送当天公开日记</td>
+<td>推荐送达、作息结束后发送当天公开日记，会写到当天和你的真实聊天</td>
 </tr>
 <tr>
 <td>🔗 链接补全</td>
 <td>消息里的独立 BV 号自动补成完整 B 站链接</td>
 </tr>
+<tr>
+<td>🚫 跨端去重</td>
+<td>无论正式推荐还是聊天里随手发的链接，7 天内都不会在另一边重复发</td>
+</tr>
+<tr>
+<td>🪙 省 token</td>
+<td>每轮只带少量必要的记忆摘录，视频和日记资料按问题才加载</td>
+</tr>
 </tbody></table>
-<p><strong>QQ 和微信是同一只小鲸鱼的两个号，主人也是同一个人。</strong> 两边共用聊天记忆、推荐偏好和看视频的经历：在 QQ 说“多推 AI 工具”，微信那边也会照做；在微信说“这条不感兴趣”，QQ 也记得。</p>
+<p><strong>QQ、微信、B 站是同一只小鲸鱼，主人也是同一个人。</strong> 三边共用一条对话时间线、推荐偏好和看视频的经历：在 QQ 说“多推 AI 工具”，微信和之后的 B 站推荐都会照做；在微信说“这条不感兴趣”，QQ 也记得。</p>
 <h2><span id="2-整体结构">🧩 2. 整体结构</span></h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">QQ   ─▶ qq-bridge   ─┐<br>                     ├─▶ DeepSeek Harness（人设 / 会话 / 工具）<br>微信 ─▶ WeChatAgent ─┘          │<br>                                ▼<br>         dsh-bili-whale（作息 / 发现 / 深读 / 日记）<br>                                │<br>                                ▼<br>         dsh-bili-recommend（校验 / 分流 / 额度 / 回执）<br>                                │<br>           ├─▶ 普通推荐      → QQ<br>           ├─▶ 特别喜欢的    → 微信<br>           └─▶ 当天公开日记  → QQ<br></code></pre></td></tr></table></figure>
 
 <table>
@@ -594,6 +618,7 @@
 <td>一键启动、健康检查、补丁部署和日记检查后台</td>
 </tr>
 </tbody></table>
+<p>三个入口（QQ、微信、B 站作息）读写的是<strong>同一份共同记忆</strong>：按时间排列的对话时间线、推荐偏好、真实送达记录和公开日记尾部。各平台底层的会话仍然分开，各自负责工具权限和发送回执，靠这份持久化的时间线接上话题，而不是硬把几个发送引擎绑进同一个会话。</p>
 <blockquote>
 <p>💡 运行时的配置、状态、日志和备份放在单独目录（例如 <code>.qq-run/</code>），不要和公开源码混在一起。</p>
 </blockquote>
@@ -684,25 +709,26 @@
 <tr>
 <td>📔 公开日记</td>
 <td>主人的 QQ</td>
-<td>当天 3 条自动推荐全部确认送达、日记写好之后</td>
+<td>3 条自动推荐都已确认送达，或当天作息已经结束；日记写好之后</td>
 </tr>
 </tbody></table>
 <div style="border-left: 4px solid rgb(255,185,0); background: rgba(255,185,0,.12); border-radius: 8px; padding: 12px 18px; margin: 1em 0;">
 <b>📏 防打扰的几条硬规则</b>
 <ul style="margin: .4em 0 0;">
 <li>普通 + 特别喜欢的自动推荐<b>合计每天最多 3 条</b>，这是上限不是指标。</li>
-<li>同一个视频 7 天内去重。</li>
+<li>同一个视频 7 天内去重，<b>聊天里直接发过的链接也算</b>：发送前会检查另一边是否已经发过，避免绕过正式推荐重复推送。</li>
+<li>明确屏蔽的内容（比如“不要推荐猫咪”）会把旧推荐从“最近推荐”里过滤掉；历史送达记录保留，只是不再当作推荐继续展示。</li>
 <li>点播不占这 3 条额度，但同样要去重和核验内容。</li>
 <li>特别喜欢的视频只走微信，不会在两边重复推送。</li>
 </ul>
 </div>
 
-<h2><span id="6-共用记忆的设计">🧠 6. 共用记忆的设计</span></h2><p>开启共享身份后，QQ 与微信按<strong>同一个人、同一只小鲸鱼</strong>处理：</p>
+<h2><span id="6-共用记忆的设计">🧠 6. 共用记忆的设计</span></h2><p>开启共享身份后，QQ、微信和 B 站作息按<strong>同一个人、同一只小鲸鱼</strong>处理：</p>
 <ul>
-<li>两边共用聊天记忆、明确的推荐偏好、点播记录和看视频的经历，可以换个平台接着聊。</li>
-<li>共同记忆保留最近约 2000 条文字记录；每轮对话会按当前平台和问题，挑选另一端的近期记录来接话。</li>
+<li>三个入口共用一条<strong>按时间排列的对话时间线</strong>，里面有共同话题、真实的视频依据和发送渠道，以及公开日记的结尾。</li>
+<li>完整的共同档案保留最近约 2000 条文字记录，不会因为省 token 被删掉。</li>
 <li>原平台的记录仍然保留，用于引用定位和发送回执。</li>
-<li><strong>群聊和其他联系人的聊天不进入这份私人记忆。</strong></li>
+<li><strong>只有绑定的主人私聊会进入共同记忆</strong>，群聊和其他联系人都不进入。</li>
 </ul>
 <p>共用记忆不改变事实标准：</p>
 <ul>
@@ -713,7 +739,56 @@
 <blockquote>
 <p>✏️ 修改人设时只维护一份主角色卡，再用同步脚本推到另一端，避免 QQ 和微信的小鲸鱼慢慢“性格分裂”。</p>
 </blockquote>
-<h2><span id="7-每日公开日记">📔 7. 每日公开日记</span></h2><p>小鲸鱼有三份记录：</p>
+<h2><span id="7-省-token-模式">🪙 7. 省 token 模式</span></h2><p>记忆越多，每轮塞给模型的上下文就越长，开销也越大。省 token 模式<strong>不删记忆，只改每轮带给模型的摘录</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>怎么带</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>共同记忆</td>
+<td>只带最近最多 8 条短摘录（每条 160 字以内）；问到旧话题时按关键词再补最多 2 条相关记录</td>
+</tr>
+<tr>
+<td>视频资料</td>
+<td>普通聊天不带；问到视频时只带最多 2 条相关视频的短理由和依据</td>
+</tr>
+<tr>
+<td>日记</td>
+<td>问到日记时才带公开日记结尾最多 1500 字</td>
+</tr>
+<tr>
+<td>重复内容</td>
+<td>同一会话里内容没变就不重复注入，内容更新或新会话时再完整刷新</td>
+</tr>
+</tbody></table>
+<p>QQ 这边还关掉了“没有新消息也自动回看”和“主动冒泡”，回复完就可以安静潜水；有新消息照常回复，每天的 B 站推荐和公开日记也照常运行。</p>
+<p>同一份真实资料、同样一句“你好”，注入的文字量变化如下（这是注入文字长度，不等于实际计费 token）：</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>优化前</th>
+<th>优化后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>共同记忆资料</td>
+<td>11951 字符</td>
+<td>622 字符</td>
+</tr>
+<tr>
+<td>微信每轮准备内容</td>
+<td>18131 字符</td>
+<td>808 字符</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 摘录都是按规则提取的，不会为了“省 token”再额外调用一次模型做摘要。</p>
+</blockquote>
+<h2><span id="8-每日公开日记">📔 8. 每日公开日记</span></h2><p>小鲸鱼有三份记录：</p>
 <table>
 <thead>
 <tr>
@@ -734,34 +809,48 @@
 <td>看视频、推荐等活动的结构化简短记录</td>
 </tr>
 </tbody></table>
-<p>日记检查后台每 15 秒看一次，<strong>以下条件全部满足</strong>才发送：</p>
+<p>日记检查后台每 15 秒看一次，满足<strong>下面任意一种情况</strong>，并且日记已经写好，才会发送：</p>
 <ol>
-<li>当天 3 条自动推荐都已确认送达（QQ 普通 + 微信特别喜欢合计，点播不算）。</li>
-<li>公开日记里已写好当天正文，并包含这 3 条推荐的 BV 号。</li>
-<li>日记文件在最后一次送达之后有更新，并且稳定了至少 20 秒（防止发出写了一半的内容）。</li>
-<li>推荐推送没有暂停，“推送日记”开关也没有关闭。</li>
+<li><strong>三条推荐都送达了</strong>：当天 3 条自动推荐都已确认送达（QQ 普通 + 微信特别喜欢合计，点播不算）。</li>
+<li><strong>当天作息结束了</strong>：即使最后一轮推荐跳过、不满三条，只要当天作息已经结束、状态稳定两分钟，也照样发送。中途跳过、还有下一个推荐窗口、刚刚结束的情况都不会提前发。</li>
 </ol>
+<p>“日记写好”指的是：</p>
+<ul>
+<li>公开日记里已经写好当天正文，并包含当天<strong>所有实际送达</strong>的推荐 BV 号（不再硬要求三条）；</li>
+<li>日记文件在最后一次送达之后有更新，并且稳定了至少 20 秒（防止发出写了一半的内容）；</li>
+<li>推荐推送没有暂停，“推送日记”开关也没有关闭。</li>
+</ul>
+<blockquote>
+<p>不会为了凑满三条去硬推荐，也不会伪造第三条。</p>
+</blockquote>
+<h3><span id="日记里会写到和你的聊天">💬 日记里会写到和你的聊天</span></h3><p>经过主人明确授权，小鲸鱼写日记时可以参考<strong>当天和主人在 QQ、微信的真实交流</strong>：</p>
+<ul>
+<li>只看绑定的主人私聊，群聊和其他联系人不纳入；没确认送达的回复不算“说过”。</li>
+<li>每边每种说话人最多取 2 条、每条 160 字以内，合计最多 8 条；聊天里的凭据会被遮盖。</li>
+<li>她从中挑 1～3 个有感觉的片段，写进给主人的信里：写实际聊了什么、自己怎么想，<strong>不贴聊天流水账，也不编造</strong>。</li>
+<li>当天没有聊天记录就不写，不会凭空捏造；也不能因为 B 站评论没人理，就说“今天没人找我”。</li>
+</ul>
 <p>发送细节：</p>
 <ul>
 <li>只发<strong>当天</strong>的公开内容，较长时按约 1400 字分段并标段号。</li>
-<li>每天一份，重启不会重发；没推满三条就继续等，<strong>不拿昨天的日记凑数</strong>。</li>
+<li>每天只发一份，重启不会重发；已经发出的当天日记不会自动改写或补发，<strong>也不拿昨天的日记凑数</strong>。</li>
 <li>明确发送失败的段落每 5 分钟重试一次；<strong>送达结果未知的段落不自动重发</strong>，以免刷屏。</li>
 </ul>
-<h2><span id="8-群聊要单独收紧">👥 8. 群聊要单独收紧</span></h2><p>群聊比私聊更容易打扰别人、甚至和别的机器人互相循环回复，所以单独配置：</p>
+<h2><span id="9-群聊要单独收紧">👥 9. 群聊要单独收紧</span></h2><p>群聊比私聊更容易打扰别人、甚至和别的机器人互相循环回复，所以单独收紧：</p>
 <ul>
-<li>只在被叫名字、被 @、被引用时唤醒，每小时最多唤醒 4 次。</li>
-<li>一次最多连发 2 条；回复后 10 秒内会回看，允许自然追问。</li>
-<li>群里不读取、也不透露主人的私人推荐资料和共用记忆。</li>
-<li>点播和记忆修改工具只对已授权的私聊开放。</li>
+<li><strong>只有被叫名字或被 @ 时才回应</strong>。引用、拍一拍、随机概率、定时、主动找话题和自动回看都不会触发。</li>
+<li>平时只在内存里暂存最近 5 条群消息；被叫到时，只给模型看<strong>前 5 条 + 叫她的那条 + 后面最多 5 条</strong>。</li>
+<li>不读旧的群聊历史，不把群聊状态写进磁盘，也不在后台学习群里的话题和黑话；每次被点名都开一段新的上下文。</li>
+<li>群里不读取、也不透露主人的私人推荐资料和共同记忆；点播和记忆修改工具只对已授权的私聊开放。</li>
 </ul>
 <blockquote>
 <p>群聊权限和私聊权限必须分开配置，不能因为机器人进了群就默认开放全部能力。</p>
 </blockquote>
-<h2><span id="️-9-暂停与恢复推送">⏸️ 9. 暂停与恢复推送</span></h2><p>维护或想安静一阵时，可以只暂停推荐、普通通知和日记推送，QQ 和微信聊天照常：</p>
+<h2><span id="️-10-暂停与恢复推送">⏸️ 10. 暂停与恢复推送</span></h2><p>维护或想安静一阵时，可以只暂停推荐、普通通知和日记推送，QQ 和微信聊天照常：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">node &lt;推荐程序入口&gt;/dbr.mjs pause    <span class="hljs-comment"># 暂停</span><br>node &lt;推荐程序入口&gt;/dbr.mjs resume   <span class="hljs-comment"># 恢复</span><br></code></pre></td></tr></table></figure>
 
 <p>暂停推送不会退出客户端，关闭启动提示窗口也不会停掉后台。目前没有统一的一键停止；需要完全停服时，按实际进程路径逐个核对，避免误关其他 Node.js 程序。</p>
-<h2><span id="10-常用健康检查">🩺 10. 常用健康检查</span></h2><p>下面这些检查<strong>都不会发送真实消息</strong>：</p>
+<h2><span id="11-常用健康检查">🩺 11. 常用健康检查</span></h2><p>下面这些检查<strong>都不会发送真实消息</strong>：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># QQ 与 DSH 连接</span><br>node &lt;脚本目录&gt;/verify<span class="hljs-literal">-qq</span>.mjs status<br><br><span class="hljs-comment"># QQ、微信、人设接入和视频资料</span><br>node &lt;脚本目录&gt;/verify<span class="hljs-literal">-chat-memory</span>.mjs<br><br><span class="hljs-comment"># 今天是否满足日记发送条件（不会创建发送任务）</span><br>node &lt;脚本目录&gt;/daily<span class="hljs-literal">-diary-worker</span>.mjs <span class="hljs-literal">--check</span><br><br><span class="hljs-comment"># 今天的推荐额度和最近投递结果</span><br>node &lt;推荐程序入口&gt;/dbr.mjs status<br></code></pre></td></tr></table></figure>
 
 <p>日记检查返回的状态含义：</p>
@@ -774,7 +863,7 @@
 </thead>
 <tbody><tr>
 <td><code>waiting_recommendations</code></td>
-<td>今天还没推满三条</td>
+<td>还没推满三条，当天作息也还没结束</td>
 </tr>
 <tr>
 <td><code>waiting_today_entry</code></td>
@@ -798,7 +887,7 @@
 </tr>
 </tbody></table>
 <p>日志优先看：<code>supervisor.log</code>、<code>bridge.log</code>、<code>bridge-error.log</code>、<code>wechat-start.log</code>、<code>daily-diary.log</code>、<code>daily-diary-error.log</code>。</p>
-<h2><span id="️-11-安全与隐私">🛡️ 11. 安全与隐私</span></h2><p>这个项目会接触聊天平台、模型接口和个人偏好，公开前必须脱敏。以下内容<strong>不得</strong>写进公开文章或提交到公开仓库：</p>
+<h2><span id="️-12-安全与隐私">🛡️ 12. 安全与隐私</span></h2><p>这个项目会接触聊天平台、模型接口和个人偏好，公开前必须脱敏。以下内容<strong>不得</strong>写进公开文章或提交到公开仓库：</p>
 <ul>
 <li>QQ 号、微信 ID、群号和白名单成员标识</li>
 <li>API Key、Access Token、Cookie、登录凭据和二维码缓存</li>
@@ -814,7 +903,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gitignore">.env<br>*.local.json<br>state/<br>logs/<br>backups/<br>cookies/<br>sessions/<br>.qq-run/<br></code></pre></td></tr></table></figure>
 
 <p>另外遵循最小权限：私聊、群聊、搜索、推荐、发送和记忆写入分别授权，不让所有会话默认拥有全部工具。</p>
-<h2><span id="12-维护建议">🔧 12. 维护建议</span></h2><p><strong>升级组件前</strong>（QQ 桥接、微信接入或 DSH）：</p>
+<h2><span id="13-维护建议">🔧 13. 维护建议</span></h2><p><strong>升级组件前</strong>（QQ 桥接、微信接入或 DSH）：</p>
 <ol>
 <li>备份本地配置与补丁。</li>
 <li>对比上游版本差异。</li>
@@ -824,10 +913,10 @@
 <li>最后再恢复自动推荐和日记推送。</li>
 </ol>
 <p>改了 DSH 插件要重载 DSH；改了微信消息引擎要重启微信聊天后台。</p>
-<p><strong>防止误发送</strong>：开发阶段保留 <code>dry_run</code> 预演模式，测试通过、接收目标确认后才打开真实发送。测试不伪造真实推荐，也不补发以前的日记。目前这一套的联合回归共 86 项，覆盖推荐分流、反馈、日记门槛与去重、QQ 链接与群回复、微信消息处理。</p>
-<h2><span id="13-总结">🌙 13. 总结</span></h2><p>一个能长期跑下去的多平台 AI 助手，难点不在“模型能回消息”，而在这些边界：<strong>身份与记忆、工具权限、内容依据、推荐门槛、发送回执、幂等去重和隐私保护。</strong></p>
+<p><strong>防止误发送</strong>：开发阶段保留 <code>dry_run</code> 预演模式，测试通过、接收目标确认后才打开真实发送。测试不伪造真实推荐，也不补发以前的日记。最近一轮隔离回归共 101 项，覆盖推荐分流、偏好与反馈、三端共同记忆、跨端链接去重、日记门槛与兜底、群聊前后五条、省 token 摘录和微信消息处理；测试数据都在临时目录，不向真实聊天发测试消息。</p>
+<h2><span id="14-总结">🌙 14. 总结</span></h2><p>一个能长期跑下去的多平台 AI 助手，难点不在“模型能回消息”，而在这些边界：<strong>身份与记忆、工具权限、内容依据、推荐门槛、发送回执、幂等去重、隐私保护，以及长期运行的成本。</strong></p>
 <p>把聊天、搜索、推荐、反馈和日记拆成独立流程以后，系统更好维护，小鲸鱼也不会把“搜到过”说成“看过”，把“看过”说成“推荐给你”。对一个私人助手来说，这份诚实比多加几个功能更重要。</p>
-<h2><span id="14-感谢以下开源项目">💐 14. 感谢以下开源项目</span></h2><ul>
+<h2><span id="15-感谢以下开源项目">💐 15. 感谢以下开源项目</span></h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/Alterssss/dsh-bili-whale">dsh-bili-whale</a>：B 站养鱼插件，自主发现、深读与日记</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/Derpyu520/qq-bridge">qq-bridge</a>：QQ 消息桥接</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/sourcepro5/WeChatAgent">WeChatAgent</a>：微信接入</li>
@@ -869,21 +958,51 @@
 	
 	<div class="kira-post-footer">
 		
-	<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css" />
 	<div id="gitalk"></div>
-	<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 	<script type="text/javascript">
-		const gitalk = new Gitalk({
-			clientID: '605688881c2e008e46bb',
-			// Secret 由 Cloudflare Worker 保存；前端只提交 GitHub 返回的临时代码。
-			proxy: 'https://hongye-waifu-ai.mmjhongye.workers.dev/api/gitalk/oauth',
-			id: 'AIchat：让小鲸鱼同时住进 QQ 和微信',
-			repo: 'Swe-et.github.io',
-			owner: 'Swe-et',
-			admin: 'Swe-et',
-			title: 'RulatedayDnd5eWiki',
-		});
-		gitalk.render('gitalk');
+		// Gitalk 脚本和样式较大，滚动到评论区附近时才加载，不阻塞文章首屏。
+		(function () {
+			var box = document.getElementById('gitalk');
+			var started = false;
+			function initGitalk() {
+				var gitalk = new Gitalk({
+					clientID: '605688881c2e008e46bb',
+					// Secret 由 Cloudflare Worker 保存；前端只提交 GitHub 返回的临时代码。
+					proxy: 'https://hongye-waifu-ai.mmjhongye.workers.dev/api/gitalk/oauth',
+					id: 'AIchat：让小鲸鱼同时住进 QQ 和微信',
+					repo: 'Swe-et.github.io',
+					owner: 'Swe-et',
+					admin: 'Swe-et',
+					title: 'RulatedayDnd5eWiki',
+				});
+				gitalk.render('gitalk');
+			}
+			function startGitalk() {
+				if (started || !box) return;
+				started = true;
+				var css = document.createElement('link');
+				css.rel = 'stylesheet';
+				css.href = 'https://unpkg.com/gitalk@1.8.0/dist/gitalk.css';
+				document.head.appendChild(css);
+				var script = document.createElement('script');
+				script.src = 'https://unpkg.com/gitalk@1.8.0/dist/gitalk.min.js';
+				script.onload = initGitalk;
+				document.body.appendChild(script);
+			}
+			// GitHub 登录回调会带 ?code=，此时立即加载，保证登录流程正常完成。
+			if (/[?&]code=/.test(location.search)) { startGitalk(); return; }
+			if ('IntersectionObserver' in window && box) {
+				var observer = new IntersectionObserver(function (entries) {
+					if (entries.some(function (entry) { return entry.isIntersecting; })) {
+						observer.disconnect();
+						startGitalk();
+					}
+				}, { rootMargin: '800px 0px' });
+				observer.observe(box);
+			} else {
+				window.addEventListener('load', startGitalk, { once: true });
+			}
+		})();
 	</script>
 
 

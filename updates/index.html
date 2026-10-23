@@ -55,7 +55,7 @@
 	      <div class="circle" id="gal">
 	        <div class="ring">
 			</div>
-				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
+				<audio id="audio" preload="none" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
 	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
@@ -106,18 +106,31 @@
     </div>
   </div>
   <script>
-    window.addEventListener('load', function () {
-      document.body.style.overflow = 'auto';
-      var loaderBox = document.getElementById('loader-box');
-      if (loaderBox) loaderBox.remove();
-    }, { once: true });
+    // 页面结构就绪（DOMContentLoaded）就淡出加载动画，不再等所有图片、看板娘模型和外部资源全部下载完。
+    (function () {
+      var hidden = false;
+      function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+        document.body.style.overflow = 'auto';
+        var loaderBox = document.getElementById('loader-box');
+        if (!loaderBox) return;
+        loaderBox.style.transition = 'opacity .35s ease';
+        loaderBox.style.opacity = '0';
+        setTimeout(function () { loaderBox.remove(); }, 380);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideLoader, { once: true });
+      else hideLoader();
+      // 兜底：最多显示 4 秒
+      setTimeout(hideLoader, 4000);
+    })();
   </script>
 
 
 		
 		<div
 			class="kira-background"
-			style="background-image: url('/yolov5/ev407a.png')"
+			style="background-image: url('/yolov5/ev407a.webp')"
 		></div>
 		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
 		<div class="hy-glow" aria-hidden="true"></div>
@@ -167,7 +180,7 @@
 
 
 <!--自定义看板娘-->
-<script src="/live2d-widget/autoload.js?v=20260916-1"></script>
+<script src="/live2d-widget/autoload.js?v=20261024-1"></script>
 
 <link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260926-1" />
 <script>
@@ -502,7 +515,7 @@
 			style="padding-bottom: '56.25%'"
 		>
 			<img
-				data-src="/yolov5/ev407a.png"
+				data-src="/yolov5/ev407a.webp"
 				data-sizes="auto"
 				alt="更新公告"
 				class="lazyload kira-post-cover-image disabled-kira-image"
@@ -512,10 +525,21 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2026年09月16日</a>
-			<a><i class="kirafont icon-edit-fill"></i>384 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-edit-fill"></i>558 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
 		</div>
 		<p>这里记录博客最近的功能更新与内容调整。</p>
+<h2><span id="2026-年-10-月-24-日">2026 年 10 月 24 日</span></h2><p><strong>⚡ 第一次打开变快了</strong></p>
+<ul>
+<li>所有文章封面和网站背景改成 WebP 格式，图片总体积从约 41MB 降到约 2MB，画质基本看不出区别。</li>
+<li>加载动画不再等所有东西下载完才消失，页面能看了就收起。</li>
+<li>看板娘等页面加载完、浏览器空闲时再出现，不再和正文抢网速。</li>
+<li>评论区滚动到附近时才加载。</li>
+</ul>
+<p><strong>📝 文章更新</strong></p>
+<ul>
+<li><a href="/AIchat/">AIchat</a>：补充了 QQ、微信、B 站三端共用的对话时间线、跨端链接去重、群聊只在叫名字或 @ 时回应、省 token 模式，以及日记的兜底发送和写入真实聊天。</li>
+</ul>
 <h2><span id="2026-年-10-月-23-日">2026 年 10 月 23 日</span></h2><p><strong>🌸 主页焕新</strong></p>
 <ul>
 <li>首页顶部新增欢迎横幅：头像、简介、文章 &#x2F; 标签 &#x2F; 分类统计，还有会飘落的小花瓣。</li>

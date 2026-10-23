@@ -55,7 +55,7 @@
 	      <div class="circle" id="gal">
 	        <div class="ring">
 			</div>
-				<audio id="audio" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
+				<audio id="audio" preload="none" src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@master/hexo/audio/niconiconi.mp3"></audio>
 		  </div>
 		  
 	<link rel="stylesheet" href="/css/search.css?v=20261023-1" />
@@ -106,18 +106,31 @@
     </div>
   </div>
   <script>
-    window.addEventListener('load', function () {
-      document.body.style.overflow = 'auto';
-      var loaderBox = document.getElementById('loader-box');
-      if (loaderBox) loaderBox.remove();
-    }, { once: true });
+    // 页面结构就绪（DOMContentLoaded）就淡出加载动画，不再等所有图片、看板娘模型和外部资源全部下载完。
+    (function () {
+      var hidden = false;
+      function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+        document.body.style.overflow = 'auto';
+        var loaderBox = document.getElementById('loader-box');
+        if (!loaderBox) return;
+        loaderBox.style.transition = 'opacity .35s ease';
+        loaderBox.style.opacity = '0';
+        setTimeout(function () { loaderBox.remove(); }, 380);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hideLoader, { once: true });
+      else hideLoader();
+      // 兜底：最多显示 4 秒
+      setTimeout(hideLoader, 4000);
+    })();
   </script>
 
 
 		
 		<div
 			class="kira-background"
-			style="background-image: url('/yolov5/ev407a.png')"
+			style="background-image: url('/yolov5/ev407a.webp')"
 		></div>
 		<!-- 背景美化：樱粉渐变光晕 + 飘落的红叶与花瓣（样式见 source/custom.css 的 .hy-sky） -->
 		<div class="hy-glow" aria-hidden="true"></div>
@@ -167,7 +180,7 @@
 
 
 <!--自定义看板娘-->
-<script src="/live2d-widget/autoload.js?v=20260916-1"></script>
+<script src="/live2d-widget/autoload.js?v=20261024-1"></script>
 
 <link rel="stylesheet" href="/live2d-widget/waifu-ai.css?v=20260926-1" />
 <script>
@@ -462,7 +475,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/AI/">
-                <div class="bg" style="background-image:url('/AIchat/0.png')"></div>
+                <div class="bg" style="background-image:url('/AIchat/0.webp')"></div>
                 <h1>AI</h1>
             </a>
         
@@ -473,7 +486,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/Docker/">
-                <div class="bg" style="background-image:url('/docker/0.png')"></div>
+                <div class="bg" style="background-image:url('/docker/0.webp')"></div>
                 <h1>Docker</h1>
             </a>
         
@@ -484,7 +497,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/GPT-SoVITS/">
-                <div class="bg" style="background-image:url('/GPT-SoVITS/0.png')"></div>
+                <div class="bg" style="background-image:url('/GPT-SoVITS/0.webp')"></div>
                 <h1>GPT-SoVITS</h1>
             </a>
         
@@ -495,7 +508,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/git/">
-                <div class="bg" style="background-image:url('/git/0.png')"></div>
+                <div class="bg" style="background-image:url('/git/0.webp')"></div>
                 <h1>git</h1>
             </a>
         
@@ -510,7 +523,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/raspberry/">
-                <div class="bg" style="background-image:url('/respberry-pro-max/0.png')"></div>
+                <div class="bg" style="background-image:url('/respberry-pro-max/0.webp')"></div>
                 <h1>raspberry</h1>
             </a>
         
@@ -521,7 +534,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/robomaster/">
-                <div class="bg" style="background-image:url('/robomaster/0.png')"></div>
+                <div class="bg" style="background-image:url('/robomaster/0.webp')"></div>
                 <h1>robomaster</h1>
             </a>
         
@@ -550,7 +563,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/ubuntu/">
-                <div class="bg" style="background-image:url('/GDB-ros2/0.png')"></div>
+                <div class="bg" style="background-image:url('/GDB-ros2/0.webp')"></div>
                 <h1>ubuntu</h1>
             </a>
         
@@ -569,7 +582,7 @@
                 
             
             <a class="mdui-ripple" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                <div class="bg" style="background-image:url('/model-change/0.png')"></div>
+                <div class="bg" style="background-image:url('/model-change/0.webp')"></div>
                 <h1>深度学习</h1>
             </a>
         
